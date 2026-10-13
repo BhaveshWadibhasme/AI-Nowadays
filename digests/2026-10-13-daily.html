@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daily AI Digest: Tue, 13 Oct 2026 · AI Nowdays</title><link rel="stylesheet" href="../style.css"><script src="../theme.js"></script></head><body>
+<header><div class="wrap"><h1 class="site"><a href="../">AI Nowdays: Bhavesh's AI digest</a></h1><button class="theme" onclick="toggleTheme()" aria-label="Toggle dark mode">◐</button></div></header>
+<main class="wrap"><article>
+<p class="meta"><a href="../#daily">← All daily digests</a></p>
+<h2>Daily AI Digest: Tue, 13 Oct 2026</h2>
+<p>The last three days were about agents getting more organized and closer to production. A new frontier model arrived for long agentic jobs, Anthropic launched multi-agent orchestration, and security patching in the MCP ecosystem now matters as much as new features.</p>
+<ul>
+<li><strong>Meta's Muse Wonder puts Meta back near the top.</strong> Artificial Analysis scores Wonder Full at 56, behind only Opus 5.5 at 58. It made big agentic gains (Terminal-Bench went from 33% to 57%), costs $4 per million input tokens and $20 per million output, and has a 1M-token context window. It's API-only, unlike Llama. <em>Why it matters:</em> the old 'Meta means open weights' story no longer holds for build-vs-buy and data residency advice. <a href="https://www.latent.space/p/ainews-meta-muse-wonder-and-wonder">https://www.latent.space/p/ainews-meta-muse-wonder-and-wonder</a></li>
+<li><strong>Anthropic's dynamic workflows for Claude Managed Agents</strong> use layers of trusted maintainers, like Linux, so the human isn't the bottleneck. <em>Why it matters:</em> it explains why big agent projects need an org chart of agents, not one huge prompt. <a href="https://www.latent.space/p/claude-dynamic-workflows">https://www.latent.space/p/claude-dynamic-workflows</a></li>
+<li><strong>MCP got ten security advisories, and two fixes are off by default.</strong> The worst (CVSS 7.5) let a malicious server steal a client's OAuth secrets. You need Python mcp 1.30.0/2.2.0+ or TS SDK 1.32.0/2.3.0+, and you have to enable the token-audience checks. <em>Why it matters:</em> upgrading alone doesn't close the hole. <a href="https://www.mcpstore.nl/en/news/mcp-sdk-security-advisories/">https://www.mcpstore.nl/en/news/mcp-sdk-security-advisories/</a> and <a href="https://workos.com/blog/mcp-auth-bugs-trusting-the-other-side">https://workos.com/blog/mcp-auth-bugs-trusting-the-other-side</a></li>
+<li><strong>Stateless MCP spec adoption is uneven:</strong> Claude Code uses it by default, Cursor only the older one. Support both revisions. <a href="https://9io.ai/blog/stateless-mcp-migration-guide">https://9io.ai/blog/stateless-mcp-migration-guide</a></li>
+<li><strong>Google Cloud API Gateway now works as a remote MCP server</strong>, so existing REST APIs become agent tools without middleware. <a href="https://acceptallmag.com/story/turn-your-rest-apis-into-mcp-tools-with-google-cloud-api-gat-ee2118/">https://acceptallmag.com/story/turn-your-rest-apis-into-mcp-tools-with-google-cloud-api-gat-ee2118/</a></li>
+<li><strong>Framework release check:</strong> LangGraph 1.2.15, CrewAI 1.15.27, OpenAI Agents SDK 0.23.x (added MCP listing limits and Docker sandbox protection) and Google ADK 2.11.0 are steady releases. LlamaIndex is repositioning around document processing. CrewAI and OpenAI Agents need different major versions of openai, so use separate environments. <a href="https://dreaming.press/posts/ai-agent-frameworks-whats-changed-fall-2026.html">https://dreaming.press/posts/ai-agent-frameworks-whats-changed-fall-2026.html</a> and <a href="https://github.com/openai/openai-agents-python/releases/tag/v0.23.0">https://github.com/openai/openai-agents-python/releases/tag/v0.23.0</a></li>
+<li><strong>Webinars:</strong>
+<ul>
+<li>Pure AI Agentic AI in the Enterprise Summit, Thu Oct 15, 10:30 PM IST, <a href="https://pureai.com/webcasts/2026/10/agentic-ai-in-the-enterprise-summit-october-15.aspx">https://pureai.com/webcasts/2026/10/agentic-ai-in-the-enterprise-summit-october-15.aspx</a></li>
+<li>Gartner, When AI Assistants Become AI Agents, Oct 16, <a href="https://www.gartner.com/en/webinar/1018315/1998205-when-ai-assistants-become-ai-agents-lessons-from-claudes-convergence">https://www.gartner.com/en/webinar/1018315/1998205-when-ai-assistants-become-ai-agents-lessons-from-claudes-convergence</a></li>
+<li>Gartner, why agentic pilots stall, Oct 21, <a href="https://www.gartner.com/en/webinar/992537/1976066-ai-agents-and-agentic-ai-what-todays-service-and-support-leaders-need-to-know">https://www.gartner.com/en/webinar/992537/1976066-ai-agents-and-agentic-ai-what-todays-service-and-support-leaders-need-to-know</a></li>
+</ul></li>
+<li><strong>From X:</strong>
+<ul>
+<li>@akhilworks says tracing tools now attach RAG faithfulness, answer quality and token cost to one trace, so evals are becoming part of observability. <a href="https://x.com/akhilworks/status/2109157365253861491">https://x.com/akhilworks/status/2109157365253861491</a></li>
+<li>@gauri__gupta on self-learning harnesses: define what 'better' means for the domain first. <a href="https://x.com/gauri__gupta/status/2109815019034784152">https://x.com/gauri__gupta/status/2109815019034784152</a></li>
+</ul></li>
+</ul>
+<p><strong>Worth a deep read:</strong> How Anthropic's Dynamic Workflows Coordinate Claude Agents, <a href="https://www.latent.space/p/claude-dynamic-workflows">https://www.latent.space/p/claude-dynamic-workflows</a></p>
+<p><strong>Trend watch:</strong> the race is shifting from the best model to the best long-running agent stack (memory, orchestration, evals inside traces, secure tool protocols). Clients are starting to ask about MCP auth in reviews.</p>
+</article></main>
+<footer><div class="wrap">AI Nowdays · curated AI agent news</div></footer></body></html>

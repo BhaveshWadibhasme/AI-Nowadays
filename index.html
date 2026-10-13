@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Nowdays: Bhavesh's AI digest</title><link rel="stylesheet" href="style.css"><script src="theme.js"></script></head><body>
+<header><div class="wrap"><h1 class="site"><a href="./">AI Nowdays: Bhavesh's AI digest</a></h1><button class="theme" onclick="toggleTheme()" aria-label="Toggle dark mode">◐</button></div></header>
+<main class="wrap">
+<nav class="tabs"><button data-t="daily" class="active">Daily digests</button><button data-t="weekly">Weekly case-study deep-dives</button><button data-t="frameworks">Framework roundups</button></nav>
+<section id="list"></section></main>
+<footer><div class="wrap">AI Nowdays · curated AI agent news</div></footer>
+<script>
+var labels={daily:"daily digests",weekly:"weekly deep-dives",frameworks:"framework roundups"},data=[];
+function render(t){document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.t===t));
+var items=data.filter(d=>d.type===t).sort((a,b)=>b.date.localeCompare(a.date)),el=document.getElementById('list');
+el.innerHTML=items.length?items.map(d=>`<div class="card"><div class="meta">${d.date}</div><h3><a href="${d.url}">${d.title}</a></h3><div>${d.summary||''}</div></div>`).join(''):`<p class="empty">No ${labels[t]} yet. Check back soon.</p>`;
+history.replaceState(null,'','#'+t)}
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>render(b.dataset.t));
+fetch('digests.json').then(r=>r.json()).then(j=>{data=j;var h=location.hash.slice(1);render(labels[h]?h:'daily')});
+</script></body></html>
