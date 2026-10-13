@@ -4,6 +4,8 @@
     "type": "daily",
     "title": "Daily AI Digest: Tue, 13 Oct 2026",
     "summary": "A new frontier model for long agentic jobs, Anthropic's multi-agent orchestration, and MCP security patching that now matters as much as new features.",
-    "url": "digests/2026-10-13-daily.html"
+    "url": "digests/2026-10-13-daily.html",
+    "readingTime": "4 min read",
+    "tags": ["Models", "Agents", "MCP", "Frameworks", "Enterprise", "Webinars", "From X"]
   }
 ]

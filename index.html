@@ -1,16 +1,229 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AI Nowdays: Bhavesh's AI digest</title><link rel="stylesheet" href="style.css"><script src="theme.js"></script></head><body>
-<header><div class="wrap"><h1 class="site"><a href="./">AI Nowdays: Bhavesh's AI digest</a></h1><button class="theme" onclick="toggleTheme()" aria-label="Toggle dark mode">◐</button></div></header>
-<main class="wrap">
-<nav class="tabs"><button data-t="daily" class="active">Daily digests</button><button data-t="weekly">Weekly case-study deep-dives</button><button data-t="frameworks">Framework roundups</button></nav>
-<section id="list"></section></main>
-<footer><div class="wrap">AI Nowdays · curated AI agent news</div></footer>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Nowdays · Daily AI intelligence</title>
+<meta name="description" content="Daily AI intelligence for consultants & FDEs. Models, agents, MCP, frameworks, and the briefings that matter.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/">
+<meta property="og:title" content="AI Nowdays">
+<meta property="og:description" content="Daily AI intelligence for consultants & FDEs">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI Nowdays">
+<meta name="twitter:description" content="Daily AI intelligence for consultants & FDEs">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="./">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main>
+  <section class="hero shell">
+    <p class="eyebrow">Bhavesh's AI digest</p>
+    <h1>AI Nowdays</h1>
+    <p class="tagline">Daily AI intelligence for consultants &amp; FDEs</p>
+    <ul class="facts">
+      <li id="latest-date">Latest issue</li>
+      <li>Consultants &amp; FDEs</li>
+      <li>Models, agents, MCP</li>
+    </ul>
+  </section>
+  <div class="shell">
+    <div class="toolbar">
+      <label class="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <span class="sr-only">Search digests</span>
+        <input id="q" type="search" placeholder="Search digests" autocomplete="off" enterkeyhint="search">
+      </label>
+      <div class="control-row" id="categories" role="group" aria-label="Category">
+        <span class="control-label">Category</span>
+        <button type="button" class="chip" data-type="all">All</button>
+        <button type="button" class="chip" data-type="daily">Daily</button>
+        <button type="button" class="chip" data-type="weekly">Weekly deep-dive</button>
+        <button type="button" class="chip" data-type="frameworks">Frameworks</button>
+      </div>
+      <div class="control-row" id="tags" role="group" aria-label="Tags">
+        <span class="control-label">Tags</span>
+        <button type="button" class="chip" data-tag="Models">Models</button>
+        <button type="button" class="chip" data-tag="Agents">Agents</button>
+        <button type="button" class="chip" data-tag="MCP">MCP</button>
+        <button type="button" class="chip" data-tag="Frameworks">Frameworks</button>
+        <button type="button" class="chip" data-tag="Enterprise">Enterprise</button>
+        <button type="button" class="chip" data-tag="Webinars">Webinars</button>
+        <button type="button" class="chip" data-tag="From X">From X</button>
+        <button type="button" class="text-btn" id="clear" hidden>Clear</button>
+      </div>
+    </div>
+    <noscript>
+      <p class="empty">JavaScript is off, so the archive cannot filter itself. The latest issue is still available: <a href="digests/2026-10-13-daily.html">Daily AI Digest: Tue, 13 Oct 2026</a>.</p>
+    </noscript>
+    <div id="featured"><p class="empty">Loading digests…</p></div>
+    <div class="section-head" id="archive-head" hidden>
+      <h2>Archive</h2>
+      <p id="count"></p>
+    </div>
+    <div id="list" class="issue-grid"></div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
 <script>
-var labels={daily:"daily digests",weekly:"weekly deep-dives",frameworks:"framework roundups"},data=[];
-function render(t){document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.t===t));
-var items=data.filter(d=>d.type===t).sort((a,b)=>b.date.localeCompare(a.date)),el=document.getElementById('list');
-el.innerHTML=items.length?items.map(d=>`<div class="card"><div class="meta">${d.date}</div><h3><a href="${d.url}">${d.title}</a></h3><div>${d.summary||''}</div></div>`).join(''):`<p class="empty">No ${labels[t]} yet. Check back soon.</p>`;
-history.replaceState(null,'','#'+t)}
-document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>render(b.dataset.t));
-fetch('digests.json').then(r=>r.json()).then(j=>{data=j;var h=location.hash.slice(1);render(labels[h]?h:'daily')});
-</script></body></html>
+(function () {
+  var TYPE_LABEL = { daily: 'Daily', weekly: 'Weekly deep-dive', frameworks: 'Frameworks' };
+  var data = [];
+  var activeTags = {};
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function formatDate(iso) {
+    var p = String(iso || '').split('-');
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    if (p.length !== 3 || !months[Number(p[1]) - 1]) return iso || '';
+    return String(Number(p[2])) + ' ' + months[Number(p[1]) - 1] + ' ' + p[0];
+  }
+  function typeFromHash() {
+    var h = location.hash.replace('#', '');
+    return Object.prototype.hasOwnProperty.call(TYPE_LABEL, h) ? h : 'all';
+  }
+  function chosenTags() {
+    return Object.keys(activeTags).filter(function (t) { return activeTags[t]; });
+  }
+  function filtered() {
+    var type = typeFromHash();
+    var q = (document.getElementById('q').value || '').trim().toLowerCase();
+    var chosen = chosenTags();
+    return data.filter(function (d) {
+      if (type !== 'all' && d.type !== type) return false;
+      var tags = d.tags || [];
+      if (chosen.length && !chosen.some(function (t) { return tags.indexOf(t) !== -1; })) return false;
+      if (!q) return true;
+      var hay = [d.title, d.summary, d.date, d.readingTime, tags.join(' '), TYPE_LABEL[d.type] || ''].join(' ').toLowerCase();
+      return hay.indexOf(q) !== -1;
+    }).sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); });
+  }
+  function chip(type) {
+    return '<span class="chip chip-' + esc(type) + '">' + esc(TYPE_LABEL[type] || type) + '</span>';
+  }
+  function pills(list) {
+    return (list || []).map(function (t) { return '<span class="tag">' + esc(t) + '</span>'; }).join('');
+  }
+  function meta(d) {
+    return '<div class="meta-row">' + chip(d.type) +
+      '<time datetime="' + esc(d.date) + '">' + esc(formatDate(d.date)) + '</time>' +
+      (d.readingTime ? '<span>' + esc(d.readingTime) + '</span>' : '') + '</div>';
+  }
+  function render() {
+    var items = filtered();
+    var type = typeFromHash();
+    var q = (document.getElementById('q').value || '').trim();
+    var chosen = chosenTags();
+    document.querySelectorAll('[data-type]').forEach(function (b) {
+      var on = b.getAttribute('data-type') === type;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    document.querySelectorAll('[data-tag]').forEach(function (b) {
+      var on = !!activeTags[b.getAttribute('data-tag')];
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    document.getElementById('clear').hidden = !(q || chosen.length || type !== 'all');
+    var feat = document.getElementById('featured');
+    var list = document.getElementById('list');
+    var archiveHead = document.getElementById('archive-head');
+    if (!items.length) {
+      var emptyLabel = type === 'weekly' ? 'weekly deep-dives' : type === 'frameworks' ? 'framework roundups' : type === 'daily' ? 'daily digests' : 'digests';
+      feat.innerHTML = '<div class="empty-card"><h2>No ' + emptyLabel + ' yet</h2><p>Nothing matches this view. Check back soon.</p></div>';
+      list.innerHTML = '';
+      archiveHead.hidden = true;
+      return;
+    }
+    var d = items[0];
+    var eyebrow = (!q && !chosen.length && type === 'all') ? 'Latest digest' : 'Latest match';
+    feat.innerHTML = '<article class="featured"><p class="eyebrow">' + eyebrow + '</p>' + meta(d) +
+      '<h2><a href="' + esc(d.url) + '">' + esc(d.title) + '</a></h2>' +
+      '<p class="summary">' + esc(d.summary || '') + '</p>' +
+      '<div class="tag-row">' + pills(d.tags) + '</div>' +
+      '<a class="btn-primary" href="' + esc(d.url) + '">Read digest</a></article>';
+    var rest = items.slice(1);
+    archiveHead.hidden = rest.length === 0;
+    document.getElementById('count').textContent = rest.length === 1 ? '1 earlier digest' : rest.length + ' earlier digests';
+    list.innerHTML = rest.map(function (item) {
+      return '<article class="issue">' + meta(item) +
+        '<h3><a href="' + esc(item.url) + '">' + esc(item.title) + '</a></h3>' +
+        '<p>' + esc(item.summary || '') + '</p>' +
+        '<div class="tag-row">' + pills(item.tags) + '</div></article>';
+    }).join('');
+  }
+
+  document.getElementById('categories').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-type]');
+    if (!b) return;
+    var t = b.getAttribute('data-type');
+    history.pushState(null, '', t === 'all' ? location.pathname + location.search : '#' + t);
+    render();
+  });
+  document.getElementById('tags').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-tag]');
+    if (!b) return;
+    var t = b.getAttribute('data-tag');
+    activeTags[t] = !activeTags[t];
+    render();
+  });
+  document.getElementById('q').addEventListener('input', render);
+  document.getElementById('clear').addEventListener('click', function () {
+    activeTags = {};
+    document.getElementById('q').value = '';
+    history.pushState(null, '', location.pathname + location.search);
+    render();
+  });
+  window.addEventListener('popstate', render);
+  window.addEventListener('hashchange', render);
+
+  fetch('digests.json').then(function (r) {
+    if (!r.ok) throw new Error('manifest');
+    return r.json();
+  }).then(function (j) {
+    data = Array.isArray(j) ? j : [];
+    var latest = data.slice().sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); })[0];
+    if (latest) document.getElementById('latest-date').textContent = 'Latest · ' + formatDate(latest.date);
+    render();
+  }).catch(function () {
+    document.getElementById('featured').innerHTML = '<div class="empty-card"><h2>Digests are unavailable</h2><p>The manifest could not be loaded.</p></div>';
+  });
+})();
+</script>
+</body>
+</html>
