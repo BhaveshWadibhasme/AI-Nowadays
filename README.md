@@ -8,7 +8,7 @@ The home page reads `digests.json` and renders the latest issue, the archive gri
 
 ## Add a digest
 
-1. Copy `digests/2026-10-13-daily.html` to `digests/YYYY-MM-DD-{daily|weekly|frameworks}.html`.
+1. Copy an existing digest to `digests/YYYY-MM-DD-{daily|weekly|frameworks|langchain}.html`. Use `digests/2026-10-13-langchain.html` for a LangChain LinkedIn roundup.
 2. Keep the shared header, sticky table of contents, story cards (one icon per section), "Why it matters" callouts, link buttons, the webinar list with date badges, and the highlighted "Worth a deep read" and "Trend watch" panels. Preserve every source link.
 3. Add an entry at the top of `digests.json`:
 
@@ -24,7 +24,7 @@ The home page reads `digests.json` and renders the latest issue, the archive gri
 }
 ```
 
-`type` is `daily`, `weekly`, or `frameworks`. The home page labels those Daily, Weekly deep-dive, and Frameworks.
+`type` is `daily`, `weekly`, `frameworks`, or `langchain`. The home page labels those Daily, Weekly deep-dive, Frameworks, and LangChain. `langchain` is for updates gathered from LangChain's LinkedIn page. Each story card has a "View LinkedIn post" button and, when the source gives one, "Read full story", "Repo", or "Livestream". Keep every URL exactly as published.
 
 `readingTime` is shown next to the date. Use a short phrase such as `4 min read`.
 
@@ -37,6 +37,7 @@ The home page reads `digests.json` and renders the latest issue, the archive gri
 - Enterprise
 - Webinars
 - From X
+- LangChain
 
 Search matches the title, summary, date, reading time, type, and tags.
 

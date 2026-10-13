@@ -11,6 +11,8 @@
   --copper-soft: #f8ebe3;
   --iris: #2c3b8f;
   --iris-soft: #e7ebf8;
+  --chain: #3d6b1f;
+  --chain-soft: #eef6e4;
   --shadow: 0 18px 50px rgba(36, 28, 18, 0.07);
   --glow-1: rgba(18, 156, 146, 0.34);
   --glow-2: rgba(214, 122, 66, 0.28);
@@ -37,6 +39,8 @@
   --copper-soft: rgba(240, 180, 138, 0.12);
   --iris: #c5cdf8;
   --iris-soft: rgba(197, 205, 248, 0.12);
+  --chain: #c6e58a;
+  --chain-soft: rgba(198, 229, 138, 0.14);
   --shadow: 0 18px 50px rgba(0, 0, 0, 0.38);
   --glow-1: rgba(40, 180, 170, 0.2);
   --glow-2: rgba(214, 122, 66, 0.14);
@@ -60,6 +64,8 @@
     --copper-soft: rgba(240, 180, 138, 0.12);
     --iris: #c5cdf8;
     --iris-soft: rgba(197, 205, 248, 0.12);
+    --chain: #c6e58a;
+    --chain-soft: rgba(198, 229, 138, 0.14);
     --shadow: 0 18px 50px rgba(0, 0, 0, 0.38);
     --glow-1: rgba(40, 180, 170, 0.2);
     --glow-2: rgba(214, 122, 66, 0.14);
@@ -214,6 +220,7 @@ button.chip:hover { transform: translateY(-1px); }
 .chip-daily { color: var(--teal); }
 .chip-weekly { color: var(--copper); }
 .chip-frameworks { color: var(--iris); }
+.chip-langchain { color: var(--chain); }
 .tag { font-size: 0.78rem; color: var(--muted); padding: 4px 9px; }
 .text-btn { margin-left: auto; border: 0; background: transparent; color: var(--teal); cursor: pointer; font-weight: 600; padding: 6px; }
 

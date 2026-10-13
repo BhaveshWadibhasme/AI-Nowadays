@@ -63,6 +63,7 @@
         <button type="button" class="chip" data-type="daily">Daily</button>
         <button type="button" class="chip" data-type="weekly">Weekly deep-dive</button>
         <button type="button" class="chip" data-type="frameworks">Frameworks</button>
+        <button type="button" class="chip" data-type="langchain">LangChain</button>
       </div>
       <div class="control-row" id="tags" role="group" aria-label="Tags">
         <span class="control-label">Tags</span>
@@ -73,11 +74,12 @@
         <button type="button" class="chip" data-tag="Enterprise">Enterprise</button>
         <button type="button" class="chip" data-tag="Webinars">Webinars</button>
         <button type="button" class="chip" data-tag="From X">From X</button>
+        <button type="button" class="chip" data-tag="LangChain">LangChain</button>
         <button type="button" class="text-btn" id="clear" hidden>Clear</button>
       </div>
     </div>
     <noscript>
-      <p class="empty">JavaScript is off, so the archive cannot filter itself. The latest issue is still available: <a href="digests/2026-10-13-daily.html">Daily AI Digest: Tue, 13 Oct 2026</a>.</p>
+      <p class="empty">JavaScript is off, so the archive cannot filter itself. The latest issues are still available: <a href="digests/2026-10-13-langchain.html">LangChain updates: 13 Oct 2026</a> and <a href="digests/2026-10-13-daily.html">Daily AI Digest: Tue, 13 Oct 2026</a>.</p>
     </noscript>
     <div id="featured"><p class="empty">Loading digests…</p></div>
     <div class="section-head" id="archive-head" hidden>
@@ -98,7 +100,7 @@
 </footer>
 <script>
 (function () {
-  var TYPE_LABEL = { daily: 'Daily', weekly: 'Weekly deep-dive', frameworks: 'Frameworks' };
+  var TYPE_LABEL = { daily: 'Daily', weekly: 'Weekly deep-dive', frameworks: 'Frameworks', langchain: 'LangChain' };
   var data = [];
   var activeTags = {};
 
@@ -164,7 +166,7 @@
     var list = document.getElementById('list');
     var archiveHead = document.getElementById('archive-head');
     if (!items.length) {
-      var emptyLabel = type === 'weekly' ? 'weekly deep-dives' : type === 'frameworks' ? 'framework roundups' : type === 'daily' ? 'daily digests' : 'digests';
+      var emptyLabel = type === 'weekly' ? 'weekly deep-dives' : type === 'frameworks' ? 'framework roundups' : type === 'daily' ? 'daily digests' : type === 'langchain' ? 'LangChain updates' : 'digests';
       feat.innerHTML = '<div class="empty-card"><h2>No ' + emptyLabel + ' yet</h2><p>Nothing matches this view. Check back soon.</p></div>';
       list.innerHTML = '';
       archiveHead.hidden = true;
@@ -179,7 +181,7 @@
       '<a class="btn-primary" href="' + esc(d.url) + '">Read digest</a></article>';
     var rest = items.slice(1);
     archiveHead.hidden = rest.length === 0;
-    document.getElementById('count').textContent = rest.length === 1 ? '1 earlier digest' : rest.length + ' earlier digests';
+    document.getElementById('count').textContent = rest.length === 1 ? '1 more digest' : rest.length + ' more digests';
     list.innerHTML = rest.map(function (item) {
       return '<article class="issue">' + meta(item) +
         '<h3><a href="' + esc(item.url) + '">' + esc(item.title) + '</a></h3>' +
