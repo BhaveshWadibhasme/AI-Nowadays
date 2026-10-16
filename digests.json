@@ -1,5 +1,20 @@
 [
   {
+    "date": "2026-10-16",
+    "type": "langchain",
+    "title": "LangChain updates: 16 Oct 2026",
+    "summary": "Typed human-in-the-loop interrupts, Managed Deep Agents working with files in Slack, NVIDIA Nemotron 3.5 Super VL for Deep Agents, an agent evals FAQ, and Vanta and Opine on LangSmith.",
+    "url": "digests/2026-10-16-langchain.html",
+    "readingTime": "5 min read",
+    "tags": [
+      "LangChain",
+      "Agents",
+      "Evals",
+      "Models",
+      "Human-in-the-loop"
+    ]
+  },
+  {
     "date": "2026-10-15",
     "type": "langchain",
     "title": "LangChain updates: 15 Oct 2026",

@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LangChain updates: 16 Oct 2026 · AI Nowdays</title>
+<meta name="description" content="From LangChain&#x27;s LinkedIn: typed human-in-the-loop interrupts, Managed Deep Agents in Slack, NVIDIA Nemotron 3.5 Super VL for Deep Agents, an agent evals FAQ, and Vanta and Opine on LangSmith.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-16-langchain.html">
+<meta property="og:title" content="LangChain updates: 16 Oct 2026">
+<meta property="og:description" content="From LangChain&#x27;s LinkedIn: typed human-in-the-loop interrupts, Managed Deep Agents in Slack, NVIDIA Nemotron 3.5 Super VL for Deep Agents, an agent evals FAQ, and Vanta and Opine on LangSmith.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-16-langchain.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LangChain updates: 16 Oct 2026">
+<meta name="twitter:description" content="From LangChain&#x27;s LinkedIn: typed human-in-the-loop interrupts, Managed Deep Agents in Slack, NVIDIA Nemotron 3.5 Super VL for Deep Agents, an agent evals FAQ, and Vanta and Opine on LangSmith.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#langchain">← All LangChain updates</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+          <p class="kicker">On this page</p>
+          <a href="#overview">Overview</a>
+          <a href="#hitl">Typed HITL</a>
+          <a href="#slack">Deep Agents in Slack</a>
+          <a href="#nvidia">Nemotron 3.5 VL</a>
+          <a href="#evals">Evals FAQ</a>
+          <a href="#vanta">Vanta</a>
+          <a href="#opine">Opine</a>
+          <a href="#events">Meetups</a>
+          <a href="#trend-watch">Trend watch</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-langchain">LangChain</span>
+          <time datetime="2026-10-16">16 Oct 2026</time>
+          <span>5 min read</span>
+        </div>
+        <h1>LangChain updates: 16 Oct 2026</h1>
+        <div class="tag-row">
+          <span class="tag">LangChain</span>
+          <span class="tag">Agents</span>
+          <span class="tag">Evals</span>
+          <span class="tag">Models</span>
+          <span class="tag">Human-in-the-loop</span>
+        </div>
+        <section id="overview" class="lede-card" data-section>
+          <p>From LangChain's LinkedIn over the last day: typed human-in-the-loop interrupts, Managed Deep Agents working with files in Slack, NVIDIA's Nemotron 3.5 Super VL for Deep Agents, an agent evals FAQ, LangSmith customer stories from Vanta and Opine, and two upcoming community meetups.</p>
+          <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/company/langchain/posts/?feedView=all"><span>LangChain on LinkedIn</span><span class="url">https://www.linkedin.com/company/langchain/posts/?feedView=all</span></a>
+          </div>
+        </section>
+
+        <section id="hitl" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l2.2 4.6L19 8.2l-3.6 3.2.9 5.1L12 14.2 7.7 16.5l.9-5.1L5 8.2l4.8-.6L12 3z"/></svg>
+          </div>
+          <div>
+            <p class="kicker">LangChain · Human-in-the-loop</p>
+            <h3>Human-in-the-loop revamped with typed interrupt schemas</h3>
+            <p>Sydney Runkle (Product at LangChain) shared that human-in-the-loop in LangChain has been revamped. Interrupts on tool calls now ship with typed schemas, so the human&#x27;s response is validated before it goes back to the agent.</p><p>The same schema can be used to render nicer approval forms in your UI.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Validated approvals make tool-call guardrails safer and easier to build into real review UIs for governed agent rollouts.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7516634357319602177/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7516634357319602177/</span></a>
+            <a class="link-btn" href="https://docs.langchain.com/oss/python/langchain/human-in-the-loop#pause-once-per-tool-call"><span>Read full story</span><span class="url">https://docs.langchain.com/oss/python/langchain/human-in-the-loop#pause-once-per-tool-call</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="slack" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Managed Deep Agents</p>
+            <h3>Managed Deep Agents now work with files in Slack threads</h3>
+            <p>Caspar Broekhuizen (Agents at LangChain) shared that Managed Deep Agents can read the files people share in Slack and send files back to the same thread. Someone drops a CSV in a thread and asks for a deck; the agent picks the file up in its sandbox (a computer with its own filesystem), builds the deck, and posts it back as a reply.</p><p>When a teammate asks for another slide later in the thread, the CSV and the first draft are still in the agent&#x27;s filesystem, so it just updates the deck. The team keeps working in Slack and the agent works right there with them.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Agents that keep a persistent filesystem per thread can do multi-turn document work where people already collaborate, with no new tool to adopt.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7516567755014295555/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7516567755014295555/</span></a>
+            <a class="link-btn" href="https://docs.langchain.com/langsmith/python/managed-deep-agents-channels-slack"><span>Read full story</span><span class="url">https://docs.langchain.com/langsmith/python/managed-deep-agents-channels-slack</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="nvidia" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 16l4-8 4 5 3-3 5 6"/><path d="M4 19h16"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Models · NVIDIA</p>
+            <h3>Nemotron 3.5 Super VL brings vision to Deep Agents via ChatNVIDIA</h3>
+            <p>NVIDIA&#x27;s Nemotron 3.5 Super VL brings vision, reasoning, and tool use to Deep Agents through ChatNVIDIA. An agent can interpret a customer&#x27;s screenshot or a document image, reason about what it sees, and take action using its existing tools.</p><p>The open model has 120B total parameters and 12B active parameters, with NVIDIA NeMo tooling for post-training on your own data and workflows. It averaged an 87% pass rate on LangChain&#x27;s Deep Agents behavioral suite, and on Harbor Unified-lite it used 55% less total task time than DeepSeek V4.1 Flash, with similar task success. It builds on LangChain&#x27;s earlier work with Nemotron 3 Ultra.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A fast open-weight multimodal option for agents that need to read screenshots and documents, with a path to post-train on your own data.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7516517677985665024/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7516517677985665024/</span></a>
+            <a class="link-btn" href="https://docs.langchain.com/oss/python/integrations/chat/nvidia_ai_endpoints"><span>Read full story</span><span class="url">https://docs.langchain.com/oss/python/integrations/chat/nvidia_ai_endpoints</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="evals" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6.5h11a3 3 0 013 3V20H7a3 3 0 01-3-3V6.5z"/><path d="M8 6.5V4h9a3 3 0 013 3v11"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Evals · Education</p>
+            <h3>The most common questions about agent evals, answered</h3>
+            <p>LangChain&#x27;s education team answered the most common questions they&#x27;ve received about agent evals, including the difference between offline and online evals, whether evals are the same as benchmarks, and whether you can trace and evaluate an agent in LangSmith if it isn&#x27;t built with LangChain, LangGraph, or Deep Agents.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A handy primer to share with stakeholders when you are setting up an evaluation practice for internal agents.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7516575181306286080/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7516575181306286080/</span></a>
+            <a class="link-btn" href="https://www.langchain.com/blog/common-questions-about-agent-evals"><span>Read full story</span><span class="url">https://www.langchain.com/blog/common-questions-about-agent-evals</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="vanta" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.5-3.5"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Customer story · LangSmith</p>
+            <h3>Vanta finds traces fast and improves quality with LangSmith evals</h3>
+            <p>&quot;I can finally find the data that I want without having to fight my tooling.&quot; — Zheng Tao, Senior AI Engineer at Vanta.</p><p>Zheng used to spend 10 minutes hunting for a single trace. With LangSmith, she can find it fast and use evals to improve AI quality end to end. LangChain sat down with her to learn how she&#x27;s building a capability that assesses compliance evidence the way an auditor would.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Shows trace search plus evals cutting debugging time in a compliance product, where answer quality has to hold up like an audit.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7516543956575391745/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7516543956575391745/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="opine" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 16l4-8 4 5 3-3 5 6"/><path d="M4 19h16"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Customer story · LangSmith</p>
+            <h3>Opine gates every prompt and model change behind LangSmith evals</h3>
+            <p>Opine is a customer intelligence layer for revenue teams: it captures deal context from calls, threads and rooms the CRM never sees, and feeds that intelligence to the agents teams already use. Docker, Tailscale, Gainsight, Orca Security, Socket.dev, and BigID use it; the post says Docker generates 100%+ more revenue per SE hour and Tailscale saves 100+ hours a week with Opine.</p><p>Opine traces every production LLM run through LangSmith and gates every prompt and model change behind LangSmith evals, so they can ship changes to their deal-context agents without guessing whether quality moved.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A clean example of eval-gated releases: no prompt or model change ships unless evals show quality held.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7516603948427030528/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7516603948427030528/</span></a>
+            <a class="link-btn" href="http://tryopine.com"><span>Visit Opine</span><span class="url">http://tryopine.com</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="events" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Community · Meetups</p>
+            <h3>Upcoming LangChain meetups in DMV and Toronto</h3>
+            <p><strong>DMV Agent Builders, Thursday 29 October, Tysons.</strong> Tam Nguyen (GSA) leads a community conversation on securing multi-agent AI systems, and Haitham S., founding federal deployed engineer at LangChain, shows how to build agents that improve over time. Doors open at 6 PM; the registration link is in the post's comments.</p>
+            <p><strong>LangChain Toronto, Wednesday 4 November, TD Bank/Layer 6 offices.</strong> "Owning Your Intelligence with Open-Weight Models" with Haider Z. from LangChain and Satya Krishna Gorti from TD Bank, on considerations for open models in Canadian financial services.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Both sessions lean on themes FDEs face daily: securing multi-agent systems and running open-weight models in regulated industries.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7516616301310754816/"><span>View LinkedIn post (DMV)</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7516616301310754816/</span></a>
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7516299082102038528/"><span>View LinkedIn post (Toronto)</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7516299082102038528/</span></a>
+            <a class="link-btn" href="https://luma.com/htp51nvv"><span>Read full story (Toronto)</span><span class="url">https://luma.com/htp51nvv</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="trend-watch" class="panel trend" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Trend watch</h2>
+          <p>LangChain is hardening the production basics: validated human approvals on tool calls, eval-gated releases (Opine, Vanta, and the new evals FAQ), and Managed Deep Agents that live inside team tools like Slack with a persistent filesystem. On models, the push for open-weight options continues with Nemotron 3.5 Super VL adding vision to Deep Agents, echoed by the Toronto meetup on open-weight models in financial services.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>
