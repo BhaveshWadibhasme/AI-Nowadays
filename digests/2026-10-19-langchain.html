@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LangChain updates: 19 Oct 2026 · AI Nowdays</title>
+<meta name="description" content="From LangChain&#x27;s LinkedIn over the weekend: traces as training data, AI search in LangSmith, sandbox proxies for Managed Deep Agents, a healthcare agents guide, continual learning, and Harrison Chase on neutral harnesses and memory.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-19-langchain.html">
+<meta property="og:title" content="LangChain updates: 19 Oct 2026">
+<meta property="og:description" content="From LangChain&#x27;s LinkedIn over the weekend: traces as training data, AI search in LangSmith, sandbox proxies for Managed Deep Agents, a healthcare agents guide, continual learning, and Harrison Chase on neutral harnesses and memory.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-19-langchain.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LangChain updates: 19 Oct 2026">
+<meta name="twitter:description" content="From LangChain&#x27;s LinkedIn over the weekend: traces as training data, AI search in LangSmith, sandbox proxies for Managed Deep Agents, a healthcare agents guide, continual learning, and Harrison Chase on neutral harnesses and memory.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#langchain">← All LangChain updates</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+          <p class="kicker">On this page</p>
+          <a href="#overview">Overview</a>
+          <a href="#traces">Traces as training data</a>
+          <a href="#ai-search">AI search</a>
+          <a href="#sandbox">Sandbox proxies</a>
+          <a href="#healthcare">Healthcare guide</a>
+          <a href="#continual">Continual learning</a>
+          <a href="#harrison">Harrison on 20VC</a>
+          <a href="#11x">11x relaunch</a>
+          <a href="#trend-watch">Trend watch</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-langchain">LangChain</span>
+          <time datetime="2026-10-19">19 Oct 2026</time>
+          <span>6 min read</span>
+        </div>
+        <h1>LangChain updates: 19 Oct 2026</h1>
+        <div class="tag-row">
+          <span class="tag">LangChain</span>
+          <span class="tag">Agents</span>
+          <span class="tag">LangSmith</span>
+          <span class="tag">Security</span>
+          <span class="tag">Post-training</span>
+        </div>
+        <section id="overview" class="lede-card" data-section>
+          <p>From LangChain's LinkedIn since Thursday: Ankush Gola on turning agent traces into training data, four ways to use AI search in LangSmith, how sandbox proxies keep credentials out of Managed Deep Agents, a new guide on scaling agents in healthcare and life sciences, a talk on why continual learning is unsolved, Harrison Chase's 20VC notes, and the 11x relaunch.</p>
+          <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/company/langchain/posts/?feedView=all"><span>LangChain on LinkedIn</span><span class="url">https://www.linkedin.com/company/langchain/posts/?feedView=all</span></a>
+          </div>
+        </section>
+
+        <section id="traces" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 16l4-8 4 5 3-3 5 6"/><path d="M4 19h16"/></svg>
+          </div>
+          <div>
+            <p class="kicker">LangSmith · Post-training</p>
+            <h3>Your agent traces can become training data</h3>
+            <p>Ankush Gola (Co-Founder, LangChain) argues that agent traces are larger and far more information-dense than traditional traces, and serve a different purpose: continually improving the agent, not just finding where a system is slow or broken. He names two ways to do that: harness engineering (Engine) and post-training.</p><p>For post-training, traces become fuel for SFT examples (successful production trajectories teaching a base model), tasks (real production inputs becoming eval and RL tasks), verifiers (feedback from users and other sources defining success criteria), and tool snapshotting (traces plus source code reconstructing tools and state to build agent environments).</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Production traces you already collect can feed evals, RL tasks and fine-tuning data, which makes observability a path to better agents rather than just a debugging tool.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7517764118758649856/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7517764118758649856/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="ai-search" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.5-3.5"/></svg>
+          </div>
+          <div>
+            <p class="kicker">LangSmith · Public beta</p>
+            <h3>Four ways to use AI search in LangSmith</h3>
+            <p>LangSmith&#x27;s AI search lets you search traces by behavior in plain language. LangChain lists four uses: debug failures that don&#x27;t throw errors (search &quot;the agent gave an incomplete answer&quot; and check whether the problem is in the prompt, tools, retrieval or routing); turn real usage into eval datasets by searching for a behavior and adding the relevant traces; send traces to human review by sending matches such as &quot;the user disputed the agent&#x27;s answer&quot; to an annotation queue; and find product gaps with searches like &quot;requests for integrations we don&#x27;t support&quot;.</p><p>AI search is available in public beta on LangSmith cloud at no additional cost. The blog post explains how it works, how it stays fast across large volumes of production traces, and what&#x27;s next.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Searching traces by behavior instead of by error codes surfaces the silent failures and unlabeled edge cases that matter most when you build eval sets for internal agents.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7516906149993070592/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7516906149993070592/</span></a>
+            <a class="link-btn" href="https://www.langchain.com/blog/agent-traces-ai-search-langsmith"><span>Read full story</span><span class="url">https://www.langchain.com/blog/agent-traces-ai-search-langsmith</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="sandbox" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Managed Deep Agents · Security</p>
+            <h3>Sandbox proxies keep your credentials out of the agent&#x27;s reach</h3>
+            <p>Caspar Broekhuizen (Agents at LangChain) explained how Managed Deep Agents defends against malicious packages that try to send your credentials to an unknown server. The agent&#x27;s code runs in a sandbox, an isolated machine for each conversation, and every request leaving the sandbox goes through a proxy that runs outside of it.</p><p>The proxy only lets through the services you allow and blocks everything else. When the agent calls a service you&#x27;ve configured, the proxy adds your token on the way out, so the token never lands in the sandbox and the agent never has direct access to it. The post includes a step-by-step video.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Keeping secrets outside the sandbox and allow-listing egress is the pattern security teams will ask about before approving agents that run code.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7516921358849622016/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7516921358849622016/</span></a>
+            <a class="link-btn" href="https://docs.langchain.com/langsmith/python/managed-deep-agents-sandboxes#configure-the-sandbox-proxy"><span>Read full story</span><span class="url">https://docs.langchain.com/langsmith/python/managed-deep-agents-sandboxes#configure-the-sandbox-proxy</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="healthcare" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6.5h11a3 3 0 013 3V20H7a3 3 0 01-3-3V6.5z"/><path d="M8 6.5V4h9a3 3 0 013 3v11"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Guide · Healthcare &amp; life sciences</p>
+            <h3>Scaling Agents in Healthcare &amp; Life Sciences</h3>
+            <p>LangChain&#x27;s latest guide brings together lessons from Madrigal Pharmaceuticals, Abridge and Vizient on moving healthcare and life sciences agents from experimentation into trusted production systems.</p><p>It covers shared multi-agent infrastructure, clinician and domain-expert driven evaluation, hierarchical agent orchestration, trace-level observability, governance and data privacy, and scaling across new workflows and data sources. The guide is a gated download.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A regulated-industry playbook for expert-led evaluation and governance that maps closely onto energy and other safety-critical enterprise settings.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7516853101132218368/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7516853101132218368/</span></a>
+            <a class="link-btn" href="https://info.langchain.com/guide/scaling-agents-in-healthcare-and-life-sciences"><span>Read full story</span><span class="url">https://info.langchain.com/guide/scaling-agents-in-healthcare-and-life-sciences</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="continual" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5v-7z"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Learning Loop · Talk</p>
+            <h3>Why nobody has solved continual learning</h3>
+            <p>“The train box is not solved at all.” At LangChain&#x27;s recent Learning Loop event, Charles O&#x27;Neill from Baseten explained why continual learning keeps breaking, and what to try anyway. The full session is on YouTube.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Useful context for setting expectations: agents that keep learning from production are still an open research problem, not a switch you flip.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7516936302651682817/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7516936302651682817/</span></a>
+            <a class="link-btn" href="https://www.youtube.com/watch?v=whnDiwcL4HE"><span>Watch the session</span><span class="url">https://www.youtube.com/watch?v=whnDiwcL4HE</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="harrison" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Interview · 20VC</p>
+            <h3>Harrison Chase on coding-tool spend, neutral harnesses and memory</h3>
+            <p>LangChain reshared Harry Stebbings&#x27; (Founder @ 20VC) notes from a conversation with Harrison Chase. The post says LangChain is now worth $1.2BN and serves 35% of the Fortune 500, and that it spends 30% of its engineering salary on coding tools, a share that has fallen over the last two months even as token usage went up. The team tracks coding agent usage in LangSmith, sets budgets, and its in-house cloud coding agent uses prompt caching and routing to cut costs.</p><p>Harrison argues harnesses need to be neutral: if memory is tied to the harness and the harness is tied to the model, a company ends up stuck. He expects memory, rare in agents today, to become incredibly common, and sees consumers using both horizontal and vertical agents. For large enterprises, cost has risen as a concern but still ranks below accuracy and above latency.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>The neutral-harness and memory points are a practical checklist for avoiding model lock-in when choosing an agent stack for your department.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7517707215907012608/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7517707215907012608/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="11x" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Customer · 11x</p>
+            <h3>11x relaunches as a revenue platform with voice agents</h3>
+            <p>LangChain congratulated 11x on its relaunch with a new brand. CEO Prabhav Jain describes 11x as a revenue platform powering hundreds of companies, including over 10 public enterprises: an outbound agent that finds prospects, researches accounts and runs outreach, a new campaign strategist, and a voice agent built for sales that qualifies inbound leads within a minute and calls existing customers to uncover expansion opportunities, following up across email, SMS and WhatsApp.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Voice is opening up new agent workflows in sales, a sign of where production agents are moving beyond chat.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7516874301677924352/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7516874301677924352/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="trend-watch" class="panel trend" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Trend watch</h2>
+          <p>Traces are becoming the center of LangChain's story: AI search to mine them for silent failures and eval data, and Ankush Gola's case for using them as SFT examples, RL tasks and verifiers, even as the Learning Loop talk is candid that continual learning is still unsolved. Alongside that, the production basics keep hardening, with credentials kept outside agent sandboxes and expert-led evaluation and governance in the healthcare guide. Harrison Chase's call for neutral harnesses and portable memory frames the bigger question for buyers: avoid tying your agent's memory to one model.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>
