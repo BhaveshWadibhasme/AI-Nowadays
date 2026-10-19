@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daily AI Digest: Mon, 19 Oct 2026 · AI Nowdays</title>
+<meta name="description" content="Agents got a reality check over the weekend. A new benchmark shows they still miss most real customer-delivery work, while regulators, outside auditors and open-source sandboxes all moved to put firmer guardrails around them.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-19-daily.html">
+<meta property="og:title" content="Daily AI Digest: Mon, 19 Oct 2026">
+<meta property="og:description" content="A new benchmark shows agents still fail most real customer-delivery work, Perplexity open-sources its agent sandbox, regulators and outside auditors move closer to the labs, and Meta ships a big open-weight model.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-19-daily.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Daily AI Digest: Mon, 19 Oct 2026">
+<meta name="twitter:description" content="A new benchmark shows agents still fail most real customer-delivery work, Perplexity open-sources its agent sandbox, regulators and outside auditors move closer to the labs, and Meta ships a big open-weight model.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#daily">← All daily digests</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="kicker">On this page</p>
+        <a href="#overview">Overview</a>
+        <a href="#fde-gym">FDE-Gym</a>
+        <a href="#space">SPACE sandbox</a>
+        <a href="#auditors">Auditors</a>
+        <a href="#muse-spark">Muse Spark</a>
+        <a href="#claude-code">Claude Code</a>
+        <a href="#frameworks">Frameworks</a>
+        <a href="#agent-cost">Agent cost</a>
+        <a href="#webinars">Webinars</a>
+        <a href="#deep-read">Worth a deep read</a>
+        <a href="#trend-watch">Trend watch</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-daily">Daily</span>
+          <time datetime="2026-10-19">19 Oct 2026</time>
+          <span>5 min read</span>
+          <span>Fri 16 Oct to Sun 18 Oct 2026</span>
+        </div>
+        <h1>Daily AI Digest: Mon, 19 Oct 2026</h1>
+        <div class="tag-row">
+          <span class="tag">Agents</span>
+          <span class="tag">Evals</span>
+          <span class="tag">Governance</span>
+          <span class="tag">Frameworks</span>
+          <span class="tag">Open models</span>
+          <span class="tag">Cost</span>
+          <span class="tag">Webinars</span>
+          <span class="tag">From X</span>
+        </div>
+
+        <section id="overview" class="lede-card" data-section>
+          <p>Agents got a reality check over the weekend. A new benchmark shows they still miss most real customer-delivery work, while regulators, outside auditors and open-source sandboxes all moved to put firmer guardrails around them.</p>
+        </section>
+
+        <section id="fde-gym" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="M8 15l3.2-4.2 2.6 2.4L19 7"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Research / From X</p>
+            <h3>Agents fail most real &ldquo;forward-deployed engineer&rdquo; tasks (FDE-Gym)</h3>
+            <p>FDE-Gym is a new benchmark of 95 end-to-end delivery tasks from 20 real customer projects across 18 sectors. Agents talk to scripted stakeholders and change production-like systems, and are scored on how much they improve the customer's own success metric. The best of 13 model setups averaged 0.56 and fully resolved only 14 of 95 tasks. The main reason was failing to uncover constraints nobody wrote down, and even when the best setup had every key fact, it hit the bar on only 10 of 23 tasks.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>This is the forward-deployed engineer job measured directly. Discovery (asking the right stakeholder questions and surfacing hidden rules) is still where humans add the most value, and it is a good checklist for scoping any agent project.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://arxiv.org/abs/2610.22350" target="_blank" rel="noopener noreferrer"><span>Read the paper</span><span class="url">https://arxiv.org/abs/2610.22350</span></a>
+              <a class="link-btn" href="https://x.com/dair_ai/status/2111096080322695440" target="_blank" rel="noopener noreferrer"><span>DAIR.AI thread on X</span><span class="url">https://x.com/dair_ai/status/2111096080322695440</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="space" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 12h6M12 9v6"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Frameworks / Tools</p>
+            <h3>Perplexity open-sources SPACE, its agent sandbox</h3>
+            <p>Perplexity released SPACE under Apache 2.0. It runs each agent task in its own small Firecracker virtual machine, keeps credentials and network access controlled from outside the sandbox, and supports pause, resume and branching of sessions. It has powered all of Perplexity's Computer sessions since July, and in 108 escape attempts by models with root access inside the VM, none reached the host.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Letting agents run code is where enterprise security teams push back. This is a production-tested reference design you can point to, or adopt, when an agent needs to execute code or touch files inside corporate IT.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.perplexity.ai/hub/blog/open-sourcing-space" target="_blank" rel="noopener noreferrer"><span>Perplexity announcement</span><span class="url">https://www.perplexity.ai/hub/blog/open-sourcing-space</span></a>
+              <a class="link-btn" href="https://github.com/perplexityai/SPACE" target="_blank" rel="noopener noreferrer"><span>GitHub repo</span><span class="url">https://github.com/perplexityai/SPACE</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="auditors" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.8 7.2-7 8.5C7.8 19.2 5 16.2 5 12V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <div>
+            <p class="kicker">News / Governance</p>
+            <h3>Regulators and outside auditors move closer to the AI labs</h3>
+            <p>The US FTC sent OpenAI and Anthropic more than 50 pages of demands each about agents going rogue and the safeguards meant to stop that, and a source told Axios it plans to have top executives testify. A day later, Anthropic said six evaluators from METR, a nonprofit that tests models for risks, now work inside the company with employee-like access and can publish findings without Anthropic's veto.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Expect customers, auditors and risk teams to ask for agent incident logs, safeguards and independent testing. Building audit trails and clear approval steps into agent projects now will save painful retrofits later.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.axios.com/2026/10/15/ftc-openai-anthropic-ai-safety-investigation" target="_blank" rel="noopener noreferrer"><span>Axios on the FTC demands</span><span class="url">https://www.axios.com/2026/10/15/ftc-openai-anthropic-ai-safety-investigation</span></a>
+              <a class="link-btn" href="https://www.anthropic.com/news/an-update-on-independent-evaluators" target="_blank" rel="noopener noreferrer"><span>Anthropic on independent evaluators</span><span class="url">https://www.anthropic.com/news/an-update-on-independent-evaluators</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="muse-spark" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z"/></svg>
+          </div>
+          <div>
+            <p class="kicker">News / Models</p>
+            <h3>Meta releases Muse Spark Open, the top US open-weight model</h3>
+            <p>Meta released Muse Spark Open, a mixture-of-experts model with 816B total and 42B active parameters, a 1M-token context window, and text, image, video and audio input. Artificial Analysis scores it 39, the best US open-weight model but behind GLM-5.3 (45) and Kimi K3 (44), and it ranks last among the top nine open models on agentic tests. Hosted pricing starts at $1.25 / $4.25 per million input/output tokens. The license requires &ldquo;Built with Muse Spark Open&rdquo; attribution and a separate deal for model-hosting businesses with more than $20M in revenue.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>For organisations that want US-origin open weights they can host themselves, this is a real option, but check the license terms and test it on your own agent workflows before choosing it over stronger Chinese open models.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.latent.space/p/ainews-agents-disprove-polysemanticity" target="_blank" rel="noopener noreferrer"><span>AINews breakdown</span><span class="url">https://www.latent.space/p/ainews-agents-disprove-polysemanticity</span></a>
+              <a class="link-btn" href="https://www.latent.space/p/ainews-high-taste-testers-ep-1" target="_blank" rel="noopener noreferrer"><span>Follow-up coverage</span><span class="url">https://www.latent.space/p/ainews-high-taste-testers-ep-1</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="claude-code" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17l-3-3 3-3M17 7l3 3-3 3"/><path d="M14 6l-4 12"/></svg>
+          </div>
+          <div>
+            <p class="kicker">News / Enterprise</p>
+            <h3>Claude now writes about 90% of Claude Code, and git couldn't keep up</h3>
+            <p>Anthropic says Claude writes about 90% of Claude Code's own code. Merged pull requests doubled from June to September while the share that had to be reverted fell by more than 40%. Across Anthropic, merges went from about 2,500 a day in May to more than 30,000 a day in September, so a team of seven built a replacement source-control system called Scion.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>When AI writes most of the code, the bottleneck moves to review, testing, CI and source control. That is where teams adopting coding agents should invest next.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.anthropic.com/engineering/redesigning-source-control" target="_blank" rel="noopener noreferrer"><span>Anthropic engineering post</span><span class="url">https://www.anthropic.com/engineering/redesigning-source-control</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="frameworks" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Frameworks</p>
+            <h3>Frameworks converge on &ldquo;traces to evals to fine-tuning&rdquo;</h3>
+            <p>LangChain's October roundup from Interrupt adds LangSmith Fine-Tuning (turn production traces into training data and fine-tune with Baseten or Fireworks), LangSmith Engine v2 with red teaming, a Trajectories view across agents and subagents, Managed Deep Agents v0.9, and FastMCP support in LangChain v1.4. OpenAI's Agents SDK 0.24 adds MCP annotations and pauses automatic context compaction while an approval is pending, and CrewAI 1.15.28 adds a <code>crewai eval</code> command that shows where a run broke.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>The frameworks are converging on one loop: trace everything, evaluate it, then improve the model from your own production data. That loop is what an enterprise AI practice should standardise on.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.langchain.com/blog/october-2026-langchain-newsletter" target="_blank" rel="noopener noreferrer"><span>LangChain October newsletter</span><span class="url">https://www.langchain.com/blog/october-2026-langchain-newsletter</span></a>
+              <a class="link-btn" href="https://github.com/openai/openai-agents-python/releases" target="_blank" rel="noopener noreferrer"><span>OpenAI Agents SDK releases</span><span class="url">https://github.com/openai/openai-agents-python/releases</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="agent-cost" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M7 8h7.5a3 3 0 010 6H9.5a3 3 0 000 6H17"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Research / Cost</p>
+            <h3>Two cheaper ways to run long agents: self-edited context and decision models</h3>
+            <p>Meta researchers introduced Context Language Models, where the agent edits a file that becomes its next prompt, cutting failed attempts and stale search results. With training, a Qwen3.5-9B agent went from 28.8% to 42.5% on BrowseComp-Plus, and on TerminalBench 2.1 it matched the strongest baseline with 29.5% less estimated compute. Separately, small &ldquo;decision models&rdquo; that return probabilities for choices you define (continue, retry, escalate) are maturing: Nace's self-hostable Drex 2.0 (35B total, about 3B active) scores 61.25 on the public Decision Index versus 57.96 for TypeSafe's Jev 1.13.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Long agent runs get expensive because the context keeps growing and big models make every small decision. Trimming context and sending routine choices to a small, cheap model are two practical cost levers, but test that the agent doesn't delete facts it needs later.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://arxiv.org/abs/2609.37725" target="_blank" rel="noopener noreferrer"><span>Context Language Models paper</span><span class="url">https://arxiv.org/abs/2609.37725</span></a>
+              <a class="link-btn" href="https://huggingface.co/nace-ai/drex-v2.0" target="_blank" rel="noopener noreferrer"><span>Drex 2.0 model card</span><span class="url">https://huggingface.co/nace-ai/drex-v2.0</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="webinars" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Webinars</p>
+            <h3>Webinars worth a slot</h3>
+            <p>LangChain's &ldquo;The Agentic Operating Model&rdquo; covers who owns agents, where governance lives and how to evaluate production agents continuously (EMEA session Thu 29 Oct, 10:00 GMT, which is 3:30 PM IST; a North America session runs 5 Nov). TDWI's expert panel &ldquo;Operational AI: Monitoring, Governing, and Scaling Production AI Systems&rdquo; is on Fri 30 Oct at 9:00 AM PT, which is 9:30 PM IST.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Both are aimed squarely at moving agents from pilot to governed production, which is the conversation a department AI consultant needs to lead.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://events.langchain.com/webinar/emea-the-agentic-operating-model/" target="_blank" rel="noopener noreferrer"><span>Register for LangChain's session</span><span class="url">https://events.langchain.com/webinar/emea-the-agentic-operating-model/</span></a>
+              <a class="link-btn" href="https://tdwi.org/webcasts/2026/10/arch-all-expert-panel-operational-ai-monitoring-governing-and-scaling-production-ai-systems.aspx" target="_blank" rel="noopener noreferrer"><span>Register for the TDWI panel</span><span class="url">https://tdwi.org/webcasts/2026/10/arch-all-expert-panel-operational-ai-monitoring-governing-and-scaling-production-ai-systems.aspx</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="deep-read" class="panel deep" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Worth a deep read</h2>
+          <p>FDE-Gym: The Last Mile of AI Delivery: a rare benchmark built around real customer delivery rather than tidy tickets. Its findings on unstated constraints double as a practical guide for anyone aiming at a forward-deployed engineer role.</p>
+          <div class="links">
+            <a class="link-btn" href="https://arxiv.org/abs/2610.22350" target="_blank" rel="noopener noreferrer"><span>FDE-Gym: The Last Mile of AI Delivery</span><span class="url">https://arxiv.org/abs/2610.22350</span></a>
+          </div>
+        </section>
+
+        <section id="trend-watch" class="panel trend" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Trend watch</h2>
+          <p>Agent governance is shifting from optional to audited: sandboxes, outside evaluators and regulators all arrived in the same week. Alongside it, cost engineering for long agent runs (trimmed context, small decision models) is becoming a core skill.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>
