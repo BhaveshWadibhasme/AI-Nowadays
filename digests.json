@@ -19,6 +19,21 @@
     ]
   },
   {
+    "date": "2026-10-20",
+    "type": "langchain",
+    "title": "LangChain updates: 20 Oct 2026",
+    "summary": "Sydney Runkle's 20VC takeaways on context, harness and weights, Harness² through LangChain's lens of traces and evals, the State of Python 2026 on Talk Python, the October newsletter, and an EMEA life sciences agent workshop.",
+    "url": "digests/2026-10-20-langchain.html",
+    "readingTime": "5 min read",
+    "tags": [
+      "LangChain",
+      "Agents",
+      "Continual learning",
+      "Harness",
+      "Events"
+    ]
+  },
+  {
     "date": "2026-10-19",
     "type": "frameworks",
     "title": "Harness²: letting agents edit their own harness, a use-case guide",

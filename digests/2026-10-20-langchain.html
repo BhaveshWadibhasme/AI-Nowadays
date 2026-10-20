@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LangChain updates: 20 Oct 2026 · AI Nowdays</title>
+<meta name="description" content="From LangChain&#x27;s LinkedIn: Sydney Runkle&#x27;s 20VC takeaways on context, harness and weights, Harness² through LangChain&#x27;s lens, the State of Python 2026 on Talk Python, the October newsletter, and a life sciences agent workshop.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-20-langchain.html">
+<meta property="og:title" content="LangChain updates: 20 Oct 2026">
+<meta property="og:description" content="From LangChain&#x27;s LinkedIn: Sydney Runkle&#x27;s 20VC takeaways on context, harness and weights, Harness² through LangChain&#x27;s lens, the State of Python 2026 on Talk Python, the October newsletter, and a life sciences agent workshop.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-20-langchain.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LangChain updates: 20 Oct 2026">
+<meta name="twitter:description" content="From LangChain&#x27;s LinkedIn: Sydney Runkle&#x27;s 20VC takeaways on context, harness and weights, Harness² through LangChain&#x27;s lens, the State of Python 2026 on Talk Python, the October newsletter, and a life sciences agent workshop.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#langchain">← All LangChain updates</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+          <p class="kicker">On this page</p>
+          <a href="#overview">Overview</a>
+          <a href="#takeaways">20VC takeaways</a>
+          <a href="#harness2">Harness² lens</a>
+          <a href="#python">State of Python 2026</a>
+          <a href="#newsletter">October newsletter</a>
+          <a href="#lifesci">Life sciences workshop</a>
+          <a href="#careers">SDR social</a>
+          <a href="#trend-watch">Trend watch</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-langchain">LangChain</span>
+          <time datetime="2026-10-20">20 Oct 2026</time>
+          <span>5 min read</span>
+        </div>
+        <h1>LangChain updates: 20 Oct 2026</h1>
+        <div class="tag-row">
+          <span class="tag">LangChain</span>
+          <span class="tag">Agents</span>
+          <span class="tag">Continual learning</span>
+          <span class="tag">Harness</span>
+          <span class="tag">Events</span>
+        </div>
+        <section id="overview" class="lede-card" data-section>
+          <p>From LangChain&#x27;s LinkedIn since yesterday morning: Sydney Runkle&#x27;s eight takeaways from Harrison Chase on 20VC, her read on Google Research&#x27;s Harness², the State of Python 2026 on Talk Python To Me, the October newsletter, an EMEA life sciences agent workshop, and an SDR recruiting social.</p>
+          <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/company/langchain/posts/?feedView=all"><span>LangChain on LinkedIn</span><span class="url">https://www.linkedin.com/company/langchain/posts/?feedView=all</span></a>
+          </div>
+        </section>
+
+        <section id="takeaways" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Interview · 20VC</p>
+            <h3>Agent = model + context + harness: eight takeaways from Harrison Chase on 20VC</h3>
+            <p>LangChain reshared Sydney Runkle&#x27;s (Product @ LangChain) takeaways from Harrison Chase&#x27;s conversation with Harry Stebbings on 20VC: “It&#x27;s underrated how hard it is to build agents!” An agent is model plus context plus harness, and you can improve it by tweaking any of the three. The highest-ROI move is to optimize context first (where domain knowledge lives), then the harness, then the weights.</p><p>Continual learning is a loop: run an agent, collect traces, aggregate learnings, fix something, measure the fix, repeat, with the fix landing in any of the three layers. Memory is still massively unsolved but massively important, and the hardest part is distilling learnings from traces, which is very domain specific. Builders worry about accuracy, cost, latency and security, and cutting cost starts with visibility into spend, then controls, then agent optimizations, which is how LangChain reduced its own coding agent spend.</p><p>Model routing is most effective in the harness, where the context for the routing decision lives. Open models handle narrower tasks today (small parts of the loop, or specific post-trained domains) but will power more core loops as they improve, and the future holds both horizontal agents that use vertical agents, with infrastructure needing to change for agents doing background work at a rate humans cannot. The full episode is on YouTube; yesterday&#x27;s page covered Harry Stebbings&#x27; notes from the same conversation.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Context first, then harness, then weights is a practical order of operations for improving an internal agent before anyone talks about fine-tuning, and the cost pipeline (visibility, controls, then optimization) is easy to adopt in a department.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7518031843271569410/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7518031843271569410/</span></a>
+            <a class="link-btn" href="https://www.youtube.com/watch?v=1jDCPEHwQfI"><span>Watch the episode</span><span class="url">https://www.youtube.com/watch?v=1jDCPEHwQfI</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="harness2" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 16l4-8 4 5 3-3 5 6"/><path d="M4 19h16"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Research · Google Research</p>
+            <h3>Harness² through LangChain’s lens: traces and evals</h3>
+            <p>Another Sydney Runkle repost: Harness² from Google Research offers techniques for recursive self-improvement (RSI) on the agent harness with a fixed model. They call it “harnessing,” but you may know it as hill climbing or continual learning. It works at two levels: at the task level it analyzes a trajectory, proposes a change, validates it and commits it if validated; at the harness level it learns which changes are effective so task-level optimizations get better over time.</p><p>Sydney notes the pattern is very familiar at LangChain and comes down to two units: the trace (the trajectory of each run, since Harness² requires each edit to be justified by evidence in a trace) and the eval (whether a change actually made the run better).</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>If you are evaluating self-improving agents, the precondition is the same either way: good traces and trustworthy evals. Our Harness² use-case guide on this site goes deeper on piloting it safely.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7517812293892591616/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7517812293892591616/</span></a>
+            <a class="link-btn" href="https://github.com/google-research/harness2"><span>Read full story</span><span class="url">https://github.com/google-research/harness2</span></a>
+            <a class="link-btn" href="2026-10-19-harness2-usecase.html"><span>Our Harness² use-case guide</span><span class="url">2026-10-19-harness2-usecase.html</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="python" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5v-7z"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Podcast · Talk Python To Me</p>
+            <h3>The State of Python in 2026, and coding from Slack</h3>
+            <p>Sydney Runkle joined Michael Kennedy on Talk Python To Me with Reuven Lerner, Calvin Hendryx-Parker and Patrick Decker to talk about “The State of Python in 2026.” She says much of it came back to development with agents: harnesses, observability, and why about 90% of her coding happens in Slack now.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A first-hand view of how agent-driven development is changing everyday Python work, useful context when you advise teams on adopting coding agents.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7518074284905422848/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7518074284905422848/</span></a>
+            <a class="link-btn" href="https://talkpython.fm/episodes/show/566/state-of-the-art-in-python-2026"><span>Listen to the episode</span><span class="url">https://talkpython.fm/episodes/show/566/state-of-the-art-in-python-2026</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="newsletter" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6.5h11a3 3 0 013 3V20H7a3 3 0 01-3-3V6.5z"/><path d="M8 6.5V4h9a3 3 0 013 3v11"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Newsletter · October 2026</p>
+            <h3>October newsletter: everything shipped at Interrupt NYC and London</h3>
+            <p>LangChain&#x27;s latest newsletter rounds up everything it shipped at Interrupt NYC and London, open source updates, and upcoming events and livestreams.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A single catch-up page for the Interrupt launches if you missed the individual announcements.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7517933473303609344/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7517933473303609344/</span></a>
+            <a class="link-btn" href="https://www.langchain.com/blog/october-2026-langchain-newsletter?utm_source=linkedin&amp;utm_medium=social"><span>Read full story</span><span class="url">https://www.langchain.com/blog/october-2026-langchain-newsletter?utm_source=linkedin&amp;utm_medium=social</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="lifesci" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Workshop · EMEA</p>
+            <h3>Deep Life Sci Workshop: Agent Engineering for Life Sciences</h3>
+            <p>LangChain says scientific research agents can do more than retrieve information: they can synthesize studies, work across research sources, execute analysis and help teams explore complex biomedical questions. The challenge is making those workflows reliable enough to trust.</p><p>The EMEA Deep Life Sci Workshop is a hands-on look at how to build, trace, evaluate and improve research agents for complex life sciences workflows.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Following last week’s healthcare and life sciences guide, LangChain is doubling down on regulated research workflows, where tracing and evaluation are what make agents trustworthy.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7517963872981413888/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7517963872981413888/</span></a>
+            <a class="link-btn" href="https://events.langchain.com/register/emea-deep-life-sci-workshop/"><span>Register for the EMEA session</span><span class="url">https://events.langchain.com/register/emea-deep-life-sci-workshop/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="careers" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Careers · Event</p>
+            <h3>SDR recruiting social at LangChain on 27 October</h3>
+            <p>LangChain is hosting an SDR recruiting social on October 27th: meet the sales team, food, drinks and networking, a first-hand look at the SDR role, team culture and career growth, and an optional speed interview for the chance to fast-track an application.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Mainly of interest for anyone eyeing sales roles in AI; it also shows LangChain is building out its sales team.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7517994147887284224/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7517994147887284224/</span></a>
+            <a class="link-btn" href="https://luma.com/ubhnxwnu"><span>RSVP on Luma</span><span class="url">https://luma.com/ubhnxwnu</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="trend-watch" class="panel trend" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Trend watch</h2>
+          <p>The thread running through today&#x27;s posts is the improvement loop. Sydney Runkle&#x27;s 20VC takeaways frame an agent as model, context and harness, and Harness² shows a harness editing itself with a fixed model, but both rest on the same two units: traces as evidence and evals as proof. LangChain&#x27;s advice is to start with context, where domain knowledge lives, and to treat memory as the big unsolved piece. Meanwhile it keeps pushing into regulated research workflows with a life sciences agent workshop, and is recruiting SDRs for its sales team.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>
