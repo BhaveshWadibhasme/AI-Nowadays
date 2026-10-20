@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daily AI Digest: Tue, 20 Oct 2026 · AI Nowdays</title>
+<meta name="description" content="The big theme today is putting firm, ordinary-code rails around agents: Meta's best-performing agent system lets the model reason in only one step out of seven, and Microsoft says security controls must live outside the model. Meanwhile Anthropic's own data shows that human attention, not the agents, is now the bottleneck.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-20-daily.html">
+<meta property="og:title" content="Daily AI Digest: Tue, 20 Oct 2026">
+<meta property="og:description" content="Meta shows a deliberately &quot;dumb&quot; router beats one all-knowing agent, Microsoft says agent security must sit outside the model, the OpenCode key leak is a warning on API-key hygiene, Anthropic publishes hard numbers on junior hiring and agent idle time, and DeepSeek and Nvidia push cheaper open models for agents.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-20-daily.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Daily AI Digest: Tue, 20 Oct 2026">
+<meta name="twitter:description" content="Meta shows a deliberately &quot;dumb&quot; router beats one all-knowing agent, Microsoft says agent security must sit outside the model, the OpenCode key leak is a warning on API-key hygiene, Anthropic publishes hard numbers on junior hiring and agent idle time, and DeepSeek and Nvidia push cheaper open models for agents.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#daily">← All daily digests</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="kicker">On this page</p>
+        <a href="#overview">Overview</a>
+        <a href="#thin-router">Thin router</a>
+        <a href="#agent-security">Agent security</a>
+        <a href="#opencode">OpenCode</a>
+        <a href="#anthropic">Anthropic</a>
+        <a href="#deepseek">DeepSeek</a>
+        <a href="#nemotron">Nemotron</a>
+        <a href="#numan">Numan</a>
+        <a href="#properagent">ProPerAgent</a>
+        <a href="#gtc">GTC Berlin</a>
+        <a href="#deep-read">Worth a deep read</a>
+        <a href="#trend-watch">Trend watch</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-daily">Daily</span>
+          <time datetime="2026-10-20">20 Oct 2026</time>
+          <span>5 min read</span>
+          <span>Mon 19 Oct to Tue 20 Oct 2026</span>
+        </div>
+        <h1>Daily AI Digest: Tue, 20 Oct 2026</h1>
+        <div class="tag-row">
+          <span class="tag">Agents</span>
+          <span class="tag">Architecture</span>
+          <span class="tag">Security</span>
+          <span class="tag">Evals</span>
+          <span class="tag">Open models</span>
+          <span class="tag">Cost</span>
+          <span class="tag">Future of work</span>
+          <span class="tag">Webinars</span>
+          <span class="tag">From X</span>
+        </div>
+
+        <section id="overview" class="lede-card" data-section>
+          <p>The big theme today is putting firm, ordinary-code rails around agents: Meta's best-performing agent system lets the model reason in only one step out of seven, and Microsoft says security controls must live outside the model. Meanwhile Anthropic's own data shows that human attention, not the agents, is now the bottleneck.</p>
+        </section>
+
+        <section id="thin-router" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>
+          </div>
+          <div>
+            <p class="kicker">News / Enterprise case study</p>
+            <h3>Meta replaces one all-knowing agent with a thin router and 14 specialists</h3>
+            <p>Meta's engineering blog described how a single agent loaded with everything about its recommendation data pipelines started hallucinating in production, mixing up rules from different subsystems once its context got too big. They replaced it with a 1,300-line orchestrator that does no domain work: it classifies the request, gathers fields, runs reliability checks and hands off to one of 14 specialist agents, each with its own isolated knowledge. Six of its seven steps are plain deterministic code; only the hand-off uses the model. New use cases are added as workflow templates that reorder existing specialists. Meta says prep for a new data column fell from three to four days by hand to under an hour, with about two-thirds of changes landing without significant human edits (no sample size or error rate was published).</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>This is a clean, citable pattern for enterprise agent design: keep routing and checks in normal code, give each specialist a narrow context, and grow by adding templates rather than smarter agents. It is a strong answer when stakeholders ask why one big &ldquo;do everything&rdquo; agent is a bad idea.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://ppc.land/meta-splits-one-ai-agent-into-14-specialists-after-it-hallucinated/" target="_blank" rel="noopener noreferrer"><span>Detailed coverage of Meta's Thin Orchestrator post (PPC Land)</span><span class="url">https://ppc.land/meta-splits-one-ai-agent-into-14-specialists-after-it-hallucinated/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="agent-security" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.8 7.2-7 8.5C7.8 19.2 5 16.2 5 12V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <div>
+            <p class="kicker">News / Governance</p>
+            <h3>Microsoft: treat agents as insiders, and keep the controls outside the model</h3>
+            <p>Microsoft extended its Project Perception security work to cover agents, adding &ldquo;Guardian Agents&rdquo; plus agent discovery, distinct agent identities, least-privilege permissions and containment controls, sharing a registry with Microsoft Agent 365. The core principle, quoting Satya Nadella: separate the supply of intelligence from the authority over it, so access and kill-switch controls sit where the model cannot bypass them. Their example: an expense-approval agent should not inherit every permission of the employee who sponsors it. This lands days after ServiceNow announced AI Passport, a signed runtime credential that defines an agent's identity, allowed actions and accountable owner.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Agent identity and scoped permissions are becoming standard platform features. For any agent you propose internally, plan for its own identity, a named owner, task-scoped access and a way to shut it off, because security teams will soon ask for exactly that.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.microsoft.com/en-us/security/blog/2026/10/19/agents-are-your-newest-insiders-security-must-move-at-their-speed/" target="_blank" rel="noopener noreferrer"><span>Microsoft Security Blog post</span><span class="url">https://www.microsoft.com/en-us/security/blog/2026/10/19/agents-are-your-newest-insiders-security-must-move-at-their-speed/</span></a>
+              <a class="link-btn" href="https://newsroom.servicenow.com/press-releases/details/2026/ServiceNow-advances-its-operational-harness-for-enterprise-AI-with-AI-Passport-and-expanded-governance-capabilities/default.aspx" target="_blank" rel="noopener noreferrer"><span>ServiceNow AI Passport announcement</span><span class="url">https://newsroom.servicenow.com/press-releases/details/2026/ServiceNow-advances-its-operational-harness-for-enterprise-AI-with-AI-Passport-and-expanded-governance-capabilities/default.aspx</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="opencode" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17l-3-3 3-3M17 7l3 3-3 3"/><path d="M14 6l-4 12"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Inbox / Security</p>
+            <h3>The OpenCode breach is a lesson in API-key hygiene</h3>
+            <p>OpenCode, an open-source AI coding tool, confirmed a breach affecting 1.4% of users of its hosted Console service, where teams store their OpenAI, Anthropic or Google keys. The company tied it to a large-scale distillation campaign (using stolen access to copy a stronger model's answers). Affected users reported unexpected charges, including one $400 bill on Anthropic. The local CLI and desktop apps, which keep keys on the machine, were not affected. Awkwardly, the AI models OpenCode used to investigate the attack started refusing because analysing it tripped their safety filters, and OpenCode has since joined a trusted-access program for defenders.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A provider API key works for whoever holds it, and a tool's own spend cap can't stop misuse elsewhere. Give each tool its own key, set limits at the provider, revoke at the provider when in doubt, and be careful about third-party services that hold keys for a whole team.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://x.com/opencode/status/2111519637049319818" target="_blank" rel="noopener noreferrer"><span>OpenCode's statement on X</span><span class="url">https://x.com/opencode/status/2111519637049319818</span></a>
+              <a class="link-btn" href="https://newsletter.genai.works/p/deepseek-conducts-identity-theft" target="_blank" rel="noopener noreferrer"><span>GenAI Works issue covering the breach</span><span class="url">https://newsletter.genai.works/p/deepseek-conducts-identity-theft</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="anthropic" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="M8 15l3.2-4.2 2.6 2.4L19 7"/></svg>
+          </div>
+          <div>
+            <p class="kicker">News / Future of work</p>
+            <h3>Anthropic's own data: fewer junior hires, and agents idle 80% of the time waiting for people</h3>
+            <p>Anthropic published a research report on how AI changed work inside the company. Junior hires fell from 27% to 9% of technical hiring, and by August employee-directed agent hours outnumbered employee hours six to one. In interactive sessions, agents spent about 80% of elapsed time waiting for a human, and even non-technical staff would need half their week just to read their agents' output. Hiring managers now stress autonomy and judgment over specific technical skills. Separately, Anthropic proposed putting 5% of its shares into a public benefit fund, with supporting workers displaced by AI given as one example use.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>When agents are cheap, the scarce resource is someone who can judge and review their output. Design agent workflows around review bandwidth (summaries, confidence flags, exception queues), and note that judgment and autonomy are the skills being hired for, which is exactly the forward-deployed engineer profile.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.anthropic.com/research/employment-at-anthropic" target="_blank" rel="noopener noreferrer"><span>Anthropic report: How employment is changing at Anthropic</span><span class="url">https://www.anthropic.com/research/employment-at-anthropic</span></a>
+              <a class="link-btn" href="https://www.anthropic.com/news/public-benefit-fund" target="_blank" rel="noopener noreferrer"><span>Anthropic public benefit fund announcement</span><span class="url">https://www.anthropic.com/news/public-benefit-fund</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="deepseek" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M7 8h7.5a3 3 0 010 6H9.5a3 3 0 000 6H17"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Inbox / Open models / Cost</p>
+            <h3>DeepSeek's new Flash model claims top coding-agent scores at about 20 cents a task</h3>
+            <p>DeepSeek released V4.1-Flash-1017 with open weights under the MIT license. On its own benchmarks it scores 77.0 on DeepSWE (long software-engineering tasks), ahead of Claude Opus 5 (74.0) and GPT-5.6 Sol (73.0), at an average of just under $0.20 per task according to DeepSeek's cost chart. It also opened its in-house web Search and Fetch APIs at $0.75 per 1,000 calls. Independent benchmarks are not out yet, and the model has been widely reported calling itself ChatGPT (26 times in 30 tries in one user's test), reviving questions about whether it was trained on other models' outputs.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>The cost floor for capable agent models keeps falling, which changes the business case for high-volume agent work. For enterprise use, weigh vendor-reported scores carefully, run your own evals, and factor in model-provenance and data-residency questions before choosing it.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017" target="_blank" rel="noopener noreferrer"><span>Model card on Hugging Face</span><span class="url">https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017</span></a>
+              <a class="link-btn" href="https://the-decoder.com/deepseek-v4-1-flash-1017-beats-larger-rivals-in-agentic-tasks-while-once-again-massively-cutting-per-task-costs/" target="_blank" rel="noopener noreferrer"><span>The Decoder's analysis of benchmarks and cost</span><span class="url">https://the-decoder.com/deepseek-v4-1-flash-1017-beats-larger-rivals-in-agentic-tasks-while-once-again-massively-cutting-per-task-costs/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="nemotron" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z"/></svg>
+          </div>
+          <div>
+            <p class="kicker">News / Open models</p>
+            <h3>Nvidia ships open Nemotron 3.5 models for enterprise agents and local PCs</h3>
+            <p>Nvidia released Nemotron 3.5 Super VL, a 120-billion-parameter open-weight model aimed at enterprise agents, which it says matches its larger Nemotron 3 Ultra on instruction-following and tool use. It also released Bolt models for running agents locally on AI PCs and workstations, starting with a 74B model built for multistep reasoning, tool calling and browsing. Nvidia names EY, Ramp, CrowdStrike, Perplexity and Salesforce as Super VL users and pitches it as something you can post-train on your own data and host yourself.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>For regulated or data-sensitive work, credible open models you can fine-tune and run in your own data centre are getting stronger, which keeps &ldquo;build on open weights in-house&rdquo; a real option next to the closed APIs.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://techcrunch.com/2026/10/19/nvidia-launches-new-open-models-to-run-agents-in-the-enterprise-and-on-pcs/" target="_blank" rel="noopener noreferrer"><span>TechCrunch on Nemotron 3.5</span><span class="url">https://techcrunch.com/2026/10/19/nvidia-launches-new-open-models-to-run-agents-in-the-enterprise-and-on-pcs/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="numan" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6.5h11a3 3 0 013 3V20H7a3 3 0 01-3-3V6.5z"/><path d="M8 6.5V4h9a3 3 0 013 3v11"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Frameworks / Case study</p>
+            <h3>How Numan built an eval-first AI health coach on LangGraph</h3>
+            <p>UK digital-health company Numan shared how it keeps its AI coach, Nu, on the safe side of medical-device rules. Nu is a LangGraph supervisor with specialist sub-agents. Its evals score each category separately instead of one average, run through the exact production graph, and use safety probes that automatically block a release on regression. A newer layer has a cheaper model play a simulated patient so tests react to what the agent actually says. They also switched model providers in a day by rerunning the same eval sets side by side. Their key lesson: the scarce asset is the eval criteria, and on a regulated boundary a domain expert (here a clinician), not an engineer, must own them.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>This is a reusable template for any agent near a compliance line, from health to energy safety: per-category scoring, release-blocking safety probes, simulated users, and expert-owned rubrics.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.langchain.com/blog/how-numan-built-an-eval-first-ai-health-coach-with-langgraph-and-langsmith" target="_blank" rel="noopener noreferrer"><span>LangChain case study</span><span class="url">https://www.langchain.com/blog/how-numan-built-an-eval-first-ai-health-coach-with-langgraph-and-langsmith</span></a>
+              <a class="link-btn" href="https://x.com/LangChain/status/2112257759060058130" target="_blank" rel="noopener noreferrer"><span>LangChain thread on X</span><span class="url">https://x.com/LangChain/status/2112257759060058130</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="properagent" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.5-3.5"/></svg>
+          </div>
+          <div>
+            <p class="kicker">From X / Research</p>
+            <h3>Meta research: a filtering step decides when a proactive agent should speak</h3>
+            <p>DAIR.AI highlighted Meta's ProPerAgent work on assistants that offer help unprompted. The harness retrieves relevant personal memories, then a separate model call checks whether any memory actually justifies interrupting right now, and passes along one piece of evidence or nothing. That raised accuracy from at most 15% with standard memory setups to 38% without changing the model. Removing the filtering step dropped accuracy from 37.3% to 24.0%, and unnecessary interruptions fell to 15.3% versus 77.3% or 84.0% for standard retrieval.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>For alerting or monitoring agents, deciding when to stay quiet matters as much as what to say. A small &ldquo;should I act now?&rdquo; check before the main model is a cheap way to cut noisy, unwanted interventions.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://x.com/dair_ai/status/2112279124551328018" target="_blank" rel="noopener noreferrer"><span>DAIR.AI thread on X</span><span class="url">https://x.com/dair_ai/status/2112279124551328018</span></a>
+              <a class="link-btn" href="https://arxiv.org/abs/2610.22671" target="_blank" rel="noopener noreferrer"><span>ProPerAgent paper</span><span class="url">https://arxiv.org/abs/2610.22671</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="gtc" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Webinars</p>
+            <h3>Webinar: NVIDIA GTC Berlin keynote, Wed 21 Oct</h3>
+            <p>Jensen Huang's GTC Berlin keynote streams free on Wednesday 21 October at 2:30 PM IST, covering accelerated computing, open models, agentic AI and physical AI, with a pregame show from 12:30 to 2:30 PM IST.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Expect follow-ups on the Nemotron open models and Nvidia's enterprise agent stack, which matter for anyone planning self-hosted or on-premises AI.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.nvidia.com/de-de/gtc/session-catalog/sessions/gtceu26-sb61112/" target="_blank" rel="noopener noreferrer"><span>GTC Berlin keynote session page</span><span class="url">https://www.nvidia.com/de-de/gtc/session-catalog/sessions/gtceu26-sb61112/</span></a>
+              <a class="link-btn" href="https://www.nvidia.com/en-eu/gtc/faq/" target="_blank" rel="noopener noreferrer"><span>GTC Berlin FAQ and livestream details</span><span class="url">https://www.nvidia.com/en-eu/gtc/faq/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="deep-read" class="panel deep" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Worth a deep read</h2>
+          <p>Anthropic's &ldquo;How employment is changing at Anthropic&rdquo;: a rare, data-heavy look at an organisation that already runs more agent hours than human hours, covering productivity, review bottlenecks, the &ldquo;meta-work&rdquo; of monitoring agents, and what hiring managers now value. Useful evidence for any AI adoption conversation with leadership.</p>
+          <div class="links">
+            <a class="link-btn" href="https://www.anthropic.com/research/employment-at-anthropic" target="_blank" rel="noopener noreferrer"><span>How employment is changing at Anthropic</span><span class="url">https://www.anthropic.com/research/employment-at-anthropic</span></a>
+          </div>
+        </section>
+
+        <section id="trend-watch" class="panel trend" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Trend watch</h2>
+          <p>Reliable agents are being built by shrinking what the model decides: deterministic routers, security controls outside the model, release-blocking safety evals, and &ldquo;should I act now?&rdquo; filters. At the same time, the real constraint is shifting to how much agent output people can review.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>

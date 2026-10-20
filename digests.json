@@ -1,5 +1,24 @@
 [
   {
+    "date": "2026-10-20",
+    "type": "daily",
+    "title": "Daily AI Digest: Tue, 20 Oct 2026",
+    "summary": "Meta shows a deliberately \"dumb\" router beats one all-knowing agent, Microsoft says agent security must sit outside the model, the OpenCode key leak is a warning on API-key hygiene, Anthropic publishes hard numbers on junior hiring and agent idle time, and DeepSeek and Nvidia push cheaper open models for agents.",
+    "url": "digests/2026-10-20-daily.html",
+    "readingTime": "5 min read",
+    "tags": [
+      "Agents",
+      "Architecture",
+      "Security",
+      "Evals",
+      "Open models",
+      "Cost",
+      "Future of work",
+      "Webinars",
+      "From X"
+    ]
+  },
+  {
     "date": "2026-10-19",
     "type": "frameworks",
     "title": "Harness²: letting agents edit their own harness, a use-case guide",
