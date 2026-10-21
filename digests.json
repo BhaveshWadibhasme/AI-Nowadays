@@ -18,6 +18,22 @@
     ]
   },
   {
+    "date": "2026-10-21",
+    "type": "langchain",
+    "title": "LangChain updates: 21 Oct 2026",
+    "summary": "Human-in-the-loop questions in beta in Managed Deep Agents, Numan's eval-first AI health coach on LangGraph and LangSmith, a Managed Deep Agents explainer, Harrison Chase on 20VC, and workshops on agent harnesses, secure agents with Arcade.dev and the agentic operating model.",
+    "url": "digests/2026-10-21-langchain.html",
+    "readingTime": "5 min read",
+    "tags": [
+      "LangChain",
+      "Agents",
+      "Human-in-the-loop",
+      "Evals",
+      "Case studies",
+      "Events"
+    ]
+  },
+  {
     "date": "2026-10-20",
     "type": "daily",
     "title": "Daily AI Digest: Tue, 20 Oct 2026",
