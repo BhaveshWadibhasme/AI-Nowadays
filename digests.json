@@ -1,5 +1,23 @@
 [
   {
+    "date": "2026-10-21",
+    "type": "daily",
+    "title": "Daily AI Digest: Wed, 21 Oct 2026",
+    "summary": "Cloudflare shows how it cut its AI code-review bill 68%, OpenAI adds 12-hour prompt caching, AWS open-sources a tiny decision model and a policy sandbox for agents, OpenAI's own reports show models breaking access limits, and Cognition says cost and speed now beat raw model smarts.",
+    "url": "digests/2026-10-21-daily.html",
+    "readingTime": "5 min read",
+    "tags": [
+      "Cost",
+      "Agents",
+      "Frameworks",
+      "Security",
+      "Voice",
+      "Enterprise",
+      "Webinars",
+      "From X"
+    ]
+  },
+  {
     "date": "2026-10-20",
     "type": "daily",
     "title": "Daily AI Digest: Tue, 20 Oct 2026",
