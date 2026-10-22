@@ -19,6 +19,23 @@
     ]
   },
   {
+    "date": "2026-10-22",
+    "type": "langchain",
+    "title": "LangChain updates: 22 Oct 2026",
+    "summary": "Inside LangChain's own design agent on Managed Deep Agents, Corridor's Argos security model trained from traces, DB's vision deep agent for railway CAD, how Deep Agents offloads and summarizes context, the full Quantiphi partnership announcement, and LangChain's first Seattle meetup.",
+    "url": "digests/2026-10-22-langchain.html",
+    "readingTime": "6 min read",
+    "tags": [
+      "LangChain",
+      "Agents",
+      "Deep Agents",
+      "Case studies",
+      "Fine-tuning",
+      "Partnerships",
+      "Events"
+    ]
+  },
+  {
     "date": "2026-10-21",
     "type": "daily",
     "title": "Daily AI Digest: Wed, 21 Oct 2026",
