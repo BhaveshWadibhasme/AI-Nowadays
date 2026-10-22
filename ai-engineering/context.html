@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Give it context · AI Engineering · AI Nowdays</title>
+<meta name="description" content="Context engineering for production AI apps: retrieval, chunking, reranking, memory, prompt assembly, and the long-context trade.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/ai-engineering/context.html">
+<meta property="og:title" content="Give it context">
+<meta property="og:description" content="Context engineering for production AI apps: retrieval, chunking, reranking, memory, prompt assembly, and the long-context trade.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/ai-engineering/context.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Give it context">
+<meta name="twitter:description" content="Context engineering for production AI apps: retrieval, chunking, reranking, memory, prompt assembly, and the long-context trade.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="../">Digests</a>
+      <a class="active" href="./">AI Engineering</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page primer page-context">
+  <div class="shell">
+    <p class="back"><a href="./">← AI Engineering</a></p>
+    <nav class="ae-subnav" aria-label="Pillars">
+      <a href="./">Overview</a>
+      <a href="context.html" aria-current="page">Context</a>
+      <a href="cost.html">Cost</a>
+      <a href="measure.html">Measure</a>
+      <a href="guardrails.html">Guardrails</a>
+      <a href="tools-agents.html">Tools + agents</a>
+    </nav>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="kicker">On this page</p>
+        <a href="#overview">Overview</a>
+        <a href="#why">Why it matters</a>
+        <a href="#techniques">Core techniques</a>
+        <a href="#pitfalls">Pitfalls</a>
+        <a href="#checklist">Checklist</a>
+        <a href="#tools">Tools</a>
+        <a href="#reading">Further reading</a>
+        <a href="#feed">From the feed</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-daily">Pillar 01</span>
+          <span>8 min read</span>
+          <a href="./">AI Engineering</a>
+        </div>
+        <h1>Give it context</h1>
+        <div class="tag-row">
+          <span class="tag">RAG</span>
+          <span class="tag">Retrieval</span>
+          <span class="tag">Memory</span>
+          <span class="tag">Chunking</span>
+          <span class="tag">Long context</span>
+        </div>
+
+        <section id="overview" class="lede-card" data-section>
+          <p>Context engineering is the work of deciding what the model sees on this request: which sources, in what order, under whose permissions, and with what evidence a person can check. Most production failures that get blamed on “the model” are failures of that assembly. The model answered from the wrong document, from a stale policy, from a chunk that cut a table in half, or from a prompt so crowded that the question was the least visible thing in it.</p>
+        </section>
+
+        <section id="why" class="block" data-section>
+          <div class="block-title">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l9 4.5-9 4.5L3 7.5 12 3z"/><path d="M3 12l9 4.5 9-4.5"/><path d="M3 16.5L12 21l9-4.5"/></svg>
+            </div>
+            <h2>Why it matters in production</h2>
+          </div>
+          <p>A demo retrieves three PDFs the team uploaded that morning. A deployment retrieves a corpus with owners, retention rules, contradictory versions, and access control. The quality of the answer tracks that assembly more closely than it tracks the model name on the invoice. Clients describe the symptom as hallucination. Often the retrieved text never contained the fact, contained two conflicting facts, or contained the fact in a form the chunker destroyed.</p>
+          <p>You cannot evaluate your way out of a corpus you have not inventoried. Measurement, the third pillar, tells you the answer is wrong. Context is where you fix the cause. Cost, the second pillar, is why you do not paste the entire corpus into every call just because a window got larger.</p>
+          <div class="callout">
+            <strong>Why it matters</strong>
+            <p>Before you discuss models, ask what the system is allowed to treat as true, who is allowed to see each source, and how a reviewer jumps from a sentence in the answer to the span that supports it. If nobody owns that, you are still in a demo.</p>
+          </div>
+        </section>
+
+        <div id="techniques" data-section>
+          <div class="section-head">
+            <h2>Core techniques</h2>
+          </div>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.2-3.2"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Retrieval</p>
+              <h3>Search at question time</h3>
+              <p>Retrieval-augmented generation searches an index when the question arrives and places the hits in the prompt. Use it when the corpus is larger than the window, when it changes, or when different users must see different documents. Hybrid retrieval matters: lexical search such as BM25 finds product codes, clause numbers, and error strings, while embeddings find paraphrases. Neither covers both. A question rewrite step, before the search, is how you handle multi-part questions and follow-ups that say “and the other one?”.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 4h12v16H6z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Chunking</p>
+              <h3>Split on the document, not on a round token count</h3>
+              <p>Split on structure first: headings, tables, lists, code blocks, slides. A fixed token window with overlap is a fallback, not a design. If a procedure has six steps, a chunk that holds steps four through six and none of the condition is a wrong answer waiting to happen. Keep a stable id for the source, the section, and the version, so you can cite a span and delete it when the policy changes. Anthropic’s contextual retrieval pattern is the extra step of attaching a short explanation to each chunk before you embed it, so a paragraph that only says “this increases next year” still says what “this” is once it is out of the page.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16M4 12h10M4 17h6"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Reranking</p>
+              <h3>Retrieve wide, then read the short list</h3>
+              <p>First-stage retrieval should be wide and cheap. A reranker then reads the question beside a few dozen candidates and orders them by relevance to that question. This is where precision is won for high-stakes answers, and it is an extra call, so it belongs on the path where being right matters more than shaving a little latency. Cohere documents a rerank model; the pattern is the same if you host a cross-encoder yourself. Do not use the same top-k for “what is the holiday calendar?” and “does clause 14.2 survive the amendment?”.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v4H4zM4 14h10v4H4z"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Assembly</p>
+              <h3>Write a budget, then an order</h3>
+              <p>The context is not one blob. Instructions, tool definitions, retrieved passages, memory, and the user message compete for one window. Write the budget down: tokens for the system prompt, tokens for tools, tokens for evidence, tokens for history. Put the evidence next to the question. Do not bury the instruction or the question in the middle of a long paste. The paper <em>Lost in the Middle</em> is the reference for why position is a design choice: models do not use a long input evenly. A fact you care about should be placed, not hoped for.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 8a3 3 0 100-6 3 3 0 000 6zM4 20c.6-3.2 3.4-5 8-5s7.4 1.8 8 5"/><path d="M19 8v6M16 11h6"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Memory</p>
+              <h3>Three stores, three rules</h3>
+              <p>Conversation history is short-term memory. A store of confirmed preferences or past decisions is long-term memory. The corpus of policies and documents is knowledge. Mixing them is how a guess from last Tuesday becomes a fact in next Tuesday’s prompt. Write memory back only after a person or a validator has confirmed it. Retrieve memory with its own step and its own permission check. A chat transcript is not a knowledge base, and a knowledge base is not a place to store “the user seemed to prefer the blue plan”.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5h16M4 12h16M4 19h10"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Long context</p>
+              <h3>A larger window is a trade</h3>
+              <p>A long context window lets you skip retrieval for a small, stable packet you have already decided is in scope: one contract, a slice of a repo, a thread. It costs more, it is slower, and the model still does not attend to every token equally. It does not solve freshness, and it does not solve permissions. You should not paste another tenant’s documents into the window because they fit. Retrieval stays the default when the corpus grows, changes, or is access-controlled. Use the long window for the packet that survived that decision. Claude’s context-window guide, and the prompt-engineering notes from both Claude and OpenAI, are the vendor pages to read before you spend the tokens on a long paste.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 4h8l5 5v11H7z"/><path d="M15 4v5h5M9 13h6M9 17h4"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Citations</p>
+              <h3>The answer has to point at a span</h3>
+              <p>If the user cannot see which source supported a claim, your experts cannot trust it and your evals cannot check it. Require the answer to carry source ids that exist in the retrieved set. Anthropic’s citations API and an ordinary instruction to quote a chunk id are two versions of the same contract. An answer with no supporting span, on a question that required evidence, is an abstention or a flagged draft. It is not a silent success. This is also how the measure pillar gets a faithfulness check: you can only score groundedness if the sources were actually in the prompt.</p>
+            </div>
+          </section>
+        </div>
+
+        <section id="pitfalls" class="panel trend" data-section>
+          <p class="kicker">Watch-outs</p>
+          <h2>Common pitfalls</h2>
+          <ul class="pitfall-list">
+            <li><strong>The window as a junk drawer.</strong> A larger context window is not a corpus strategy. Stuffing “everything we have” raises cost, hides the question, and still misses the document that was updated this morning.</li>
+            <li><strong>Embeddings alone.</strong> SKUs, error codes, clause numbers, and names fail fuzzy search. If the business talks in identifiers, you need a lexical path.</li>
+            <li><strong>Chunks that break the unit of meaning.</strong> Tables split down the middle, definitions separated from the term, steps separated from the condition. Inspect real chunks against real questions before you tune the embedding model.</li>
+            <li><strong>Authorization after the model has already read the text.</strong> Filtering the answer is too late. The permission check belongs in the query, so another tenant’s paragraph never enters the prompt.</li>
+            <li><strong>An index nobody owns.</strong> No recrawl, no delete path, no version. Yesterday’s answer cannot be explained, and a removed policy is still retrievable.</li>
+            <li><strong>Memory that writes guesses back.</strong> The model’s summary of the user becomes the next prompt’s fact. Confirm before you store.</li>
+            <li><strong>Uncited fluency.</strong> The prose sounds grounded because it is smooth. Without a span, you do not know whether it is.</li>
+          </ul>
+        </section>
+
+        <section id="checklist" class="panel" data-section>
+          <p class="kicker">Design review</p>
+          <h2>Practical checklist</h2>
+          <ul class="check-list">
+            <li>Inventory the sources: system of record, owner, freshness, and who may read each one.</li>
+            <li>For this task, decide what is retrieved, what is pinned in the prompt, and what is memory.</li>
+            <li>Chunk by document structure. Read a sample of chunks next to real questions.</li>
+            <li>Use hybrid retrieval wherever identifiers and exact phrases carry the meaning.</li>
+            <li>Rerank when the cost of a wrong passage is higher than the cost of the extra call.</li>
+            <li>Apply authorization in the retrieval query, before text reaches the model.</li>
+            <li>Require citations that resolve to ids in the retrieved set.</li>
+            <li>Write a token budget for instructions, tools, evidence, and history.</li>
+            <li>Version the index with the corpus so you can explain yesterday’s answer.</li>
+            <li>Define the abstain path for empty retrieval and for sources that contradict each other.</li>
+          </ul>
+        </section>
+
+        <section id="tools" class="block" data-section>
+          <div class="block-title">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14.7 6.3a4 4 0 01-5.6 5.6L4 17l3 3 5.1-5.1a4 4 0 015.6-5.6l-2.2 2.2-1.6-1.6 2.2-2.2z"/></svg>
+            </div>
+            <h2>Key tools and frameworks</h2>
+          </div>
+          <div class="tool-list">
+            <div>
+              <h3>LlamaIndex</h3>
+              <p>The framework to reach for when the problem really is a corpus: loaders, node parsers that respect structure, indexes, and query engines. Its RAG guide is the cleanest single introduction to the pattern.</p>
+            </div>
+            <div>
+              <h3>LangChain and LangGraph</h3>
+              <p>LangChain is the integration layer: loaders, splitters, retrievers, and the glue into the rest of the app. LangGraph is what you want when assembly is a process you must explain: rewrite the query, retrieve, rerank, then answer, with state you can trace. LangChain’s current RAG write-up lives under Deep Agents; read it as their retrieval guide, and use LangGraph when the control flow should be explicit.</p>
+            </div>
+            <div>
+              <h3>pgvector</h3>
+              <p>A common way to keep vectors beside the relational rows you already govern. Useful when the permission model already lives in Postgres and you do not want a second store with a second access story.</p>
+            </div>
+            <div>
+              <h3>A reranker</h3>
+              <p>Cohere’s rerank docs are a clear description of the second-stage call. The component matters more than the vendor: something that scores query-and-passage together after a wide first pass.</p>
+            </div>
+          </div>
+          <div class="links">
+            <a class="link-btn" href="https://developers.llamaindex.ai/python/framework/understanding/rag/" target="_blank" rel="noopener noreferrer"><span>LlamaIndex — Introduction to RAG</span><span class="url">developers.llamaindex.ai</span></a>
+            <a class="link-btn" href="https://docs.langchain.com/oss/python/langchain/overview" target="_blank" rel="noopener noreferrer"><span>LangChain overview</span><span class="url">docs.langchain.com</span></a>
+            <a class="link-btn" href="https://docs.langchain.com/oss/python/deepagents/rag" target="_blank" rel="noopener noreferrer"><span>LangChain — RAG with Deep Agents</span><span class="url">docs.langchain.com</span></a>
+            <a class="link-btn" href="https://docs.langchain.com/oss/python/langgraph/overview" target="_blank" rel="noopener noreferrer"><span>LangGraph overview</span><span class="url">docs.langchain.com</span></a>
+            <a class="link-btn" href="https://github.com/pgvector/pgvector" target="_blank" rel="noopener noreferrer"><span>pgvector</span><span class="url">github.com/pgvector/pgvector</span></a>
+            <a class="link-btn" href="https://docs.cohere.com/docs/rerank-overview" target="_blank" rel="noopener noreferrer"><span>Cohere — Rerank overview</span><span class="url">docs.cohere.com</span></a>
+          </div>
+        </section>
+
+        <section id="reading" class="panel deep" data-section>
+          <p class="kicker">Sources</p>
+          <h2>Further reading</h2>
+          <p>Official docs, vendor engineering posts, and one paper. No secondary summaries.</p>
+          <div class="links">
+            <a class="link-btn" href="https://www.anthropic.com/research/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener noreferrer"><span>Anthropic — Effective context engineering for AI agents</span><span class="url">anthropic.com/research</span></a>
+            <a class="link-btn" href="https://www.anthropic.com/research/contextual-retrieval" target="_blank" rel="noopener noreferrer"><span>Anthropic — Contextual retrieval</span><span class="url">anthropic.com/research</span></a>
+            <a class="link-btn" href="https://platform.claude.com/docs/en/build-with-claude/citations" target="_blank" rel="noopener noreferrer"><span>Claude docs — Citations</span><span class="url">platform.claude.com</span></a>
+            <a class="link-btn" href="https://platform.claude.com/docs/en/build-with-claude/context-windows" target="_blank" rel="noopener noreferrer"><span>Claude docs — Context windows</span><span class="url">platform.claude.com</span></a>
+            <a class="link-btn" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener noreferrer"><span>Claude docs — Prompt engineering</span><span class="url">platform.claude.com</span></a>
+            <a class="link-btn" href="https://developers.openai.com/api/docs/guides/retrieval" target="_blank" rel="noopener noreferrer"><span>OpenAI — Retrieval</span><span class="url">developers.openai.com</span></a>
+            <a class="link-btn" href="https://developers.openai.com/api/docs/guides/prompt-engineering" target="_blank" rel="noopener noreferrer"><span>OpenAI — Prompt engineering</span><span class="url">developers.openai.com</span></a>
+            <a class="link-btn" href="https://arxiv.org/abs/2307.03172" target="_blank" rel="noopener noreferrer"><span>Lost in the Middle — Liu et al., arXiv</span><span class="url">arxiv.org/abs/2307.03172</span></a>
+          </div>
+        </section>
+
+        <section id="feed" class="feed-block" data-section data-pillar-feed="context">
+          <div class="section-head">
+            <h2>Latest from the feed</h2>
+          </div>
+          <p>Digests filed with <code>"pillar": "context"</code> appear here, newest first. The list is empty until an entry in <code>digests.json</code> carries that field.</p>
+          <noscript><p class="empty">JavaScript is off, so this list cannot read the digest manifest. The primer above still stands on its own.</p></noscript>
+          <div data-pillar-list><p class="empty">Loading the feed…</p></div>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script src="feed.js"></script>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>

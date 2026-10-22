@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Measure it · AI Engineering · AI Nowdays</title>
+<meta name="description" content="Evals and observability for production AI apps: golden sets, LLM-as-judge, tracing, regression tests, and faithfulness.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/ai-engineering/measure.html">
+<meta property="og:title" content="Measure it">
+<meta property="og:description" content="Evals and observability for production AI apps: golden sets, LLM-as-judge, tracing, regression tests, and faithfulness.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/ai-engineering/measure.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Measure it">
+<meta name="twitter:description" content="Evals and observability for production AI apps: golden sets, LLM-as-judge, tracing, regression tests, and faithfulness.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="../">Digests</a>
+      <a class="active" href="./">AI Engineering</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page primer page-measure">
+  <div class="shell">
+    <p class="back"><a href="./">← AI Engineering</a></p>
+    <nav class="ae-subnav" aria-label="Pillars">
+      <a href="./">Overview</a>
+      <a href="context.html">Context</a>
+      <a href="cost.html">Cost</a>
+      <a href="measure.html" aria-current="page">Measure</a>
+      <a href="guardrails.html">Guardrails</a>
+      <a href="tools-agents.html">Tools + agents</a>
+    </nav>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="kicker">On this page</p>
+        <a href="#overview">Overview</a>
+        <a href="#why">Why it matters</a>
+        <a href="#techniques">Core techniques</a>
+        <a href="#pitfalls">Pitfalls</a>
+        <a href="#checklist">Checklist</a>
+        <a href="#tools">Tools</a>
+        <a href="#reading">Further reading</a>
+        <a href="#feed">From the feed</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-frameworks">Pillar 03</span>
+          <span>8 min read</span>
+          <a href="./">AI Engineering</a>
+        </div>
+        <h1>Measure it</h1>
+        <div class="tag-row">
+          <span class="tag">Evals</span>
+          <span class="tag">Tracing</span>
+          <span class="tag">LLM-as-judge</span>
+          <span class="tag">Faithfulness</span>
+          <span class="tag">Regression</span>
+        </div>
+
+        <section id="overview" class="lede-card" data-section>
+          <p>Measurement is how you know a change helped. Offline evals score a frozen set before you ship. Online evals score a sample of what real users just did. Tracing is the record that makes either score explainable: the prompt, the retrieved ids, the tool calls, the model, the tokens, the latency, and the answer. Without that record, a number is a mood.</p>
+        </section>
+
+        <section id="why" class="block" data-section>
+          <div class="block-title">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19h16M6 16l4-5 3 3 5-7"/></svg>
+            </div>
+            <h2>Why it matters in production</h2>
+          </div>
+          <p>Prompt, model, index, and tool changes all ship as “small”. The failure mode is a Tuesday where answers got smoother and less true, or a model alias moved under you and the cheap route started failing a schema. The team notices through a client email, because nothing in the pipeline was allowed to say no.</p>
+          <p>A consultant’s job here is to make the disagreement visible before the go-live. Someone who knows the domain owns a small set of cases. A trace exists for every case. A score is tied to a rubric a second person can apply. Cost and latency are on the same row as quality, so a “win” that doubled the invoice is not recorded as a win.</p>
+          <div class="callout">
+            <strong>Why it matters</strong>
+            <p>Ask who can mark an answer wrong, which slice must not regress, and where the trace will live. If the answer is “we’ll look at a few chats”, you do not have an eval. You have a hope that the next reader is careful.</p>
+          </div>
+        </section>
+
+        <div id="techniques" data-section>
+          <div class="section-head">
+            <h2>Core techniques</h2>
+          </div>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 4h12v16H6z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Offline</p>
+              <h3>A golden set with an owner</h3>
+              <p>A golden set is a small, versioned collection of inputs and what “good” means for each one. Good might be a fact that must appear, a source that must be cited, a tool that must be called, or a refusal. Cover the happy path, the edge, the contradiction in the corpus, and the question the corpus does not answer. The owner is a person who knows the domain, not the engineer who wrote the prompt. If the set only contains the demo questions, it will certify the demo. OpenAI’s evals guide and cookbook walk through running a set against a model; the discipline is the same whatever runs the harness.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12h4l2-5 4 10 2-5h4"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Online</p>
+              <h3>Sample production, on a schedule</h3>
+              <p>Offline sets go stale. The corpus changes, the questions change, and a model name can point at a new snapshot. Sample production traces and score a slice on a cadence you will actually keep. Watch the slices: language, tenant, intent, and the “not in the documents” bucket. An average that stays flat while one product line collapses is the usual chart. Anthropic’s engineering note on evals for agents is the piece to read before you design an online review for a loop rather than a single completion. Online review also has a privacy constraint: the trace store is a place customer text goes. Decide that before you turn sampling on. That decision belongs with the guardrails pillar.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Traces</p>
+              <h3>The score has to open</h3>
+              <p>Every scored run should open onto the prompt, the retrieved ids, the tool names and arguments, the model, token counts, latency, and the final answer. LangSmith is the tracing and eval product in the LangChain stack. You can trace without LangChain. You cannot debug a faithfulness failure from a single aggregate. When a regression fires, the first click is the trace, not the prompt diff.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 10h8M8 14h5"/><path d="M6 4h12v16H6z"/></svg>
+            </div>
+            <div>
+              <p class="kicker">LLM-as-judge</p>
+              <h3>Useful at volume, biased, and not the only gate</h3>
+              <p>A model can grade outputs against a rubric when you have more traces than reviewers. It is not a neutral instrument. Judges prefer some styles, they reward length, and a model grading its own family is a poor court. Calibrate the judge on a human-labeled slice before a movement in the judge’s score is allowed to block or bless a release. G-Eval is one published method for rubric grading with a model. Hamel Husain’s guide to LLM-as-a-judge is the practitioner write-up to hand a team that is about to automate the review. Keep a human gate on the release even after the judge is calibrated. Change the judge and the system in different weeks, or you will not know which one moved.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="M8 16l3-4 3 2 4-6"/></svg>
+            </div>
+            <div>
+              <p class="kicker">What to score</p>
+              <h3>Name the question the metric answers</h3>
+              <p>Teams use faithfulness and groundedness for the same question: do the claims in the answer stick to the sources you gave the model? Ragas defines a faithfulness metric in those terms, and the paper is the reference for the suite around it. Context precision and context recall ask a different question: did you retrieve the right passages, and did you miss the one that was needed? Answer relevance asks whether the response addresses the question. Task success asks whether the workflow finished the job, including tool side effects. Refusal correctness asks whether it refused what it should and answered what it should. Cost and latency sit beside these, because a perfect answer that misses the latency budget is a product failure. Pick the few metrics that match the failure you are afraid of. A dashboard of twelve scores that nobody owns will not stop a release.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12l4 4L19 6"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Regression</p>
+              <h3>The golden set runs when the system changes</h3>
+              <p>Run the set when prompts, models, chunking, indexes, or tools change. A drop on a named slice blocks the change. Wire it like any other test: same command, same threshold, a human who can waive it with a reason. Batch APIs are the right place to run a large offline set so the eval itself is not the expensive part of the week. The cost primer covers that tier. The eval harness is part of the application, not a notebook someone reruns before a big demo.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="2.5"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Error analysis</p>
+              <h3>Read the failures</h3>
+              <p>A metric you have not checked against real traces is a number. Read a handful of failures every cycle and write down the actual mode: wrong chunk, right chunk ignored, tool called with a bad id, refusal missing, tone wrong. That note is what you take back to context, cost, guardrails, or tools. Hamel Husain’s “Your AI Product Needs Evals” is the essay that argues for this loop in product language. Hand it to the team, then do the loop. Do not treat the essay as a substitute for the set.</p>
+            </div>
+          </section>
+        </div>
+
+        <section id="pitfalls" class="panel trend" data-section>
+          <p class="kicker">Watch-outs</p>
+          <h2>Common pitfalls</h2>
+          <ul class="pitfall-list">
+            <li><strong>One average.</strong> It hides the slice that broke. Report the slice you are afraid of, by name.</li>
+            <li><strong>A golden set cloned from the demo script.</strong> It will pass on the day you most need it to fail.</li>
+            <li><strong>A judge that rewards polish.</strong> Longer, more confident answers win. Calibrate against people who know the domain.</li>
+            <li><strong>The judge and the system changed together.</strong> You cannot tell which movement is real.</li>
+            <li><strong>No trace behind the point.</strong> The score dropped and nobody can open the prompt. The eval is not operational.</li>
+            <li><strong>Production text copied into a third-party trace tool with no decision.</strong> Sampling is a data flow. Treat it as one.</li>
+            <li><strong>Metrics with no owner.</strong> Twelve charts, no one who can mark an answer wrong, no release gate.</li>
+          </ul>
+        </section>
+
+        <section id="checklist" class="panel" data-section>
+          <p class="kicker">Design review</p>
+          <h2>Practical checklist</h2>
+          <ul class="check-list">
+            <li>Name the failure you are afraid of, and the metric that would catch it.</li>
+            <li>Give the golden set an owner who can mark an answer wrong.</li>
+            <li>Include refusals, missing-from-corpus cases, and at least one contradiction.</li>
+            <li>Version the set. Change it on purpose, in its own commit.</li>
+            <li>Trace prompt, retrieval ids, tools, model, tokens, latency, and answer.</li>
+            <li>Decide where production traces are stored before you sample them.</li>
+            <li>Calibrate any LLM judge on a human-labeled slice. Keep a human on the release.</li>
+            <li>Run the set on prompt, model, index, and tool changes. A named slice can block.</li>
+            <li>Read failures each cycle and file the cause under the pillar that can fix it.</li>
+            <li>Put cost and latency next to quality so a slower, pricier “improvement” is visible.</li>
+          </ul>
+        </section>
+
+        <section id="tools" class="block" data-section>
+          <div class="block-title">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v12H4z"/><path d="M8 15v-4M12 15V9M16 15v-2"/></svg>
+            </div>
+            <h2>Key tools and frameworks</h2>
+          </div>
+          <div class="tool-list">
+            <div>
+              <h3>LangSmith</h3>
+              <p>Tracing plus evaluation in the LangChain stack. Use it when the app is already on LangChain or LangGraph and you want runs, datasets, and scores in one place. The observability and evaluation docs are separate on purpose: a trace you never score, and a score you cannot open, are both incomplete.</p>
+            </div>
+            <div>
+              <h3>Ragas</h3>
+              <p>A library aimed at RAG evaluation, with faithfulness as a first-class metric: are the claims supported by the retrieved context? Start there when the product is question-answering over documents. Read the metric page so the team means the same thing by the word.</p>
+            </div>
+            <div>
+              <h3>DeepEval</h3>
+              <p>An eval framework with its own metric set, including faithfulness, and a shape that fits into test runs. Useful when you want the check to live next to the rest of the test suite.</p>
+            </div>
+            <div>
+              <h3>OpenAI Evals</h3>
+              <p>The platform guide and the cookbook example are enough to run a first set against their API. The harness can be theirs or yours. The set and the rubric are yours either way.</p>
+            </div>
+          </div>
+          <div class="links">
+            <a class="link-btn" href="https://docs.langchain.com/langsmith/observability" target="_blank" rel="noopener noreferrer"><span>LangSmith — Observability</span><span class="url">docs.langchain.com/langsmith</span></a>
+            <a class="link-btn" href="https://docs.langchain.com/langsmith/evaluation" target="_blank" rel="noopener noreferrer"><span>LangSmith — Evaluation</span><span class="url">docs.langchain.com/langsmith</span></a>
+            <a class="link-btn" href="https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/faithfulness/" target="_blank" rel="noopener noreferrer"><span>Ragas — Faithfulness</span><span class="url">docs.ragas.io</span></a>
+            <a class="link-btn" href="https://docs.ragas.io/en/stable/" target="_blank" rel="noopener noreferrer"><span>Ragas docs</span><span class="url">docs.ragas.io</span></a>
+            <a class="link-btn" href="https://deepeval.com/docs/evaluation-introduction" target="_blank" rel="noopener noreferrer"><span>DeepEval — Introduction</span><span class="url">deepeval.com</span></a>
+            <a class="link-btn" href="https://developers.openai.com/api/docs/guides/evals" target="_blank" rel="noopener noreferrer"><span>OpenAI — Evals</span><span class="url">developers.openai.com</span></a>
+          </div>
+        </section>
+
+        <section id="reading" class="panel deep" data-section>
+          <p class="kicker">Sources</p>
+          <h2>Further reading</h2>
+          <p>Vendor guides, two papers, and two practitioner essays that teams actually hand around.</p>
+          <div class="links">
+            <a class="link-btn" href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents" target="_blank" rel="noopener noreferrer"><span>Anthropic — Demystifying evals for AI agents</span><span class="url">anthropic.com/research</span></a>
+            <a class="link-btn" href="https://developers.openai.com/cookbook/examples/evaluation/getting_started_with_openai_evals" target="_blank" rel="noopener noreferrer"><span>OpenAI cookbook — Getting started with evals</span><span class="url">developers.openai.com/cookbook</span></a>
+            <a class="link-btn" href="https://arxiv.org/abs/2309.15217" target="_blank" rel="noopener noreferrer"><span>Ragas paper — Es et al., arXiv</span><span class="url">arxiv.org/abs/2309.15217</span></a>
+            <a class="link-btn" href="https://arxiv.org/abs/2303.16634" target="_blank" rel="noopener noreferrer"><span>G-Eval — Liu et al., arXiv</span><span class="url">arxiv.org/abs/2303.16634</span></a>
+            <a class="link-btn" href="https://hamel.dev/blog/posts/evals/" target="_blank" rel="noopener noreferrer"><span>Hamel Husain — Your AI Product Needs Evals</span><span class="url">hamel.dev</span></a>
+            <a class="link-btn" href="https://hamel.dev/blog/posts/llm-judge/" target="_blank" rel="noopener noreferrer"><span>Hamel Husain — LLM-as-a-judge</span><span class="url">hamel.dev</span></a>
+          </div>
+        </section>
+
+        <section id="feed" class="feed-block" data-section data-pillar-feed="measure">
+          <div class="section-head">
+            <h2>Latest from the feed</h2>
+          </div>
+          <p>Digests filed with <code>"pillar": "measure"</code> appear here, newest first. The list is empty until an entry in <code>digests.json</code> carries that field.</p>
+          <noscript><p class="empty">JavaScript is off, so this list cannot read the digest manifest. The primer above still stands on its own.</p></noscript>
+          <div data-pillar-list><p class="empty">Loading the feed…</p></div>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script src="feed.js"></script>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>

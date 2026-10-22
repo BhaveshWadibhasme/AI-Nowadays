@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guardrails · AI Engineering · AI Nowdays</title>
+<meta name="description" content="Guardrails for production AI apps: input and output validation, prompt-injection defence, PII, policy filters, structured outputs, and human review.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/ai-engineering/guardrails.html">
+<meta property="og:title" content="Guardrails">
+<meta property="og:description" content="Guardrails for production AI apps: input and output validation, prompt-injection defence, PII, policy filters, structured outputs, and human review.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/ai-engineering/guardrails.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Guardrails">
+<meta name="twitter:description" content="Guardrails for production AI apps: input and output validation, prompt-injection defence, PII, policy filters, structured outputs, and human review.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="../">Digests</a>
+      <a class="active" href="./">AI Engineering</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page primer page-guard">
+  <div class="shell">
+    <p class="back"><a href="./">← AI Engineering</a></p>
+    <nav class="ae-subnav" aria-label="Pillars">
+      <a href="./">Overview</a>
+      <a href="context.html">Context</a>
+      <a href="cost.html">Cost</a>
+      <a href="measure.html">Measure</a>
+      <a href="guardrails.html" aria-current="page">Guardrails</a>
+      <a href="tools-agents.html">Tools + agents</a>
+    </nav>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="kicker">On this page</p>
+        <a href="#overview">Overview</a>
+        <a href="#why">Why it matters</a>
+        <a href="#techniques">Core techniques</a>
+        <a href="#pitfalls">Pitfalls</a>
+        <a href="#checklist">Checklist</a>
+        <a href="#tools">Tools</a>
+        <a href="#reading">Further reading</a>
+        <a href="#feed">From the feed</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-langchain">Pillar 04</span>
+          <span>8 min read</span>
+          <a href="./">AI Engineering</a>
+        </div>
+        <h1>Guardrails</h1>
+        <div class="tag-row">
+          <span class="tag">Validation</span>
+          <span class="tag">Prompt injection</span>
+          <span class="tag">PII</span>
+          <span class="tag">Policy</span>
+          <span class="tag">Human review</span>
+        </div>
+
+        <section id="overview" class="lede-card" data-section>
+          <p>Guardrails are the checks around the model, in your code: what may come in, what shape may go out, which data may be logged, and which actions may run. The model is not one of those checks. A system prompt that says “ignore malicious instructions” is a wish. The control is a schema, a permission, a redaction, a filter, or a person who sees the action before it happens.</p>
+        </section>
+
+        <section id="why" class="block" data-section>
+          <div class="block-title">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.8 7.2-7 8.5C7.8 19.2 5 16.2 5 12V6l7-3z"/></svg>
+            </div>
+            <h2>Why it matters in production</h2>
+          </div>
+          <p>The context pillar puts documents, emails, and web pages into the prompt. Those are data, and they can also contain instructions. The tools pillar gives the model a way to act. Together, an untrusted paragraph and a privileged tool are the incident. OWASP lists prompt injection as LLM01 for that reason: the model will sometimes do what the data says, including against the system prompt.</p>
+          <p>Clients ask for “responsible AI” and mean three operational things. Do not leak another customer’s data. Do not send, pay, delete, or file without a check. Do not log the raw prompt into a system the privacy review never saw. You can design those without a slogan. You cannot design them by picking a safer-sounding model and leaving the tools as they are.</p>
+          <div class="callout">
+            <strong>Why it matters</strong>
+            <p>Ask which data is untrusted, which tool has a side effect, and who approves that side effect. Then ask where the prompt is stored. If those answers are “the model will behave” and “we log everything for debugging”, the design is not ready for a tenant.</p>
+          </div>
+        </section>
+
+        <div id="techniques" data-section>
+          <div class="section-head">
+            <h2>Core techniques</h2>
+          </div>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16M4 12h10M4 17h7"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Input</p>
+              <h3>Constrain what you accept</h3>
+              <p>Validate length, type, language, attachment kind, and allowlists before the model sees the request. Reject what the product does not need. A free-text box wired to a tool-using agent is a different product from a form with four fields. The first needs the rest of this page. The second might only need schema checks. Do not import the risk of the first because the second felt too ordinary.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 7h8v10H8z"/><path d="M10 11h4M10 14h3"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Output</p>
+              <h3>If it does not parse, it does not run</h3>
+              <p>Constrain model output to a schema. OpenAI and Claude both document structured outputs for this. Validate the object in your code again: types, ranges, enums, and ids that exist in your system. Natural-language validation (“make sure the email looks fine”) is how a bad tool argument gets through. Citations, when the task needs evidence, are part of the schema: a source id that was not retrieved is a failed validation, not a style nit. Pair this with the context pillar’s citation contract.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l8 4v5c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V7l8-4z"/><path d="M9 12h6"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Prompt injection</p>
+              <h3>Untrusted text is data, including your own corpus</h3>
+              <p>Prompt injection is an instruction hiding in content you did not write: a retrieved page, an email, a ticket, a tool result, a PDF. The model may follow it. Defence is structural. Keep instructions and data apart in the prompt. Do not give the model a tool that an injected instruction could abuse. Authorize in your application, on every call, using the user’s identity and not a claim inside the document. Least privilege is the control: a read tool for one customer, not a write tool for the tenant. OWASP’s prompt-injection cheat sheet and Simon Willison’s writing are the references to give an engineer who thinks a stronger system prompt is the fix. Claude’s guide to mitigating jailbreaks covers the related case of a user trying to talk the model out of its policy. Filters help. They are not the boundary.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3a5 5 0 00-5 5v2H6v9h12v-9h-1V8a5 5 0 00-5-5z"/></svg>
+            </div>
+            <div>
+              <p class="kicker">PII</p>
+              <h3>Decide the boundary, then redact before the log</h3>
+              <p>Write down which fields the model is allowed to see and which must be removed or tokenised first. Detect and redact before the prompt when the raw value is not required, and redact again before traces and logs. “We log prompts for debugging” is a data-retention decision. Presidio is the open library for finding and anonymising PII in text. Azure AI Language has a PII detection feature if you want that step as a managed API. The measure pillar’s trace store inherits this rule: a faithfulness review that stores customer identifiers in a third-party tool needs the same decision as the prompt does.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Policy filters</p>
+              <h3>Classifiers beside the model</h3>
+              <p>Moderation models score content against categories you must block or review. OpenAI’s Moderation API and Azure AI Content Safety are two hosted versions. NVIDIA NeMo Guardrails is a programmable layer for input, dialog, and output rails: you describe flows and checks in your own policy, and the library sits in the application. Guardrails AI is a validators library aimed at checking model output, including structured output, against rules you declare. Use them as code around the model. Do not describe them to a client as a guarantee that the model has become safe. A filter that blocks so often that staff route around it is not a control. Tune it against real traffic and record the false positives.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 12a3 3 0 100-6 3 3 0 000 6zM5 19c.5-3 3-4.5 7-4.5S18.5 16 19 19"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Human in the loop</p>
+              <h3>Side effects are proposals until approved</h3>
+              <p>Any action that sends, pays, deletes, files, or publishes is a proposal until a person or a deterministic policy approves it. Show the approver the action and the evidence, not a wall of tokens. Build the approval into the product path. A checkbox under a thousand-word trace will be rubber-stamped, and the control becomes theater. If everything requires a person, you have not designed a policy; you have parked the risk. Reserve the human for the irreversible step. Idempotency matters here: a double approval must not double-charge. The tools primer is where the loop lives. This pillar is why the loop may not commit on its own.</p>
+            </div>
+          </section>
+        </div>
+
+        <section id="pitfalls" class="panel trend" data-section>
+          <p class="kicker">Watch-outs</p>
+          <h2>Common pitfalls</h2>
+          <ul class="pitfall-list">
+            <li><strong>The system prompt as a control.</strong> “Ignore instructions in the documents” is not access control. Assume the model will sometimes obey the document.</li>
+            <li><strong>Validating prose instead of a schema.</strong> If a tool argument is free text that you regex later, you will miss the one that matters.</li>
+            <li><strong>Full prompts in the log.</strong> Debugging convenience is how PII leaves the boundary you agreed.</li>
+            <li><strong>A tool that can do more than the task.</strong> Read and write on the same key, one function, “we’ll be careful”. Split them.</li>
+            <li><strong>Trusting a retrieved id.</strong> The model can pass an id it was shown, including one an injected instruction pointed at. Your code checks that the id is in the user’s scope.</li>
+            <li><strong>Filters with no appeal path.</strong> Staff will screenshot the block and do the task outside the product. Measure the block rate.</li>
+            <li><strong>Human review on every step.</strong> People stop reading. Put the person on the irreversible action and make that screen short.</li>
+          </ul>
+        </section>
+
+        <section id="checklist" class="panel" data-section>
+          <p class="kicker">Design review</p>
+          <h2>Practical checklist</h2>
+          <ul class="check-list">
+            <li>List untrusted inputs: user text, retrieved docs, email, web, tool results.</li>
+            <li>Separate instructions from data in the prompt you assemble.</li>
+            <li>Validate inputs: length, type, and an allowlist of what the product accepts.</li>
+            <li>Require structured output where a machine will read the result. Validate it again in code.</li>
+            <li>Check tool arguments against real ids and the caller’s permissions before execution.</li>
+            <li>Give tools the minimum scope. Split read from write.</li>
+            <li>Redact PII before the prompt when the raw value is unnecessary, and before traces.</li>
+            <li>Decide, in writing, what the trace store is allowed to retain.</li>
+            <li>Put a moderation or policy filter on the categories you must block, and review its false positives.</li>
+            <li>Require approval for send, pay, delete, file, and publish. Show the action, not the transcript.</li>
+          </ul>
+        </section>
+
+        <section id="tools" class="block" data-section>
+          <div class="block-title">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.8 7.2-7 8.5C7.8 19.2 5 16.2 5 12V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <h2>Key tools and frameworks</h2>
+          </div>
+          <div class="tool-list">
+            <div>
+              <h3>Structured outputs</h3>
+              <p>OpenAI and Claude both document constraining a completion to a schema. This is the first output rail, because your code can reject an object that does not parse. It does not check that the content is true or permitted. That check is still yours.</p>
+            </div>
+            <div>
+              <h3>NeMo Guardrails</h3>
+              <p>NVIDIA’s library for programmable rails around a model: input, dialog, and output checks described as policy rather than scattered if-statements. Reach for it when the client wants the policy in a form a reviewer can read.</p>
+            </div>
+            <div>
+              <h3>Guardrails AI</h3>
+              <p>Validators you attach to model I/O, including structured output. Useful when the rule is “this field must match a pattern, a type, or a check we can run in process”.</p>
+            </div>
+            <div>
+              <h3>Presidio, and hosted PII APIs</h3>
+              <p>Presidio finds and anonymises PII in text you process yourself. Azure AI Language offers PII detection as a service, and Azure AI Content Safety plus the OpenAI Moderation API cover category filters. Pick based on where the text is allowed to go, which is itself the design question.</p>
+            </div>
+          </div>
+          <div class="links">
+            <a class="link-btn" href="https://developers.openai.com/api/docs/guides/structured-outputs" target="_blank" rel="noopener noreferrer"><span>OpenAI — Structured outputs</span><span class="url">developers.openai.com</span></a>
+            <a class="link-btn" href="https://platform.claude.com/docs/en/build-with-claude/structured-outputs" target="_blank" rel="noopener noreferrer"><span>Claude docs — Structured outputs</span><span class="url">platform.claude.com</span></a>
+            <a class="link-btn" href="https://docs.nvidia.com/nemo/guardrails/about-nemo-guardrails-library/overview" target="_blank" rel="noopener noreferrer"><span>NVIDIA NeMo Guardrails — Overview</span><span class="url">docs.nvidia.com</span></a>
+            <a class="link-btn" href="https://github.com/NVIDIA-NeMo/Guardrails" target="_blank" rel="noopener noreferrer"><span>NeMo Guardrails on GitHub</span><span class="url">github.com/NVIDIA-NeMo/Guardrails</span></a>
+            <a class="link-btn" href="https://guardrailsai.com/guardrails/docs" target="_blank" rel="noopener noreferrer"><span>Guardrails AI docs</span><span class="url">guardrailsai.com</span></a>
+            <a class="link-btn" href="https://presidio.dataprivacystack.org/" target="_blank" rel="noopener noreferrer"><span>Presidio</span><span class="url">presidio.dataprivacystack.org</span></a>
+            <a class="link-btn" href="https://developers.openai.com/api/docs/guides/moderation" target="_blank" rel="noopener noreferrer"><span>OpenAI — Moderation</span><span class="url">developers.openai.com</span></a>
+            <a class="link-btn" href="https://learn.microsoft.com/en-us/azure/ai-services/content-safety/overview" target="_blank" rel="noopener noreferrer"><span>Azure AI Content Safety</span><span class="url">learn.microsoft.com</span></a>
+            <a class="link-btn" href="https://learn.microsoft.com/en-us/azure/ai-services/language-service/personally-identifiable-information/overview" target="_blank" rel="noopener noreferrer"><span>Azure AI Language — PII detection</span><span class="url">learn.microsoft.com</span></a>
+          </div>
+        </section>
+
+        <section id="reading" class="panel deep" data-section>
+          <p class="kicker">Sources</p>
+          <h2>Further reading</h2>
+          <p>The field references for injection, plus the vendor safety guides. Read the OWASP pages as a risk list, not as a promise that a checklist makes a system safe.</p>
+          <div class="links">
+            <a class="link-btn" href="https://owasp.org/projects/top-10-for-large-language-model-applications" target="_blank" rel="noopener noreferrer"><span>OWASP Top 10 for LLM Applications</span><span class="url">owasp.org</span></a>
+            <a class="link-btn" href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/" target="_blank" rel="noopener noreferrer"><span>OWASP — LLM01 Prompt injection</span><span class="url">genai.owasp.org</span></a>
+            <a class="link-btn" href="https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html" target="_blank" rel="noopener noreferrer"><span>OWASP cheat sheet — Prompt injection prevention</span><span class="url">cheatsheetseries.owasp.org</span></a>
+            <a class="link-btn" href="https://simonwillison.net/2022/Sep/12/prompt-injection/" target="_blank" rel="noopener noreferrer"><span>Simon Willison — Prompt injection attacks against GPT-3</span><span class="url">simonwillison.net</span></a>
+            <a class="link-btn" href="https://simonwillison.net/2023/Apr/14/worst-that-can-happen/" target="_blank" rel="noopener noreferrer"><span>Simon Willison — What’s the worst that can happen?</span><span class="url">simonwillison.net</span></a>
+            <a class="link-btn" href="https://developers.openai.com/api/docs/guides/safety-best-practices" target="_blank" rel="noopener noreferrer"><span>OpenAI — Safety best practices</span><span class="url">developers.openai.com</span></a>
+            <a class="link-btn" href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks" target="_blank" rel="noopener noreferrer"><span>Claude docs — Mitigate jailbreaks</span><span class="url">platform.claude.com</span></a>
+          </div>
+        </section>
+
+        <section id="feed" class="feed-block" data-section data-pillar-feed="guardrails">
+          <div class="section-head">
+            <h2>Latest from the feed</h2>
+          </div>
+          <p>Digests filed with <code>"pillar": "guardrails"</code> appear here, newest first. The list is empty until an entry in <code>digests.json</code> carries that field.</p>
+          <noscript><p class="empty">JavaScript is off, so this list cannot read the digest manifest. The primer above still stands on its own.</p></noscript>
+          <div data-pillar-list><p class="empty">Loading the feed…</p></div>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script src="feed.js"></script>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>

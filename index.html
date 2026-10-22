@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AI Nowdays · Daily AI intelligence</title>
-<meta name="description" content="Daily AI intelligence for consultants & FDEs. Models, agents, MCP, frameworks, and the briefings that matter.">
+<meta name="description" content="Daily AI intelligence for consultants and FDEs, plus AI Engineering: five pillars for building AI into real applications.">
 <link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/">
 <meta property="og:title" content="AI Nowdays">
-<meta property="og:description" content="Daily AI intelligence for consultants & FDEs">
+<meta property="og:description" content="Daily AI intelligence for consultants and FDEs, plus a field guide to AI in applications.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AI Nowdays">
-<meta name="twitter:description" content="Daily AI intelligence for consultants & FDEs">
+<meta name="twitter:description" content="Daily AI intelligence for consultants and FDEs, plus a field guide to AI in applications.">
 <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -33,6 +33,10 @@
         <span class="brand-sub">Bhavesh's briefing</span>
       </span>
     </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a class="active" href="./">Digests</a>
+      <a href="ai-engineering/">AI Engineering</a>
+    </nav>
     <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
       <span class="switch" aria-hidden="true"><span class="knob"></span></span>
       <span class="theme-label">Theme</span>
@@ -50,7 +54,33 @@
       <li>Models, agents, MCP</li>
     </ul>
   </section>
+  <section class="ae-home" id="ai-engineering" aria-labelledby="ae-home-title">
+    <div class="shell">
+      <div class="ae-home-card">
+        <div class="ae-home-copy">
+          <p class="eyebrow">Separate practice</p>
+          <h2 id="ae-home-title">AI Engineering</h2>
+          <p class="ae-lead">Five pillars for building AI into real applications. Together they are AI in apps. Use this field guide on a delivery. The digest below is the news.</p>
+          <a class="btn-primary" href="ai-engineering/">Open the field guide</a>
+        </div>
+        <div class="ae-home-side">
+          <ol class="ae-spine">
+            <li class="tone-teal"><a href="ai-engineering/context.html"><span class="swatch" aria-hidden="true"></span><span><strong>Give it context</strong><em>Retrieval, memory, assembly</em></span></a></li>
+            <li class="tone-copper"><a href="ai-engineering/cost.html"><span class="swatch" aria-hidden="true"></span><span><strong>Cut down the cost</strong><em>Routing, caching, smaller models</em></span></a></li>
+            <li class="tone-iris"><a href="ai-engineering/measure.html"><span class="swatch" aria-hidden="true"></span><span><strong>Measure it</strong><em>Evals, traces, groundedness</em></span></a></li>
+            <li class="tone-chain"><a href="ai-engineering/guardrails.html"><span class="swatch" aria-hidden="true"></span><span><strong>Guardrails</strong><em>Validation, injection, PII, review</em></span></a></li>
+            <li class="tone-ink"><a href="ai-engineering/tools-agents.html"><span class="swatch" aria-hidden="true"></span><span><strong>Tools + agents</strong><em>Tool calls, MCP, when not to</em></span></a></li>
+          </ol>
+          <p class="ae-sum"><span>All five</span> combine into <strong>AI in apps</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
   <div class="shell">
+    <div class="section-head digest-feed-head">
+      <h2>Digest</h2>
+      <p>What changed, filed by day</p>
+    </div>
     <div class="toolbar">
       <label class="search">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
@@ -138,7 +168,8 @@
       var tags = d.tags || [];
       if (chosen.length && !chosen.some(function (t) { return tags.indexOf(t) !== -1; })) return false;
       if (!q) return true;
-      var hay = [d.title, d.summary, d.date, d.readingTime, tags.join(' '), TYPE_LABEL[d.type] || ''].join(' ').toLowerCase();
+      var PILLAR_LABEL = { context: 'Context', cost: 'Cost', measure: 'Measure', guardrails: 'Guardrails', 'tools-agents': 'Tools agents' };
+      var hay = [d.title, d.summary, d.date, d.readingTime, d.pillar, PILLAR_LABEL[d.pillar] || '', tags.join(' '), TYPE_LABEL[d.type] || ''].join(' ').toLowerCase();
       return hay.indexOf(q) !== -1;
     }).sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); });
   }

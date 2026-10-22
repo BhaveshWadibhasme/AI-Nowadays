@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tools + agents · AI Engineering · AI Nowdays</title>
+<meta name="description" content="Tools and agents for production AI apps: function calling, MCP, agent loops, multi-agent orchestration, and when a workflow is the better design.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/ai-engineering/tools-agents.html">
+<meta property="og:title" content="Tools + agents">
+<meta property="og:description" content="Tools and agents for production AI apps: function calling, MCP, agent loops, multi-agent orchestration, and when a workflow is the better design.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/ai-engineering/tools-agents.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tools + agents">
+<meta name="twitter:description" content="Tools and agents for production AI apps: function calling, MCP, agent loops, multi-agent orchestration, and when a workflow is the better design.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="../">Digests</a>
+      <a class="active" href="./">AI Engineering</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page primer page-tools">
+  <div class="shell">
+    <p class="back"><a href="./">← AI Engineering</a></p>
+    <nav class="ae-subnav" aria-label="Pillars">
+      <a href="./">Overview</a>
+      <a href="context.html">Context</a>
+      <a href="cost.html">Cost</a>
+      <a href="measure.html">Measure</a>
+      <a href="guardrails.html">Guardrails</a>
+      <a href="tools-agents.html" aria-current="page">Tools + agents</a>
+    </nav>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="kicker">On this page</p>
+        <a href="#overview">Overview</a>
+        <a href="#why">Why it matters</a>
+        <a href="#techniques">Core techniques</a>
+        <a href="#pitfalls">Pitfalls</a>
+        <a href="#checklist">Checklist</a>
+        <a href="#tools">Tools</a>
+        <a href="#reading">Further reading</a>
+        <a href="#feed">From the feed</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip">Pillar 05</span>
+          <span>8 min read</span>
+          <a href="./">AI Engineering</a>
+        </div>
+        <h1>Tools + agents</h1>
+        <div class="tag-row">
+          <span class="tag">Tool calling</span>
+          <span class="tag">MCP</span>
+          <span class="tag">Agent loops</span>
+          <span class="tag">Multi-agent</span>
+          <span class="tag">Workflows</span>
+        </div>
+
+        <section id="overview" class="lede-card" data-section>
+          <p>A tool call is a structured request. Your code performs it and returns the result. An agent is a loop that lets the model choose the next tool until it stops, inside a harness you wrote: state, permissions, a budget, a trace, and a stop. Most business processes are not that loop. They are a workflow you can draw. The skill is knowing which one you are building, and refusing the other when a client asks for “an agent” by name.</p>
+        </section>
+
+        <section id="why" class="block" data-section>
+          <div class="block-title">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="7" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="12" cy="17" r="2.2"/><path d="M8 8.2l3 6.2M16 8.2l-3 6.2"/></svg>
+            </div>
+            <h2>Why it matters in production</h2>
+          </div>
+          <p>Tools are where a language model touches a system of record. That is the step that sends the email, files the ticket, or reads a balance. The four pillars before this one exist so that step is narrow: the model saw only what it should, the loop cannot spend without a cap, you can tell when a change made it worse, and a side effect waits for a check. Skip those and an agent demo becomes an incident with a transcript.</p>
+          <p>The other failure is architectural. A team reaches for a multi-agent crew to do five steps they could have written down. The crew is slower, harder to eval, and impossible to explain when it skips a step. Forward-deployed work is mostly the opposite move: turn an “agent” request into a graph you can test node by node, and keep a real loop only where the next action depends on something you could not know up front.</p>
+          <div class="callout">
+            <strong>Why it matters</strong>
+            <p>Ask which steps are known before the user speaks, and which steps depend on a result you will only have after a tool returns. Draw the first set. Put a loop, with a budget, only on the second. If you cannot draw it, you are not ready to pick a framework.</p>
+          </div>
+        </section>
+
+        <div id="techniques" data-section>
+          <div class="section-head">
+            <h2>Core techniques</h2>
+          </div>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 8h8v8H8z"/><path d="M12 8V4M12 20v-4M8 12H4M20 12h-4"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Tool calling</p>
+              <h3>The contract is the schema and the description</h3>
+              <p>Function calling, as OpenAI and Claude document it, is the model emitting a structured call that your process executes. The schema is the contract: names, types, enums, and which fields are required. The description is how the model chooses among tools. Vague descriptions produce wrong calls. Overlapping tools produce arbitrary calls. Too many tools in one prompt produce a model that picks one it half-remembers. Anthropic’s note on writing tools for agents is the piece to give the engineer who is about to add twelve functions. Validate arguments in your code before anything with a side effect runs. That check is the guardrails pillar, applied at the only moment it counts.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 8h6v8H4zM14 8h6v8h-6z"/><path d="M10 12h4"/></svg>
+            </div>
+            <div>
+              <p class="kicker">MCP</p>
+              <h3>One way to expose tools, not a reason to trust them</h3>
+              <p>The Model Context Protocol is an open protocol for exposing tools and resources to a host. It earns its place when the same capability must work across more than one agent client: an IDE, a desktop app, a product you are building. It does not make a tool safe, and it does not review the server for you. A server you did not read is still code, often holding credentials. Pin versions, run it where you can see its egress, and give it the same least privilege you would give any other integration. “It speaks MCP” is a compatibility statement. It is not a security review.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 7h10v10H7z"/><path d="M12 7V3M17 12h4M12 17v4M7 12H3"/></svg>
+            </div>
+            <div>
+              <p class="kicker">The harness</p>
+              <h3>The loop is the small part</h3>
+              <p>The harness is the software around the model: state, the allowed tools, retries, timeouts, token and money budgets, tracing, and the condition that stops the loop. LangGraph is the explicit version. You draw the control flow, and the model fills specific nodes. That is usually what you want on a client site, because you can point at a node and say what it is allowed to do. A free loop, where the model picks any tool until it feels done, is justified when the path depends on intermediate results you cannot script. Give it a maximum number of steps, a maximum spend, and a trace of every call. An unbounded loop is an unbounded incident.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="7" cy="8" r="2"/><circle cx="17" cy="8" r="2"/><circle cx="12" cy="17" r="2"/><path d="M8.5 9.5l2.5 5M15.5 9.5L13 14.5"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Multi-agent</p>
+              <h3>Split roles to enforce a boundary</h3>
+              <p>Separate agents when you need a fresh context or a real split of tools and permissions. A reviewer who should not see the drafter’s scratchpad is a reason. A researcher whose only tool is search, and a publisher whose tool can send, is a reason. A crew of agents that share the same tools and the same goal is usually a slower way to write one prompt. CrewAI is organised around role-based crews. LangGraph can host the same split as nodes with different tool sets. Use the split to enforce a boundary you can name. An org chart made of prompts is not a boundary.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h6v4H4zM14 13h6v4h-6z"/><path d="M10 9h2a4 4 0 014 4"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Workflows</p>
+              <h3>When not to use an agent</h3>
+              <p>Classification, extraction, a single retrieval plus an answer, a form, and a business process with known branches are pipelines. Write them as a workflow: a graph you control, with a model inside the nodes that need language. They are cheaper, they are easier to evaluate node by node, and when they fail you can say which step failed. Anthropic’s “Building effective agents” draws this line between workflows and agents, and LangGraph’s workflows-and-agents page is the matching engineering note. Reach for an agent loop only after you can say which decision cannot be written down in advance. If you can write it down, write it down.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.8 7.2-7 8.5C7.8 19.2 5 16.2 5 12V6l7-3z"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Side effects</p>
+              <h3>The loop proposes, the harness commits</h3>
+              <p>Reads can sit inside the loop. Writes wait. The harness turns a proposed action into a real one only after the guardrail checks: schema, permission, and, for send, pay, delete, file, or publish, an approval. Make the tool idempotent where a retry would double the effect. Log the call, the arguments, and the result onto the same trace the measure pillar scores. A framework that commits inside the model process, where your approval cannot intercept, is the wrong framework for that action.</p>
+            </div>
+          </section>
+        </div>
+
+        <section id="pitfalls" class="panel trend" data-section>
+          <p class="kicker">Watch-outs</p>
+          <h2>Common pitfalls</h2>
+          <ul class="pitfall-list">
+            <li><strong>Agent as the default architecture.</strong> The client said the word. The work was a five-step process. You now have a loop you cannot eval.</li>
+            <li><strong>Tools with overlapping descriptions.</strong> The model picks one. You cannot say why. Support cannot either.</li>
+            <li><strong>A dozen tools in one prompt.</strong> Choice quality drops as the menu grows. Split the menu by step.</li>
+            <li><strong>No step cap, no spend cap, no timeout.</strong> The loop is a while-true with a credit card.</li>
+            <li><strong>Side effects inside the loop.</strong> A retry sends the email twice. Approval never had a place to stand.</li>
+            <li><strong>Multi-agent as an org chart.</strong> Five personas, one shared toolbox, no boundary. You paid for orchestration and got a group chat.</li>
+            <li><strong>MCP as a trust mark.</strong> The protocol is a connector. The server is still code with credentials.</li>
+          </ul>
+        </section>
+
+        <section id="checklist" class="panel" data-section>
+          <p class="kicker">Design review</p>
+          <h2>Practical checklist</h2>
+          <ul class="check-list">
+            <li>List the steps you can draw before the user speaks. Those are a workflow.</li>
+            <li>Name the decision that depends on a tool result you cannot predict. That is the only candidate for a loop.</li>
+            <li>Give each tool a schema, a one-job description, and a permission scope.</li>
+            <li>Remove overlapping tools. Split read from write.</li>
+            <li>Validate arguments in your code before a side effect.</li>
+            <li>Cap steps, tokens, spend, and wall-clock time on every loop.</li>
+            <li>Trace every call: name, arguments, result, latency, and the model that chose it.</li>
+            <li>Put approval in front of send, pay, delete, file, and publish.</li>
+            <li>Make side-effecting tools idempotent under retry.</li>
+            <li>If you adopt MCP, review the server, pin it, and scope its credentials. Do not treat the protocol as a review.</li>
+          </ul>
+        </section>
+
+        <section id="tools" class="block" data-section>
+          <div class="block-title">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14.7 6.3a4 4 0 01-5.6 5.6L4 17l3 3 5.1-5.1a4 4 0 015.6-5.6l-2.2 2.2-1.6-1.6 2.2-2.2z"/></svg>
+            </div>
+            <h2>Key tools and frameworks</h2>
+          </div>
+          <div class="tool-list">
+            <div>
+              <h3>LangGraph</h3>
+              <p>Explicit graphs: nodes, edges, and state you can draw for a client. This is the default harness when the delivery has to be explained and tested. The workflows-and-agents page is the short version of “put the model in a node, keep the control flow in the graph”.</p>
+            </div>
+            <div>
+              <h3>LangChain</h3>
+              <p>The integration layer around model calls and tools. Use it for the adapters. Do not let it become an excuse to skip the graph. If the control flow is implicit, you will not be able to point at the step that failed.</p>
+            </div>
+            <div>
+              <h3>CrewAI</h3>
+              <p>Role-based crews: agents with goals and tools, orchestrated as a group. Reach for it when a real role split is the design, and be ready to justify why those roles do not collapse into one graph with two nodes.</p>
+            </div>
+            <div>
+              <h3>MCP</h3>
+              <p>The protocol to use when a tool must be portable across hosts. Read the introduction, then review the specific server you are about to run. Portability and trust are different questions.</p>
+            </div>
+          </div>
+          <div class="links">
+            <a class="link-btn" href="https://docs.langchain.com/oss/python/langgraph/overview" target="_blank" rel="noopener noreferrer"><span>LangGraph overview</span><span class="url">docs.langchain.com</span></a>
+            <a class="link-btn" href="https://docs.langchain.com/oss/python/langgraph/workflows-agents" target="_blank" rel="noopener noreferrer"><span>LangGraph — Workflows and agents</span><span class="url">docs.langchain.com</span></a>
+            <a class="link-btn" href="https://docs.langchain.com/oss/python/langchain/overview" target="_blank" rel="noopener noreferrer"><span>LangChain overview</span><span class="url">docs.langchain.com</span></a>
+            <a class="link-btn" href="https://docs.crewai.com/" target="_blank" rel="noopener noreferrer"><span>CrewAI docs</span><span class="url">docs.crewai.com</span></a>
+            <a class="link-btn" href="https://modelcontextprotocol.io/" target="_blank" rel="noopener noreferrer"><span>Model Context Protocol</span><span class="url">modelcontextprotocol.io</span></a>
+          </div>
+        </section>
+
+        <section id="reading" class="panel deep" data-section>
+          <p class="kicker">Sources</p>
+          <h2>Further reading</h2>
+          <p>The two Anthropic engineering posts are the ones to read before a framework debate. The API guides are the contract for the call itself.</p>
+          <div class="links">
+            <a class="link-btn" href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener noreferrer"><span>Anthropic — Building effective agents</span><span class="url">anthropic.com/research</span></a>
+            <a class="link-btn" href="https://www.anthropic.com/research/writing-tools-for-agents" target="_blank" rel="noopener noreferrer"><span>Anthropic — Writing tools for agents</span><span class="url">anthropic.com/research</span></a>
+            <a class="link-btn" href="https://developers.openai.com/api/docs/guides/function-calling" target="_blank" rel="noopener noreferrer"><span>OpenAI — Function calling</span><span class="url">developers.openai.com</span></a>
+            <a class="link-btn" href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview" target="_blank" rel="noopener noreferrer"><span>Claude docs — Tool use</span><span class="url">platform.claude.com</span></a>
+            <a class="link-btn" href="https://modelcontextprotocol.io/docs/getting-started/intro" target="_blank" rel="noopener noreferrer"><span>MCP — Getting started</span><span class="url">modelcontextprotocol.io</span></a>
+          </div>
+        </section>
+
+        <section id="feed" class="feed-block" data-section data-pillar-feed="tools-agents">
+          <div class="section-head">
+            <h2>Latest from the feed</h2>
+          </div>
+          <p>Digests filed with <code>"pillar": "tools-agents"</code> appear here, newest first. The list is empty until an entry in <code>digests.json</code> carries that field.</p>
+          <noscript><p class="empty">JavaScript is off, so this list cannot read the digest manifest. The primer above still stands on its own.</p></noscript>
+          <div data-pillar-list><p class="empty">Loading the feed…</p></div>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script src="feed.js"></script>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>

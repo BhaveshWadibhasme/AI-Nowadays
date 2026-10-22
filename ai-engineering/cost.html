@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cut down the cost · AI Engineering · AI Nowdays</title>
+<meta name="description" content="Token and cost optimisation for production AI apps: model routing, prompt caching, distillation, batching, quantisation, and the latency trade.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/ai-engineering/cost.html">
+<meta property="og:title" content="Cut down the cost">
+<meta property="og:description" content="Token and cost optimisation for production AI apps: model routing, prompt caching, distillation, batching, quantisation, and the latency trade.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/ai-engineering/cost.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cut down the cost">
+<meta name="twitter:description" content="Token and cost optimisation for production AI apps: model routing, prompt caching, distillation, batching, quantisation, and the latency trade.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="../">Digests</a>
+      <a class="active" href="./">AI Engineering</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page primer page-cost">
+  <div class="shell">
+    <p class="back"><a href="./">← AI Engineering</a></p>
+    <nav class="ae-subnav" aria-label="Pillars">
+      <a href="./">Overview</a>
+      <a href="context.html">Context</a>
+      <a href="cost.html" aria-current="page">Cost</a>
+      <a href="measure.html">Measure</a>
+      <a href="guardrails.html">Guardrails</a>
+      <a href="tools-agents.html">Tools + agents</a>
+    </nav>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="kicker">On this page</p>
+        <a href="#overview">Overview</a>
+        <a href="#why">Why it matters</a>
+        <a href="#techniques">Core techniques</a>
+        <a href="#pitfalls">Pitfalls</a>
+        <a href="#checklist">Checklist</a>
+        <a href="#tools">Tools</a>
+        <a href="#reading">Further reading</a>
+        <a href="#feed">From the feed</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-weekly">Pillar 02</span>
+          <span>8 min read</span>
+          <a href="./">AI Engineering</a>
+        </div>
+        <h1>Cut down the cost</h1>
+        <div class="tag-row">
+          <span class="tag">Routing</span>
+          <span class="tag">Caching</span>
+          <span class="tag">Distillation</span>
+          <span class="tag">Batching</span>
+          <span class="tag">Quantisation</span>
+        </div>
+
+        <section id="overview" class="lede-card" data-section>
+          <p>Cost work starts after you know which call is expensive, and it stops when the cheaper path still passes the eval. The levers are familiar: send the turn to a smaller model, cache the part of the prompt that does not change, batch the work that can wait, and, if you host the weights, serve them in a lower precision. Latency sits on the same dial. A saving that makes the interactive path unusable is not a saving the client will keep.</p>
+        </section>
+
+        <section id="why" class="block" data-section>
+          <div class="block-title">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M7 8h7.5a3 3 0 010 6H9"/></svg>
+            </div>
+            <h2>Why it matters in production</h2>
+          </div>
+          <p>Pilots are priced like a handful of enthusiastic users. Production is priced like every ticket, every retry, and every tool round-trip. The bill concentrates in a few shapes: a long system prompt resent on every turn, a reasoning model used to classify a yes-or-no, a retrieval blob that grew because nobody set a budget, an agent loop with no step cap. Context engineering decides what is worth sending. This pillar decides how you pay for it, and how long the user waits.</p>
+          <p>Consultants get called when finance sees the invoice, or when the team has already “optimised” by swapping in a smaller model and quality fell on the one slice the client cares about. Both conversations go better if you can point at tokens in, tokens out, cache behaviour, and the eval that guards the change.</p>
+          <div class="callout">
+            <strong>Why it matters</strong>
+            <p>Ask which request sits on the user path, what it costs today, and what latency the surface can tolerate. Then ask which workload can wait an hour. Those two lists are the design. A single “make it cheaper” goal, with no slice and no budget, produces a cheaper demo and an angrier production.</p>
+          </div>
+        </section>
+
+        <div id="techniques" data-section>
+          <div class="section-head">
+            <h2>Core techniques</h2>
+          </div>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="M8 15v-3M12 15V8M16 15v-5"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Measure first</p>
+              <h3>Name the call that dominates</h3>
+              <p>Log model name, input tokens, output tokens, cache hit or miss, latency, feature, and tenant. Optimise the call that dominates the bill or the wait, not the one that is easiest to rewrite. A routing layer in front of a prompt you have never measured just hides the spend. This is the same trace the measure pillar wants; cost is one of the fields on it, not a separate dashboard you build later.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 8h8l3 4-3 4H4zM15 12h5"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Routing</p>
+              <h3>A sufficient model, not a famous one</h3>
+              <p>Classify the turn and send it to a model that can do that turn. Extraction, routing, and short classification often belong on a small model or even a rule. Open-ended drafting and hard judgment stay on a stronger model. Keep a fallback: if the cheap model fails schema validation or abstains, escalate. Write the routing rules down so support can explain why two users saw different behaviour. OpenAI’s model selection guide and Claude’s model overview are the vendor pages for choosing among their own models; the pattern is the same if you mix providers.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16v10H4z"/><path d="M8 7V5h8v2M9 12h6"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Prompt caching</p>
+              <h3>Stable prefix, variable suffix</h3>
+              <p>Prompt caching, as OpenAI and Anthropic document it, reuses a repeated prefix of the prompt so a later request with the same beginning does less work. Design the prompt so the stable part comes first: system instructions, tool definitions, a large document that does not change within the session. Put the user message, the timestamp, and anything personal at the end. A clock or a request id inside the system prompt will quietly destroy the hit. Prompt caching is not a response cache. It does not reuse the answer. It reuses the work of reading the prefix.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3a9 9 0 100 18 9 9 0 000-18z"/><path d="M12 7v5l3 2"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Answer caches</p>
+              <h3>Cache the response only inside a scope</h3>
+              <p>An exact cache is reasonable for identical requests: same model, same prompt, same tools, and a question that is not personal. A semantic cache, which serves a previous answer for a nearby embedding, is where teams get hurt. Two questions can sit next to each other in vector space and differ by a name, a number, or a permission. If you cache across users, the cache key has to include the authorization scope, or you will leak one customer’s answer to another. Expire anything that depends on a corpus you reindex.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 16l4-8 4 5 3-4 5 7"/><path d="M4 19h16"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Smaller models</p>
+              <h3>Distil a narrow task, then re-check it</h3>
+              <p>Once a strong model has defined the behaviour on a narrow task, a smaller model fine-tuned on those examples can take that task over. OpenAI documents this under supervised fine-tuning, including distillation from a larger model. The narrow task needs its own eval. Distillation does not transfer open-ended judgment, and a small model that was “pretty close” on the demo set will miss the slice you forgot to label. Use the strong model as the teacher and as the escalation path, not as something you turn off on day one.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16M4 12h16M4 17h16"/><path d="M7 4v16"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Batch and defer</p>
+              <h3>Interactive prices are for interactive work</h3>
+              <p>Evals, backfills, nightly enrichment, and bulk re-scoring do not belong on the synchronous user path. OpenAI’s Batch API and Flex processing, and Claude’s batch processing, are the documented ways to submit work that can wait. Use them for the measure pillar’s offline runs as well as for data jobs. Do not point a user-facing button at a batch queue and call it latency optimisation.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 8h16v10H4z"/><path d="M8 8V6h8v2M9 13h2M13 13h2"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Quantisation</p>
+              <h3>When you host the weights</h3>
+              <p>If you serve your own model, reduced precision is how you fit it and how you raise throughput. vLLM and Hugging Face document the methods, including int8 and int4-style quantisation. Treat the quantised model as a different model. Run the same golden set you trust for the full-precision one, and read the slices, not the average. A model that was already borderline on groundedness will fail those slices first. Quantisation is not a lever on a hosted API where you do not hold the weights; there you route, cache, and shorten.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M13 3L5 14h7l-1 7 8-11h-7l1-7z"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Latency</p>
+              <h3>Write a budget per surface</h3>
+              <p>Streaming, a lower max output, fewer tool rounds, a smaller model, and a cache hit all move wait and spend, often in opposite directions. Chat has a latency budget. An overnight reconciliation does not. OpenAI’s latency guide is the practical list for API calls: what you can shorten without changing the product. Cost work that makes the interactive path slower than the budget is a failed optimisation, even if the invoice dropped. Speculative decoding and other serving tricks, when you self-host, belong in the same review: they are latency tools, and they still need the eval.</p>
+            </div>
+          </section>
+        </div>
+
+        <section id="pitfalls" class="panel trend" data-section>
+          <p class="kicker">Watch-outs</p>
+          <h2>Common pitfalls</h2>
+          <ul class="pitfall-list">
+            <li><strong>Optimising before the trace exists.</strong> You will tune the prompt you can see and miss the retry loop that runs five times.</li>
+            <li><strong>A timestamp in the cached prefix.</strong> The prefix is no longer stable, the hit rate collapses, and the dashboard still says caching is “on”.</li>
+            <li><strong>A semantic cache with no tenant in the key.</strong> Nearby questions are not the same question, and they are not the same user’s data.</li>
+            <li><strong>Distilling without a slice eval.</strong> The small model matches the teacher on the happy path and fails on the refusal, the number, or the rare product.</li>
+            <li><strong>Quantising a model that was already close to the line.</strong> The average score moves a little. The slice the client will demo moves a lot.</li>
+            <li><strong>Batch endpoints on the user path.</strong> The API will accept the call. The product will feel broken.</li>
+            <li><strong>Routing you cannot explain.</strong> If support cannot say why this ticket used the cheap model, the router is an incident waiting for a screenshot.</li>
+          </ul>
+        </section>
+
+        <section id="checklist" class="panel" data-section>
+          <p class="kicker">Design review</p>
+          <h2>Practical checklist</h2>
+          <ul class="check-list">
+            <li>Log tokens, model, latency, feature, and tenant for every model call.</li>
+            <li>Separate the user path from work that can wait an hour or a night.</li>
+            <li>Write a latency budget per surface before you chase a cheaper model.</li>
+            <li>Put stable instructions and tools first if you rely on prompt caching. Keep clocks and user text at the end.</li>
+            <li>Key any answer cache by authorization scope, and expire it when the corpus changes.</li>
+            <li>Route by task. Escalate when the cheap model fails the schema or abstains.</li>
+            <li>Distil only a named task, and gate the swap on that task’s eval.</li>
+            <li>Send evals, backfills, and re-scores through a batch or deferred tier.</li>
+            <li>If you self-host, re-run the golden set on the quantised build and read the slices.</li>
+            <li>Cap steps, output tokens, and spend on any loop. An uncapped agent is an uncapped invoice.</li>
+          </ul>
+        </section>
+
+        <section id="tools" class="block" data-section>
+          <div class="block-title">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 8h16v10H4z"/><path d="M8 8V6h8v2"/></svg>
+            </div>
+            <h2>Key tools and frameworks</h2>
+          </div>
+          <div class="tool-list">
+            <div>
+              <h3>Provider controls</h3>
+              <p>Prompt caching, batch, flex, and model choice are features of the API, not of your framework. Read the OpenAI and Claude guides before you wrap them. A framework that hides the prefix will also hide the cache hit.</p>
+            </div>
+            <div>
+              <h3>vLLM</h3>
+              <p>The usual open serving stack when you host weights. Its quantisation docs are the checklist for reduced-precision serving, and the server is where cache-aware batching of concurrent requests actually happens.</p>
+            </div>
+            <div>
+              <h3>Hugging Face</h3>
+              <p>Transformers documents quantisation of the model object itself. Text Generation Inference documents quantisation from the serving side. Use whichever matches where you run the weights, and keep the eval harness pointed at the build you deploy.</p>
+            </div>
+            <div>
+              <h3>LangSmith, or any trace store</h3>
+              <p>You cannot route or cache with intent until a trace shows the expensive call. LangSmith is the LangChain-native place those fields live. The requirement is the fields, not the vendor. See the measure primer for how the trace earns its keep.</p>
+            </div>
+          </div>
+          <div class="links">
+            <a class="link-btn" href="https://docs.vllm.ai/en/latest/features/quantization/index.html" target="_blank" rel="noopener noreferrer"><span>vLLM — Quantization</span><span class="url">docs.vllm.ai</span></a>
+            <a class="link-btn" href="https://docs.vllm.ai/en/stable/" target="_blank" rel="noopener noreferrer"><span>vLLM docs</span><span class="url">docs.vllm.ai</span></a>
+            <a class="link-btn" href="https://huggingface.co/docs/transformers/main_classes/quantization" target="_blank" rel="noopener noreferrer"><span>Transformers — Quantization</span><span class="url">huggingface.co/docs</span></a>
+            <a class="link-btn" href="https://huggingface.co/docs/text-generation-inference/conceptual/quantization" target="_blank" rel="noopener noreferrer"><span>Text Generation Inference — Quantization</span><span class="url">huggingface.co/docs</span></a>
+            <a class="link-btn" href="https://docs.langchain.com/langsmith/observability" target="_blank" rel="noopener noreferrer"><span>LangSmith — Observability</span><span class="url">docs.langchain.com/langsmith</span></a>
+          </div>
+        </section>
+
+        <section id="reading" class="panel deep" data-section>
+          <p class="kicker">Sources</p>
+          <h2>Further reading</h2>
+          <p>Vendor guides for the mechanisms. Prices change; the docs are the place to read the current terms.</p>
+          <div class="links">
+            <a class="link-btn" href="https://developers.openai.com/api/docs/guides/prompt-caching" target="_blank" rel="noopener noreferrer"><span>OpenAI — Prompt caching</span><span class="url">developers.openai.com</span></a>
+            <a class="link-btn" href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching" target="_blank" rel="noopener noreferrer"><span>Claude docs — Prompt caching</span><span class="url">platform.claude.com</span></a>
+            <a class="link-btn" href="https://developers.openai.com/api/docs/guides/latency-optimization" target="_blank" rel="noopener noreferrer"><span>OpenAI — Latency optimization</span><span class="url">developers.openai.com</span></a>
+            <a class="link-btn" href="https://developers.openai.com/api/docs/guides/model-selection" target="_blank" rel="noopener noreferrer"><span>OpenAI — Model selection</span><span class="url">developers.openai.com</span></a>
+            <a class="link-btn" href="https://platform.claude.com/docs/en/models/overview" target="_blank" rel="noopener noreferrer"><span>Claude docs — Models overview</span><span class="url">platform.claude.com</span></a>
+            <a class="link-btn" href="https://developers.openai.com/api/docs/guides/batch" target="_blank" rel="noopener noreferrer"><span>OpenAI — Batch API</span><span class="url">developers.openai.com</span></a>
+            <a class="link-btn" href="https://developers.openai.com/api/docs/guides/flex-processing" target="_blank" rel="noopener noreferrer"><span>OpenAI — Flex processing</span><span class="url">developers.openai.com</span></a>
+            <a class="link-btn" href="https://platform.claude.com/docs/en/build-with-claude/batch-processing" target="_blank" rel="noopener noreferrer"><span>Claude docs — Batch processing</span><span class="url">platform.claude.com</span></a>
+            <a class="link-btn" href="https://developers.openai.com/api/docs/guides/supervised-fine-tuning" target="_blank" rel="noopener noreferrer"><span>OpenAI — Supervised fine-tuning, including distillation</span><span class="url">developers.openai.com</span></a>
+          </div>
+        </section>
+
+        <section id="feed" class="feed-block" data-section data-pillar-feed="cost">
+          <div class="section-head">
+            <h2>Latest from the feed</h2>
+          </div>
+          <p>Digests filed with <code>"pillar": "cost"</code> appear here, newest first. The list is empty until an entry in <code>digests.json</code> carries that field.</p>
+          <noscript><p class="empty">JavaScript is off, so this list cannot read the digest manifest. The primer above still stands on its own.</p></noscript>
+          <div data-pillar-list><p class="empty">Loading the feed…</p></div>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script src="feed.js"></script>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>

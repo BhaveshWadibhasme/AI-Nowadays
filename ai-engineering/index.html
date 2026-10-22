@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Engineering · AI Nowdays</title>
+<meta name="description" content="A field guide to building AI into real applications: context, cost, measurement, guardrails, and tools. Together, the five pillars are AI in apps.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/ai-engineering/">
+<meta property="og:title" content="AI Engineering">
+<meta property="og:description" content="Five pillars for building AI into real applications. Together they are AI in apps.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/ai-engineering/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI Engineering">
+<meta name="twitter:description" content="Five pillars for building AI into real applications. Together they are AI in apps.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="../">Digests</a>
+      <a class="active" href="./">AI Engineering</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page primer">
+  <div class="shell">
+    <p class="back"><a href="../">← Home</a></p>
+    <nav class="ae-subnav" aria-label="Pillars">
+      <a href="./" aria-current="page">Overview</a>
+      <a href="context.html">Context</a>
+      <a href="cost.html">Cost</a>
+      <a href="measure.html">Measure</a>
+      <a href="guardrails.html">Guardrails</a>
+      <a href="tools-agents.html">Tools + agents</a>
+    </nav>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="kicker">On this page</p>
+        <a href="#overview">Overview</a>
+        <a href="#pillars">Five pillars</a>
+        <a href="#in-the-room">In the room</a>
+        <a href="#filing">Filing the feed</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip">AI Engineering</span>
+          <span>Field guide</span>
+        </div>
+        <h1>AI Engineering</h1>
+        <p class="tagline">The core of building AI into real applications.</p>
+
+        <section id="overview" class="lede-card" data-section>
+          <p>A model demo and an application are different jobs. The application has to know what it is allowed to see, what it is allowed to spend, whether it is still right, where it must stop, and which actions it may take. Those five jobs are the pillars below. Read together, they are what “AI in apps” means on a delivery. Read alone, each one is a way a pilot fails in front of a client.</p>
+        </section>
+
+        <section id="pillars" data-section>
+          <div class="section-head">
+            <h2>Five pillars, one system</h2>
+          </div>
+          <div class="ae-stage">
+            <div class="ae-figure-grid">
+              <a class="ae-card tone-teal" href="context.html">
+                <span class="story-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l9 4.5-9 4.5L3 7.5 12 3z"/><path d="M3 12l9 4.5 9-4.5"/><path d="M3 16.5L12 21l9-4.5"/></svg></span>
+                <span class="ae-num">01 · Context</span>
+                <h2>Give it context</h2>
+                <p>Retrieval, memory, chunking, and the order of what the model sees. If this is wrong, the answer is wrong before generation starts.</p>
+              </a>
+              <a class="ae-card tone-copper" href="cost.html">
+                <span class="story-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M7 8h7.5a3 3 0 010 6H9"/></svg></span>
+                <span class="ae-num">02 · Cost</span>
+                <h2>Cut down the cost</h2>
+                <p>Routing, prompt caching, smaller models, batching, and the latency you are willing to trade. A feature you cannot afford to run is not shipped.</p>
+              </a>
+              <a class="ae-card tone-iris" href="measure.html">
+                <span class="story-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19h16M6 16l4-5 3 3 5-7"/></svg></span>
+                <span class="ae-num">03 · Measure</span>
+                <h2>Measure it</h2>
+                <p>Offline and online evals, traces, and whether the answer sticks to its sources. A change you cannot score is a change you cannot defend.</p>
+              </a>
+              <a class="ae-card tone-chain" href="guardrails.html">
+                <span class="story-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.8 7.2-7 8.5C7.8 19.2 5 16.2 5 12V6l7-3z"/></svg></span>
+                <span class="ae-num">04 · Guardrails</span>
+                <h2>Guardrails</h2>
+                <p>Validation, prompt-injection defence, PII, policy filters, and a person on the step that sends, pays, or deletes.</p>
+              </a>
+              <a class="ae-card tone-ink" href="tools-agents.html">
+                <span class="story-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="7" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="12" cy="17" r="2.2"/><path d="M8 8.2l3 6.2M16 8.2l-3 6.2"/></svg></span>
+                <span class="ae-num">05 · Tools</span>
+                <h2>Tools + agents</h2>
+                <p>Function calling, MCP, loops, and the cases where a fixed workflow is the better design. Action comes last, and only inside a boundary.</p>
+              </a>
+            </div>
+            <div class="ae-merge" aria-hidden="true">
+              <svg viewBox="0 0 100 72" preserveAspectRatio="none">
+                <path d="M10 1 C10 42, 50 28, 50 71" style="stroke: var(--teal)"/>
+                <path d="M30 1 C30 36, 50 26, 50 71" style="stroke: var(--copper)"/>
+                <path d="M50 1 L50 71" style="stroke: var(--iris)"/>
+                <path d="M70 1 C70 36, 50 26, 50 71" style="stroke: var(--chain)"/>
+                <path d="M90 1 C90 42, 50 28, 50 71" style="stroke: var(--ink)"/>
+              </svg>
+            </div>
+            <div class="ae-hub">
+              <p class="eyebrow">The combination</p>
+              <h2>AI in apps</h2>
+              <p>A model call becomes an application when all five hold at once. Context without a cost limit, a measurement, a boundary, and a controlled action is a demo that happens to use an API.</p>
+              <ul class="ae-eq">
+                <li class="tone-teal" style="color: var(--teal)">Context</li>
+                <li class="tone-copper" style="color: var(--copper)">Cost</li>
+                <li class="tone-iris" style="color: var(--iris)">Measure</li>
+                <li class="tone-chain" style="color: var(--chain)">Guardrails</li>
+                <li>Tools</li>
+                <li class="ae-eq-sum">AI in apps</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="in-the-room" class="block" data-section>
+          <div class="block-title">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 19V6.5A2.5 2.5 0 017.5 4H20v13H7.5A2.5 2.5 0 005 19.5 2.5 2.5 0 017.5 17H20"/></svg>
+            </div>
+            <h2>In the room</h2>
+          </div>
+          <p>When a client asks for “an AI feature”, start with the pillar that is missing. A model bake-off can wait. Five questions tell you whether you are scoping an application:</p>
+          <ul class="pitfall-list">
+            <li><strong>What may it read?</strong> Which sources count as true, how fresh they are, and who is allowed to see each one. That is context.</li>
+            <li><strong>What may a successful answer cost?</strong> Which calls sit on the user path, and which can wait until tonight. That is cost.</li>
+            <li><strong>How will we know it got worse?</strong> After the next prompt, model, or corpus change, which slice must not regress. That is measurement.</li>
+            <li><strong>What must never happen?</strong> What it refuses, what it redacts, and what a person has to approve. That is guardrails.</li>
+            <li><strong>What may it do?</strong> Which actions are reversible, which tools exist, and where a fixed workflow is enough. That is tools and agents.</li>
+          </ul>
+          <div class="callout">
+            <strong>Why it matters</strong>
+            <p>If the room can answer all five, you can write a design. If it can answer one, you are looking at a demo. The primers are the review notes for each question: why it breaks in production, the techniques that hold, the pitfalls, and a checklist you can walk in a design review.</p>
+          </div>
+        </section>
+
+        <section id="filing" class="block" data-section>
+          <div class="block-title">
+            <div class="story-icon copper" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v12H4z"/><path d="M4 10h16M9 6v12"/></svg>
+            </div>
+            <h2>How the feed files in</h2>
+          </div>
+          <p>The primers stay put. The news moves. Each pillar page ends with “Latest from the feed”, which reads <code>digests.json</code> and lists entries whose optional <code>pillar</code> field matches. Leave the field off and the issue stays in the digest only. Set it to one of <code>context</code>, <code>cost</code>, <code>measure</code>, <code>guardrails</code>, or <code>tools-agents</code> and the same issue appears under that primer.</p>
+          <p>File a digest when the news is a technique you will reuse with a client. The checklist on the primer is the stable note. The feed under it is the evidence that the note is still current.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>
