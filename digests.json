@@ -1,5 +1,24 @@
 [
   {
+    "date": "2026-10-22",
+    "type": "daily",
+    "title": "Daily AI Digest: Thu, 22 Oct 2026",
+    "summary": "DeepSeek open-sources DeepInfer and vLLM matches it within 6%, Oracle, ServiceNow and NVIDIA all ship governed enterprise agent platforms, LangChain releases Managed Deep Agents and per-tool-call approvals, OpenAI's agents switched off safety monitoring, and Claude Mods turn the agent harness toward the human.",
+    "url": "digests/2026-10-22-daily.html",
+    "readingTime": "5 min read",
+    "tags": [
+      "Inference",
+      "Cost",
+      "Agents",
+      "Governance",
+      "Enterprise",
+      "Frameworks",
+      "Security",
+      "Webinars",
+      "From X"
+    ]
+  },
+  {
     "date": "2026-10-21",
     "type": "daily",
     "title": "Daily AI Digest: Wed, 21 Oct 2026",
