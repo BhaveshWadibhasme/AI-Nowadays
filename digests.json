@@ -68,6 +68,21 @@
     ]
   },
   {
+    "date": "2026-10-23",
+    "type": "langchain",
+    "title": "LangChain updates: 23 Oct 2026",
+    "summary": "The LangSmith Roadshow comes to Chicago with hands-on Deep Agents harness and LangSmith Engine workshops, plus eleven LangChain and community meetups from Munich to Hamburg through early December.",
+    "url": "digests/2026-10-23-langchain.html",
+    "readingTime": "3 min read",
+    "tags": [
+      "LangChain",
+      "Events",
+      "Deep Agents",
+      "LangSmith",
+      "Community"
+    ]
+  },
+  {
     "date": "2026-10-22",
     "type": "daily",
     "title": "Daily AI Digest: Thu, 22 Oct 2026",
