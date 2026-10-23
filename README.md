@@ -43,6 +43,8 @@ Search matches the title, summary, date, reading time, type, tags, and, when set
 
 An entry may also include an optional `pillar` string. Omit it and the issue stays in the digest only. Set it to file the same issue on an AI Engineering primer. Use exactly one of `context`, `cost`, `measure`, `guardrails`, `tools-agents`.
 
+A daily issue that covers several pillars can instead list `items`. Each item uses the same `pillar` values, plus `title`, `summary`, and `url` (the digest URL plus a story anchor). The home page still lists the issue once. Each primer lists the items whose `pillar` matches.
+
 ```json
 {
   "date": "YYYY-MM-DD",
@@ -68,6 +70,6 @@ An entry may also include an optional `pillar` string. Omit it and the issue sta
 | `guardrails` | Guardrails |
 | `tools-agents` | Tools + agents |
 
-The home page does not gain a pillar filter. Each primer has a "Latest from the feed" list that reads `digests.json` and shows entries whose `pillar` matches. With no matches, the list stays empty.
+The home page does not gain a pillar filter. Each primer has a "Latest from the feed" list that reads `digests.json` and shows entries whose `pillar` matches, and any `items` whose own `pillar` matches. With no matches, the list stays empty. On a digest page, a pillar tag uses the primer's tone (`tone-teal`, `tone-copper`, `tone-iris`, `tone-chain`, `tone-ink`) and links to that primer.
 
 Licensed under the MIT License. See [LICENSE](LICENSE).

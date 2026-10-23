@@ -36,11 +36,34 @@
     if (mount) mount.innerHTML = html;
   }
 
+  function rowsFor(d) {
+    var rows = [];
+    if (d.pillar) rows.push(d);
+    var nested = Array.isArray(d.items) ? d.items : [];
+    nested.forEach(function (item) {
+      if (!item || !item.pillar) return;
+      rows.push({
+        date: item.date || d.date,
+        type: item.type || d.type,
+        title: item.title || d.title,
+        summary: item.summary || '',
+        url: item.url || d.url,
+        readingTime: item.readingTime || d.readingTime,
+        tags: item.tags || d.tags,
+        pillar: item.pillar
+      });
+    });
+    return rows;
+  }
+
   fetch('../digests.json').then(function (r) {
     if (!r.ok) throw new Error('manifest');
     return r.json();
   }).then(function (items) {
-    var data = Array.isArray(items) ? items : [];
+    var data = [];
+    (Array.isArray(items) ? items : []).forEach(function (d) {
+      if (d) rowsFor(d).forEach(function (row) { data.push(row); });
+    });
     roots.forEach(function (root) {
       var pillar = root.getAttribute('data-pillar-feed');
       var matched = data.filter(function (d) { return d && d.pillar === pillar; })

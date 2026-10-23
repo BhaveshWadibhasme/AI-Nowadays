@@ -1,5 +1,73 @@
 [
   {
+    "date": "2026-10-23",
+    "type": "daily",
+    "title": "Daily AI Digest: Fri, 23 Oct 2026",
+    "summary": "The agent stack is getting real infrastructure. Standards moved to a neutral foundation, clouds launched per-agent sandboxes, enterprises showed small fine-tuned models beating frontier ones on cost, and AI-found security bugs are now big enough to take sites offline.",
+    "url": "digests/2026-10-23-daily.html",
+    "readingTime": "6 min read",
+    "tags": [
+      "Agents",
+      "Standards",
+      "Security",
+      "Enterprise",
+      "Cost",
+      "Evals",
+      "Open models"
+    ],
+    "items": [
+      {
+        "title": "AI found a critical PHP flaw (PHP2Shell) that puts WordPress, Drupal and Joomla at risk",
+        "summary": "AI-driven bug discovery is speeding up disclosure cycles. The practical lesson is to patch, inventory which runtimes you actually run, and verify running builds. A WAF alone gives false confidence, and that applies to the internal tools your AI apps sit on too.",
+        "url": "digests/2026-10-23-daily.html#php2shell",
+        "pillar": "guardrails",
+        "tags": ["Security", "Agents"]
+      },
+      {
+        "title": "Palantir + NVIDIA: small fine-tuned Nemotron models beat frontier models on domain tasks",
+        "summary": "This is the playbook for an industrial company like bp. Take a narrow, high-volume task with lots of labelled history, and a small local model can be cheaper, faster and easier to govern than a frontier API.",
+        "url": "digests/2026-10-23-daily.html#palantir-nvidia",
+        "pillar": "cost",
+        "tags": ["Cost", "Enterprise", "Open models"]
+      },
+      {
+        "title": "Agent Skills, Open Responses, OpenEnv and OpenSandbox join the Agentic AI Foundation",
+        "summary": "The pieces you'd build an enterprise agent platform on (tools, skills, model APIs, sandboxes) now have vendor-neutral homes. That makes it safer to standardise on them internally. The proposed roadmap includes security guidance for writing and installing skills.",
+        "url": "digests/2026-10-23-daily.html#aaif",
+        "pillar": "tools-agents",
+        "tags": ["Agents", "Standards"]
+      },
+      {
+        "title": "Microsoft Agent Framework (Python) 1.23 ships breaking MCP 2.x changes",
+        "summary": "MCP 2.x migrations are starting to land in the major frameworks. Pin versions and test tool integrations before you upgrade, and note the secure-by-default push on endpoints and sandbox flags.",
+        "url": "digests/2026-10-23-daily.html#agent-framework",
+        "pillar": "tools-agents",
+        "tags": ["Agents", "Frameworks"]
+      },
+      {
+        "title": "Every agent gets its own computer: Google's Agent Compute Engine, and Modal's sandbox boom",
+        "summary": "Running untrusted agent code safely and cheaply is becoming its own infrastructure layer. Keep credentials outside the sandbox, give each agent its own identity, and stop paying for idle sessions. These are concrete design rules to borrow.",
+        "url": "digests/2026-10-23-daily.html#agent-compute",
+        "pillar": "guardrails",
+        "tags": ["Agents", "Security"]
+      },
+      {
+        "title": "Nemotron 3.5 Bolt runs locally in about 24GB",
+        "summary": "Capable open models that do tool calls and structured output now fit on a single workstation GPU. That makes private prototyping and on-prem pilots cheap to try before you commit to API spend.",
+        "url": "digests/2026-10-23-daily.html#nemotron-bolt",
+        "pillar": "cost",
+        "tags": ["Cost", "Open models"]
+      },
+      {
+        "title": "Braintrust live workshop: \"Eval foundations: Answering questions about your agent\", Wed 4 Nov, 10:00 AM PT (11:30 PM IST)",
+        "summary": "Evals are the skill that separates demos from production. This is a free, concrete framework you can bring back to your team.",
+        "url": "digests/2026-10-23-daily.html#braintrust",
+        "pillar": "measure",
+        "tags": ["Evals", "Webinars"]
+      }
+    ]
+  },
+  {
     "date": "2026-10-22",
     "type": "daily",
     "title": "Daily AI Digest: Thu, 22 Oct 2026",

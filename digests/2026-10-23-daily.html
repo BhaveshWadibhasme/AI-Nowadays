@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daily AI Digest: Fri, 23 Oct 2026 · AI Nowdays</title>
+<meta name="description" content="The agent stack is getting real infrastructure. Standards moved to a neutral foundation, clouds launched per-agent sandboxes, and enterprises showed small fine-tuned models beating frontier ones on cost. Meanwhile, AI-found security bugs are now big enough to take sites offline.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-23-daily.html">
+<meta property="og:title" content="Daily AI Digest: Fri, 23 Oct 2026">
+<meta property="og:description" content="Researchers found critical PHP engine bugs that put WordPress, Drupal and Joomla at risk, OpenAI and Claude land on Google Cloud, small fine-tuned Nemotron models beat frontier models on domain tasks, Agent Skills and three more projects join the Agentic AI Foundation, Microsoft Agent Framework ships breaking MCP 2.x changes, Google and Modal push per-agent sandboxes, and Nemotron 3.5 Bolt fits on a workstation.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-23-daily.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Daily AI Digest: Fri, 23 Oct 2026">
+<meta name="twitter:description" content="Researchers found critical PHP engine bugs that put WordPress, Drupal and Joomla at risk, OpenAI and Claude land on Google Cloud, small fine-tuned Nemotron models beat frontier models on domain tasks, Agent Skills and three more projects join the Agentic AI Foundation, Microsoft Agent Framework ships breaking MCP 2.x changes, Google and Modal push per-agent sandboxes, and Nemotron 3.5 Bolt fits on a workstation.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a class="active" href="../">Digests</a>
+      <a href="../ai-engineering/">AI Engineering</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#daily">← All daily digests</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="kicker">On this page</p>
+        <a href="#overview">Overview</a>
+        <a href="#php2shell">PHP2Shell</a>
+        <a href="#google-cloud">Google Cloud</a>
+        <a href="#palantir-nvidia">Palantir + NVIDIA</a>
+        <a href="#aaif">AAIF standards</a>
+        <a href="#agent-framework">Agent Framework</a>
+        <a href="#agent-compute">Agent sandboxes</a>
+        <a href="#nemotron-bolt">Nemotron Bolt</a>
+        <a href="#braintrust">Webinar</a>
+        <a href="#deep-read">Worth a deep read</a>
+        <a href="#trend-watch">Trend watch</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-daily">Daily</span>
+          <time datetime="2026-10-23">23 Oct 2026</time>
+          <span>6 min read</span>
+          <span>Thu 22 Oct to Fri 23 Oct 2026</span>
+        </div>
+        <h1>Daily AI Digest: Fri, 23 Oct 2026</h1>
+        <div class="tag-row">
+          <span class="tag">Agents</span>
+          <span class="tag">Standards</span>
+          <span class="tag">Security</span>
+          <span class="tag">Enterprise</span>
+          <span class="tag">Cost</span>
+          <span class="tag">Evals</span>
+          <span class="tag">Open models</span>
+        </div>
+
+        <section id="overview" class="lede-card" data-section>
+          <p>The agent stack is getting real infrastructure. Standards moved to a neutral foundation, clouds launched per-agent sandboxes, and enterprises showed small fine-tuned models beating frontier ones on cost. Meanwhile, AI-found security bugs are now big enough to take sites offline.</p>
+        </section>
+
+        <section id="php2shell" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.8 7.2-7 8.5C7.8 19.2 5 16.2 5 12V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">News / Security</p>
+              <a class="pillar-tag tone-chain" href="../ai-engineering/guardrails.html">AI Engineering · Guardrails</a>
+            </div>
+            <h3>AI found a critical PHP flaw (PHP2Shell) that puts WordPress, Drupal and Joomla at risk</h3>
+            <p>Researchers using frontier models (Calif with OpenAI's GPT-5.6 Sol under OpenAI's Patch the Planet program, and Wiz independently with Gemini plus its own tooling) found two memory-corruption bugs in the PHP engine (CVE-2026-109618 / CVE-2026-109619, CVSS 9.2). Demos showed pre-auth remote code execution on WordPress, Drupal and Joomla. A patch shipped on Oct 21 after about two months of coordinated fixes. Cloudflare WAF rules were only a stopgap, and NSA advised taking unpatchable systems offline. OpenAI also published a Codex skill for checking exposure.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>AI-driven bug discovery is speeding up disclosure cycles. The practical lesson is to patch, inventory which runtimes you actually run, and verify running builds. A WAF alone gives false confidence, and that applies to the internal tools your AI apps sit on too.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.latent.space/p/ainews-openais-patch-the-planet-program" target="_blank" rel="noopener noreferrer"><span>AINews recap</span><span class="url">https://www.latent.space/p/ainews-openais-patch-the-planet-program</span></a>
+              <a class="link-btn" href="https://www.wiz.io/blog/php2shell-php-rce" target="_blank" rel="noopener noreferrer"><span>Wiz write-up</span><span class="url">https://www.wiz.io/blog/php2shell-php-rce</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="google-cloud" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6.5h11a3 3 0 013 3V20H7a3 3 0 01-3-3V6.5z"/><path d="M8 6.5V4h9a3 3 0 013 3v11"/></svg>
+          </div>
+          <div>
+            <p class="kicker">News / Enterprise</p>
+            <h3>Multi-model on one cloud: OpenAI models arrive on Google Cloud, and the full Claude Platform goes GA there</h3>
+            <p>OpenAI models are coming to Google Cloud's Model Garden and Marketplace, starting with early access. Separately, Google and Anthropic made an Anthropic-managed Claude option generally available on Google Cloud. It covers Managed Agents (beta), skills and code execution, with Google Cloud IAM, audit logging and billing against existing commitments. The Google-managed option stays the choice when you need Google as data processor, CMEK, VPC Service Controls or data residency.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Model choice is turning into a procurement and governance question instead of a vendor lock-in one. When you advise a department, the key decision is who acts as data processor and which features you get on day zero, not just which model scores highest.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://cloud.google.com/blog/products/ai-machine-learning/expanding-claude-availability-on-google-cloud" target="_blank" rel="noopener noreferrer"><span>Google Cloud blog</span><span class="url">https://cloud.google.com/blog/products/ai-machine-learning/expanding-claude-availability-on-google-cloud</span></a>
+              <a class="link-btn" href="https://claude.com/resources/articles/claude-models-on-google-cloud-anthropic-managed" target="_blank" rel="noopener noreferrer"><span>Claude announcement</span><span class="url">https://claude.com/resources/articles/claude-models-on-google-cloud-anthropic-managed</span></a>
+              <a class="link-btn" href="https://openai.com/index/openai-models-google-cloud/" target="_blank" rel="noopener noreferrer"><span>OpenAI on Google Cloud</span><span class="url">https://openai.com/index/openai-models-google-cloud/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="palantir-nvidia" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M7 8h7.5a3 3 0 010 6H9.5a3 3 0 000 6H17"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">News / Enterprise</p>
+              <a class="pillar-tag tone-copper" href="../ai-engineering/cost.html">AI Engineering · Cost</a>
+            </div>
+            <h3>Palantir + NVIDIA: small fine-tuned Nemotron models beat frontier models on domain tasks</h3>
+            <p>In Palantir's sovereign-AI update, McCarthy Building Companies fine-tuned Nemotron 3 Nano 4B on 100,000+ production RFIs to flag cost and schedule risks. It also reports saving 30,000 hours a year on subcontract drafting. Tampa General post-trained Nemotron to screen its own LLM traffic against internal privacy rules, reporting 7% better performance and 22x lower latency. L3Harris reports a 95% cost cut in early tests. All figures are company-reported.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>This is the playbook for an industrial company like bp. Take a narrow, high-volume task with lots of labelled history, and a small local model can be cheaper, faster and easier to govern than a frontier API.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.businesswire.com/news/home/20261021782963/en/Palantir-Accelerates-Delivery-of-Sovereign-AI-to-New-Wave-of-Customers" target="_blank" rel="noopener noreferrer"><span>Palantir press release</span><span class="url">https://www.businesswire.com/news/home/20261021782963/en/Palantir-Accelerates-Delivery-of-Sovereign-AI-to-New-Wave-of-Customers</span></a>
+              <a class="link-btn" href="https://www.livemint.com/ai/palantir-expands-sovereign-ai-push-with-nvidia-as-defence-construction-and-healthcare-firms-report-gains-11792649834030.html" target="_blank" rel="noopener noreferrer"><span>Mint coverage</span><span class="url">https://www.livemint.com/ai/palantir-expands-sovereign-ai-push-with-nvidia-as-defence-construction-and-healthcare-firms-report-gains-11792649834030.html</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="aaif" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="7" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="12" cy="17" r="2.2"/><path d="M8 8.2l3 6.2M16 8.2l-3 6.2"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Frameworks / Standards</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>Agent Skills, Open Responses, OpenEnv and OpenSandbox join the Agentic AI Foundation</h3>
+            <p>At AGNTCon + MCPCon, Anthropic donated Agent Skills (folders with a SKILL.md, scripts and references; over 70 platforms support it, with about 1M skills published and nearly 280M installs) to the Linux Foundation's Agentic AI Foundation. OpenAI contributed Open Responses (a provider-neutral spec based on the Responses API), Hugging Face contributed OpenEnv (RL and eval environments), and Alibaba contributed OpenSandbox. They join MCP, A2A and AGENTS.md, bringing the foundation to 10 projects.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>The pieces you'd build an enterprise agent platform on (tools, skills, model APIs, sandboxes) now have vendor-neutral homes. That makes it safer to standardise on them internally. The proposed roadmap includes security guidance for writing and installing skills.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://aaif.io/news/agentic-ai-foundation-announces-four-new-projects" target="_blank" rel="noopener noreferrer"><span>AAIF announcement</span><span class="url">https://aaif.io/news/agentic-ai-foundation-announces-four-new-projects</span></a>
+              <a class="link-btn" href="https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation" target="_blank" rel="noopener noreferrer"><span>Anthropic post</span><span class="url">https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="agent-framework" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Frameworks / Standards</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>Microsoft Agent Framework (Python) 1.23 ships breaking MCP 2.x changes</h3>
+            <p>The Oct 22 release migrates MCP transports, errors, schemas and lifecycle handling to an MCP 2.x foundation (breaking). AG-UI endpoints now require an explicit authorization scope or a single-user declaration. The Docker shell option extra_run_args is renamed unsafe_extra_run_args. It also adds allowlisted forwarding of A2A request metadata.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>MCP 2.x migrations are starting to land in the major frameworks. Pin versions and test tool integrations before you upgrade, and note the secure-by-default push on endpoints and sandbox flags.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://github.com/microsoft/agent-framework/releases" target="_blank" rel="noopener noreferrer"><span>Release notes</span><span class="url">https://github.com/microsoft/agent-framework/releases</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="agent-compute" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.8 7.2-7 8.5C7.8 19.2 5 16.2 5 12V6l7-3z"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Inbox / Agent infra</p>
+              <a class="pillar-tag tone-chain" href="../ai-engineering/guardrails.html">AI Engineering · Guardrails</a>
+            </div>
+            <h3>Every agent gets its own computer: Google's Agent Compute Engine, and Modal's sandbox boom</h3>
+            <p>Google announced Agent Compute Engine, which gives each agent a hardware-isolated microVM. The microVMs boot fast and pause while the agent is &ldquo;thinking&rdquo; or waiting on a human. Each one runs with its own short-lived identity, with service credentials injected at the network edge rather than inside the VM. It already powers Gemini, with a Google Cloud preview coming in the next few months. On Latent Space, Modal's Erik Bernhardsson said sandboxes now make up about a third of Modal's revenue (nearly 3B spun up, past $1B in run rate). He argued that real GPU demand is spiky, not the fixed blocks that capacity contracts are sold in, and the episode also covers Forward Deployed Engineers.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Running untrusted agent code safely and cheaply is becoming its own infrastructure layer. Keep credentials outside the sandbox, give each agent its own identity, and stop paying for idle sessions. These are concrete design rules to borrow.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://cloud.google.com/blog/topics/ai-infrastructure/introducing-agent-compute-engine-and-expanded-agent-governance" target="_blank" rel="noopener noreferrer"><span>Google Cloud blog</span><span class="url">https://cloud.google.com/blog/topics/ai-infrastructure/introducing-agent-compute-engine-and-expanded-agent-governance</span></a>
+              <a class="link-btn" href="https://www.latent.space/p/modal-d" target="_blank" rel="noopener noreferrer"><span>Latent Space: Modal</span><span class="url">https://www.latent.space/p/modal-d</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="nemotron-bolt" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Inbox / Open models</p>
+              <a class="pillar-tag tone-copper" href="../ai-engineering/cost.html">AI Engineering · Cost</a>
+            </div>
+            <h3>Nemotron 3.5 Bolt runs locally in about 24GB</h3>
+            <p>NVIDIA's Nemotron 3.5 Bolt (74B total, about 9B active) fits in about 24GB using roughly 2-bit expert weights, though Unsloth recommends about 32GB of memory. Super VL (120B total, 12B active, 1M-token context) adds vision plus tool calling and JSON output.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Capable open models that do tool calls and structured output now fit on a single workstation GPU. That makes private prototyping and on-prem pilots cheap to try before you commit to API spend.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/" target="_blank" rel="noopener noreferrer"><span>NVIDIA blog</span><span class="url">https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/</span></a>
+              <a class="link-btn" href="https://unsloth.ai/docs/models/nemotron-3.5-bolt" target="_blank" rel="noopener noreferrer"><span>Unsloth guide</span><span class="url">https://unsloth.ai/docs/models/nemotron-3.5-bolt</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="braintrust" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Webinar / Evals</p>
+              <a class="pillar-tag tone-iris" href="../ai-engineering/measure.html">AI Engineering · Measure</a>
+            </div>
+            <h3>Braintrust live workshop: &ldquo;Eval foundations: Answering questions about your agent&rdquo;, Wed 4 Nov, 10:00 AM PT (11:30 PM IST)</h3>
+            <p>Practical session on turning a question about your agent into an eval. It covers building datasets around failure modes, choosing between deterministic scorers and model judges, and comparing models on accuracy, cost and latency.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Evals are the skill that separates demos from production. This is a free, concrete framework you can bring back to your team.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.braintrust.dev/workshops/2026-11-04-evals-foundations" target="_blank" rel="noopener noreferrer"><span>Register</span><span class="url">https://www.braintrust.dev/workshops/2026-11-04-evals-foundations</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="deep-read" class="panel deep" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Worth a deep read</h2>
+          <p>Agent Compute Engine deep dive explains how Google isolates, checkpoints and forks agent sandboxes at scale. It's a solid reference architecture for any team designing where its agents run and how they get credentials.</p>
+          <div class="links">
+            <a class="link-btn" href="https://cloud.google.com/blog/topics/ai-infrastructure/agent-compute-engine-deep-dive" target="_blank" rel="noopener noreferrer"><span>Agent Compute Engine deep dive</span><span class="url">https://cloud.google.com/blog/topics/ai-infrastructure/agent-compute-engine-deep-dive</span></a>
+          </div>
+        </section>
+
+        <section id="trend-watch" class="panel trend" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Trend watch</h2>
+          <p>The agent &ldquo;runtime layer&rdquo; is consolidating fast, across neutral standards, per-agent sandboxes, cloud-native billing and governance. Builders on X are also debating how much the agent harness (the loop and tooling around the model) changes results, with some claiming 50% fewer tokens for the same model. Expect harness design and evals, not model choice, to be where teams compete next.</p>
+          <div class="links">
+            <a class="link-btn" href="https://x.com/i/trending/2113232867287253234" target="_blank" rel="noopener noreferrer"><span>X discussion</span><span class="url">https://x.com/i/trending/2113232867287253234</span></a>
+          </div>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>
