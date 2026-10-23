@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weekly AI Case-Study Deep-Dive: 23 Oct 2026 · AI Nowdays</title>
+<meta name="description" content="Five pieces from SPE ATCE 2026 and Gartner: an evaluation harness for Occidental's drilling agent, a multi-agent rig scheduler (+16% projected production gain, -46% rig idle time), a physics-informed RAG agent for offshore gas networks (~90% faster notifications), ADNOC's AI digital twin (1-2% uplift, no extra capex), and Gartner's finding that only 13% of CIOs see significant AI value.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-23-weekly.html">
+<meta property="og:title" content="Weekly AI Case-Study Deep-Dive: 23 Oct 2026">
+<meta property="og:description" content="Five pieces from SPE ATCE 2026 and Gartner: an evaluation harness for Occidental's drilling agent, a multi-agent rig scheduler (+16% projected production gain, -46% rig idle time), a physics-informed RAG agent for offshore gas networks (~90% faster notifications), ADNOC's AI digital twin (1-2% uplift, no extra capex), and Gartner's finding that only 13% of CIOs see significant AI value.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-23-weekly.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Weekly AI Case-Study Deep-Dive: 23 Oct 2026">
+<meta name="twitter:description" content="Five pieces from SPE ATCE 2026 and Gartner: an evaluation harness for Occidental's drilling agent, a multi-agent rig scheduler (+16% projected production gain, -46% rig idle time), a physics-informed RAG agent for offshore gas networks (~90% faster notifications), ADNOC's AI digital twin (1-2% uplift, no extra capex), and Gartner's finding that only 13% of CIOs see significant AI value.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+.lede-card p.kicker,
+.facet p.kicker { color: var(--teal); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.lede-card .deck { margin-top: 10px; color: var(--muted); font-size: 1rem; }
+.stat-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 2px; }
+.stat {
+  flex: 1 1 108px;
+  min-width: 108px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--card-solid);
+}
+.stat b {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.28rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+.stat span { display: block; margin-top: 3px; color: var(--muted); font-size: 0.75rem; line-height: 1.3; }
+.facets { display: grid; gap: 10px; margin-top: 14px; }
+.facet {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--card-solid) 88%, transparent);
+}
+.facet .kicker { margin: 0 0 6px; }
+.facet p { margin: 0; color: var(--ink); }
+@media (min-width: 720px) {
+  .facets.pair { grid-template-columns: 1fr 1fr; }
+}
+</style>
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a class="active" href="../">Digests</a>
+      <a href="../ai-engineering/">AI Engineering</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#weekly">← All weekly deep-dives</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="kicker">On this page</p>
+        <a href="#theme">Theme</a>
+        <a href="#occidental-eval">Occidental eval</a>
+        <a href="#burgan-rigs">Burgan rigs</a>
+        <a href="#offshore-gas">Offshore gas</a>
+        <a href="#adnoc-twin">ADNOC twin</a>
+        <a href="#gartner-value">Gartner value</a>
+        <a href="#playbook">Playbook</a>
+        <a href="#framework-trend">Framework trend</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-weekly">Weekly deep-dive</span>
+          <time datetime="2026-10-23">23 Oct 2026</time>
+          <span>9 min read</span>
+          <span>SPE ATCE 2026</span>
+        </div>
+        <h1>Weekly AI Case-Study Deep-Dive: 23 Oct 2026</h1>
+        <div class="tag-row">
+          <span class="tag">oil-and-gas</span>
+          <span class="tag">agentic-ai</span>
+          <span class="tag">rag</span>
+          <span class="tag">evaluation</span>
+          <span class="tag">digital-twin</span>
+          <span class="tag">optimization</span>
+          <span class="tag">governance</span>
+          <span class="tag">gartner</span>
+        </div>
+
+        <section id="theme" class="lede-card" data-section>
+          <p class="kicker">This week</p>
+          <p>Oil and gas agents hit production (SPE ATCE 2026, published 14 Oct 2026), and Gartner warns that more AI use cases does not mean more value.</p>
+          <p class="deck">Five pieces from SPE ATCE 2026 and Gartner: an evaluation harness for Occidental's drilling agent, a multi-agent rig scheduler (+16% projected production gain, -46% rig idle time), a physics-informed RAG agent for offshore gas networks (~90% faster notifications), ADNOC's AI digital twin (1-2% uplift, no extra capex), and Gartner's finding that only 13% of CIOs see significant AI value.</p>
+        </section>
+
+        <section id="occidental-eval" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="M8 15l3.2-3.4 2.4 2.1L19 7"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 01 · SPE ATCE 2026</p>
+              <a class="pillar-tag tone-iris" href="../ai-engineering/measure.html">AI Engineering · Measure</a>
+            </div>
+            <h3>Building an Evaluation Harness for Oil &amp; Gas AI Agents (Occidental, SPE ATCE 2026)</h3>
+            <div class="stat-row">
+              <div class="stat"><b>63%</b><span>pass@5</span></div>
+              <div class="stat"><b>48%</b><span>pass@1</span></div>
+              <div class="stat"><b>37%</b><span>pass<sup>5</sup></span></div>
+              <div class="stat"><b>19</b><span>SME-curated tasks</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>Occidental runs 100+ agents on an internal agent platform, but agent evaluation in oil and gas usually checks only final-answer accuracy and ignores consistency and efficiency.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>An evaluation suite for DrillingGPT (a drilling-data agent) with 19 SME-curated tasks of varying difficulty. Each task was run 5 times to compute pass@k (succeeds at least once) and pass<sup>k</sup> (succeeds every time), plus tool-call precision, recall and redundancy. Traces were reviewed to find failure modes.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>pass@5 of 63%, pass@1 of 48%, pass<sup>5</sup> of 37%. The agent can often reach the right answer but not reliably. Easy and medium tasks were OK; hard tasks dropped sharply on every metric. Tool use was conservative (high precision, lower recall).</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>Failure modes were partial errors in multi-well answers, compounding mistakes in multi-table aggregations, failing to refuse out-of-scope requests, and skipping necessary tools. A single accuracy number hides the consistency gap.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch for bp</strong>
+              <p>Before any internal agent or copilot goes wider, propose a small SME-curated task set (15-25 tasks) run k times, reporting pass<sup>k</sup> and tool-call recall. It's cheap, gives leadership a reliability number, and is a strong Forward Deployed Engineer-style deliverable.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://doi.org/10.2118/234002-ms" target="_blank" rel="noopener noreferrer"><span>SPE paper</span><span class="url">https://doi.org/10.2118/234002-ms</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="burgan-rigs" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="7" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="12" cy="17" r="2.2"/><path d="M8 8.2l3 6.2M16 8.2l-3 6.2"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 02 · SPE ATCE 2026</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>A Multi-Agent AI Optimization System for Rig Utilization in the Burgan Field (SPE ATCE 2026)</h3>
+            <div class="stat-row">
+              <div class="stat"><b>+16%</b><span>projected 90-day production gain</span></div>
+              <div class="stat"><b>-46%</b><span>fleet-average rig idle time</span></div>
+              <div class="stat"><b>Minutes</b><span>schedule prep, from about ten days</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>Scheduling about 40 workover rigs across roughly 200-500 wells a year in the Greater Burgan complex was done by hand in an in-house system with around ten stakeholder teams, under many constraints (artificial-lift readiness, materials, site access, rig-well compatibility).</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>Cooperating agents for data preprocessing, rig-well matching, constraint validation, schedule optimization (a genetic algorithm tuned to the operator's rules, with short- and long-term memory), execution monitoring and feedback. Human-in-the-loop review and approval kept throughout. Planners choose &ldquo;maximize production gain&rdquo; or &ldquo;meet a target&rdquo;, and stability rules protect active and next-scheduled jobs.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>Against manual schedules on identical inputs, plus 90-day rolling backtests: projected 90-day production gain +16%, fleet-average rig idle time -46%, schedule preparation from about ten days to minutes. (Volumes normalized for confidentiality.)</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>The &ldquo;agents&rdquo; wrap a classical optimizer; the value comes from encoding the constraint taxonomy and keeping planners in control. Stability rules matter so the plan doesn't churn.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch for bp</strong>
+              <p>Look for planning problems run by spreadsheets and meetings (maintenance turnarounds, crew or vessel scheduling, logistics). Pitch &ldquo;agent orchestration around a proven optimizer with human sign-off&rdquo;, and measure against the manual baseline with backtesting.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://doi.org/10.2118/234185-ms" target="_blank" rel="noopener noreferrer"><span>SPE paper</span><span class="url">https://doi.org/10.2118/234185-ms</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="offshore-gas" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.8 7.2-7 8.5C7.8 19.2 5 16.2 5 12V6l7-3z"/><path d="M12 8v5M12 16h.01"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 03 · SPE ATCE 2026</p>
+              <a class="pillar-tag tone-chain" href="../ai-engineering/guardrails.html">AI Engineering · Guardrails</a>
+            </div>
+            <h3>A Physics-Informed, Retrieval-Augmented Industrial Agent for Offshore Gas Networks (SPE ATCE 2026)</h3>
+            <div class="stat-row">
+              <div class="stat"><b>39/40</b><span>outputs fully or partially useful</span></div>
+              <div class="stat"><b>37</b><span>of 40 finalizations adequate</span></div>
+              <div class="stat"><b>~90%</b><span>faster notifications</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>Offshore gas pipeline networks generate constant measurements, alarms, records and external-event signals; the bottleneck is turning a candidate signal into a useful technical assessment.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>A RAG agent combining contextual knowledge, approved data-access tools, physical-consistency guidance and a swappable LLM adapter, in a governed asynchronous workflow. It gives evidence-based decision support while humans keep operational authority.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>Evaluated on a frozen 10.5-day window of 403 consecutive work items. In a 40-case expert review, 39 outputs were fully or partially useful and finalization was adequate in 37. In eight matched event pairs, notification latency fell about 90% versus the conventional communication path.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>Productivity and workload were not quantified. Performance was sensitive to source and tool availability, trigger coverage, measurement observability, endpoint integration, configuration quality and premature finalization.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch for bp</strong>
+              <p>A strong template for an operations &ldquo;signal to assessment&rdquo; assistant: physics checks as guardrails, approved tools only, a model adapter so you aren't locked in, and an evaluation on a frozen window before go-live.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://doi.org/10.2118/234118-ms" target="_blank" rel="noopener noreferrer"><span>SPE paper</span><span class="url">https://doi.org/10.2118/234118-ms</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="adnoc-twin" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="7" height="7" rx="1.4"/><rect x="13" y="4" width="7" height="7" rx="1.4"/><rect x="4" y="13" width="7" height="7" rx="1.4"/><path d="M14.5 14.5h4M16.5 12.5v4"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 04 · SPE ATCE 2026</p>
+              <a class="pillar-tag tone-chain" href="../ai-engineering/guardrails.html">AI Engineering · Guardrails</a>
+            </div>
+            <h3>AI-Enabled Digital Twins for Integrated Production Optimization (ADNOC AiPSO, SPE ATCE 2026)</h3>
+            <div class="stat-row">
+              <div class="stat"><b>1-2%</b><span>sustained production uplift</span></div>
+              <div class="stat"><b>None</b><span>incremental capex</span></div>
+              <div class="stat"><b>8</b><span>producing fields, phase 1</span></div>
+              <div class="stat"><b>25+</b><span>digital workflows</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>Legacy surveillance and delayed diagnostics across thousands of wells, multiple networks and reservoirs.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>An integrated production-system digital twin (reservoir, wells, surface) built on hybrid physics and AI models, on an industrial data and AI foundation with a central DataOps pipeline. GenAI progresses from an engineer copilot to domain advisory services to an AiPSO Agent. Real-time engineering operating envelopes define safe limits and enable autonomous well control.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>Phase 1 across eight producing fields in 2025-2026, with 25+ digital workflows, gave a sustained 1-2% production uplift with no incremental capex, plus earlier detection of constraints and shorter time-to-intervention.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>The GenAI layer sits on top of years of data foundation work; autonomy is bounded by operating envelopes. Staged copilot, then advisor, then agent is the maturity path.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch for bp</strong>
+              <p>Use it to argue that GenAI value in production depends on the data foundation, and propose the staged autonomy ladder with explicit safe-operating envelopes as the guardrail.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://doi.org/10.2118/234113-ms" target="_blank" rel="noopener noreferrer"><span>SPE paper</span><span class="url">https://doi.org/10.2118/234113-ms</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="gartner-value" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M7 8h7.5a3 3 0 010 6H9.5a3 3 0 000 6H17"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 05 · Gartner, 19 Oct 2026</p>
+              <a class="pillar-tag tone-iris" href="../ai-engineering/measure.html">AI Engineering · Measure</a>
+            </div>
+            <h3>Gartner: Only 13% of CIOs Say AI Has Delivered Significant Value (19 Oct 2026)</h3>
+            <div class="stat-row">
+              <div class="stat"><b>13%</b><span>significant or transformational value</span></div>
+              <div class="stat"><b>2.3x</b><span>more likely vanguards with stop rules</span></div>
+              <div class="stat"><b>2.6x</b><span>with rules to retire low-value AI</span></div>
+              <div class="stat"><b>2,002</b><span>CIOs and tech executives</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>AI use cases are multiplying, but the chance of a use case succeeding is still about one in five.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>Survey of 2,002 CIOs and tech executives (May-July 2026) identifying &ldquo;vanguards&rdquo; who deliver better business outcomes and high CEO-perceived AI value.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>Only 13% report significant or transformational value. Organizations with rules for stopping pilots before production are 2.3x more likely to be vanguards, and with rules for retiring low-value production AI 2.6x, yet only 31% and 17% have them. 58% feel more pressure to deliver cost improvement; 51% expect AI to raise total cost of ownership. Only 4% have plans to redesign roles for a human-agent workforce (2.4x more likely vanguards). Related: Gartner predicts 40% of agentic AI projects will be canceled by end of 2027, and BCG's Applied AI Index 2026 finds companies with all six AI controls get 3x the agentic value.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>&ldquo;Volume is not value.&rdquo; AI costs are probabilistic and set at run time, so old funding models don't fit.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch for bp</strong>
+              <p>Bring a one-page use-case intake with value defined up front, explicit kill criteria at pilot and production, and run-time cost tracking. That makes you the person who helps the department stop the wrong projects early.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.gartner.com/en/newsroom/press-releases/2026-10-19-gartner-survey-finds-only-13-percent-of-cios-say-their-enterprise-has-realized-significant-or-transformational-value-from-ai" target="_blank" rel="noopener noreferrer"><span>Gartner press release</span><span class="url">https://www.gartner.com/en/newsroom/press-releases/2026-10-19-gartner-survey-finds-only-13-percent-of-cios-say-their-enterprise-has-realized-significant-or-transformational-value-from-ai</span></a>
+              <a class="link-btn" href="https://www.gartner.com/en/articles/ai-agent-reality-check" target="_blank" rel="noopener noreferrer"><span>Gartner: agentic AI reality check</span><span class="url">https://www.gartner.com/en/articles/ai-agent-reality-check</span></a>
+              <a class="link-btn" href="https://www.bcg.com/publications/2026/the-formula-for-agentic-ai-value" target="_blank" rel="noopener noreferrer"><span>BCG Applied AI Index 2026</span><span class="url">https://www.bcg.com/publications/2026/the-formula-for-agentic-ai-value</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="playbook" class="panel deep" data-section>
+          <p class="kicker">For the week</p>
+          <h2>Consulting playbook</h2>
+          <p>Define value and kill criteria before you build, measure reliability (pass<sup>k</sup>, not one accuracy number) before you grant autonomy, and climb the autonomy ladder (copilot, advisor, bounded agent) inside hard engineering guardrails. The winning oil and gas cases this week all kept a human approver and wrapped agents around proven physics or optimization methods.</p>
+        </section>
+
+        <section id="framework-trend" class="panel trend" data-section>
+          <p class="kicker">Hands-on</p>
+          <h2>Framework trend worth learning hands-on</h2>
+          <p>Agent evaluation harnesses: build a small eval set for a LangGraph agent and score it with pass@k / pass<sup>k</sup> and tool-call precision and recall, using LangSmith evaluations or an open tool like Arize Phoenix. Re-create the Occidental-style harness on a toy drilling-data or maintenance-log agent this weekend.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>

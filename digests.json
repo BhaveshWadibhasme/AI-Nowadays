@@ -1,6 +1,61 @@
 [
   {
     "date": "2026-10-23",
+    "type": "weekly",
+    "title": "Weekly AI Case-Study Deep-Dive: 23 Oct 2026",
+    "summary": "Five pieces from SPE ATCE 2026 and Gartner: an evaluation harness for Occidental's drilling agent, a multi-agent rig scheduler (+16% projected production gain, -46% rig idle time), a physics-informed RAG agent for offshore gas networks (~90% faster notifications), ADNOC's AI digital twin (1-2% uplift, no extra capex), and Gartner's finding that only 13% of CIOs see significant AI value.",
+    "url": "digests/2026-10-23-weekly.html",
+    "readingTime": "9 min read",
+    "tags": [
+      "oil-and-gas",
+      "agentic-ai",
+      "rag",
+      "evaluation",
+      "digital-twin",
+      "optimization",
+      "governance",
+      "gartner"
+    ],
+    "items": [
+      {
+        "title": "Building an Evaluation Harness for Oil & Gas AI Agents (Occidental, SPE ATCE 2026)",
+        "summary": "Occidental's DrillingGPT eval (19 SME-curated tasks, each run 5 times) scored pass@5 of 63%, pass@1 of 48% and pass^5 of 37%. The agent can often reach the right answer, but not reliably.",
+        "url": "digests/2026-10-23-weekly.html#occidental-eval",
+        "pillar": "measure",
+        "tags": ["evaluation", "oil-and-gas", "agentic-ai"]
+      },
+      {
+        "title": "A Multi-Agent AI Optimization System for Rig Utilization in the Burgan Field (SPE ATCE 2026)",
+        "summary": "Cooperating agents around a genetic algorithm, with human approval kept throughout, projected a 90-day production gain of +16% and cut fleet-average rig idle time 46% versus manual schedules on identical inputs.",
+        "url": "digests/2026-10-23-weekly.html#burgan-rigs",
+        "pillar": "tools-agents",
+        "tags": ["agentic-ai", "optimization", "oil-and-gas"]
+      },
+      {
+        "title": "A Physics-Informed, Retrieval-Augmented Industrial Agent for Offshore Gas Networks (SPE ATCE 2026)",
+        "summary": "A governed RAG agent with physical-consistency checks kept humans in operational authority. In eight matched event pairs, notification latency fell about 90% versus the conventional communication path.",
+        "url": "digests/2026-10-23-weekly.html#offshore-gas",
+        "pillar": "guardrails",
+        "tags": ["rag", "governance", "oil-and-gas"]
+      },
+      {
+        "title": "AI-Enabled Digital Twins for Integrated Production Optimization (ADNOC AiPSO, SPE ATCE 2026)",
+        "summary": "Phase 1 across eight producing fields in 2025-2026 gave a sustained 1-2% production uplift with no incremental capex. Autonomy is bounded by real-time engineering operating envelopes.",
+        "url": "digests/2026-10-23-weekly.html#adnoc-twin",
+        "pillar": "guardrails",
+        "tags": ["digital-twin", "governance", "oil-and-gas"]
+      },
+      {
+        "title": "Gartner: Only 13% of CIOs Say AI Has Delivered Significant Value (19 Oct 2026)",
+        "summary": "Only 13% of 2,002 CIOs report significant or transformational value. Organizations with rules for stopping pilots are 2.3x more likely to be vanguards, and with rules for retiring low-value production AI 2.6x, yet only 31% and 17% have them.",
+        "url": "digests/2026-10-23-weekly.html#gartner-value",
+        "pillar": "measure",
+        "tags": ["gartner", "governance", "evaluation"]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-23",
     "type": "daily",
     "title": "Daily AI Digest: Fri, 23 Oct 2026",
     "summary": "The agent stack is getting real infrastructure. Standards moved to a neutral foundation, clouds launched per-agent sandboxes, enterprises showed small fine-tuned models beating frontier ones on cost, and AI-found security bugs are now big enough to take sites offline.",
