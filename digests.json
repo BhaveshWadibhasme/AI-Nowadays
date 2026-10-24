@@ -1,5 +1,134 @@
 [
   {
+    "date": "2026-10-24",
+    "type": "frameworks",
+    "title": "Agent frameworks weekly roundup: 17–24 Oct 2026",
+    "summary": "Security fixes and breaking changes in Pydantic AI, Microsoft Agent Framework, Google ADK, Mastra, the MCP TypeScript SDK and OpenAI Agents JS, plus memory, skills, eval and streaming updates from CrewAI, LangChain, LangGraph, Agno and the Claude Agent SDK.",
+    "url": "digests/2026-10-24-frameworks.html",
+    "readingTime": "4 min read",
+    "tags": [
+      "LangChain",
+      "LangGraph",
+      "Google ADK",
+      "Pydantic AI",
+      "Microsoft Agent Framework",
+      "Mastra",
+      "MCP",
+      "CrewAI",
+      "Agno",
+      "OpenAI Agents",
+      "Claude Agent SDK",
+      "Security"
+    ],
+    "items": [
+      {
+        "title": "Pydantic AI security advisories fixed in 2.58.0 and 2.59.0",
+        "summary": "web_fetch could stall the process on hostile HTML, MCP config could leak server URLs and auth tokens into traces, and the Vercel AI / AG-UI adapters could run a tool with client-chosen arguments. Upgrade, then rotate any tokens that may sit in old traces.",
+        "url": "digests/2026-10-24-frameworks.html#pydantic-security",
+        "pillar": "guardrails",
+        "tags": ["Pydantic AI", "Security", "MCP"]
+      },
+      {
+        "title": "Microsoft Agent Framework Python 1.23.0 breaking changes",
+        "summary": "MCP 2.x migration, AG-UI endpoints now need an explicit authorization scope, and the Docker shell's extra_run_args is renamed unsafe_extra_run_args.",
+        "url": "digests/2026-10-24-frameworks.html#microsoft-agent-framework",
+        "pillar": "guardrails",
+        "tags": ["Microsoft Agent Framework", "MCP", "Security"]
+      },
+      {
+        "title": "Google ADK 2.13.0 telemetry schema break",
+        "summary": "Telemetry now defaults to the newer OpenTelemetry GenAI schema and drops the call_llm span, so dashboards built on it will go quiet. It also requires authlib 1.9.1+ for CVE fixes.",
+        "url": "digests/2026-10-24-frameworks.html#adk-telemetry",
+        "pillar": "measure",
+        "tags": ["Google ADK", "Security"]
+      },
+      {
+        "title": "Mastra core 1.79.0 session, span and dependency breaks",
+        "summary": "Agent sessions are keyed by sessionId, querySpans() lost its cost and model filters, and vulnerable dependencies were dropped.",
+        "url": "digests/2026-10-24-frameworks.html#mastra",
+        "pillar": "context",
+        "tags": ["Mastra", "Security"]
+      },
+      {
+        "title": "MCP TypeScript SDK 2.4.0 stricter schema checks",
+        "summary": "Stricter schema checks may reject some existing tools. Read the upgrade notes.",
+        "url": "digests/2026-10-24-frameworks.html#mcp-sdk",
+        "pillar": "tools-agents",
+        "tags": ["MCP"]
+      },
+      {
+        "title": "OpenAI Agents JS 0.21.0 removes the Runloop sandbox",
+        "summary": "The Runloop sandbox provider was removed.",
+        "url": "digests/2026-10-24-frameworks.html#openai-agents-js",
+        "pillar": "guardrails",
+        "tags": ["OpenAI Agents", "Security"]
+      },
+      {
+        "title": "Google ADK 2.13.0 stable features and faster string-model agents",
+        "summary": "12 experimental features are now stable, MongoDB session and memory services arrived, and string-model agents run up to 8x faster.",
+        "url": "digests/2026-10-24-frameworks.html#adk-stable",
+        "pillar": "cost",
+        "tags": ["Google ADK"]
+      },
+      {
+        "title": "MCP TypeScript SDK 2.4.0 adds Skills over MCP",
+        "summary": "A server can publish a folder of reusable skills for clients to load.",
+        "url": "digests/2026-10-24-frameworks.html#mcp-skills",
+        "pillar": "tools-agents",
+        "tags": ["MCP"]
+      },
+      {
+        "title": "CrewAI 1.15.29 eval export and memory-leak fix",
+        "summary": "crewai eval can now run a crew and export the results. A fix stops private memories leaking into every recall.",
+        "url": "digests/2026-10-24-frameworks.html#crewai",
+        "pillar": "measure",
+        "tags": ["CrewAI"]
+      },
+      {
+        "title": "LangChain core 1.7.0 tool-call-delta events",
+        "summary": "Streamed tool-call arguments now arrive as tool-call-delta events. Update any custom stream parsers.",
+        "url": "digests/2026-10-24-frameworks.html#langchain-core",
+        "pillar": "tools-agents",
+        "tags": ["LangChain"]
+      },
+      {
+        "title": "LangGraph thread priority settings",
+        "summary": "The CLI and SDK gained thread priority settings.",
+        "url": "digests/2026-10-24-frameworks.html#langgraph",
+        "pillar": "tools-agents",
+        "tags": ["LangGraph", "LangChain"]
+      },
+      {
+        "title": "Pydantic AI 2.61.0 citations and InputGuardrail fixes",
+        "summary": "Structured citations across providers, plus InputGuardrail fixes.",
+        "url": "digests/2026-10-24-frameworks.html#pydantic-citations",
+        "pillar": "guardrails",
+        "tags": ["Pydantic AI", "Security"]
+      },
+      {
+        "title": "Agno 3.1.x external agents and Sonnet 5.5 default",
+        "summary": "AgentOS can run external ClaudeAgent and CodexAgent agents, and Claude() now defaults to Sonnet 5.5.",
+        "url": "digests/2026-10-24-frameworks.html#agno",
+        "pillar": "tools-agents",
+        "tags": ["Agno"]
+      },
+      {
+        "title": "Claude Agent SDK 0.2.170 session history fix",
+        "summary": "Parallel tool calls are no longer missing from session history.",
+        "url": "digests/2026-10-24-frameworks.html#claude-agent-sdk",
+        "pillar": "context",
+        "tags": ["Claude Agent SDK"]
+      },
+      {
+        "title": "Try ADK 2.13 MongoDbMemoryService",
+        "summary": "Long-term memory through keyword recall, with no vector index or embedding model. An easy pilot for a department assistant that needs to remember past conversations without standing up a vector database.",
+        "url": "digests/2026-10-24-frameworks.html#worth-trying",
+        "pillar": "context",
+        "tags": ["Google ADK"]
+      }
+    ]
+  },
+  {
     "date": "2026-10-23",
     "type": "weekly",
     "title": "Weekly AI Case-Study Deep-Dive: 23 Oct 2026",

@@ -312,6 +312,21 @@ a.pillar-tag:hover { border-color: var(--accent, var(--teal)); }
 }
 .story-icon.copper, .block-title .story-icon.copper { background: var(--copper-soft); color: var(--copper); }
 .story-icon.iris, .block-title .story-icon.iris { background: var(--iris-soft); color: var(--iris); }
+.block.warn {
+  border-color: color-mix(in srgb, var(--copper) 50%, var(--line));
+  background: linear-gradient(180deg, var(--copper-soft), transparent 70%), var(--card);
+}
+.block.warn .kicker { color: var(--copper); }
+.story.warn {
+  border-color: color-mix(in srgb, var(--copper) 42%, var(--line));
+  background: linear-gradient(180deg, var(--copper-soft), transparent 58%), var(--card);
+}
+.story.warn .kicker { color: var(--copper); }
+.story.warn .story-icon { background: var(--copper-soft); color: var(--copper); }
+.digest-main code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.88em;
+}
 .block { margin-top: 14px; }
 .block-title { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
 .block-title h2 { margin: 0; font-size: 1.7rem; }
