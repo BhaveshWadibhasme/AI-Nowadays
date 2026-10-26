@@ -1,5 +1,137 @@
 [
   {
+    "date": "2026-10-26",
+    "type": "daily",
+    "title": "Daily AI Digest: Mon, 26 Oct 2026",
+    "summary": "A poisoned LiteLLM release shows how exposed AI tooling is, banks find unapproved agents in customer accounts, Anthropic says one agent often beats many subagents, outside auditors find gaps in OpenAI's agent monitoring, and Kimi K3.1 Pro shows cheaper tokens don't always mean cheaper tasks.",
+    "url": "digests/2026-10-26-daily.html",
+    "readingTime": "6 min read",
+    "tags": [
+      "Security",
+      "Agents",
+      "Evals",
+      "Cost",
+      "Open models",
+      "Frameworks",
+      "Enterprise",
+      "Webinars",
+      "From X"
+    ],
+    "items": [
+      {
+        "title": "LiteLLM 1.107.0 was poisoned with a credential stealer",
+        "summary": "LiteLLM sits in front of many enterprise LLM apps and holds every provider key, so it is a high-value target. Pin versions and image digests for AI tooling, keep gateway secrets in a vault, and treat model gateways like any other critical infrastructure.",
+        "url": "digests/2026-10-26-daily.html#litellm",
+        "pillar": "guardrails",
+        "tags": [
+          "Security",
+          "Agents"
+        ]
+      },
+      {
+        "title": "Big US banks are finding AI agents inside customer accounts",
+        "summary": "\"Which agent is acting, for whom, and with what permission\" is becoming the core enterprise question. Any agent you design that touches customer or operational systems needs its own identity, scoped and preferably read-only permissions, and an audit trail, never a borrowed human login.",
+        "url": "digests/2026-10-26-daily.html#bank-agents",
+        "pillar": "guardrails",
+        "tags": [
+          "Enterprise",
+          "Agents",
+          "Security"
+        ]
+      },
+      {
+        "title": "Anthropic: one agent with on-demand context often beats a fleet of subagents",
+        "summary": "This pushes back on \"more agents is better\" architectures. Start with one agent plus well-scoped skills, and add subagents only when evals show a clear need.",
+        "url": "digests/2026-10-26-daily.html#one-agent",
+        "pillar": "tools-agents",
+        "tags": [
+          "Agents",
+          "Frameworks"
+        ]
+      },
+      {
+        "title": "Outside auditors found gaps in how OpenAI monitors its own agents",
+        "summary": "Monitoring is only as good as its coverage. When you design agent observability, check what slips through (long-running sessions, compressed context, actions that never return control) and test the monitor itself, not just the agent.",
+        "url": "digests/2026-10-26-daily.html#openai-monitoring",
+        "pillar": "measure",
+        "tags": [
+          "Evals",
+          "Security"
+        ]
+      },
+      {
+        "title": "Kimi K3.1 Pro lands near the frontier, but cheaper tokens don't mean cheaper tasks",
+        "summary": "Price per million tokens is the wrong number to compare models on. Measure cost per completed task on your own workloads. Also, a 2.8T-parameter model being \"open\" doesn't make it cheap to self-host; it needs serious GPU infrastructure.",
+        "url": "digests/2026-10-26-daily.html#kimi-k3",
+        "pillar": "cost",
+        "tags": [
+          "Cost",
+          "Open models"
+        ]
+      },
+      {
+        "title": "Faster RAG documents: LlamaIndex's OCRia-1 now powers LlamaParse",
+        "summary": "Messy PDFs and tables are where most enterprise RAG quality is lost. Better parsing upstream usually beats prompt tweaks downstream, and is worth testing on your own engineering and operations documents.",
+        "url": "digests/2026-10-26-daily.html#ocria",
+        "pillar": "context",
+        "tags": [
+          "Frameworks",
+          "From X"
+        ]
+      },
+      {
+        "title": "Framework heads-up: LangChain core 1.7 changes how tool-call arguments stream",
+        "summary": "If you have a streaming UI that shows tool calls as they form, check it before upgrading. Otherwise these are safe maintenance upgrades.",
+        "url": "digests/2026-10-26-daily.html#langchain-core",
+        "pillar": "tools-agents",
+        "tags": [
+          "Frameworks",
+          "Agents"
+        ]
+      },
+      {
+        "title": "Claude for Enterprise merges chat and Cowork, and Claude apps switch to auto mode",
+        "summary": "If your department uses Claude Enterprise, admins have until 16 November to decide on the setting and update usage guidance. The broader lesson is that automated checks on each action are proving more reliable than humans clicking \"Allow\" all day.",
+        "url": "digests/2026-10-26-daily.html#claude-enterprise",
+        "pillar": "guardrails",
+        "tags": [
+          "Enterprise",
+          "Agents"
+        ]
+      },
+      {
+        "title": "LangChain \"Agent Evals 101\" (virtual), 28 Oct, and \"Agent Memory 101: Context Engineering\" (virtual), 3 Nov",
+        "summary": "LangChain \"Agent Evals 101\" (virtual), 28 Oct, and \"Agent Memory 101: Context Engineering\" (virtual), 3 Nov. Check the events page for times in your zone.",
+        "url": "digests/2026-10-26-daily.html#langchain-events",
+        "pillar": "measure",
+        "tags": [
+          "Webinars",
+          "Evals"
+        ]
+      },
+      {
+        "title": "LangChain \"Agent Evals 101\" (virtual), 28 Oct, and \"Agent Memory 101: Context Engineering\" (virtual), 3 Nov",
+        "summary": "LangChain \"Agent Evals 101\" (virtual), 28 Oct, and \"Agent Memory 101: Context Engineering\" (virtual), 3 Nov. Check the events page for times in your zone.",
+        "url": "digests/2026-10-26-daily.html#langchain-events",
+        "pillar": "context",
+        "tags": [
+          "Webinars",
+          "Frameworks"
+        ]
+      },
+      {
+        "title": "Microsoft Reactor \"Measure & Benchmark: Azure AI Foundry, Continuous Evaluation and IQ\", 4 Nov, 9:30 to 10:30 AM IST",
+        "summary": "Covers continuous eval pipelines, the quality, speed and token-cost trade-off, and running agents in CI/CD.",
+        "url": "digests/2026-10-26-daily.html#microsoft-reactor",
+        "pillar": "measure",
+        "tags": [
+          "Webinars",
+          "Evals"
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-24",
     "type": "frameworks",
     "title": "Agent frameworks weekly roundup: 17–24 Oct 2026",

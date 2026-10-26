@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daily AI Digest: Mon, 26 Oct 2026 · AI Nowdays</title>
+<meta name="description" content="This weekend's theme was trust around agents: a popular AI gateway shipped malware, banks found agents they never approved inside customer accounts, and auditors showed monitoring agents is harder than it looks. On the build side, the advice is shifting toward simpler agents and measuring cost per finished task, not per token.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-26-daily.html">
+<meta property="og:title" content="Daily AI Digest: Mon, 26 Oct 2026">
+<meta property="og:description" content="A poisoned LiteLLM release shows how exposed AI tooling is, banks find unapproved agents in customer accounts, Anthropic says one agent often beats many subagents, outside auditors find gaps in OpenAI's agent monitoring, and Kimi K3.1 Pro shows cheaper tokens don't always mean cheaper tasks.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-26-daily.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Daily AI Digest: Mon, 26 Oct 2026">
+<meta name="twitter:description" content="A poisoned LiteLLM release shows how exposed AI tooling is, banks find unapproved agents in customer accounts, Anthropic says one agent often beats many subagents, outside auditors find gaps in OpenAI's agent monitoring, and Kimi K3.1 Pro shows cheaper tokens don't always mean cheaper tasks.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a class="active" href="../">Digests</a>
+      <a href="../ai-engineering/">AI Engineering</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#daily">← All daily digests</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="kicker">On this page</p>
+        <a href="#overview">Overview</a>
+        <a href="#litellm">LiteLLM</a>
+        <a href="#bank-agents">Bank agents</a>
+        <a href="#one-agent">One agent</a>
+        <a href="#openai-monitoring">Agent monitoring</a>
+        <a href="#kimi-k3">Kimi K3.1</a>
+        <a href="#ocria">OCRia</a>
+        <a href="#langchain-core">LangChain core</a>
+        <a href="#claude-enterprise">Claude Enterprise</a>
+        <a href="#webinars">Webinars</a>
+        <a href="#deep-read">Worth a deep read</a>
+        <a href="#trend-watch">Trend watch</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-daily">Daily</span>
+          <time datetime="2026-10-26">26 Oct 2026</time>
+          <span>6 min read</span>
+          <span>Fri 23 Oct to Mon 26 Oct 2026 (Friday through the weekend)</span>
+        </div>
+        <h1>Daily AI Digest: Mon, 26 Oct 2026</h1>
+        <div class="tag-row">
+          <span class="tag">Security</span>
+          <span class="tag">Agents</span>
+          <span class="tag">Evals</span>
+          <span class="tag">Cost</span>
+          <span class="tag">Open models</span>
+          <span class="tag">Frameworks</span>
+          <span class="tag">Enterprise</span>
+          <span class="tag">Webinars</span>
+          <span class="tag">From X</span>
+        </div>
+
+        <section id="overview" class="lede-card" data-section>
+          <p>This weekend's theme was trust around agents: a popular AI gateway shipped malware, banks found agents they never approved inside customer accounts, and auditors showed monitoring agents is harder than it looks. On the build side, the advice is shifting toward simpler agents and measuring cost per finished task, not per token.</p>
+        </section>
+
+        <section id="litellm" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.8 7.2-7 8.5C7.8 19.2 5 16.2 5 12V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Inbox / Security</p>
+              <a class="pillar-tag tone-chain" href="../ai-engineering/guardrails.html">AI Engineering · Guardrails</a>
+            </div>
+            <h3>LiteLLM 1.107.0 was poisoned with a credential stealer</h3>
+            <p>LiteLLM disclosed that its 1.107.0 release was compromised in a supply-chain attack on 21 Oct, shipping malware that steals credentials. Microsoft's analysis says the code runs through Python startup hooks, so just starting Python in an affected environment can trigger it, even without importing LiteLLM, and you shouldn't run pip inside a suspect environment to check. The fix is to rebuild the environment, pin 1.106.2 and rotate every key the host could reach. Phil Schmid shared a read-only agent prompt for checking your exposure to this and the other incidents of the week.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>LiteLLM sits in front of many enterprise LLM apps and holds every provider key, so it is a high-value target. Pin versions and image digests for AI tooling, keep gateway secrets in a vault, and treat model gateways like any other critical infrastructure.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://docs.litellm.ai/blog/security-incident-oct-21-2026" target="_blank" rel="noopener noreferrer"><span>LiteLLM incident post</span><span class="url">https://docs.litellm.ai/blog/security-incident-oct-21-2026</span></a>
+              <a class="link-btn" href="https://www.microsoft.com/en-us/security/blog/2026/10/23/inside-the-litellm-1-107-0-supply-chain-compromise-credential-theft-through-python-startup-hooks/" target="_blank" rel="noopener noreferrer"><span>Microsoft Security analysis</span><span class="url">https://www.microsoft.com/en-us/security/blog/2026/10/23/inside-the-litellm-1-107-0-supply-chain-compromise-credential-theft-through-python-startup-hooks/</span></a>
+              <a class="link-btn" href="https://x.com/_philschmid/status/2113163420836958608" target="_blank" rel="noopener noreferrer"><span>Exposure-check prompt on X</span><span class="url">https://x.com/_philschmid/status/2113163420836958608</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="bank-agents" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.8 7.2-7 8.5C7.8 19.2 5 16.2 5 12V6l7-3z"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">News / Enterprise</p>
+              <a class="pillar-tag tone-chain" href="../ai-engineering/guardrails.html">AI Engineering · Guardrails</a>
+            </div>
+            <h3>Big US banks are finding AI agents inside customer accounts</h3>
+            <p>Axios reports that big banks are finding third-party AI agents logging into customer accounts using the customer's own password. Banks are moving outside agents to read-only access, and Morgan Stanley has started blocking them.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>&ldquo;Which agent is acting, for whom, and with what permission&rdquo; is becoming the core enterprise question. Any agent you design that touches customer or operational systems needs its own identity, scoped and preferably read-only permissions, and an audit trail, never a borrowed human login.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.axios.com/2026/10/22/ai-agents-banks-unauthorized-accounts-access" target="_blank" rel="noopener noreferrer"><span>Axios report</span><span class="url">https://www.axios.com/2026/10/22/ai-agents-banks-unauthorized-accounts-access</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="one-agent" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="7" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="12" cy="17" r="2.2"/><path d="M8 8.2l3 6.2M16 8.2l-3 6.2"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">News / Frameworks</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>Anthropic: one agent with on-demand context often beats a fleet of subagents</h3>
+            <p>Based on enterprise deployments, Anthropic's Applied AI team recommends checking whether you can fold specialised subagents into one main agent that loads context and skills as needed. In their comparison the single agent ran about twice as fast and cost less. Subagents still make sense when one context window measurably degrades, when tasks must run in parallel, or when one agent struggles to pick the right tool. Anthropic published a migration kit on GitHub and warns against merging subagents blindly.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>This pushes back on &ldquo;more agents is better&rdquo; architectures. Start with one agent plus well-scoped skills, and add subagents only when evals show a clear need.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://the-decoder.com/anthropic-says-one-ai-agent-beats-many-subagents-now-that-models-can-handle-complexity-alone/" target="_blank" rel="noopener noreferrer"><span>The Decoder write-up</span><span class="url">https://the-decoder.com/anthropic-says-one-ai-agent-beats-many-subagents-now-that-models-can-handle-complexity-alone/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="openai-monitoring" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="M8 15l3.2-4.2 2.6 2.4L19 7"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Inbox / Evals and safety</p>
+              <a class="pillar-tag tone-iris" href="../ai-engineering/measure.html">AI Engineering · Measure</a>
+            </div>
+            <h3>Outside auditors found gaps in how OpenAI monitors its own agents</h3>
+            <p>Two auditors from METR and Redwood Research spent three weeks inside OpenAI testing its internal misalignment monitoring for agents. They found agents could hide hundreds of actions from the monitor, and that context compression left about 10% of internal Codex traffic unmonitored from May to July. The report was redacted from 61 pages to 38 before release.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Monitoring is only as good as its coverage. When you design agent observability, check what slips through (long-running sessions, compressed context, actions that never return control) and test the monitor itself, not just the agent.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/" target="_blank" rel="noopener noreferrer"><span>METR report</span><span class="url">https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="kimi-k3" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M7 8h7.5a3 3 0 010 6H9.5a3 3 0 000 6H17"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Inbox / Open models</p>
+              <a class="pillar-tag tone-copper" href="../ai-engineering/cost.html">AI Engineering · Cost</a>
+            </div>
+            <h3>Kimi K3.1 Pro lands near the frontier, but cheaper tokens don't mean cheaper tasks</h3>
+            <p>Moonshot launched Kimi K3.1 Pro (2.8 trillion total parameters, 104 billion active, 1M-token context), with open weights promised by 4 November. Artificial Analysis ranks it fourth on its Intelligence Index (55, behind Opus 5.5 at 58). Token prices dropped by a third to $2 per million input, $10 per million output and $0.20 cached, yet it used about 55K output tokens per task versus 48K for K3, and on a cyber task set its cost came out 15% above K3. Self-hosting needs roughly 1.4TB of memory even at 4-bit. On Sunday Moonshot apologised for rate limits and &ldquo;unnecessary quota consumption&rdquo; and gave every subscriber a one-time 25% quota reset.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Price per million tokens is the wrong number to compare models on. Measure cost per completed task on your own workloads. Also, a 2.8T-parameter model being &ldquo;open&rdquo; doesn't make it cheap to self-host; it needs serious GPU infrastructure.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.kimi.ai/blog/kimi-k3-1-pro" target="_blank" rel="noopener noreferrer"><span>Kimi K3.1 Pro announcement</span><span class="url">https://www.kimi.ai/blog/kimi-k3-1-pro</span></a>
+              <a class="link-btn" href="https://x.com/ArtificialAnlys/status/2113688083145314416" target="_blank" rel="noopener noreferrer"><span>Artificial Analysis results on X</span><span class="url">https://x.com/ArtificialAnlys/status/2113688083145314416</span></a>
+              <a class="link-btn" href="https://x.com/Kimi_Moonshot/status/2114450610724708492" target="_blank" rel="noopener noreferrer"><span>Moonshot quota apology on X</span><span class="url">https://x.com/Kimi_Moonshot/status/2114450610724708492</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="ocria" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6.5h11a3 3 0 013 3V20H7a3 3 0 01-3-3V6.5z"/><path d="M8 6.5V4h9a3 3 0 013 3v11"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">From X / Frameworks</p>
+              <a class="pillar-tag tone-teal" href="../ai-engineering/context.html">AI Engineering · Context</a>
+            </div>
+            <h3>Faster RAG documents: LlamaIndex's OCRia-1 now powers LlamaParse</h3>
+            <p>LlamaIndex released OCRia-1, a small 4B-parameter vision-language model built for document parsing, and it now powers LlamaParse.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Messy PDFs and tables are where most enterprise RAG quality is lost. Better parsing upstream usually beats prompt tweaks downstream, and is worth testing on your own engineering and operations documents.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://x.com/jerryjliu0/status/2113291928292790725" target="_blank" rel="noopener noreferrer"><span>Jerry Liu on X</span><span class="url">https://x.com/jerryjliu0/status/2113291928292790725</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="langchain-core" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Frameworks</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>Framework heads-up: LangChain core 1.7 changes how tool-call arguments stream</h3>
+            <p>langchain-core 1.7.0 now streams tool-call arguments as incremental tool-call-delta events. Code that reads raw stream events mid-stream may need updating. LangGraph 1.2.17 (24 Oct) fixes recursion-limit handling and keeps the caller's namespace when streaming RemoteGraph subgraphs, and the LangGraph Python SDK 0.4.9 adds thread priority settings.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>If you have a streaming UI that shows tool calls as they form, check it before upgrading. Otherwise these are safe maintenance upgrades.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://releasebot.io/updates/langchain-ai" target="_blank" rel="noopener noreferrer"><span>LangChain and LangGraph release notes</span><span class="url">https://releasebot.io/updates/langchain-ai</span></a>
+              <a class="link-btn" href="https://github.com/langchain-ai/langchain/releases" target="_blank" rel="noopener noreferrer"><span>LangChain on GitHub</span><span class="url">https://github.com/langchain-ai/langchain/releases</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="claude-enterprise" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6.5h11a3 3 0 013 3V20H7a3 3 0 01-3-3V6.5z"/><path d="M8 6.5V4h9a3 3 0 013 3v11"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">News / Enterprise</p>
+              <a class="pillar-tag tone-chain" href="../ai-engineering/guardrails.html">AI Engineering · Guardrails</a>
+            </div>
+            <h3>Claude for Enterprise merges chat and Cowork, and Claude apps switch to auto mode</h3>
+            <p>Anthropic unified Claude chat and Cowork for Enterprise plans, with work that needs code or files running in an isolated cloud sandbox. It turns on by default on 16 November. Separately, Claude moves to auto mode by default next week on Pro, Max and Team plans, where an automated check blocks risky steps instead of asking for approval each time. Anthropic says auto mode caught 89% of dangerous commands in testing versus 14% for people approving each step.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>If your department uses Claude Enterprise, admins have until 16 November to decide on the setting and update usage guidance. The broader lesson is that automated checks on each action are proving more reliable than humans clicking &ldquo;Allow&rdquo; all day.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.pymnts.com/news/artificial-intelligence/2026/anthropic-merges-claude-chat-and-cowork-for-enterprise-users/" target="_blank" rel="noopener noreferrer"><span>PYMNTS report</span><span class="url">https://www.pymnts.com/news/artificial-intelligence/2026/anthropic-merges-claude-chat-and-cowork-for-enterprise-users/</span></a>
+              <a class="link-btn" href="https://x.com/claudeai/status/2113360845409583307" target="_blank" rel="noopener noreferrer"><span>Claude auto mode announcement on X</span><span class="url">https://x.com/claudeai/status/2113360845409583307</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="webinars" class="block" data-section>
+          <div class="block-title">
+            <div class="story-icon copper" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+            </div>
+            <h2>Webinars</h2>
+          </div>
+          <ul class="webinar-list">
+            <li class="webinar" id="langchain-events">
+              <div class="date-badge" aria-hidden="true"><span class="mo">Oct</span><span class="day">28</span></div>
+              <div>
+                <div class="kicker-row">
+                  <a class="pillar-tag tone-iris" href="../ai-engineering/measure.html">AI Engineering · Measure</a>
+                  <a class="pillar-tag tone-teal" href="../ai-engineering/context.html">AI Engineering · Context</a>
+                </div>
+                <h3>LangChain &ldquo;Agent Evals 101&rdquo; and &ldquo;Agent Memory 101: Context Engineering&rdquo;</h3>
+                <p>LangChain &ldquo;Agent Evals 101&rdquo; (virtual), 28 Oct, and &ldquo;Agent Memory 101: Context Engineering&rdquo; (virtual), 3 Nov. Check the events page for times in your zone.</p>
+                <div class="links">
+                  <a class="link-btn" href="https://www.langchain.com/events" target="_blank" rel="noopener noreferrer"><span>LangChain events</span><span class="url">https://www.langchain.com/events</span></a>
+                </div>
+              </div>
+            </li>
+            <li class="webinar" id="microsoft-reactor">
+              <div class="date-badge" aria-hidden="true"><span class="mo">Nov</span><span class="day">4</span></div>
+              <div>
+                <div class="kicker-row">
+                  <a class="pillar-tag tone-iris" href="../ai-engineering/measure.html">AI Engineering · Measure</a>
+                </div>
+                <h3>Microsoft Reactor &ldquo;Measure &amp; Benchmark: Azure AI Foundry, Continuous Evaluation and IQ&rdquo;</h3>
+                <p>4 Nov, 9:30 to 10:30 AM IST. Covers continuous eval pipelines, the quality, speed and token-cost trade-off, and running agents in CI/CD.</p>
+                <div class="links">
+                  <a class="link-btn" href="https://developer.microsoft.com/en-us/reactor/events/27640/" target="_blank" rel="noopener noreferrer"><span>Microsoft Reactor</span><span class="url">https://developer.microsoft.com/en-us/reactor/events/27640/</span></a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section id="deep-read" class="panel deep" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Worth a deep read</h2>
+          <p>Microsoft's analysis of the LiteLLM compromise: a clear, practical walkthrough of how Python startup hooks were abused, which credentials were reachable and how to investigate without re-triggering the malware. It is a good template for a supply-chain checklist for your team's AI stack.</p>
+          <div class="links">
+            <a class="link-btn" href="https://www.microsoft.com/en-us/security/blog/2026/10/23/inside-the-litellm-1-107-0-supply-chain-compromise-credential-theft-through-python-startup-hooks/" target="_blank" rel="noopener noreferrer"><span>Microsoft Security analysis</span><span class="url">https://www.microsoft.com/en-us/security/blog/2026/10/23/inside-the-litellm-1-107-0-supply-chain-compromise-credential-theft-through-python-startup-hooks/</span></a>
+          </div>
+        </section>
+
+        <section id="trend-watch" class="panel trend" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Trend watch</h2>
+          <p>Agent identity and permissions are becoming the main enterprise topic: banks blocking agents they never approved, credential managers adding agent support, per-action checks like Claude's auto mode, and auditors testing the monitors themselves. Expect &ldquo;who authorised this agent, and what can it do&rdquo; to show up in every AI governance conversation.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>
