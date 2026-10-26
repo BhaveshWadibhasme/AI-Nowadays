@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LangChain updates: 26 Oct 2026 · AI Nowdays</title>
+<meta name="description" content="From LangChain&#x27;s LinkedIn over the weekend: top retrieval strategies for agent context engineering, Will Brown on why continual learning is about to get boring, Interrupt 2026 recordings on demand, and an SDR recruiting social at LangChain HQ.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-26-langchain.html">
+<meta property="og:title" content="LangChain updates: 26 Oct 2026">
+<meta property="og:description" content="From LangChain&#x27;s LinkedIn over the weekend: top retrieval strategies for agent context engineering, Will Brown on why continual learning is about to get boring, Interrupt 2026 recordings on demand, and an SDR recruiting social at LangChain HQ.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-26-langchain.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LangChain updates: 26 Oct 2026">
+<meta name="twitter:description" content="From LangChain&#x27;s LinkedIn over the weekend: top retrieval strategies for agent context engineering, Will Brown on why continual learning is about to get boring, Interrupt 2026 recordings on demand, and an SDR recruiting social at LangChain HQ.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a class="active" href="../">Digests</a>
+      <a href="../ai-engineering/">AI Engineering</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#langchain">← All LangChain updates</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+          <p class="kicker">On this page</p>
+          <a href="#overview">Overview</a>
+          <a href="#retrieval">Retrieval strategies</a>
+          <a href="#continual">Continual learning</a>
+          <a href="#interrupt">Interrupt recordings</a>
+          <a href="#sdr">SDR social</a>
+          <a href="#trend-watch">Trend watch</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-langchain">LangChain</span>
+          <time datetime="2026-10-26">26 Oct 2026</time>
+          <span>4 min read</span>
+        </div>
+        <h1>LangChain updates: 26 Oct 2026</h1>
+        <div class="tag-row">
+          <span class="tag">LangChain</span>
+          <span class="tag">Context engineering</span>
+          <span class="tag">Retrieval</span>
+          <span class="tag">Continual learning</span>
+          <span class="tag">Events</span>
+        </div>
+        <section id="overview" class="lede-card" data-section>
+          <p>From LangChain&#x27;s LinkedIn since Friday&#x27;s page: a blog on the retrieval strategies that keep agents from drowning in their own search results, Will Brown of Prime Intellect arguing that updating model weights will soon feel as routine as shipping software, the full Interrupt 2026 archive now on demand, and an SDR recruiting social at LangChain&#x27;s San Francisco HQ.</p>
+          <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/company/langchain/posts/?feedView=all"><span>LangChain on LinkedIn</span><span class="url">https://www.linkedin.com/company/langchain/posts/?feedView=all</span></a>
+          </div>
+        </section>
+
+        <section id="retrieval" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.5-3.5"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Blog · Context engineering</p>
+            <h3>Context engineering for AI agents starts with retrieval</h3>
+            <p>LangChain asks how agents remember to retrieve the right info at the right time, and points to its top retrieval strategies. The blog says retrieval breaks in three ways: inefficient searching, too much context at once, and irrelevant or stale context.</p><p>Using a competitive analysis agent as the example, it shows how the Deep Agents harness keeps searches small out of the box: glob matches file names, grep finds matching lines, and read_file reads a page at a time, while oversized tool results are offloaded to files with only a path and preview returned. For custom search tools like RAG, the recipe is “retrieve, offload, delegate”: save results to files, return the paths, and let subagents read them, adding a semantic retrieval tool when keywords aren&#x27;t enough and letting the agent decide when to search.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A practical checklist for any RAG or research agent you build at work: search before you read, never dump a whole export into context, and push heavy reading to subagents so the main agent only sees what matters.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7519444417389400064/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7519444417389400064/</span></a>
+            <a class="link-btn" href="https://lnkd.in/edY4A5wT"><span>Read full story</span><span class="url">https://lnkd.in/edY4A5wT</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="continual" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5v-7z"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Talk · Learning Loop event</p>
+            <h3>Will Brown: continual learning is about to get boring, in a good way</h3>
+            <p>At LangChain&#x27;s recent Learning Loop event, Will Brown from Prime Intellect made the case that “we&#x27;re all in post-training college right now,” and that soon updating your model&#x27;s weights will feel as routine as shipping software. The full session is available to watch.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>If post-training becomes a routine part of the release cycle, teams that already capture traces and evals will be the ones ready to fine-tune their own models.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7519472829847805952/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7519472829847805952/</span></a>
+            <a class="link-btn" href="https://lnkd.in/efdDYZjq"><span>Watch the session</span><span class="url">https://lnkd.in/efdDYZjq</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="interrupt" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6.5h11a3 3 0 013 3V20H7a3 3 0 01-3-3V6.5z"/><path d="M8 6.5V4h9a3 3 0 013 3v11"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Video archive · Interrupt 2026</p>
+            <h3>The best of Interrupt, now on demand</h3>
+            <p>LangChain has opened its archive of Interrupt 2026 recordings, with sessions from Interrupt San Francisco, NYC and London available to watch.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A free library of production agent talks, including case studies like the railway CAD agent from the 22 Oct page, useful for building a catalogue of examples to show stakeholders.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7519402568465260544/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7519402568465260544/</span></a>
+            <a class="link-btn" href="https://lnkd.in/gwBnyuEK"><span>Read full story</span><span class="url">https://lnkd.in/gwBnyuEK</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="sdr" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Careers · San Francisco</p>
+            <h3>SDR recruiting social at LangChain HQ</h3>
+            <p>LangChain reshared a post from Kevin Cribbs: Ray Shin and the LangChain team are hosting an SDR recruiting social at their HQ in SF next week, with RSVP details in the post&#x27;s comments. The post notes that more than 7,000 customers, including Nvidia, Bridgewater, LinkedIn, Workday, Harvey and Rippling, use LangSmith to improve their agents across the Agent Development Lifecycle.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Mainly for job seekers in San Francisco, but the 7,000+ customer figure and named enterprise users are handy proof points when pitching LangSmith internally.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7519896179128594432/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7519896179128594432/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="trend-watch" class="panel trend" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Trend watch</h2>
+          <p>The weekend&#x27;s posts circle one question: how an agent gets the right information at the right time. In the short run that&#x27;s context engineering, with search-before-read filesystem tools, offloading big results to files and delegating reading to subagents. In the longer run it&#x27;s continual learning, where what the agent learns flows back into the model&#x27;s weights through routine post-training. Together with Friday&#x27;s trace-trained models, the direction is clear: agents improve by managing context well today and by learning from their own runs tomorrow.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>
