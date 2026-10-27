@@ -1,5 +1,112 @@
 [
   {
+    "date": "2026-10-27",
+    "type": "daily",
+    "title": "Daily AI Digest: Tue, 27 Oct 2026",
+    "summary": "The agent world is getting simpler and more measurable. Anthropic is telling teams to collapse their subagent \"org charts\" into one well-instrumented loop, and new SDKs ship evals in the box. Meanwhile enterprises are still waiting to see the money.",
+    "url": "digests/2026-10-27-daily.html",
+    "readingTime": "5 min read",
+    "tags": [
+      "Agents",
+      "Frameworks",
+      "Architecture",
+      "Evals",
+      "Cost",
+      "Open models",
+      "Enterprise",
+      "Governance",
+      "Webinars",
+      "From X",
+      "LangChain"
+    ],
+    "items": [
+      {
+        "title": "Anthropic: fold your subagents back into one agent loop",
+        "summary": "If your department is designing agents around team boundaries, this is a strong, evidence-backed argument for fewer handoffs. The \"measure, combine, fold\" method is a ready-made consulting playbook.",
+        "url": "digests/2026-10-27-daily.html#fold-subagents",
+        "pillar": "tools-agents",
+        "tags": [
+          "Agents",
+          "Architecture",
+          "Frameworks",
+          "Evals"
+        ]
+      },
+      {
+        "title": "Cursor's Agent SDK is generally available",
+        "summary": "\"Agents as code with evals in CI\" is becoming the default shape for production agents, so treat prompts and tools like versioned, tested software.",
+        "url": "digests/2026-10-27-daily.html#cursor-sdk",
+        "pillar": "tools-agents",
+        "tags": [
+          "Agents",
+          "Frameworks",
+          "Evals"
+        ]
+      },
+      {
+        "title": "Agent S4: let agents build the tools they were missing",
+        "summary": "When an agent is slow or clumsy, the fix is often a better tool, not a better prompt. Reviewing traces for repeated busywork is a practical habit to adopt.",
+        "url": "digests/2026-10-27-daily.html#agent-s4",
+        "pillar": "tools-agents",
+        "tags": [
+          "Agents"
+        ]
+      },
+      {
+        "title": "Running DeepSeek V4.1-Flash locally on a 128GB machine",
+        "summary": "Strong open models on a single workstation are an option for sensitive data or cost-capped pilots, but heavy quantization changes behaviour, so evaluate the exact build you deploy.",
+        "url": "digests/2026-10-27-daily.html#deepseek-flash",
+        "pillar": "cost",
+        "tags": [
+          "Cost",
+          "Open models"
+        ]
+      },
+      {
+        "title": "15 reliability targets (SLOs) for an AI agent",
+        "summary": "It moves agent monitoring beyond token counts and latency toward what operators and business owners actually care about, and gives you a template to propose.",
+        "url": "digests/2026-10-27-daily.html#agent-slos",
+        "pillar": "measure",
+        "tags": [
+          "Evals",
+          "Agents"
+        ]
+      },
+      {
+        "title": "Oracle: describe the goal, let Fusion Companion route the work",
+        "summary": "Big ERP vendors are turning agents into an orchestration layer over existing approvals and permissions, which is the pattern to expect in large energy and industrial firms too.",
+        "url": "digests/2026-10-27-daily.html#oracle-companion",
+        "pillar": "tools-agents",
+        "tags": [
+          "Enterprise",
+          "Agents",
+          "Governance"
+        ]
+      },
+      {
+        "title": "Where's the payoff outside Big Tech?",
+        "summary": "Expect harder ROI questions from leadership. Pilots that track measurable business outcomes will get funded; vague productivity claims won't.",
+        "url": "digests/2026-10-27-daily.html#payoff",
+        "tags": [
+          "From X",
+          "Enterprise",
+          "Cost"
+        ]
+      },
+      {
+        "title": "LangChain's free workshops: Agent Evals 101 and Agent Memory 101",
+        "summary": "Short, practical sessions on exactly the eval and context skills clients will ask about.",
+        "url": "digests/2026-10-27-daily.html#langchain-workshops",
+        "pillar": "measure",
+        "tags": [
+          "Webinars",
+          "Evals",
+          "LangChain"
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-26",
     "type": "daily",
     "title": "Daily AI Digest: Mon, 26 Oct 2026",
