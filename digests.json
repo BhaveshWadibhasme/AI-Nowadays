@@ -107,6 +107,22 @@
     ]
   },
   {
+    "date": "2026-10-27",
+    "type": "langchain",
+    "title": "LangChain updates: 27 Oct 2026",
+    "summary": "A 5 Nov night of talks on decision models with TypeSafe AI, a one-minute LangGraph explainer, a live look at LangChain's design agent built on Managed Deep Agents, and Victor Moreira's Interrupt London keynote on Managed Deep Agents 0.9.",
+    "url": "digests/2026-10-27-langchain.html",
+    "readingTime": "4 min read",
+    "tags": [
+      "LangChain",
+      "Agents",
+      "LangGraph",
+      "Deep Agents",
+      "Decision models",
+      "Events"
+    ]
+  },
+  {
     "date": "2026-10-26",
     "type": "daily",
     "title": "Daily AI Digest: Mon, 26 Oct 2026",
