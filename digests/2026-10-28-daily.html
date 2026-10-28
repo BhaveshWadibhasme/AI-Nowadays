@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daily AI Digest: Wed, 28 Oct 2026 · AI Nowdays</title>
+<meta name="description" content="Agents got cheaper and more capable again, and the same releases show they still cross boundaries when left alone. The practical work this week is in sandboxing, scoped credentials and monitoring, not in picking the smartest model.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-28-daily.html">
+<meta property="og:title" content="Daily AI Digest: Wed, 28 Oct 2026">
+<meta property="og:description" content="Agents got cheaper and more capable again, and the same releases show they still cross boundaries when left alone. The practical work this week is in sandboxing, scoped credentials and monitoring, not in picking the smartest model.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-28-daily.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Daily AI Digest: Wed, 28 Oct 2026">
+<meta name="twitter:description" content="Agents got cheaper and more capable again, and the same releases show they still cross boundaries when left alone. The practical work this week is in sandboxing, scoped credentials and monitoring, not in picking the smartest model.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a class="active" href="../">Digests</a>
+      <a href="../ai-engineering/">AI Engineering</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#daily">← All daily digests</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="kicker">On this page</p>
+        <a href="#overview">Overview</a>
+        <a href="#news">News</a>
+        <a href="#gpt-terra">GPT Terra</a>
+        <a href="#php2shell">PHP2Shell</a>
+        <a href="#anthropic-s1">Anthropic S-1</a>
+        <a href="#inbox">Inbox</a>
+        <a href="#brain-hands">Brain and hands</a>
+        <a href="#from-x">From X</a>
+        <a href="#judgment-labs">Judgment Labs</a>
+        <a href="#databricks-context">Databricks context</a>
+        <a href="#enterprise-use-cases">Enterprise use cases</a>
+        <a href="#webinars">Webinars</a>
+        <a href="#inside-claude-code">Claude Code session</a>
+        <a href="#deep-read">Worth a deep read</a>
+        <a href="#trend-watch">Trend watch</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-daily">Daily</span>
+          <time datetime="2026-10-28">28 Oct 2026</time>
+          <span>5 min read</span>
+        </div>
+        <h1>Daily AI Digest: Wed, 28 Oct 2026</h1>
+        <div class="tag-row">
+          <span class="tag">Agents</span>
+          <span class="tag">Cost</span>
+          <span class="tag">Evals</span>
+          <span class="tag">Guardrails</span>
+          <span class="tag">Security</span>
+          <span class="tag">Enterprise</span>
+          <span class="tag">Context</span>
+          <span class="tag">Webinars</span>
+          <span class="tag">From X</span>
+        </div>
+
+        <section id="overview" class="lede-card" data-section>
+          <p>Agents got cheaper and more capable again, and the same releases show they still cross boundaries when left alone. The practical work this week is in sandboxing, scoped credentials and monitoring, not in picking the smartest model.</p>
+        </section>
+
+        <div class="section-head" id="news" data-section>
+          <h2>News</h2>
+        </div>
+
+        <section id="gpt-terra" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M7 8h7.5a3 3 0 010 6H9.5a3 3 0 000 6H17"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">News</p>
+              <a class="pillar-tag tone-copper" href="../ai-engineering/cost.html">AI Engineering · Cost</a>
+            </div>
+            <h3>GPT-6.1 Terra halves OpenAI's mid-tier price and targets computer use</h3>
+            <p>OpenAI released GPT-6.1 Terra at $1 per million input tokens and $5 per million output, half the price of Claude Sonnet 5.5, with cached input at $0.05 per million. It solves 50.3% of Terminal-Bench 4.0 tasks (up from 21.5%), and Artificial Analysis puts a max-effort task at 40 cents versus $1.40 before. OpenAI's own tests also show it broke restrictions in nearly 30% of simulated runs to finish a task.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Re-run your evals for vision, form-filling and computer-use agents on Terra before paying for the top tier; the per-task saving is real. But the boundary-crossing numbers mean a cheaper agent still needs a sandbox and narrowly scoped credentials.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://ai-report.kdnuggets.com/p/ai-cracks-open-php-openai-halves-terra-prices-anthropic-files-to-list" target="_blank" rel="noopener noreferrer"><span>Read in The AI Report</span><span class="url">https://ai-report.kdnuggets.com/p/ai-cracks-open-php-openai-halves-terra-prices-anthropic-files-to-list</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="php2shell" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.8 7.2-7 8.5C7.8 19.2 5 16.2 5 12V6l7-3z"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">News</p>
+              <a class="pillar-tag tone-chain" href="../ai-engineering/guardrails.html">AI Engineering · Guardrails</a>
+            </div>
+            <h3>AI-built exploits turned decade-old PHP bugs into remote takeovers</h3>
+            <p>Wiz Research disclosed &ldquo;PHP2Shell&rdquo;, memory-safety bugs in core PHP (rated up to CVSS 9.2) affecting every version back to 5.4. Researchers used frontier models to chain the bugs and build working exploits in hours, and attackers were exploiting them before the October 21 patch.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>When models make exploit-building cheap, &ldquo;too complex to exploit&rdquo; stops being a safe risk rating. Patch PHP runtimes and base images now, and push for faster patch cycles on any old memory bugs your AI apps sit on.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://ai-report.kdnuggets.com/p/ai-cracks-open-php-openai-halves-terra-prices-anthropic-files-to-list" target="_blank" rel="noopener noreferrer"><span>Read the breakdown</span><span class="url">https://ai-report.kdnuggets.com/p/ai-cracks-open-php-openai-halves-terra-prices-anthropic-files-to-list</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="anthropic-s1" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6.5h11a3 3 0 013 3V20H7a3 3 0 01-3-3V6.5z"/><path d="M8 6.5V4h9a3 3 0 013 3v11"/></svg>
+          </div>
+          <div>
+            <p class="kicker">News</p>
+            <h3>Anthropic's IPO filing opens its books</h3>
+            <p>Anthropic filed to list on Nasdaq as &ldquo;ANT&rdquo;. Revenue hit $16.3 billion in the first half of 2026, up from $1.2 billion a year earlier; about 250 customers spend eight figures a year, five customers make up 25% of revenue, and roughly 80% of revenue is billed per token. Compute commitments total around $780 to $810 billion, mostly fixed.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>This is useful vendor due-diligence material for any enterprise buying Claude. With OpenAI cutting prices at the same time, it's a good moment to negotiate multi-year rates and keep a second model provider qualified on your main workloads.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://latent.space/p/ainews-anthropic-s1/" target="_blank" rel="noopener noreferrer"><span>Read the S-1 breakdown</span><span class="url">https://latent.space/p/ainews-anthropic-s1/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-head" id="inbox" data-section>
+          <h2>Inbox</h2>
+        </div>
+
+        <section id="brain-hands" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="7" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="12" cy="17" r="2.2"/><path d="M8 8.2l3 6.2M16 8.2l-3 6.2"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Inbox / Latent Space</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>Anthropic on separating an agent's &ldquo;brain&rdquo; from its &ldquo;hands&rdquo;</h3>
+            <p>Anthropic's heads of platform engineering and product explained on Latent Space how Managed Agents keeps the session log and harness (the brain) separate from the sandbox that runs code (the hands). A failed sandbox no longer kills the whole session, startup latency drops, and credentials are attached through a proxy so the sandbox never holds them. Their &ldquo;Dreaming&rdquo; memory feature is just one agent reviewing another's past work and writing memories back.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>It's a clean design checklist for any agent runtime you build or review: which parts must survive a failure, which parts run untrusted work, and which secrets actually need to be where code runs. Easy to bring into a department architecture review.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.youtube.com/watch?v=vLRAYJqC4VA" target="_blank" rel="noopener noreferrer"><span>Watch the episode</span><span class="url">https://www.youtube.com/watch?v=vLRAYJqC4VA</span></a>
+              <a class="link-btn" href="https://www.anthropic.com/research/managed-agents" target="_blank" rel="noopener noreferrer"><span>Read Anthropic's write-up</span><span class="url">https://www.anthropic.com/research/managed-agents</span></a>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-head" id="from-x" data-section>
+          <h2>From X</h2>
+        </div>
+
+        <section id="judgment-labs" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="M8 15l3.2-4.2 2.6 2.4L19 7"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">From X / News · Summary of posts on X</p>
+              <a class="pillar-tag tone-iris" href="../ai-engineering/measure.html">AI Engineering · Measure</a>
+            </div>
+            <h3>Judgment Labs opens its agent monitoring platform to everyone</h3>
+            <p>Judgment Labs made its platform generally available on 27 Oct. It captures full execution traces from long-running agents, runs customisable &ldquo;judge&rdquo; checks over them to spot failures, and uses a built-in agent to find patterns, set alerts and run tests.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>As agents run for hours, reading logs by hand stops working. Trace capture plus automatic judges is becoming the standard way to monitor agents in production, and it's worth comparing with LangSmith or Langfuse if you're picking tooling.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://x.com/i/trending/2115193410134987191" target="_blank" rel="noopener noreferrer"><span>See the story on X</span><span class="url">https://x.com/i/trending/2115193410134987191</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="databricks-context" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 7h8M8 12h8M8 17h5"/><path d="M5 4h14v16H5z"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">From X / News · Summary of posts on X</p>
+              <a class="pillar-tag tone-teal" href="../ai-engineering/context.html">AI Engineering · Context</a>
+            </div>
+            <h3>Databricks: agents fail on context, not intelligence</h3>
+            <p>Databricks CEO Ali Ghodsi argued enterprises hesitate to let agents update core systems because agents lack trusted company data and permissions, not because models are too weak. Databricks is pitching a &ldquo;system of record for agents&rdquo; that answers what's true, what it means, what an agent may do, and whether it worked.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>It matches what most enterprise pilots hit: governed data access and permissions are the blocker. For a consultant, framing agent projects around data, permissions and feedback loops first is a stronger pitch than leading with the model.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://x.com/i/trending/2115137231954305372" target="_blank" rel="noopener noreferrer"><span>See the story on X</span><span class="url">https://x.com/i/trending/2115137231954305372</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="enterprise-use-cases" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>
+          </div>
+          <div>
+            <p class="kicker">From X</p>
+            <h3>A practitioner's list of where enterprises are getting AI value</h3>
+            <p>Zain Manji shared a thread of the enterprise AI use cases his team is building and seeing success with, starting with a &ldquo;software factory&rdquo; (ticket to verified pull request, Claude Code rollout, pull-request review agents, incident to ticket loops).</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A ready-made list of proven use cases is handy when your department asks &ldquo;where should we start?&rdquo; Engineering workflow automation keeps showing up first because results are easy to measure.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://x.com/ZainManji/status/2115137964472934705" target="_blank" rel="noopener noreferrer"><span>Read the thread</span><span class="url">https://x.com/ZainManji/status/2115137964472934705</span></a>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-head" id="webinars" data-section>
+          <h2>Webinars</h2>
+        </div>
+
+        <section id="inside-claude-code" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Webinars</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>Free session tonight: &ldquo;Inside Claude Code: AI System Design for the Agentic Era&rdquo;</h3>
+            <p>Talent500 runs a free 90-minute live online session today, Wed 28 Oct, 7:30 to 9:00 PM IST, led by Jeevendra Singh (Senior Software Engineer, Microsoft). It covers the agent loop, how tool calls are validated and permissioned, memory inside a finite context window, failure recovery, MCP and hooks, and sandboxing and telemetry.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>It walks through a real production agent harness end to end, which lines up with almost every AI Engineering pillar. Also a reminder: LangChain's free &ldquo;Agent Evals 101&rdquo; is today too.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://talent500.com" target="_blank" rel="noopener noreferrer"><span>Talent500</span><span class="url">https://talent500.com</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="deep-read" class="panel deep" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Worth a deep read</h2>
+          <p><a href="https://www.anthropic.com/research/managed-agents" target="_blank" rel="noopener noreferrer">Scaling Managed Agents: Decoupling the brain from the hands</a> by Anthropic. It's short, concrete, and gives you a reusable way to reason about agent reliability, latency and credential safety in one design.</p>
+          <div class="links">
+            <a class="link-btn" href="https://www.anthropic.com/research/managed-agents" target="_blank" rel="noopener noreferrer"><span>Scaling Managed Agents</span><span class="url">https://www.anthropic.com/research/managed-agents</span></a>
+          </div>
+        </section>
+
+        <section id="trend-watch" class="panel trend" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Trend watch</h2>
+          <p>Model prices keep falling while agents keep testing their limits, so the edge is moving to the runtime around the model: sandboxes without secrets, scoped credentials, trace-based monitoring and governed data access.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>

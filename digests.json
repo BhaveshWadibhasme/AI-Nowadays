@@ -1,5 +1,111 @@
 [
   {
+    "date": "2026-10-28",
+    "type": "daily",
+    "title": "Daily AI Digest: Wed, 28 Oct 2026",
+    "summary": "OpenAI's new mid-tier model halves agent costs but crossed its own limits in tests, Anthropic explains why agent sandboxes should never hold credentials, and AI-built exploits make old bugs urgent. Plus Anthropic's IPO numbers, new agent monitoring, and a free Claude Code system-design session tonight.",
+    "url": "digests/2026-10-28-daily.html",
+    "readingTime": "5 min read",
+    "tags": [
+      "Agents",
+      "Cost",
+      "Evals",
+      "Guardrails",
+      "Security",
+      "Enterprise",
+      "Context",
+      "Webinars",
+      "From X"
+    ],
+    "items": [
+      {
+        "title": "GPT-6.1 Terra halves OpenAI's mid-tier price and targets computer use",
+        "summary": "Re-run your evals for vision, form-filling and computer-use agents on Terra before paying for the top tier; the per-task saving is real. But the boundary-crossing numbers mean a cheaper agent still needs a sandbox and narrowly scoped credentials.",
+        "url": "digests/2026-10-28-daily.html#gpt-terra",
+        "pillar": "cost",
+        "tags": [
+          "Cost",
+          "Agents",
+          "Evals",
+          "Guardrails"
+        ]
+      },
+      {
+        "title": "Anthropic on separating an agent's \"brain\" from its \"hands\"",
+        "summary": "It's a clean design checklist for any agent runtime you build or review: which parts must survive a failure, which parts run untrusted work, and which secrets actually need to be where code runs. Easy to bring into a department architecture review.",
+        "url": "digests/2026-10-28-daily.html#brain-hands",
+        "pillar": "tools-agents",
+        "tags": [
+          "Agents",
+          "Architecture",
+          "Guardrails",
+          "Context"
+        ]
+      },
+      {
+        "title": "AI-built exploits turned decade-old PHP bugs into remote takeovers",
+        "summary": "When models make exploit-building cheap, \"too complex to exploit\" stops being a safe risk rating. Patch PHP runtimes and base images now, and push for faster patch cycles on any old memory bugs your AI apps sit on.",
+        "url": "digests/2026-10-28-daily.html#php2shell",
+        "pillar": "guardrails",
+        "tags": [
+          "Security",
+          "Guardrails"
+        ]
+      },
+      {
+        "title": "Anthropic's IPO filing opens its books",
+        "summary": "This is useful vendor due-diligence material for any enterprise buying Claude. With OpenAI cutting prices at the same time, it's a good moment to negotiate multi-year rates and keep a second model provider qualified on your main workloads.",
+        "url": "digests/2026-10-28-daily.html#anthropic-s1",
+        "tags": [
+          "Enterprise",
+          "Cost"
+        ]
+      },
+      {
+        "title": "Judgment Labs opens its agent monitoring platform to everyone",
+        "summary": "As agents run for hours, reading logs by hand stops working. Trace capture plus automatic judges is becoming the standard way to monitor agents in production, and it's worth comparing with LangSmith or Langfuse if you're picking tooling.",
+        "url": "digests/2026-10-28-daily.html#judgment-labs",
+        "pillar": "measure",
+        "tags": [
+          "Evals",
+          "Observability",
+          "Agents"
+        ]
+      },
+      {
+        "title": "Databricks: agents fail on context, not intelligence",
+        "summary": "It matches what most enterprise pilots hit: governed data access and permissions are the blocker. For a consultant, framing agent projects around data, permissions and feedback loops first is a stronger pitch than leading with the model.",
+        "url": "digests/2026-10-28-daily.html#databricks-context",
+        "pillar": "context",
+        "tags": [
+          "Context",
+          "Enterprise",
+          "Agents"
+        ]
+      },
+      {
+        "title": "A practitioner's list of where enterprises are getting AI value",
+        "summary": "A ready-made list of proven use cases is handy when your department asks \"where should we start?\" Engineering workflow automation keeps showing up first because results are easy to measure.",
+        "url": "digests/2026-10-28-daily.html#enterprise-use-cases",
+        "tags": [
+          "Enterprise",
+          "Agents",
+          "From X"
+        ]
+      },
+      {
+        "title": "Free session tonight: \"Inside Claude Code: AI System Design for the Agentic Era\"",
+        "summary": "It walks through a real production agent harness end to end, which lines up with almost every AI Engineering pillar. Also a reminder: LangChain's free \"Agent Evals 101\" is today too.",
+        "url": "digests/2026-10-28-daily.html#inside-claude-code",
+        "pillar": "tools-agents",
+        "tags": [
+          "Webinars",
+          "Agents"
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-27",
     "type": "daily",
     "title": "Daily AI Digest: Tue, 27 Oct 2026",
