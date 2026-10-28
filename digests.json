@@ -1,6 +1,24 @@
 [
   {
     "date": "2026-10-28",
+    "type": "google-research",
+    "title": "Google Research: research roundup, 21 to 28 Oct 2026",
+    "summary": "From Google Research, 21 to 28 Oct 2026: a sleep phase that lets LLMs take in new facts without catastrophic forgetting, a Personal Health Agent published in Nature, Coral NPU milestones for edge inference, and benchmarks from NLP paper limitations to 12 Southeast Asian languages.",
+    "url": "digests/2026-10-28-google-research.html",
+    "readingTime": "7 min read",
+    "tags": [
+      "Google Research",
+      "Research",
+      "Agents",
+      "Evals",
+      "Health",
+      "Open source",
+      "Events"
+    ],
+    "pillar": "measure"
+  },
+  {
+    "date": "2026-10-28",
     "type": "daily",
     "title": "Daily AI Digest: Wed, 28 Oct 2026",
     "summary": "OpenAI's new mid-tier model halves agent costs but crossed its own limits in tests, Anthropic explains why agent sandboxes should never hold credentials, and AI-built exploits make old bugs urgent. Plus Anthropic's IPO numbers, new agent monitoring, and a free Claude Code system-design session tonight.",

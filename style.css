@@ -13,6 +13,8 @@
   --iris-soft: #e7ebf8;
   --chain: #3d6b1f;
   --chain-soft: #eef6e4;
+  --research: #174ea6;
+  --research-soft: #e8f0fe;
   --shadow: 0 18px 50px rgba(36, 28, 18, 0.07);
   --glow-1: rgba(18, 156, 146, 0.34);
   --glow-2: rgba(214, 122, 66, 0.28);
@@ -41,6 +43,8 @@
   --iris-soft: rgba(197, 205, 248, 0.12);
   --chain: #c6e58a;
   --chain-soft: rgba(198, 229, 138, 0.14);
+  --research: #a8c7fa;
+  --research-soft: rgba(168, 199, 250, 0.14);
   --shadow: 0 18px 50px rgba(0, 0, 0, 0.38);
   --glow-1: rgba(40, 180, 170, 0.2);
   --glow-2: rgba(214, 122, 66, 0.14);
@@ -66,6 +70,8 @@
     --iris-soft: rgba(197, 205, 248, 0.12);
     --chain: #c6e58a;
     --chain-soft: rgba(198, 229, 138, 0.14);
+    --research: #a8c7fa;
+    --research-soft: rgba(168, 199, 250, 0.14);
     --shadow: 0 18px 50px rgba(0, 0, 0, 0.38);
     --glow-1: rgba(40, 180, 170, 0.2);
     --glow-2: rgba(214, 122, 66, 0.14);
@@ -221,6 +227,7 @@ button.chip:hover { transform: translateY(-1px); }
 .chip-weekly { color: var(--copper); }
 .chip-frameworks { color: var(--iris); }
 .chip-langchain { color: var(--chain); }
+.chip-google-research { color: var(--research); }
 .tag { font-size: 0.78rem; color: var(--muted); padding: 4px 9px; }
 .kicker-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 8px; }
 .kicker-row .kicker { margin: 0; }

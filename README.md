@@ -8,7 +8,7 @@ The home page reads `digests.json` and renders the latest issue, the archive gri
 
 ## Add a digest
 
-1. Copy an existing digest to `digests/YYYY-MM-DD-{daily|weekly|frameworks|langchain}.html`. Use `digests/2026-10-13-langchain.html` for a LangChain LinkedIn roundup.
+1. Copy an existing digest to `digests/YYYY-MM-DD-{daily|weekly|frameworks|langchain|google-research}.html`. Use `digests/2026-10-13-langchain.html` for a LangChain LinkedIn roundup. Use `digests/2026-10-28-google-research.html` for a Google Research LinkedIn roundup.
 2. Keep the shared header, sticky table of contents, story cards (one icon per section), "Why it matters" callouts, link buttons, the webinar list with date badges, and the highlighted "Worth a deep read" and "Trend watch" panels. Preserve every source link.
 3. Add an entry at the top of `digests.json`:
 
@@ -24,7 +24,7 @@ The home page reads `digests.json` and renders the latest issue, the archive gri
 }
 ```
 
-`type` is `daily`, `weekly`, `frameworks`, or `langchain`. The home page labels those Daily, Weekly deep-dive, Frameworks, and LangChain. `langchain` is for updates gathered from LangChain's LinkedIn page. Each story card has a "View LinkedIn post" button and, when the source gives one, "Read full story", "Repo", or "Livestream". Keep every URL exactly as published.
+`type` is `daily`, `weekly`, `frameworks`, `langchain`, or `google-research`. The home page labels those Daily, Weekly deep-dive, Frameworks, LangChain, and Google Research. `langchain` is for updates gathered from LangChain's LinkedIn page. `google-research` is for updates gathered from the Google Research LinkedIn showcase (https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all). The home page category chips include Google Research, and `#google-research` filters the archive the same way `#langchain` does. Cards use the `chip-google-research` colour. Each story card has a "View LinkedIn post" button (Google Research cards say "View on LinkedIn") and, when the source gives one, "Read full story", "Repo", or "Livestream". Keep every URL exactly as published.
 
 `readingTime` is shown next to the date. Use a short phrase such as `4 min read`.
 

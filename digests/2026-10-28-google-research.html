@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Google Research: research roundup, 21 to 28 Oct 2026 · AI Nowdays</title>
+<meta name="description" content="Google Research, 21 to 28 Oct 2026: a sleep phase for continual learning, a Personal Health Agent published in Nature, Coral NPU milestones for edge inference, and benchmarks from EMNLP paper limitations to 12 Southeast Asian languages.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-28-google-research.html">
+<meta property="og:title" content="Google Research: research roundup, 21 to 28 Oct 2026">
+<meta property="og:description" content="Google Research, 21 to 28 Oct 2026: a sleep phase for continual learning, a Personal Health Agent published in Nature, Coral NPU milestones for edge inference, and benchmarks from EMNLP paper limitations to 12 Southeast Asian languages.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-28-google-research.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Google Research: research roundup, 21 to 28 Oct 2026">
+<meta name="twitter:description" content="Google Research, 21 to 28 Oct 2026: a sleep phase for continual learning, a Personal Health Agent published in Nature, Coral NPU milestones for edge inference, and benchmarks from EMNLP paper limitations to 12 Southeast Asian languages.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a class="active" href="../">Digests</a>
+      <a href="../ai-engineering/">AI Engineering</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#google-research">← All Google Research updates</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+          <p class="kicker">On this page</p>
+          <a href="#overview">Overview</a>
+          <a href="#sleep">Sleep phase</a>
+          <a href="#personal-health-agent">Personal Health Agent</a>
+          <a href="#coral-npu">Coral NPU</a>
+          <a href="#paper-limitations">Paper limitations</a>
+          <a href="#deepsea">DEEPSEA</a>
+          <a href="#sl2t">SL2T</a>
+          <a href="#ignite">Ignite Energy Access</a>
+          <a href="#ultrasound">Blind sweep ultrasound</a>
+          <a href="#medgemma">MedGemma and TB</a>
+          <a href="#podcast">Research podcast</a>
+          <a href="#emnlp">EMNLP 2026</a>
+          <a href="#trend-watch">Trend watch</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-google-research">Google Research</span>
+          <time datetime="2026-10-28">28 Oct 2026</time>
+          <span>7 min read</span>
+        </div>
+        <h1>Google Research: research roundup, 21 to 28 Oct 2026</h1>
+        <div class="tag-row">
+          <span class="tag">Google Research</span>
+          <span class="tag">Research</span>
+          <span class="tag">Agents</span>
+          <span class="tag">Evals</span>
+          <span class="tag">Health</span>
+          <span class="tag">Open source</span>
+          <span class="tag">Events</span>
+        </div>
+        <section id="overview" class="lede-card" data-section>
+          <p>From Google Research&#x27;s LinkedIn showcase, 21 to 28 Oct 2026. The research posts cover a sleep phase for continual learning, a Personal Health Agent published in Nature, three Coral NPU milestones for edge inference, an EMNLP demo of NLP paper limitations, the DEEPSEA benchmark across 12 Southeast Asian languages, ASL-to-English translation on Pixel 11, a solar-access collaboration in sub-Saharan Africa, blind-sweep ultrasound, MedGemma and tuberculosis screening, and a podcast on how the lab picks its moonshots. The week also includes EMNLP 2026 in Budapest.</p>
+          <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all"><span>Google Research on LinkedIn</span><span class="url">https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all</span></a>
+          </div>
+        </section>
+
+        <section id="sleep" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 4a7 7 0 11-8.5 9.2A6.5 6.5 0 0016 4z"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Continual learning · 12 hours ago</p>
+              <a class="pillar-tag tone-teal" href="../ai-engineering/context.html">AI Engineering · Context</a>
+            </div>
+            <h3>A sleep phase so LLMs can keep learning</h3>
+            <p>A new sleep phase in continual learning lets large language models take in new facts and improve their reasoning. It is meant to ease two standing limits: catastrophic forgetting, and knowledge that stays frozen at a cutoff.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Models that can absorb new facts after they are deployed, without wiping what they already know, are a direct response to a static knowledge cutoff. The sleep phase is that proposal, aimed at both memory and reasoning.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all"><span>View on LinkedIn</span><span class="url">https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all</span></a>
+              <a class="link-btn" href="https://research.google/blog/the-sleep-framework-a-new-way-for-llms-to-retain-knowledge-in-continual-learning/?utm_source=linkedin&amp;utm_medium=social&amp;utm_campaign=social_post&amp;utm_content=gr-acct"><span>Read full story</span><span class="url">https://research.google/blog/the-sleep-framework-a-new-way-for-llms-to-retain-knowledge-in-continual-learning/?utm_source=linkedin&amp;utm_medium=social&amp;utm_campaign=social_post&amp;utm_content=gr-acct</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="personal-health-agent" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-4.4-7-10a4 4 0 017-2 4 4 0 017 2c0 5.6-7 10-7 10z"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Health agents · 5 days ago</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+              <a class="pillar-tag tone-iris" href="../ai-engineering/measure.html">AI Engineering · Measure</a>
+            </div>
+            <h3>Personal Health Agent, published in Nature and open-sourced</h3>
+            <p>Research on the Personal Health Agent (PHA) is out. It is a multi-agent architecture paired with an evaluation framework. The work was published in Nature and open-sourced.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A health agent that ships with its own evaluation framework, in Nature and as open source, is a public pattern for judging agents in a high-stakes domain.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all"><span>View on LinkedIn</span><span class="url">https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all</span></a>
+              <a class="link-btn" href="https://www.nature.com/articles/s41586-026-11161-8"><span>Read full story</span><span class="url">https://www.nature.com/articles/s41586-026-11161-8</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="coral-npu" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Edge inference · 6 days ago</p>
+              <a class="pillar-tag tone-copper" href="../ai-engineering/cost.html">AI Engineering · Cost</a>
+            </div>
+            <h3>Coral NPU: three milestones for edge inference</h3>
+            <p>Coral NPU marked three milestones. The open-source 32-bit RISC-V architecture, including a Matrix Execution Unit, is complete. Version 1.0 of the open-source compiler is out. The third milestone is Synaptics Astra SR200 chips and Coralboards.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>The completed open architecture, the version 1.0 compiler, and Synaptics Astra SR200 chips and Coralboards are the pieces for cheaper inference at the edge.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all"><span>View on LinkedIn</span><span class="url">https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all</span></a>
+              <a class="link-btn" href="https://developers.googleblog.com/unifying-edge-ai-how-coral-npus-open-standard-brings-portable-energy-viable-intelligence-from-model-to-silicon/"><span>Read full story</span><span class="url">https://developers.googleblog.com/unifying-edge-ai-how-coral-npus-open-standard-brings-portable-energy-viable-intelligence-from-model-to-silicon/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="paper-limitations" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4M8 12h8M8 16h5"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">EMNLP demo · 23 hours ago</p>
+              <a class="pillar-tag tone-iris" href="../ai-engineering/measure.html">AI Engineering · Measure</a>
+            </div>
+            <h3>An EMNLP demo reads limitations across 16,000 NLP papers</h3>
+            <p>An EMNLP 2026 demo analyses the limitations of more than 16,000 NLP papers.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Analysing the limitations of more than 16,000 NLP papers is a measurement pass over the field, at a volume too large to read one paper at a time.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all"><span>View on LinkedIn</span><span class="url">https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all</span></a>
+              <a class="link-btn" href="https://arxiv.org/pdf/2609.15191"><span>Read full story</span><span class="url">https://arxiv.org/pdf/2609.15191</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="deepsea" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.8 3.8 5.8 3.8 9s-1.3 6.2-3.8 9c-2.5-2.8-3.8-5.8-3.8-9S9.5 5.8 12 3z"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Benchmark · 1 day ago</p>
+              <a class="pillar-tag tone-iris" href="../ai-engineering/measure.html">AI Engineering · Measure</a>
+            </div>
+            <h3>DEEPSEA benchmarks LLMs across 12 Southeast Asian languages</h3>
+            <p>DEEPSEA is a benchmark for large language models across 12 Southeast Asian languages.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>DEEPSEA is a shared benchmark for large language models across 12 Southeast Asian languages, so those languages can be measured on one suite.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all"><span>View on LinkedIn</span><span class="url">https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all</span></a>
+              <a class="link-btn" href="https://arxiv.org/pdf/2610.26155v1"><span>Read full story</span><span class="url">https://arxiv.org/pdf/2610.26155v1</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="sl2t" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 11V7a2 2 0 114 0v6"/><path d="M12 11V6a2 2 0 114 0v8"/><path d="M16 12v-1.5a2 2 0 114 0V14a6 6 0 01-6 6h-1.5a5 5 0 01-4.6-3L6 13.5"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Sign language · 1 day ago</p>
+            <h3>SL2T translates ASL to English on Pixel 11</h3>
+            <p>SL2T translates American Sign Language to English inside Gboard and Live Transcribe on Pixel 11.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>SL2T is shipping inside Gboard and Live Transcribe on Pixel 11, so ASL-to-English translation sits in two products on that phone.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all"><span>View on LinkedIn</span><span class="url">https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all</span></a>
+              <a class="link-btn" href="https://deepmind.google/blog/putting-sign-language-ai-into-users-hands/"><span>Read full story</span><span class="url">https://deepmind.google/blog/putting-sign-language-ai-into-users-hands/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="ignite" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Energy access · 1 day ago</p>
+            <h3>Ignite Energy Access: finding rooftop solar from space</h3>
+            <p>More than 600 million people in sub-Saharan Africa live without electricity. Google&#x27;s three-year collaboration with Ignite Energy Access maps rural paths and uses Gemini for Science plus drone imagery to detect tiny rooftop solar panels from space. The collaboration reports more than 160,000 tCO2e avoided and 3.7 million solar devices delivered since 2023.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>The reported results since 2023 are more than 160,000 tCO2e avoided and 3.7 million solar devices delivered. The method combines mapped rural paths, Gemini for Science, and drone imagery that can pick out very small rooftop panels.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all"><span>View on LinkedIn</span><span class="url">https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all</span></a>
+              <a class="link-btn" href="https://blog.google/company-news/outreach-and-initiatives/sustainability/sub-saharan-africa-ignite/"><span>Read full story</span><span class="url">https://blog.google/company-news/outreach-and-initiatives/sustainability/sub-saharan-africa-ignite/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="ultrasound" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 16c2-6 4-9 8-9s6 3 8 9"/><path d="M8 16c1-2.5 2.2-4 4-4s3 1.5 4 4"/><circle cx="12" cy="16" r="1.2" fill="currentColor" stroke="none"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Maternal care · 6 days ago</p>
+            <h3>Blind sweep ultrasound that generalises to new care settings</h3>
+            <p>Blind sweep ultrasound AI generalises to new care settings. That means people who are not sonographers can assess gestational age with low-cost probes.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Because the model generalises to new care settings, people who are not sonographers can assess gestational age with low-cost probes.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all"><span>View on LinkedIn</span><span class="url">https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all</span></a>
+              <a class="link-btn" href="https://research.google/blog/empowering-frontline-maternal-care-with-ai-assisted-ultrasound/?utm_source=linkedin&amp;utm_medium=social&amp;utm_campaign=social_post&amp;utm_content=gr-acct"><span>Read full story</span><span class="url">https://research.google/blog/empowering-frontline-maternal-care-with-ai-assisted-ultrasound/?utm_source=linkedin&amp;utm_medium=social&amp;utm_campaign=social_post&amp;utm_content=gr-acct</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="medgemma" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V8M10 19V5M16 19v-7M20 19H3"/></svg>
+          </div>
+          <div>
+            <p class="kicker">TB screening · 4 days ago · IDWeek 2026</p>
+            <h3>MedGemma and open models for tuberculosis screening</h3>
+            <p>Tuberculosis causes 1.23 million deaths a year. Tied to IDWeek 2026, the post says open foundation models such as MedGemma are bringing AI to TB screening.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Tied to IDWeek 2026, the post says open foundation models such as MedGemma are bringing AI to TB screening. The disease burden it sets next to that claim is 1.23 million deaths a year.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all"><span>View on LinkedIn</span><span class="url">https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all</span></a>
+              <a class="link-btn" href="https://research.google/blog/bringing-foundational-models-to-the-front-lines-of-tb-screening/?utm_source=linkedin&amp;utm_medium=social&amp;utm_campaign=social_post&amp;utm_content=gr-acct"><span>Read full story</span><span class="url">https://research.google/blog/bringing-foundational-models-to-the-front-lines-of-tb-screening/?utm_source=linkedin&amp;utm_medium=social&amp;utm_campaign=social_post&amp;utm_content=gr-acct</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="podcast" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Podcast · 1 week ago</p>
+            <h3>How Google Research picks its moonshots</h3>
+            <p>On the Google Research Podcast, host Sinéad Bovell talks with Michael Brenner and Lizzie Dorfman about how the lab chooses its moonshots. The conversation covers three core questions, patience in foundational science, and AI for Earth and health sciences.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>The episode is about how the lab chooses its moonshots: three core questions, patience in foundational science, and AI for Earth and health sciences.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all"><span>View on LinkedIn</span><span class="url">https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all</span></a>
+              <a class="link-btn" href="https://www.youtube.com/watch?v=dxq-3pimV-E&amp;feature=youtu.be"><span>Read full story</span><span class="url">https://www.youtube.com/watch?v=dxq-3pimV-E&amp;feature=youtu.be</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="emnlp" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 10h16v9H4z"/><path d="M8 10V7a4 4 0 018 0v3"/><path d="M12 14v2"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Events · EMNLP 2026</p>
+            <h3>EMNLP 2026 in Budapest</h3>
+            <p>Google Research is a Diamond Sponsor of EMNLP 2026 in Budapest, with booth D5. Verena Rieser gave the industry keynote on positive alignment for AI agents, and joined a panel on agent reliability, trust, and deployment.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>The keynote and the panel are the on-stage account of positive alignment, reliability, trust, and deployment for AI agents, with Google Research on the floor at booth D5.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all"><span>View on LinkedIn</span><span class="url">https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all</span></a>
+              <a class="link-btn" href="https://research.google/conferences-and-events/google-at-emnlp-2026/"><span>Read full story</span><span class="url">https://research.google/conferences-and-events/google-at-emnlp-2026/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="trend-watch" class="panel trend" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Trend watch</h2>
+          <p>Google Research is pushing on three fronts. The first is models that keep learning after deployment, which is the sleep phase: a way for an LLM to take in new facts and reason better while easing catastrophic forgetting and a static knowledge cutoff. The second is agents that are rigorously evaluated in high-stakes domains such as health. The Personal Health Agent is that case, a multi-agent design with an evaluation framework, published in Nature and open-sourced. The third is cheap on-device and edge inference, from the Coral NPU milestones, plus benchmarks broad enough to cover many languages.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>

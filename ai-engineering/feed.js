@@ -1,7 +1,7 @@
 (function () {
   var roots = Array.prototype.slice.call(document.querySelectorAll('[data-pillar-feed]'));
   if (!roots.length) return;
-  var TYPE_LABEL = { daily: 'Daily', weekly: 'Weekly deep-dive', frameworks: 'Frameworks', langchain: 'LangChain' };
+  var TYPE_LABEL = { daily: 'Daily', weekly: 'Weekly deep-dive', frameworks: 'Frameworks', langchain: 'LangChain', 'google-research': 'Google Research' };
 
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {

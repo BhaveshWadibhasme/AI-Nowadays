@@ -94,6 +94,7 @@
         <button type="button" class="chip" data-type="weekly">Weekly deep-dive</button>
         <button type="button" class="chip" data-type="frameworks">Frameworks</button>
         <button type="button" class="chip" data-type="langchain">LangChain</button>
+        <button type="button" class="chip" data-type="google-research">Google Research</button>
       </div>
       <div class="control-row" id="tags" role="group" aria-label="Tags">
         <span class="control-label">Tags</span>
@@ -116,7 +117,7 @@
       </div>
     </div>
     <noscript>
-      <p class="empty">JavaScript is off, so the archive cannot filter itself. The latest issues are still available: <a href="digests/2026-10-21-langchain.html">LangChain updates: 21 Oct 2026</a>, <a href="digests/2026-10-20-daily.html">Daily AI Digest: Tue, 20 Oct 2026</a>, <a href="digests/2026-10-20-langchain.html">LangChain updates: 20 Oct 2026</a>, <a href="digests/2026-10-19-harness2-usecase.html">Harness²: letting agents edit their own harness, a use-case guide</a>, <a href="digests/2026-10-19-daily.html">Daily AI Digest: Mon, 19 Oct 2026</a>, and <a href="digests/2026-10-19-langchain.html">LangChain updates: 19 Oct 2026</a>.</p>
+      <p class="empty">JavaScript is off, so the archive cannot filter itself. The latest issues are still available: <a href="digests/2026-10-28-google-research.html">Google Research: research roundup, 21 to 28 Oct 2026</a>, <a href="digests/2026-10-21-langchain.html">LangChain updates: 21 Oct 2026</a>, <a href="digests/2026-10-20-daily.html">Daily AI Digest: Tue, 20 Oct 2026</a>, <a href="digests/2026-10-20-langchain.html">LangChain updates: 20 Oct 2026</a>, <a href="digests/2026-10-19-harness2-usecase.html">Harness²: letting agents edit their own harness, a use-case guide</a>, <a href="digests/2026-10-19-daily.html">Daily AI Digest: Mon, 19 Oct 2026</a>, and <a href="digests/2026-10-19-langchain.html">LangChain updates: 19 Oct 2026</a>.</p>
     </noscript>
     <div id="featured"><p class="empty">Loading digests…</p></div>
     <div class="section-head" id="archive-head" hidden>
@@ -137,7 +138,7 @@
 </footer>
 <script>
 (function () {
-  var TYPE_LABEL = { daily: 'Daily', weekly: 'Weekly deep-dive', frameworks: 'Frameworks', langchain: 'LangChain' };
+  var TYPE_LABEL = { daily: 'Daily', weekly: 'Weekly deep-dive', frameworks: 'Frameworks', langchain: 'LangChain', 'google-research': 'Google Research' };
   var data = [];
   var activeTags = {};
 
@@ -204,7 +205,7 @@
     var list = document.getElementById('list');
     var archiveHead = document.getElementById('archive-head');
     if (!items.length) {
-      var emptyLabel = type === 'weekly' ? 'weekly deep-dives' : type === 'frameworks' ? 'framework roundups' : type === 'daily' ? 'daily digests' : type === 'langchain' ? 'LangChain updates' : 'digests';
+      var emptyLabel = type === 'weekly' ? 'weekly deep-dives' : type === 'frameworks' ? 'framework roundups' : type === 'daily' ? 'daily digests' : type === 'langchain' ? 'LangChain updates' : type === 'google-research' ? 'Google Research roundups' : 'digests';
       feat.innerHTML = '<div class="empty-card"><h2>No ' + emptyLabel + ' yet</h2><p>Nothing matches this view. Check back soon.</p></div>';
       list.innerHTML = '';
       archiveHead.hidden = true;
