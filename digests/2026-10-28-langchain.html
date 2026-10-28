@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LangChain updates: 28 Oct 2026 · AI Nowdays</title>
+<meta name="description" content="From LangChain&#x27;s LinkedIn: LangChain open-sources the Deep Agents harness behind its Slack design agent, Harrison Chase&#x27;s Interrupt London session on self-improving agents, today&#x27;s Agent Evals 101 workshop, and Dun &amp; Bradstreet&#x27;s agentic AI fireside chat.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-28-langchain.html">
+<meta property="og:title" content="LangChain updates: 28 Oct 2026">
+<meta property="og:description" content="From LangChain&#x27;s LinkedIn: LangChain open-sources the Deep Agents harness behind its Slack design agent, Harrison Chase&#x27;s Interrupt London session on self-improving agents, today&#x27;s Agent Evals 101 workshop, and Dun &amp; Bradstreet&#x27;s agentic AI fireside chat.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-28-langchain.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LangChain updates: 28 Oct 2026">
+<meta name="twitter:description" content="From LangChain&#x27;s LinkedIn: LangChain open-sources the Deep Agents harness behind its Slack design agent, Harrison Chase&#x27;s Interrupt London session on self-improving agents, today&#x27;s Agent Evals 101 workshop, and Dun &amp; Bradstreet&#x27;s agentic AI fireside chat.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a class="active" href="../">Digests</a>
+      <a href="../ai-engineering/">AI Engineering</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#langchain">← All LangChain updates</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+          <p class="kicker">On this page</p>
+          <a href="#overview">Overview</a>
+          <a href="#design-agent">Open-source design agent</a>
+          <a href="#taste">Teaching taste</a>
+          <a href="#harrison">Self-improving agents</a>
+          <a href="#evals">Agent Evals 101</a>
+          <a href="#dnb">Dun & Bradstreet</a>
+          <a href="#trend-watch">Trend watch</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-langchain">LangChain</span>
+          <time datetime="2026-10-28">28 Oct 2026</time>
+          <span>5 min read</span>
+        </div>
+        <h1>LangChain updates: 28 Oct 2026</h1>
+        <div class="tag-row">
+          <span class="tag">LangChain</span>
+          <span class="tag">Agents</span>
+          <span class="tag">Deep Agents</span>
+          <span class="tag">Open source</span>
+          <span class="tag">Evals</span>
+          <span class="tag">Case studies</span>
+          <span class="tag">Events</span>
+        </div>
+        <section id="overview" class="lede-card" data-section>
+          <p>From LangChain&#x27;s LinkedIn since yesterday&#x27;s page: LangChain has open-sourced the harness behind Content Studio, its Slack design agent that has shipped 3,000+ assets, and the team behind it is explaining how they taught it taste. Plus Harrison Chase&#x27;s Interrupt London session on agents that catch their own mistakes, a live Agent Evals 101 workshop today, and Dun &amp; Bradstreet on taking deep agents into the enterprise.</p>
+          <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/company/langchain/posts/?feedView=all"><span>LangChain on LinkedIn</span><span class="url">https://www.linkedin.com/company/langchain/posts/?feedView=all</span></a>
+          </div>
+        </section>
+
+        <section id="design-agent" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Open source · Managed Deep Agents</p>
+            <h3>LangChain open-sources its internal design agent</h3>
+            <p>LangChain built Content Studio, a design agent that lives in Slack. Every day, LangChain employees ask it to create videos, social graphics, recreated UI images, slide decks and more. Since launch it has delivered 3,000+ assets, including 80+ slide decks, and the median request costs about 50 cents. It runs on Managed Deep Agents, and the harness is now open source.</p><p>Amal Irgashev (GTM Agents at LangChain) describes what&#x27;s inside: a media harness built on Deep Agents where every Slack thread gets its own sandbox with a video and animation engine, headless Chromium, design tools and brand assets; a design wiki of principles and AI-slop anti-patterns; async subagents that build films and decks in parallel for hours on a shared file system; memory that learns from the team, plus 26 evals to test every change; and Paper and Hyperframes from HeyGen built in. It can be forked, customized and deployed to a company&#x27;s Slack with one command on Managed Deep Agents.</p><p>LangChain&#x27;s behind-the-scenes write-up covers why they deleted most of their rules when a better model shipped, the “AI slop” patterns they taught it to avoid, how async subagents build in the background while the thread stays open, and how it learns from every finished job.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A rare, real cost figure for a production agent (about 50 cents a request) and an open harness you can fork. It is a ready-made reference design for an internal content or reporting agent in your own department, complete with memory, evals and long-running subagents.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7520891107573039105/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7520891107573039105/</span></a>
+            <a class="link-btn" href="https://lnkd.in/gCq3CBAp"><span>Read full story</span><span class="url">https://lnkd.in/gCq3CBAp</span></a>
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7520898105890721792/"><span>View open-source launch post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7520898105890721792/</span></a>
+            <a class="link-btn" href="https://lnkd.in/g9g5t9ki"><span>Get the harness</span><span class="url">https://lnkd.in/g9g5t9ki</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="taste" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Webinar · GTM Engineering Live</p>
+            <h3>How LangChain taught its design agent taste</h3>
+            <p>LangChain reshared Shreya Talegaonkar (Brand Design at LangChain): “No sharp edges” is a note any designer understands, yet the agent&#x27;s first version of the graphic came back as a boxy line with hard edges. Brand tokens tell a model which colors and fonts to use, but not what a piece is for, so it fills every open decision with whatever it has seen most.</p><p>For months she and Amal Irgashev have been teaching it judgment: every note comes with the reasoning behind it, and each one lands in a skill or an automated check. Amal Irgashev, Daniel Lambert, Jan Franco Glanc Gomez and Shreya walk through it at GTM Engineering Live on Oct 28 at 11 AM PT (11:30 PM IST).</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>The pattern of turning every piece of feedback into a written rule or an automated check is how you make an agent meet a team’s quality bar, not just a style guide. It applies to any agent producing reports or slides for stakeholders.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7520600914693394433/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7520600914693394433/</span></a>
+            <a class="link-btn" href="https://lnkd.in/gpxaMW83"><span>Register</span><span class="url">https://lnkd.in/gpxaMW83</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="harrison" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5v-7z"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Talk · Interrupt London</p>
+            <h3>Harrison Chase on agents that improve over time</h3>
+            <p>At Interrupt London, Harrison Chase demonstrated how organizations can build agents that improve over time and how teams are doing this today. The full stage session shows what it takes to get to an agent that catches its own mistake and writes the eval and the fix.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Self-correcting agents are the next step after basic evals. Watching how the loop from mistake to eval to fix is wired up is useful groundwork for proposing agent improvement processes at work.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7520878397275893762/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7520878397275893762/</span></a>
+            <a class="link-btn" href="https://lnkd.in/gWRjFb2e"><span>Watch the session</span><span class="url">https://lnkd.in/gWRjFb2e</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="evals" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 16l4-8 4 5 3-3 5 6"/><path d="M4 19h16"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Workshop · Today, Oct 28</p>
+            <h3>Agent Evals 101: can you trust an LLM judge?</h3>
+            <p>LangChain Education Engineer Divya Santhanam runs a live virtual workshop on October 28. Topics: how to score a trajectory with the trajectory match evaluator, how to tune matching so evals fail on real behavior changes rather than argument formatting, when to use deterministic matching vs. LLM-as-judge, and how to wire evals into your loop so regressions show up before they ship.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Free, practical training on the measurement pillar. Knowing when an LLM judge can be trusted and when deterministic checks are better is a core skill for anyone signing off on agents in production.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7520832360842719233/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7520832360842719233/</span></a>
+            <a class="link-btn" href="https://lnkd.in/e7ZAnXV5"><span>RSVP: Agent Evals 101</span><span class="url">https://lnkd.in/e7ZAnXV5</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="dnb" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Case study · Interrupt London</p>
+            <h3>Dun &amp; Bradstreet: as AI starts acting, trust becomes infrastructure</h3>
+            <p>LangChain reshared Dun &amp; Bradstreet&#x27;s recap of a headline fireside chat at Interrupt &#x27;26 London, where D&amp;B&#x27;s Ilya Meyzin joined Harrison Chase. Harrison highlighted D&amp;B as one of the early enterprise adopters of agentic AI, and they discussed D&amp;B&#x27;s evolution from conversational agents to long-running deep agents that perform complex analytical tasks, and how its governance and observability evolved alongside growing customer adoption.</p><p>D&amp;B says its Risk Analytics AI agentic capabilities, delivered via Model Context Protocol, are now available in hyperscaler AI platforms, enterprise data platforms and coding assistants, reducing compliance and third-party risk workflows from days to seconds.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A named enterprise case study with a clear arc from chatbot to deep agents, plus governance and observability growing alongside it. Useful when making the case for agentic AI in a regulated, risk-heavy business.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7520691018271485953/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7520691018271485953/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="trend-watch" class="panel trend" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Trend watch</h2>
+          <p>Today&#x27;s posts are one story told from three angles: agents that improve themselves. LangChain&#x27;s design agent learns from every finished job and is checked by 26 evals, Harrison Chase shows an agent that catches its own mistake and writes the eval and the fix, and the Agent Evals 101 workshop teaches how to score whole trajectories so regressions surface before they ship. Dun &amp; Bradstreet adds the enterprise view: as agents start acting rather than answering, governance and observability become the infrastructure of trust. The common thread is that evals are moving from a test step to the engine of the agent&#x27;s improvement loop.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>

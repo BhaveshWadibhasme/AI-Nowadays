@@ -106,6 +106,23 @@
     ]
   },
   {
+    "date": "2026-10-28",
+    "type": "langchain",
+    "title": "LangChain updates: 28 Oct 2026",
+    "summary": "LangChain open-sources the Deep Agents harness behind its Slack design agent (3,000+ assets at about 50 cents a request), Harrison Chase on self-improving agents, today's Agent Evals 101 workshop, and Dun & Bradstreet's deep-agents journey.",
+    "url": "digests/2026-10-28-langchain.html",
+    "readingTime": "5 min read",
+    "tags": [
+      "LangChain",
+      "Agents",
+      "Deep Agents",
+      "Open source",
+      "Evals",
+      "Case studies",
+      "Events"
+    ]
+  },
+  {
     "date": "2026-10-27",
     "type": "daily",
     "title": "Daily AI Digest: Tue, 27 Oct 2026",
