@@ -87,6 +87,23 @@
     ]
   },
   {
+    "date": "2026-10-29",
+    "type": "langchain",
+    "title": "LangChain updates: 29 Oct 2026",
+    "summary": "A free Loop Engineering with Deep Agents course from DeepLearning.AI, evidence-grounded agent memory with OpenWiki and graphs (5x accuracy over grep, 58% lower cost per correct answer), 70%+ of Managed Deep Agent runs now on schedules, deslopifying the design agent, and LangChain at AWS re:Invent.",
+    "url": "digests/2026-10-29-langchain.html",
+    "readingTime": "5 min read",
+    "tags": [
+      "LangChain",
+      "Agents",
+      "Deep Agents",
+      "Agent memory",
+      "Scheduling",
+      "Courses",
+      "Events"
+    ]
+  },
+  {
     "date": "2026-10-28",
     "type": "google-research",
     "title": "Google Research: research roundup, 21 to 28 Oct 2026",

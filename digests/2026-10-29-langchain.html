@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LangChain updates: 29 Oct 2026 · AI Nowdays</title>
+<meta name="description" content="From LangChain&#x27;s LinkedIn: a free Loop Engineering with Deep Agents course from DeepLearning.AI, evidence-grounded agent memory with OpenWiki and graphs (5x accuracy over grep), 70%+ of Managed Deep Agent runs now on schedules, deslopifying the design agent, and LangChain at AWS re:Invent.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-29-langchain.html">
+<meta property="og:title" content="LangChain updates: 29 Oct 2026">
+<meta property="og:description" content="From LangChain&#x27;s LinkedIn: a free Loop Engineering with Deep Agents course from DeepLearning.AI, evidence-grounded agent memory with OpenWiki and graphs (5x accuracy over grep), 70%+ of Managed Deep Agent runs now on schedules, deslopifying the design agent, and LangChain at AWS re:Invent.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-29-langchain.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LangChain updates: 29 Oct 2026">
+<meta name="twitter:description" content="From LangChain&#x27;s LinkedIn: a free Loop Engineering with Deep Agents course from DeepLearning.AI, evidence-grounded agent memory with OpenWiki and graphs (5x accuracy over grep), 70%+ of Managed Deep Agent runs now on schedules, deslopifying the design agent, and LangChain at AWS re:Invent.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a class="active" href="../">Digests</a>
+      <a href="../ai-engineering/">AI Engineering</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#langchain">← All LangChain updates</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+          <p class="kicker">On this page</p>
+          <a href="#overview">Overview</a>
+          <a href="#loop">Loop Engineering course</a>
+          <a href="#memory">OpenWiki agent memory</a>
+          <a href="#schedules">Scheduled agents</a>
+          <a href="#deslop">Deslopifying design</a>
+          <a href="#explainer">LangChain in 2 minutes</a>
+          <a href="#reinvent">AWS re:Invent</a>
+          <a href="#trend-watch">Trend watch</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-langchain">LangChain</span>
+          <time datetime="2026-10-29">29 Oct 2026</time>
+          <span>5 min read</span>
+        </div>
+        <h1>LangChain updates: 29 Oct 2026</h1>
+        <div class="tag-row">
+          <span class="tag">LangChain</span>
+          <span class="tag">Agents</span>
+          <span class="tag">Deep Agents</span>
+          <span class="tag">Agent memory</span>
+          <span class="tag">Scheduling</span>
+          <span class="tag">Courses</span>
+          <span class="tag">Events</span>
+        </div>
+        <section id="overview" class="lede-card" data-section>
+          <p>From LangChain&#x27;s LinkedIn since yesterday&#x27;s page: DeepLearning.AI and LangChain launched a free Loop Engineering course on dependable Deep Agents, LangChain showed evidence-grounded agent memory with OpenWiki and graphs, and more than 70% of Managed Deep Agent runs are now triggered by schedules. Plus how the team deslopified its design agent, a two-minute LangChain explainer, and plans for AWS re:Invent.</p>
+          <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/company/langchain/posts/?feedView=all"><span>LangChain on LinkedIn</span><span class="url">https://www.linkedin.com/company/langchain/posts/?feedView=all</span></a>
+          </div>
+        </section>
+
+        <section id="loop" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12a8 8 0 0114-5.3M20 12a8 8 0 01-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Course · DeepLearning.AI</p>
+            <h3>Loop Engineering with LangChain Deep Agents: a free course</h3>
+            <p>DeepLearning.AI launched a free course, built with LangChain and taught by Sydney Runkle and Esmaeil Gargari, on building agents you can rely on for long, complex tasks like building software. Its premise: an agent that finishes a task hasn&#x27;t necessarily done it well.</p><p>It teaches four loops that make an agent dependable: an agent loop that calls tools and observes results to complete multi-step tasks; a verification loop that checks the agent&#x27;s work and sends feedback for a retry; an event-driven loop that triggers runs from external events; and a hill-climbing loop that improves the harness using past traces. Sydney Runkle (Product at LangChain) added that the course, made with Andrew Ng and Esmaeil Gargari, focuses on agents that handle complex tasks and improve over time with Deep Agents.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A free, structured path through the exact patterns behind production agents: verification, event triggers and trace-driven improvement. It&#x27;s a quick way to build credible hands-on depth for consulting and FDE-style work.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7521359722491351041/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7521359722491351041/</span></a>
+            <a class="link-btn" href="https://bit.ly/4kfDJxR"><span>Enroll for free</span><span class="url">https://bit.ly/4kfDJxR</span></a>
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7521268461474377728/"><span>View Sydney Runkle&#x27;s post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7521268461474377728/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="memory" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="8" r="2.5"/><circle cx="10" cy="18" r="2.5"/><path d="M8.3 7l7.4 1M7 8.2l2.3 7.5M16.5 10l-4.8 6.3"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Research · Agent memory</p>
+            <h3>Evidence-grounded agent memory with OpenWiki and graphs</h3>
+            <p>Agents working across policies, manuals, tickets and code have to work out which rules apply and what has changed, and without memory they often rebuild that understanding on every question. Eugene Liu on the LangChain team paired OpenWiki, LangChain&#x27;s open-source wiki compiler, with a lightweight evidence graph: the wiki synthesizes source material into reusable knowledge, while the graph gives agents explicit paths to supporting passages and related documents.</p><p>On complex, domain-specific questions requiring cross-source reasoning, they saw 5x higher accuracy with the compiled wiki compared to grep-based search alone, a further 27% improvement in accuracy when the evidence graph was added, and 2x citation consistency with 58% lower cost per correct answer using the graph compared to the wiki alone.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>This hits two pillars at once, giving the agent context and cutting the cost. For enterprise knowledge work over policies and manuals, traceable citations plus lower cost per correct answer is exactly the case stakeholders want to see.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7521270761760665601/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7521270761760665601/</span></a>
+            <a class="link-btn" href="https://lnkd.in/gBBuZU_N"><span>Read full story</span><span class="url">https://lnkd.in/gBBuZU_N</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="schedules" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Product · Managed Deep Agents</p>
+            <h3>70%+ of Managed Deep Agent runs are now driven by schedules</h3>
+            <p>Since dynamic scheduling for agents launched in September, more than 70% of all Managed Deep Agent runs on LangSmith are driven by schedules rather than human interaction.</p><p>Examples LangChain gives: reporting agents that update documents and post sales readouts or KPI updates to Slack or email on a schedule; monitoring agents that watch traces and alert on outages; assistants that track incoming emails, calendars or Slack messages and escalate what you missed; and self-improving agents that open PRs against themselves based on failure modes found in trace scanning. Nathan Drezner wrote a deep dive on how it works and how to use the Schedules SDK in a Managed Deep Agent.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Most agent work in production is now proactive, not chat. Scheduled reporting and monitoring agents are among the easiest, highest-value use cases to pitch inside a department.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7521244889922068480/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7521244889922068480/</span></a>
+            <a class="link-btn" href="https://lnkd.in/g5G6teJN"><span>Read full story</span><span class="url">https://lnkd.in/g5G6teJN</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="deslop" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Design agent · Content Studio</p>
+            <h3>Deslopifying the design agent</h3>
+            <p>LangChain reshared Amal Irgashev (GTM Agents at LangChain): a better prompt won&#x27;t fix AI slop. Without your context, a model fills every open decision with whatever pattern it&#x27;s seen most, so everything starts to look the same. What worked was sitting with their designers, writing down everything they notice, and turning that into context the design agent uses on every render, with daily iteration in Slack.</p><p>To show it, Shreya Talegaonkar&#x27;s idea was to give Content Studio the generic AI version of its own work and ask it to &quot;deslopify&quot; it; every edit in the video is a real rule it learned from the team. The post promoted the live session on Oct 28 at 11am PT (covered on yesterday&#x27;s page). LangChain also reshared its inside look at how it built Content Studio, the open-source design agent in Slack that makes on-brand videos, graphics and decks, and the harness that powers it.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Encoding expert judgment as reusable context, rather than longer prompts, is the practical fix for generic agent output in any domain, from slides to analysis reports.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7521260812506849280/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7521260812506849280/</span></a>
+            <a class="link-btn" href="https://lnkd.in/g7P2Kwsy"><span>Session link</span><span class="url">https://lnkd.in/g7P2Kwsy</span></a>
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7521193873151438848/"><span>View build write-up post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7521193873151438848/</span></a>
+            <a class="link-btn" href="https://lnkd.in/gCq3CBAp"><span>Read full story</span><span class="url">https://lnkd.in/gCq3CBAp</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="explainer" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5v-7z"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Explainer · Video</p>
+            <h3>LangChain in 2 minutes</h3>
+            <p>Ishaan Lal explains LangChain, the open source framework that became a company, in two minutes. On their own, LLMs are isolated from your data and your tools; LangChain is the open source framework that connects them to what they need to actually get things done. LangChain links its free learning resources for going deeper.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A crisp, shareable framing for colleagues new to agent frameworks, handy when introducing the stack to a department.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7521225009399488512/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7521225009399488512/</span></a>
+            <a class="link-btn" href="https://lnkd.in/eN8nbx8v"><span>Learn LangChain for free</span><span class="url">https://lnkd.in/eN8nbx8v</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="reinvent" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Event · AWS re:Invent 2026</p>
+            <h3>LangChain returns to AWS re:Invent</h3>
+            <p>LangChain will be at re:Invent next month at Booth #1740 for the full week. On December 1 it takes the stage for a lightning talk on eval best practices and a partner panel on taking agents to production with LangChain, plus panels, breakfasts and networking events through the week.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>The eval best-practices talk and the production-agents panel are worth watching for if recordings are published.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7521289803276099584/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:activity:7521289803276099584/</span></a>
+            <a class="link-btn" href="https://lnkd.in/ggtxK84U"><span>Read full story</span><span class="url">https://lnkd.in/ggtxK84U</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="trend-watch" class="panel trend" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Trend watch</h2>
+          <p>Today&#x27;s thread is agents that run without a human in the loop and still stay trustworthy. The Loop Engineering course formalizes verification, event-driven and trace-driven improvement loops; scheduled runs now make up more than 70% of Managed Deep Agent traffic; and OpenWiki&#x27;s evidence graph makes agent memory accountable, with citations back to source passages at lower cost per correct answer. The design-agent story adds the human side: quality comes from encoding expert judgment as context, not longer prompts. Expect evals and verification to stay front and centre, as LangChain&#x27;s re:Invent talk on eval best practices suggests.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>
