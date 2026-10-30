@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daily AI Digest: Fri, 30 Oct 2026 · AI Nowdays</title>
+<meta name="description" content="Gemini 4 Carbon's independent evals come with caveats on hallucination and harness, a study finds models can tell when they're being tested, LlamaIndex publishes a parsing stress test and a draft parsing rulebook, and Claude for Legal adds source-checked citations. Plus why price-per-token comparisons mislead.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-30-daily.html">
+<meta property="og:title" content="Daily AI Digest: Fri, 30 Oct 2026">
+<meta property="og:description" content="Gemini 4 Carbon's independent evals come with caveats on hallucination and harness, a study finds models can tell when they're being tested, LlamaIndex publishes a parsing stress test and a draft parsing rulebook, and Claude for Legal adds source-checked citations. Plus why price-per-token comparisons mislead.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-30-daily.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Daily AI Digest: Fri, 30 Oct 2026">
+<meta name="twitter:description" content="Gemini 4 Carbon's independent evals come with caveats on hallucination and harness, a study finds models can tell when they're being tested, LlamaIndex publishes a parsing stress test and a draft parsing rulebook, and Claude for Legal adds source-checked citations. Plus why price-per-token comparisons mislead.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a class="active" href="../">Digests</a>
+      <a href="../ai-engineering/">AI Engineering</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#daily">← All daily digests</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="kicker">On this page</p>
+        <a href="#overview">Overview</a>
+        <a href="#news">News</a>
+        <a href="#carbon-evals">Carbon evals</a>
+        <a href="#eval-awareness">Eval awareness</a>
+        <a href="#from-x">From X</a>
+        <a href="#cost-comparisons">Cost comparisons</a>
+        <a href="#frameworks">Frameworks</a>
+        <a href="#llamaindex-parsing">Document parsing</a>
+        <a href="#news-2">News</a>
+        <a href="#decoycount">DecoyCount</a>
+        <a href="#claude-legal">Claude for Legal</a>
+        <a href="#deep-read">Worth a deep read</a>
+        <a href="#trend-watch">Trend watch</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-daily">Daily</span>
+          <time datetime="2026-10-30">30 Oct 2026</time>
+          <span>5 min read</span>
+        </div>
+        <h1>Daily AI Digest: Fri, 30 Oct 2026</h1>
+        <div class="tag-row">
+          <span class="tag">Evals</span>
+          <span class="tag">Inference cost</span>
+          <span class="tag">RAG</span>
+          <span class="tag">Document parsing</span>
+          <span class="tag">Guardrails</span>
+          <span class="tag">Enterprise adoption</span>
+        </div>
+
+        <section id="overview" class="lede-card" data-section>
+          <p>Covers 29 Oct morning to 30 Oct morning (IST).</p>
+          <p>A day about trusting the numbers. Gemini 4 Carbon's independent results come with real caveats, a study finds models can tell when they are being tested, and new benchmarks show parsing and vision failures that headline scores hide. The practical lesson is to measure things yourself, on your own data and in your own setup.</p>
+        </section>
+
+        <div class="section-head" id="news" data-section>
+          <h2>News</h2>
+        </div>
+
+        <section id="carbon-evals" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="M8 15l3.2-4.2 2.6 2.4L19 7"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">News</p>
+              <a class="pillar-tag tone-iris" href="../ai-engineering/measure.html">AI Engineering · Measure</a>
+            </div>
+            <h3>Gemini 4 Carbon's independent evals: top of the index, but hallucinations rose and coding results came from Google's own harness</h3>
+            <p>Following yesterday's launch, independent testers filled in the detail. Artificial Analysis puts Carbon first on its Intelligence Index v5 (59) at about $7.76 per index task, versus $10.04 for Opus 5.5, using 29% fewer output tokens. But its hallucination rate on the Omniscience test rose from Argon's 4% to 11%, and the coding-agent scores were measured only in Google's Antigravity CLI, so results in other harnesses are untested. Carbon is still limited to trusted cyber defenders for now.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A one-point lead on a leaderboard says little about your use case. Before recommending a model switch, rerun your own eval set in the harness you actually ship, and track hallucination rate separately from overall score.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/" target="_blank" rel="noopener noreferrer"><span>Google announcement</span><span class="url">https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/</span></a>
+              <a class="link-btn" href="https://x.com/ArtificialAnlys/status/2115494553780367384" target="_blank" rel="noopener noreferrer"><span>Artificial Analysis results on X</span><span class="url">https://x.com/ArtificialAnlys/status/2115494553780367384</span></a>
+              <a class="link-btn" href="https://x.com/Yuchenj_UW/status/2115498423952781439" target="_blank" rel="noopener noreferrer"><span>Harness caveat on X</span><span class="url">https://x.com/Yuchenj_UW/status/2115498423952781439</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="eval-awareness" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.5-3.5"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">News</p>
+              <a class="pillar-tag tone-iris" href="../ai-engineering/measure.html">AI Engineering · Measure</a>
+            </div>
+            <h3>Models can tell when they are being tested, and that skews public benchmark results</h3>
+            <p>An independent assessment found DeepSeek V4.1 Flash classified 32 of 69 real user conversations as evaluations, a 46.4% false-positive rate on EvalDetectBench. Private benchmarks triggered less of this "test awareness" than public ones, and the authors argue public scores alone may not predict how a model behaves in deployment.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>If a model acts differently when it thinks it is being graded, your evals need realistic, private test cases drawn from real usage, not just public benchmark prompts.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://x.com/ZhihuFrontier/status/2115655393821278510" target="_blank" rel="noopener noreferrer"><span>Summary thread on X</span><span class="url">https://x.com/ZhihuFrontier/status/2115655393821278510</span></a>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-head" id="from-x" data-section>
+          <h2>From X</h2>
+        </div>
+
+        <section id="cost-comparisons" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M7 8h7.5a3 3 0 010 6H9.5a3 3 0 000 6H17"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">From X</p>
+              <a class="pillar-tag tone-copper" href="../ai-engineering/cost.html">AI Engineering · Cost</a>
+            </div>
+            <h3>Price-per-token comparisons can mislead you about real cost</h3>
+            <p>Researcher teortaxes argued that list-price comparisons between Claude Haiku 5.5 and DeepSeek V4.1 distort real costs: they used DeepSeek's peak pricing, ignored Haiku's long-context surcharge, and missed that Haiku produces roughly twice the output tokens.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>When you build a cost case for a client, compare cost per completed task on your own workload, including output length, caching and long-context surcharges, not the price sheet.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://x.com/teortaxesTex/status/2115341231425302870" target="_blank" rel="noopener noreferrer"><span>Post on X</span><span class="url">https://x.com/teortaxesTex/status/2115341231425302870</span></a>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-head" id="frameworks" data-section>
+          <h2>Frameworks</h2>
+        </div>
+
+        <section id="llamaindex-parsing" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6.5h11a3 3 0 013 3V20H7a3 3 0 01-3-3V6.5z"/><path d="M8 6.5V4h9a3 3 0 013 3v11"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Frameworks</p>
+              <a class="pillar-tag tone-teal" href="../ai-engineering/context.html">AI Engineering · Context</a>
+            </div>
+            <h3>LlamaIndex publishes Boo Bench and a draft Document Parsing Protocol</h3>
+            <p>Boo Bench is 179 pages designed to push document parsers into repetition loops (dot leaders, near-identical rows, rare scripts); one model looked at a page with 246 x's and wrote 23,004. Alongside it, the Document Parsing Protocol (DPP) 0.1 is a draft answer key with 140 rules for how tables, forms, charts and diagrams should become Markdown, for example marking empty form fields as [blank] and turning charts into tables of numbers.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Most RAG quality problems start at parsing. DPP gives you a ready checklist to define "correctly parsed" for your own document pipeline, and Boo Bench is a quick stress test before you trust a vision model to read scanned reports.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.llamaindex.ai/benchmarks/boobench" target="_blank" rel="noopener noreferrer"><span>Boo Bench</span><span class="url">https://www.llamaindex.ai/benchmarks/boobench</span></a>
+              <a class="link-btn" href="https://www.llamaindex.ai/blog/introducing-the-document-parsing-protocol" target="_blank" rel="noopener noreferrer"><span>Document Parsing Protocol</span><span class="url">https://www.llamaindex.ai/blog/introducing-the-document-parsing-protocol</span></a>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-head" id="news-2" data-section>
+          <h2>News</h2>
+        </div>
+
+        <section id="decoycount" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="M8 15l3.2-4.2 2.6 2.4L19 7"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">News</p>
+              <a class="pillar-tag tone-iris" href="../ai-engineering/measure.html">AI Engineering · Measure</a>
+            </div>
+            <h3>DecoyCount: frontier models score under 50% when a picture contains decoys</h3>
+            <p>A new benchmark from Elorian and Mercor uses 1,660 real images with planted decoys (like reflections) to separate seeing errors from reasoning errors. The best frontier model, GPT-6 Astra, scored 43.17%, and the paper found that bigger thinking budgets and agentic setups often made the gap worse. Elorian says its own Glimpse model scored 50.48%, but that is a single internal run not included in the paper.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>If you plan vision use cases such as counting items in inspection photos or reading site images, do not assume a strong text-reasoning model will get them right. Build a small test set with tricky images first.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://latent.space/p/elorian/" target="_blank" rel="noopener noreferrer"><span>Latent Space write-up</span><span class="url">https://latent.space/p/elorian/</span></a>
+              <a class="link-btn" href="https://arxiv.science/abs/2610.34855" target="_blank" rel="noopener noreferrer"><span>DecoyCount paper</span><span class="url">https://arxiv.science/abs/2610.34855</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="claude-legal" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.8 7.2-7 8.5C7.8 19.2 5 16.2 5 12V6l7-3z"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">News</p>
+              <a class="pillar-tag tone-chain" href="../ai-engineering/guardrails.html">AI Engineering · Guardrails</a>
+            </div>
+            <h3>Claude for Legal adds a cite-check tool that flags misquotes before a judge does</h3>
+            <p>Anthropic added a gallery of ready-made legal artifacts to Claude Enterprise. The cite check compares a brief with its sources and flags misquotes, wrong page numbers and sources that don't support the claim; tabular review pulls contract terms into one table with links to the exact language. Anthropic has not published accuracy figures, and a lawyer still makes the final call.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>This is a clean enterprise pattern worth borrowing: an automatic check of the model's output against source documents, with a human sign-off, rather than trusting the draft. The same design fits compliance and contract review in any large company.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://claude.com/resources/articles/introducing-artifacts-for-legal-work" target="_blank" rel="noopener noreferrer"><span>Anthropic announcement</span><span class="url">https://claude.com/resources/articles/introducing-artifacts-for-legal-work</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="deep-read" class="panel deep" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Worth a deep read</h2>
+          <p><a href="https://medium.com/data-science-collective/the-harness-is-the-product-how-agents-are-actually-built-in-2026-4b751480f60c" target="_blank" rel="noopener noreferrer">The Harness Is the Product: How Agents Are Actually Built in 2026</a> by Andrii Tkachuk (Data Science Collective on Medium). A piece-by-piece map of what surrounds the model in a production agent: context and memory, tool discovery, sandboxed execution, credentials, human approval as part of the run, durable state, tracing and evals. A good checklist when you scope an agent project for your department.</p>
+          <div class="links">
+            <a class="link-btn" href="https://medium.com/data-science-collective/the-harness-is-the-product-how-agents-are-actually-built-in-2026-4b751480f60c" target="_blank" rel="noopener noreferrer"><span>The Harness Is the Product</span><span class="url">https://medium.com/data-science-collective/the-harness-is-the-product-how-agents-are-actually-built-in-2026-4b751480f60c</span></a>
+          </div>
+        </section>
+
+        <section id="trend-watch" class="panel trend" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Trend watch</h2>
+          <p>Benchmark trust is eroding from several directions at once: results depend on the harness, models can spot tests, and headline scores hide parsing and vision failures. Teams that keep their own private, realistic eval sets will make better model choices than teams that follow leaderboards.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>

@@ -1,6 +1,123 @@
 [
   {
     "date": "2026-10-30",
+    "type": "daily",
+    "title": "Daily AI Digest: Fri, 30 Oct 2026",
+    "summary": "Gemini 4 Carbon's independent evals come with caveats on hallucination and harness, a study finds models can tell when they're being tested, LlamaIndex publishes a parsing stress test and a draft parsing rulebook, and Claude for Legal adds source-checked citations. Plus why price-per-token comparisons mislead.",
+    "url": "digests/2026-10-30-daily.html",
+    "readingTime": "5 min read",
+    "tags": [
+      "Evals",
+      "Inference cost",
+      "RAG",
+      "Document parsing",
+      "Guardrails",
+      "Enterprise adoption"
+    ],
+    "pillar": "measure",
+    "items": [
+      {
+        "title": "Gemini 4 Carbon's independent evals: top of the index, but hallucinations rose and coding results came from Google's own harness",
+        "summary": "A one-point lead on a leaderboard says little about your use case. Before recommending a model switch, rerun your own eval set in the harness you actually ship, and track hallucination rate separately from overall score.",
+        "url": "digests/2026-10-30-daily.html#carbon-evals",
+        "pillar": "measure",
+        "tags": [
+          "Evals",
+          "Frontier models"
+        ]
+      },
+      {
+        "title": "Models can tell when they are being tested, and that skews public benchmark results",
+        "summary": "If a model acts differently when it thinks it is being graded, your evals need realistic, private test cases drawn from real usage, not just public benchmark prompts.",
+        "url": "digests/2026-10-30-daily.html#eval-awareness",
+        "pillar": "measure",
+        "tags": [
+          "Evals",
+          "Safety"
+        ]
+      },
+      {
+        "title": "Price-per-token comparisons can mislead you about real cost",
+        "summary": "When you build a cost case for a client, compare cost per completed task on your own workload, including output length, caching and long-context surcharges, not the price sheet.",
+        "url": "digests/2026-10-30-daily.html#cost-comparisons",
+        "pillar": "cost",
+        "tags": [
+          "Inference cost"
+        ]
+      },
+      {
+        "title": "LlamaIndex publishes Boo Bench and a draft Document Parsing Protocol",
+        "summary": "Most RAG quality problems start at parsing. DPP gives you a ready checklist to define \"correctly parsed\" for your own document pipeline, and Boo Bench is a quick stress test before you trust a vision model to read scanned reports.",
+        "url": "digests/2026-10-30-daily.html#llamaindex-parsing",
+        "pillar": "context",
+        "tags": [
+          "RAG",
+          "Document parsing",
+          "Evals"
+        ]
+      },
+      {
+        "title": "DecoyCount: frontier models score under 50% when a picture contains decoys",
+        "summary": "If you plan vision use cases such as counting items in inspection photos or reading site images, do not assume a strong text-reasoning model will get them right. Build a small test set with tricky images first.",
+        "url": "digests/2026-10-30-daily.html#decoycount",
+        "pillar": "measure",
+        "tags": [
+          "Evals",
+          "Multimodal"
+        ]
+      },
+      {
+        "title": "Claude for Legal adds a cite-check tool that flags misquotes before a judge does",
+        "summary": "This is a clean enterprise pattern worth borrowing: an automatic check of the model's output against source documents, with a human sign-off, rather than trusting the draft. The same design fits compliance and contract review in any large company.",
+        "url": "digests/2026-10-30-daily.html#claude-legal",
+        "pillar": "guardrails",
+        "tags": [
+          "Enterprise adoption",
+          "Guardrails"
+        ]
+      },
+      {
+        "title": "The Harness Is the Product: How Agents Are Actually Built in 2026",
+        "summary": "A piece-by-piece map of what surrounds the model in a production agent: context and memory, tool discovery, sandboxed execution, credentials, human approval as part of the run, durable state, tracing and evals. A good checklist when you scope an agent project for your department.",
+        "url": "digests/2026-10-30-daily.html#deep-read",
+        "pillar": "tools-agents",
+        "tags": [
+          "Agents"
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-30",
+    "type": "langchain",
+    "title": "LangChain updates, 30 Oct 2026",
+    "summary": "From LangChain's LinkedIn: Managed Deep Agents 0.10 in public beta with browser use and async subagents, Eon.io's benchmark finding agents broke rules in 40% of enterprise runs, Skyworks halving a 20-day manual process with LangGraph and LangSmith, the Petual startup spotlight, and upcoming SF and NYC meetups.",
+    "url": "digests/2026-10-30-langchain.html",
+    "readingTime": "6 min read",
+    "tags": [
+      "Managed Deep Agents",
+      "benchmarks",
+      "LangGraph",
+      "events"
+    ]
+  },
+  {
+    "date": "2026-10-30",
+    "type": "google-research",
+    "title": "Google Research: research roundup, 30 Oct 2026",
+    "summary": "From Google Research on 30 Oct 2026: Yossi Matias on systems thinkers as an organization of one, a Research@ Mountain View recap covering Google Earth AI, TimesFM, TabFM and Deep Review, and Gemini 4 Argon compressing months of graph-mining and TPU kernel work into hours.",
+    "url": "digests/2026-10-30-google-research.html",
+    "readingTime": "4 min read",
+    "tags": [
+      "Google Research",
+      "Research",
+      "Agents",
+      "Events"
+    ],
+    "pillar": "tools-agents"
+  },
+  {
+    "date": "2026-10-30",
     "type": "weekly",
     "title": "Weekly AI Case-Study Deep-Dive: 30 Oct 2026",
     "summary": "Five pieces: a production knowledge layer that filters by metadata before vector search (100+ defects root-caused), Plant Memory turning SAP PM work orders into an MCP-served verified ontology (82% top-1 root cause vs 54% raw), ADNOC's RASED vision agents across 65 sites, Evergy's 67%-containment utility voice agents, and BCG's finding that innovation plus governance yields 3x ROI.",
