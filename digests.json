@@ -1,5 +1,61 @@
 [
   {
+    "date": "2026-10-30",
+    "type": "weekly",
+    "title": "Weekly AI Case-Study Deep-Dive: 30 Oct 2026",
+    "summary": "Five pieces: a production knowledge layer that filters by metadata before vector search (100+ defects root-caused), Plant Memory turning SAP PM work orders into an MCP-served verified ontology (82% top-1 root cause vs 54% raw), ADNOC's RASED vision agents across 65 sites, Evergy's 67%-containment utility voice agents, and BCG's finding that innovation plus governance yields 3x ROI.",
+    "url": "digests/2026-10-30-weekly.html",
+    "readingTime": "9 min read",
+    "tags": [
+      "rag",
+      "knowledge-graph",
+      "mcp",
+      "maintenance",
+      "oil-and-gas",
+      "computer-vision",
+      "utilities",
+      "governance",
+      "bcg"
+    ],
+    "items": [
+      {
+        "title": "Reimagining Enterprise RAG for Multi-Agent Systems: A Knowledge Layer That Organizes Before It Retrieves (arXiv, 23 Oct 2026)",
+        "summary": "A metadata-first knowledge layer resolves a query to artifact IDs before vector search, so a near-identical rule from the wrong service is never a candidate. In production it supported root-cause analysis for more than 100 defects and attributed 35 release-regression failures to specific rules and services.",
+        "url": "digests/2026-10-30-weekly.html#enterprise-rag",
+        "pillar": "context",
+        "tags": ["rag", "knowledge-graph"]
+      },
+      {
+        "title": "Plant Memory: A Verified Maintenance Ontology for Agent-Accessible Failure Knowledge from SAP PM Work Orders (arXiv, 13 Oct 2026)",
+        "summary": "On 28 diagnostic questions, ranked root causes were correct at top-1 in 82.1% of cases versus 53.6% for the raw SAP root-cause column. Every fact carries confidence, source evidence and a verification state, and the graph is served to agents over MCP.",
+        "url": "digests/2026-10-30-weekly.html#plant-memory",
+        "pillar": "tools-agents",
+        "tags": ["mcp", "maintenance", "knowledge-graph"]
+      },
+      {
+        "title": "ADNOC's RASED: Safety Vision Agents in Production Across 65 Sites (Fogsphere, with NVIDIA Cosmos and Metropolis)",
+        "summary": "RASED runs 69 live safety use cases across more than a thousand cameras, 65 sites and nine ADNOC Group companies, with edge inference and video that stays on site. This is a vendor announcement; no accuracy or incident-reduction figures were published.",
+        "url": "digests/2026-10-30-weekly.html#adnoc-rased",
+        "pillar": "guardrails",
+        "tags": ["computer-vision", "oil-and-gas"]
+      },
+      {
+        "title": "How Evergy Reduced Calls With AI (SoundHound AI customer story, 27 Oct 2026)",
+        "summary": "Voice AI agents at Evergy reached a 67% containment rate, handled more than 4 million calls a year, and deflected about 12.7 million calls from the contact centre since 2020. It is a six-year programme with vendor-published figures.",
+        "url": "digests/2026-10-30-weekly.html#evergy-voice",
+        "pillar": "tools-agents",
+        "tags": ["utilities"]
+      },
+      {
+        "title": "BCG: How to Create AI Value by Balancing Innovation and Risk (26 Oct 2026)",
+        "summary": "In BCG's 2026 Applied AI Index survey of 1,330 leaders, scaling innovation alone gives 2x the ROI of low-innovation companies; scaling it alongside governance gives 3x. The finding is survey correlation, not causation.",
+        "url": "digests/2026-10-30-weekly.html#bcg-governance",
+        "pillar": "measure",
+        "tags": ["governance", "bcg"]
+      }
+    ]
+  },
+  {
     "date": "2026-10-29",
     "type": "daily",
     "title": "Daily AI Digest: Thu, 29 Oct 2026",

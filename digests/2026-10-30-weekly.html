@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weekly AI Case-Study Deep-Dive: 30 Oct 2026 · AI Nowdays</title>
+<meta name="description" content="Five pieces: a production knowledge layer that filters by metadata before vector search (100+ defects root-caused), Plant Memory turning SAP PM work orders into an MCP-served verified ontology (82% top-1 root cause vs 54% raw), ADNOC's RASED vision agents across 65 sites, Evergy's 67%-containment utility voice agents, and BCG's finding that innovation plus governance yields 3x ROI.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-30-weekly.html">
+<meta property="og:title" content="Weekly AI Case-Study Deep-Dive: 30 Oct 2026">
+<meta property="og:description" content="Five pieces: a production knowledge layer that filters by metadata before vector search (100+ defects root-caused), Plant Memory turning SAP PM work orders into an MCP-served verified ontology (82% top-1 root cause vs 54% raw), ADNOC's RASED vision agents across 65 sites, Evergy's 67%-containment utility voice agents, and BCG's finding that innovation plus governance yields 3x ROI.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-10-30-weekly.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Weekly AI Case-Study Deep-Dive: 30 Oct 2026">
+<meta name="twitter:description" content="Five pieces: a production knowledge layer that filters by metadata before vector search (100+ defects root-caused), Plant Memory turning SAP PM work orders into an MCP-served verified ontology (82% top-1 root cause vs 54% raw), ADNOC's RASED vision agents across 65 sites, Evergy's 67%-containment utility voice agents, and BCG's finding that innovation plus governance yields 3x ROI.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+.lede-card p.kicker,
+.facet p.kicker { color: var(--teal); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.lede-card .deck { margin-top: 10px; color: var(--muted); font-size: 1rem; }
+.stat-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 2px; }
+.stat {
+  flex: 1 1 108px;
+  min-width: 108px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--card-solid);
+}
+.stat b {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.28rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+.stat span { display: block; margin-top: 3px; color: var(--muted); font-size: 0.75rem; line-height: 1.3; }
+.facets { display: grid; gap: 10px; margin-top: 14px; }
+.facet {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--card-solid) 88%, transparent);
+}
+.facet .kicker { margin: 0 0 6px; }
+.facet p { margin: 0; color: var(--ink); }
+@media (min-width: 720px) {
+  .facets.pair { grid-template-columns: 1fr 1fr; }
+}
+</style>
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a class="active" href="../">Digests</a>
+      <a href="../ai-engineering/">AI Engineering</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#weekly">← All weekly deep-dives</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="kicker">On this page</p>
+        <a href="#theme">Theme</a>
+        <a href="#enterprise-rag">Enterprise RAG</a>
+        <a href="#plant-memory">Plant Memory</a>
+        <a href="#adnoc-rased">ADNOC RASED</a>
+        <a href="#evergy-voice">Evergy voice</a>
+        <a href="#bcg-governance">BCG governance</a>
+        <a href="#playbook">Playbook</a>
+        <a href="#framework-trend">Framework trend</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-weekly">Weekly deep-dive</span>
+          <time datetime="2026-10-30">30 Oct 2026</time>
+          <span>9 min read</span>
+        </div>
+        <h1>Weekly AI Case-Study Deep-Dive: 30 Oct 2026</h1>
+        <div class="tag-row">
+          <span class="tag">rag</span>
+          <span class="tag">knowledge-graph</span>
+          <span class="tag">mcp</span>
+          <span class="tag">maintenance</span>
+          <span class="tag">oil-and-gas</span>
+          <span class="tag">computer-vision</span>
+          <span class="tag">utilities</span>
+          <span class="tag">governance</span>
+          <span class="tag">bcg</span>
+        </div>
+
+        <section id="theme" class="lede-card" data-section>
+          <p class="kicker">This week</p>
+          <p>Agents only get trusted once their knowledge is organized and verified. This week's best pieces are about structuring what agents know (metadata-first RAG, verified maintenance ontologies), edge vision agents in oil and gas safety, a utility running voice agents at scale, and BCG's evidence that governance multiplies AI ROI.</p>
+          <p class="deck">Five pieces: a production knowledge layer that filters by metadata before vector search (100+ defects root-caused), Plant Memory turning SAP PM work orders into an MCP-served verified ontology (82% top-1 root cause vs 54% raw), ADNOC's RASED vision agents across 65 sites, Evergy's 67%-containment utility voice agents, and BCG's finding that innovation plus governance yields 3x ROI.</p>
+        </section>
+
+        <section id="enterprise-rag" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l9 4.5-9 4.5L3 7.5 12 3z"/><path d="M3 12l9 4.5 9-4.5"/><path d="M3 16.5L12 21l9-4.5"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 01 · arXiv, 23 Oct 2026</p>
+              <a class="pillar-tag tone-teal" href="../ai-engineering/context.html">AI Engineering · Context</a>
+            </div>
+            <h3>Reimagining Enterprise RAG for Multi-Agent Systems: A Knowledge Layer That Organizes Before It Retrieves (arXiv, 23 Oct 2026)</h3>
+            <div class="stat-row">
+              <div class="stat"><b>100+</b><span>production defects root-caused</span></div>
+              <div class="stat"><b>35</b><span>release-regression failures attributed</span></div>
+              <div class="stat"><b>18</b><span>services</span></div>
+              <div class="stat"><b>241</b><span>repositories</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>SDLC agents at a large enterprise needed the actual business rules of 18 services (recovered from 241 repositories into thousands of artifacts). The same terms (offer, eligibility, activation) mean different things in different services, so flat vector search confidently returned a near-identical rule from the wrong service, with no signal of error.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>Instead of an expensive content-level knowledge graph, put the ontology at the artifact level. Each artifact keeps its provenance (producer, component, service, domain, type). A self-describing catalog, a sparse metadata registry, and a navigation hypergraph over artifacts resolve a query to a set of artifact IDs first; vector search is then constrained to that set, so the wrong-service rule is never a candidate at all.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>Built in under a week; new services join by convention. In production it serves SDLC agents plus developers, QA engineers and analysts. It supported root-cause analysis for more than 100 production defects (developer-verified) and attributed 35 release-regression failures to specific rules and services.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>Similarity is not correctness: the most dangerous RAG failure is the high-confidence wrong-context hit. Cheap structural filtering beats building a full knowledge graph whose cost exceeds the engagement and which goes stale every release.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch for bp</strong>
+              <p>Any internal RAG over documents from multiple assets, sites or business units has this exact failure (same procedure name, different site). Propose a metadata-first retrieval layer (asset, site, document type, revision) that scopes the candidate set before embeddings, and show a before/after on a set of &ldquo;wrong-site&rdquo; trick questions.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://arxiv.org/abs/2610.32851" target="_blank" rel="noopener noreferrer"><span>arXiv paper</span><span class="url">https://arxiv.org/abs/2610.32851</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="plant-memory" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="7" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="12" cy="17" r="2.2"/><path d="M8 8.2l3 6.2M16 8.2l-3 6.2"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 02 · arXiv, 13 Oct 2026</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>Plant Memory: A Verified Maintenance Ontology for Agent-Accessible Failure Knowledge from SAP PM Work Orders (arXiv, 13 Oct 2026)</h3>
+            <div class="stat-row">
+              <div class="stat"><b>82.1%</b><span>top-1 root cause</span></div>
+              <div class="stat"><b>53.6%</b><span>raw SAP root-cause column</span></div>
+              <div class="stat"><b>96.2%</b><span>component accuracy</span></div>
+              <div class="stat"><b>100%</b><span>root-cause precision at 62% coverage</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>Maintenance work orders are the biggest written record of how equipment fails, but the text is abbreviated and misspelt, asset identity is buried in free text, and symptom, root cause and action fields are usually empty. Diagnostic knowledge leaves with senior technicians.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>Technical language processing over SAP Plant Maintenance exports builds an ISO 14224-aligned ontology where every fact carries a confidence score, its source evidence and a verification state. Extraction is rule-first; an LLM acts as a second reader whose disagreements raise review priority rather than overwrite facts. Technicians verify through a review queue, answer targeted knowledge-gap questions, and approve ontology drift. The graph is served to people via a web app and to AI agents via an MCP (Model Context Protocol) server, with every answer citing work orders.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>On a synthetic 12-month export of 400 work orders: 96.2% component accuracy, 88.9% failure-mode accuracy, 100% root-cause precision at 62% coverage. On 28 diagnostic questions, ranked root causes were correct at top-1 in 82.1% of cases vs 53.6% for the raw SAP root-cause column. The LLM as an independent extractor was less accurate than the rules on every field.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>The data is synthetic and the authors say the numbers are optimistic; a real-plant evaluation is still needed. Keep the human verification loop and provenance; use the LLM as a checker, not the source of truth.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch for bp</strong>
+              <p>bp runs SAP-style maintenance at refineries and production sites. Pitch a small pilot on one equipment class (pumps or compressors): extract failure modes and root causes from historical work orders, have reliability engineers verify in a queue, and expose it to a copilot over MCP. The metric is top-1 root-cause accuracy vs the raw fields.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://arxiv.org/abs/2610.19131" target="_blank" rel="noopener noreferrer"><span>arXiv paper</span><span class="url">https://arxiv.org/abs/2610.19131</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="adnoc-rased" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.8 7.2-7 8.5C7.8 19.2 5 16.2 5 12V6l7-3z"/><path d="M12 8v5M12 16h.01"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 03 · Fogsphere, with NVIDIA Cosmos and Metropolis</p>
+              <a class="pillar-tag tone-chain" href="../ai-engineering/guardrails.html">AI Engineering · Guardrails</a>
+            </div>
+            <h3>ADNOC's RASED: Safety Vision Agents in Production Across 65 Sites (Fogsphere, with NVIDIA Cosmos and Metropolis)</h3>
+            <div class="stat-row">
+              <div class="stat"><b>69</b><span>live safety use cases</span></div>
+              <div class="stat"><b>1,000+</b><span>cameras</span></div>
+              <div class="stat"><b>65</b><span>sites</span></div>
+              <div class="stat"><b>9</b><span>ADNOC Group companies</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>Spotting unsafe acts and conditions across drilling rigs, upstream, gas processing, refining, petrochemicals and fuel stations, where the most important incidents are rare and hard (or unsafe) to collect footage for.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>Fogsphere Vision Agent combines specialized computer vision with NVIDIA Cosmos vision-language reasoning and the Metropolis Video Search and Summarization blueprint. Inference runs at the edge on Dell infrastructure; only event intelligence goes to the central platform, and full video stays on site. MistIQ uses NVIDIA Cosmos to generate synthetic video for low-data and no-data scenarios, closing a deploy, find hard cases, synthesize, retrain, redeploy loop.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>In production in ADNOC's RASED (Real-time AI Safety Event Detection) programme: 69 live safety use cases, more than a thousand cameras, 65 sites, nine ADNOC Group companies. This is a vendor announcement; no accuracy or incident-reduction figures were published.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>Data sovereignty by design (video never leaves the site) is what makes multi-site rollout acceptable. Synthetic data fills rare-event gaps but needs careful evaluation against real footage. Treat vendor-reported scale as scale, not as proof of safety outcomes.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch for bp</strong>
+              <p>HSE is an easy executive sponsor. Propose a vision-language pilot on existing CCTV at one site for two or three well-defined hazards (PPE, exclusion zones, hot work), edge inference, events-only to the centre, and a measured false-positive rate before scaling.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://fogsphere.com/fogsphere-scales-ai-agents-at-adnoc/" target="_blank" rel="noopener noreferrer"><span>Fogsphere announcement</span><span class="url">https://fogsphere.com/fogsphere-scales-ai-agents-at-adnoc/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="evergy-voice" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 4h3l1.5 4-2 1.2a12 12 0 006.3 6.3L18 13.5 22 15v3a2 2 0 01-2.2 2A17 17 0 014 6.2 2 2 0 016 4h2z"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 04 · SoundHound AI, 27 Oct 2026</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>How Evergy Reduced Calls With AI (SoundHound AI customer story, 27 Oct 2026)</h3>
+            <div class="stat-row">
+              <div class="stat"><b>67%</b><span>containment rate</span></div>
+              <div class="stat"><b>4 million+</b><span>calls handled a year</span></div>
+              <div class="stat"><b>12.7 million</b><span>calls deflected since 2020</span></div>
+              <div class="stat"><b>1.7 million</b><span>customers, Kansas and Missouri</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>Evergy, an electric utility serving about 1.7 million customers in Kansas and Missouri, needed to scale customer service for billing, payment plans, outage inquiries and service starts and stops without losing the human touch.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>Voice AI agents handle routine requests end to end, continuously improved jointly by Evergy and SoundHound, while human representatives take the complex or sensitive calls.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>67% containment rate, more than 4 million calls handled a year, and about 12.7 million calls deflected from the contact centre since 2020, at a lower cost per transaction. Related this month: ENGIE's Salesforce Agentforce deployment resolves 71% of cases autonomously at 83% accuracy.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>This is a six-year programme, not a quick win; containment rises through continuous tuning. Vendor-published figures. Keep a clean handoff to humans so callers don't repeat themselves.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch for bp</strong>
+              <p>Customer-facing and internal service desks (fuel cards, retail, B2B energy customers, IT and HR helpdesks) are a proven pattern. Pitch a narrow, transactional scope with containment rate, handle time and handoff quality as the KPIs from day one.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.soundhound.com/resource/how-evergy-reduced-calls-with-ai-and-became-a-utility-experience-leader" target="_blank" rel="noopener noreferrer"><span>SoundHound customer story</span><span class="url">https://www.soundhound.com/resource/how-evergy-reduced-calls-with-ai-and-became-a-utility-experience-leader</span></a>
+              <a class="link-btn" href="https://www.salesforce.com/customer-stories/engie/" target="_blank" rel="noopener noreferrer"><span>ENGIE Salesforce story</span><span class="url">https://www.salesforce.com/customer-stories/engie/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="bcg-governance" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="M8 15l3.2-3.4 2.4 2.1L19 7"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 05 · BCG, 26 Oct 2026</p>
+              <a class="pillar-tag tone-iris" href="../ai-engineering/measure.html">AI Engineering · Measure</a>
+            </div>
+            <h3>BCG: How to Create AI Value by Balancing Innovation and Risk (26 Oct 2026)</h3>
+            <div class="stat-row">
+              <div class="stat"><b>3x</b><span>ROI with innovation and governance</span></div>
+              <div class="stat"><b>2x</b><span>ROI from innovation alone</span></div>
+              <div class="stat"><b>1,330</b><span>leaders surveyed</span></div>
+              <div class="stat"><b>&gt;30%</b><span>higher ROI when decisions are codified</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>Leaders worry that governance slows AI down. BCG tested whether innovation and governance trade off.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>Analysis from BCG's 2026 Applied AI Index survey of 1,330 leaders of global enterprises, comparing companies by levels of AI innovation and governance (&ldquo;accountable innovators&rdquo;).</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>Scaling innovation alone gives 2x the ROI of low-innovation companies; scaling innovation alongside governance gives 3x. Organizations that record and codify AI decisions see more than 30% higher ROI than those that only record. High-accountability organizations are more than 2.5x as likely to have and deploy a kill switch, and 1.5-2x more likely to require AI tool, responsible-AI and role-specific training. This lines up with Gartner's IT Symposium finding that 71% expect to deploy agentic AI within 12 months but only 21% have agentic governance in place.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>Governance pays when it's operational (decision logs, kill switches, training), not a policy PDF. Survey-based correlation, not causation.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch for bp</strong>
+              <p>Bundle every agent proposal with a lightweight governance kit: a decision log, a named owner, a kill switch, and role-specific training. Frame it as the thing that makes the project scale, not the thing that slows it.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.bcg.com/publications/2026/balance-ai-innovation-and-governance" target="_blank" rel="noopener noreferrer"><span>BCG publication</span><span class="url">https://www.bcg.com/publications/2026/balance-ai-innovation-and-governance</span></a>
+              <a class="link-btn" href="https://www.gartner.com/en/newsroom/press-releases/2026-10-19-gartner-it-symposium-xpo-keynote-release-2026" target="_blank" rel="noopener noreferrer"><span>Gartner IT Symposium</span><span class="url">https://www.gartner.com/en/newsroom/press-releases/2026-10-19-gartner-it-symposium-xpo-keynote-release-2026</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="playbook" class="panel deep" data-section>
+          <p class="kicker">For the week</p>
+          <h2>Consulting playbook</h2>
+          <p>Organize knowledge before you retrieve it. The production wins this week scoped the agent's world first (metadata filters, verified facts with provenance, site-local video) and only then let models reason over it. When you pitch, lead with a narrow, measurable scope, a before/after metric (wrong-context hits, top-1 root cause, containment), and a governance kit that makes scaling safe. Also budget for scale from the start: ADNOC and SLB's drilling platform only showed its 30-40% cut in engineering effort per rig across 120+ rigs, not in a small pilot (company-reported).</p>
+          <div class="links">
+            <a class="link-btn" href="https://cardan-ai.com/en/analyses/arrow-learning-by-doing-ia-forage-adnoc-2026-10-26" target="_blank" rel="noopener noreferrer"><span>ADNOC and SLB drilling platform</span><span class="url">https://cardan-ai.com/en/analyses/arrow-learning-by-doing-ia-forage-adnoc-2026-10-26</span></a>
+          </div>
+        </section>
+
+        <section id="framework-trend" class="panel trend" data-section>
+          <p class="kicker">Hands-on</p>
+          <h2>Framework trend worth learning hands-on</h2>
+          <p>Serving verified knowledge to agents over MCP with metadata-scoped retrieval. Build a small MCP server (the Python MCP SDK's FastMCP) that exposes a tiny maintenance knowledge base: facts with source, confidence and verified flag, and a search tool that filters by asset and site before vector search. Connect it to a LangGraph agent via langchain-mcp-adapters and compare answers against plain vector RAG on a handful of trick questions where the same term appears at two sites.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>
