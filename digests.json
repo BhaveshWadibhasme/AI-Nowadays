@@ -1,5 +1,95 @@
 [
   {
+    "date": "2026-10-31",
+    "type": "frameworks",
+    "title": "Agent frameworks weekly roundup: Oct 24–31, 2026",
+    "summary": "A busy week for security hardening and production plumbing: retries, fallbacks, spend limits, and safer checkpoints. CrewAI patches deserialization, SQL injection and path traversal, Microsoft Agent Framework and Mastra ship breaking changes, and Pydantic AI adds loop detection, shared spend limits and fallbacks.",
+    "url": "digests/2026-10-31-frameworks.html",
+    "readingTime": "3 min read",
+    "tags": [
+      "CrewAI",
+      "Microsoft Agent Framework",
+      "Pydantic AI",
+      "LangGraph",
+      "Mastra",
+      "Agno",
+      "Security",
+      "Breaking changes"
+    ],
+    "items": [
+      {
+        "title": "CrewAI 1.15.31 security patches: deserialization, SQL injection and path traversal",
+        "summary": "Patches deserialization, SQL injection and path traversal bugs, including a path traversal in output_file via template interpolation. Go straight to 1.15.33.",
+        "url": "digests/2026-10-31-frameworks.html#crewai-security",
+        "pillar": "guardrails",
+        "tags": ["CrewAI", "Security"]
+      },
+      {
+        "title": "Microsoft Agent Framework Python 1.24.0 breaking Redis context scopes",
+        "summary": "In agent-framework-redis, context scopes are now case-sensitive and legacy indexes get rejected, so check Redis memory before upgrading. Checkpoint restore also blocks metaclasses.",
+        "url": "digests/2026-10-31-frameworks.html#microsoft-python",
+        "pillar": "guardrails",
+        "tags": ["Microsoft Agent Framework", "Security", "Breaking changes"]
+      },
+      {
+        "title": "Microsoft Agent Framework .NET 1.27.0 Foundry hosting and redirect callback breaks",
+        "summary": "Foundry hosting moves to builder.AddFoundryResponses(...), old local response files aren't read after upgrading, and redirect callbacks must now return null or throw.",
+        "url": "digests/2026-10-31-frameworks.html#microsoft-dotnet",
+        "pillar": "tools-agents",
+        "tags": ["Microsoft Agent Framework", "Breaking changes"]
+      },
+      {
+        "title": "Mastra core 1.80.0 queryTraceThreads, connect sessions and subagent breaks",
+        "summary": "queryTraceThreads() drops model and provider and caps page size at 100. Connect sessions return launchUrl instead of connectUrl, and Code SDK no longer registers built-in subagents by default.",
+        "url": "digests/2026-10-31-frameworks.html#mastra-core",
+        "pillar": "tools-agents",
+        "tags": ["Mastra", "Breaking changes"]
+      },
+      {
+        "title": "Pydantic AI 2.62 to 2.64: loop detection, spend limits, fallbacks and artifact scanning",
+        "summary": "Provider batch APIs, DetectLoops, PostgresSpendStore for shared budget limits, sticky ModelFallback, and an ArtifactScanner that checks memory and skills for risky content.",
+        "url": "digests/2026-10-31-frameworks.html#pydantic",
+        "pillar": "guardrails",
+        "tags": ["Pydantic AI"]
+      },
+      {
+        "title": "LangGraph 1.2.18 and 1.2.19 error recovery, faster snapshots and stream reconnect",
+        "summary": "error_handler can now recover on every path. Delta snapshots now happen every 100 updates instead of 1000, and the Python SDK reconnects streams with backoff.",
+        "url": "digests/2026-10-31-frameworks.html#langgraph",
+        "pillar": "tools-agents",
+        "tags": ["LangGraph"]
+      },
+      {
+        "title": "Mastra 1.80.0 per-user OAuth, span metrics and typed provider errors",
+        "summary": "Each end user can connect their own OAuth accounts, there's a span-aggregation API for cost and latency metrics, and provider errors are sorted into types such as rate limit, quota and context overflow.",
+        "url": "digests/2026-10-31-frameworks.html#mastra",
+        "pillar": "measure",
+        "tags": ["Mastra"]
+      },
+      {
+        "title": "Agno 3.1.11 and 3.1.12 external agents and AccuracyEval judge change",
+        "summary": "ClaudeAgent and CodexAgent can join Agno Teams and Workflows, with native approvals in the AgentOS UI. AccuracyEval's old default judge used o4-mini, which OpenAI shut down on Oct 23, so set your own judge model.",
+        "url": "digests/2026-10-31-frameworks.html#agno",
+        "pillar": "tools-agents",
+        "tags": ["Agno"]
+      },
+      {
+        "title": "CrewAI conversational context compaction and skill search",
+        "summary": "Conversational flows can now compact their context, and there's a new crewai skill search command.",
+        "url": "digests/2026-10-31-frameworks.html#crewai",
+        "pillar": "context",
+        "tags": ["CrewAI"]
+      },
+      {
+        "title": "Try Pydantic AI DetectLoops plus SpendLimits",
+        "summary": "Agents that loop and run up costs are the top worry in enterprise pilots. Adding loop detection and a shared budget cap to one demo agent is a cheap way to show bp stakeholders guardrails that actually work.",
+        "url": "digests/2026-10-31-frameworks.html#worth-trying",
+        "pillar": "guardrails",
+        "tags": ["Pydantic AI", "Security"]
+      }
+    ]
+  },
+  {
     "date": "2026-10-30",
     "type": "daily",
     "title": "Daily AI Digest: Fri, 30 Oct 2026",
