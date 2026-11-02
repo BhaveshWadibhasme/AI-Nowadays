@@ -36,6 +36,7 @@
     <nav class="site-nav" aria-label="Sections">
       <a class="active" href="./">Digests</a>
       <a href="ai-engineering/">AI Engineering</a>
+      <a href="computer-vision.html">Computer Vision</a>
     </nav>
     <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
       <span class="switch" aria-hidden="true"><span class="knob"></span></span>
@@ -95,6 +96,7 @@
         <button type="button" class="chip" data-type="frameworks">Frameworks</button>
         <button type="button" class="chip" data-type="langchain">LangChain</button>
         <button type="button" class="chip" data-type="google-research">Google Research</button>
+        <button type="button" class="chip" data-type="computer-vision">Computer Vision</button>
       </div>
       <div class="control-row" id="tags" role="group" aria-label="Tags">
         <span class="control-label">Tags</span>
@@ -138,7 +140,7 @@
 </footer>
 <script>
 (function () {
-  var TYPE_LABEL = { daily: 'Daily', weekly: 'Weekly deep-dive', frameworks: 'Frameworks', langchain: 'LangChain', 'google-research': 'Google Research' };
+  var TYPE_LABEL = { daily: 'Daily', weekly: 'Weekly deep-dive', frameworks: 'Frameworks', langchain: 'LangChain', 'google-research': 'Google Research', 'computer-vision': 'Computer Vision' };
   var data = [];
   var activeTags = {};
 
@@ -205,7 +207,7 @@
     var list = document.getElementById('list');
     var archiveHead = document.getElementById('archive-head');
     if (!items.length) {
-      var emptyLabel = type === 'weekly' ? 'weekly deep-dives' : type === 'frameworks' ? 'framework roundups' : type === 'daily' ? 'daily digests' : type === 'langchain' ? 'LangChain updates' : type === 'google-research' ? 'Google Research roundups' : 'digests';
+      var emptyLabel = type === 'weekly' ? 'weekly deep-dives' : type === 'frameworks' ? 'framework roundups' : type === 'daily' ? 'daily digests' : type === 'langchain' ? 'LangChain updates' : type === 'google-research' ? 'Google Research roundups' : type === 'computer-vision' ? 'Computer Vision updates' : 'digests';
       feat.innerHTML = '<div class="empty-card"><h2>No ' + emptyLabel + ' yet</h2><p>Nothing matches this view. Check back soon.</p></div>';
       list.innerHTML = '';
       archiveHead.hidden = true;

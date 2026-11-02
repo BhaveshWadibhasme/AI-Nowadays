@@ -1,0 +1,1041 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Computer Vision: from edge detectors to vision agents · AI Nowdays</title>
+<meta name="description" content="Sixty years of teaching machines to see, from hand-written rules to deep learning, foundation models and LLMs that look, reason and act.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/computer-vision.html">
+<meta property="og:title" content="Computer Vision: from edge detectors to vision agents">
+<meta property="og:description" content="Sixty years of teaching machines to see, from hand-written rules to deep learning, foundation models and LLMs that look, reason and act.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/computer-vision.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Computer Vision: from edge detectors to vision agents">
+<meta name="twitter:description" content="Sixty years of teaching machines to see, from hand-written rules to deep learning, foundation models and LLMs that look, reason and act.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="./">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="./">Digests</a>
+      <a href="ai-engineering/">AI Engineering</a>
+      <a class="active" href="computer-vision.html">Computer Vision</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="./">← Home</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="kicker">On this page</p>
+        <a href="#timeline">Timeline</a>
+        <a href="#origins">Origins</a>
+        <a href="#classical">Classical ML</a>
+        <a href="#deep">Deep learning</a>
+        <a href="#transformers">Transformers</a>
+        <a href="#vlm">Vision + LLMs</a>
+        <a href="#shifts">Why each shift</a>
+        <a href="#industry">Energy &amp; industry</a>
+        <a href="#projects">Try it hands-on</a>
+        <a href="#updates">Latest updates</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-computer-vision">Computer Vision</span>
+          <time datetime="2026-11-02">2 Nov 2026</time>
+          <span>About 14 min</span>
+        </div>
+        <h1>Computer Vision: from edge detectors to vision agents</h1>
+        <p class="cv-deck">Sixty years of teaching machines to see, from hand-written rules to deep learning, foundation models and LLMs that look, reason and act. Each era is told the same way: what came first, why, how it worked, what it fixed, and where it got stuck.</p>
+        <div class="tag-row">
+          <span class="tag">Rules</span>
+          <span class="tag">Features</span>
+          <span class="tag">CNNs</span>
+          <span class="tag">Foundation models</span>
+          <span class="tag">Agents</span>
+          <span class="tag">Industry</span>
+        </div>
+
+        <section id="timeline" class="panel" data-section>
+          <p class="kicker">Visual timeline</p>
+          <h2>1960s to 2026</h2>
+          <ol class="era-timeline">
+            <li>
+              <span class="era-node" aria-hidden="true"></span>
+              <div class="era-card">
+                <p class="era-years">1960s–1980s</p>
+                <h3>Rules &amp; geometry</h3>
+                <p>MIT Summer Vision Project (1966), Hough transform (1962 patent), Canny edge detector (1986), Marr's <em>Vision</em> (1982)</p>
+              </div>
+            </li>
+            <li>
+              <span class="era-node" aria-hidden="true"></span>
+              <div class="era-card">
+                <p class="era-years">~1999–2011</p>
+                <h3>Hand-crafted features + ML</h3>
+                <p>Viola-Jones face detector (2001), SIFT (2004), HOG (2005), SURF (2006), SVMs &amp; boosting</p>
+              </div>
+            </li>
+            <li>
+              <span class="era-node" aria-hidden="true"></span>
+              <div class="era-card">
+                <p class="era-years">2012–2019</p>
+                <h3>Deep learning (CNNs)</h3>
+                <p>ImageNet (2009) → AlexNet (2012), VGG &amp; GANs (2014), ResNet, YOLO, U-Net (2015), Mask R-CNN (2017)</p>
+              </div>
+            </li>
+            <li>
+              <span class="era-node" aria-hidden="true"></span>
+              <div class="era-card">
+                <p class="era-years">2020–2023</p>
+                <h3>Transformers &amp; foundation models</h3>
+                <p>DETR, ViT, DDPM (2020), CLIP, DINO, latent diffusion (2021), SAM &amp; DINOv2 (2023)</p>
+              </div>
+            </li>
+            <li>
+              <span class="era-node" aria-hidden="true"></span>
+              <div class="era-card">
+                <p class="era-years">2023–2026</p>
+                <h3>Vision + LLMs &amp; vision agents</h3>
+                <p>LLaVA, GPT-4o (2024), SAM 2 (2024), DINOv3 &amp; Qwen3-VL (2025), SAM 3 / SAM 3.1, YOLO26, Gemini 3 Agentic Vision, Gemini 3.5 Flash computer use (2026)</p>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <div id="origins" data-section>
+          <section class="block">
+            <div class="block-title">
+              <div class="story-icon copper" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20L20 4"/><path d="M8 16l2 2M12 12l2 2M16 8l2 2"/></svg>
+              </div>
+              <h2>1. Origins: the rules-and-geometry era (1960s–1980s)</h2>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon copper" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20L20 4"/><path d="M8 16l2 2M12 12l2 2M16 8l2 2"/></svg>
+            </div>
+            <div>
+              <p class="kicker">1966</p>
+              <h3>The summer that set the agenda</h3>
+              <p>In 1966 Seymour Papert at MIT wrote up "The Summer Vision Project", a plan to have summer workers build a large part of a visual system in one summer, including separating figures from background. The problem turned out to be decades deep, but the memo framed computer vision as an engineering problem.</p>
+              <div class="links">
+                <a class="link-btn" href="https://dspace.mit.edu/handle/1721.1/6125" target="_blank" rel="noopener noreferrer"><span>Read the memo (MIT AI Memo 100)</span><span class="url">https://dspace.mit.edu/handle/1721.1/6125</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon copper" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 16l4-8 4 6 3-4 7 8"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Edges</p>
+              <h3>Edges first: Sobel and Canny</h3>
+              <p>The first useful step was finding <em>where brightness changes sharply</em>, because edges outline objects. Sobel-style operators slide a small 3×3 kernel over the image to estimate the brightness gradient. John Canny's 1986 paper turned edge detection into an optimisation problem (good detection, good localisation, one response per edge) and gave the pipeline still taught today: smooth with a Gaussian, compute gradients, thin edges with non-maximum suppression, then link them with two thresholds (hysteresis).</p>
+              <div class="links">
+                <a class="link-btn" href="https://doi.org/10.1109/TPAMI.1986.4767851" target="_blank" rel="noopener noreferrer"><span>Canny (1986), IEEE TPAMI</span><span class="url">https://doi.org/10.1109/TPAMI.1986.4767851</span></a>
+                <a class="link-btn" href="https://docs.opencv.org/4.x/da/d22/tutorial_py_canny.html" target="_blank" rel="noopener noreferrer"><span>OpenCV Canny tutorial</span><span class="url">https://docs.opencv.org/4.x/da/d22/tutorial_py_canny.html</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon copper" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="7"/><path d="M4 16l16-8M5 8l6 12"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Shapes</p>
+              <h3>Shapes by voting: the Hough transform</h3>
+              <p>Paul Hough patented a method in 1962 for finding particle tracks in bubble-chamber photos. Duda and Hart (1972) reformulated it with the angle-distance line form used today. Every edge pixel "votes" for all the lines (or circles) that could pass through it, and peaks in the vote space are the shapes. It still finds lane lines, pipes and gauge needles.</p>
+              <div class="links">
+                <a class="link-btn" href="https://patents.google.com/patent/US3069654A/en" target="_blank" rel="noopener noreferrer"><span>Hough patent US3069654</span><span class="url">https://patents.google.com/patent/US3069654A/en</span></a>
+                <a class="link-btn" href="https://doi.org/10.1145/361237.361242" target="_blank" rel="noopener noreferrer"><span>Duda &amp; Hart (1972), CACM</span><span class="url">https://doi.org/10.1145/361237.361242</span></a>
+                <a class="link-btn" href="https://docs.opencv.org/4.x/d6/d10/tutorial_py_houghlines.html" target="_blank" rel="noopener noreferrer"><span>OpenCV Hough lines tutorial</span><span class="url">https://docs.opencv.org/4.x/d6/d10/tutorial_py_houghlines.html</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon copper" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l9 4.5-9 4.5L3 7.5 12 3z"/><path d="M3 12l9 4.5 9-4.5"/><path d="M3 16.5L12 21l9-4.5"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Theory</p>
+              <h3>Marr's theory of vision</h3>
+              <p>David Marr's book <em>Vision</em> (1982, published after his death) argued vision should be understood at three levels: what is computed and why, the representation and algorithm, and the hardware. He described a pipeline from a "primal sketch" (edges, blobs) to a "2½-D sketch" (depth and surface orientation from the viewer) to full 3-D object models. That layered idea, from low-level features up to objects, shaped the field for decades.</p>
+              <div class="links">
+                <a class="link-btn" href="https://mitpress.mit.edu/9780262514620/vision/" target="_blank" rel="noopener noreferrer"><span>Marr, <em>Vision</em> (MIT Press)</span><span class="url">https://mitpress.mit.edu/9780262514620/vision/</span></a>
+              </div>
+            </div>
+          </section>
+
+          <div class="callout">
+            <strong>Why it came first</strong>
+            <p>Computers were slow, memory was tiny, digital images were scarce, and there were no labelled datasets to learn from. The only option was to write down rules from geometry and physics by hand.</p>
+          </div>
+          <div class="callout limit">
+            <strong>Where it got stuck</strong>
+            <p>Hand-written rules break with lighting, clutter, viewpoint and occlusion. Finding edges is easy. Deciding which edges make up "a valve" is not.</p>
+          </div>
+        </div>
+
+        <div id="classical" data-section>
+          <section class="block">
+            <div class="block-title">
+              <div class="story-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 11a4 4 0 018 0c0 4-2 6-2 9"/><path d="M6 10a6 6 0 0112 0c0 2-.4 3.5-.8 5"/><path d="M10 11.5a2 2 0 014 0c0 3-1 5-1 8"/></svg>
+              </div>
+              <h2>2. Classical ML: hand-crafted features + classifiers (~1999–2011)</h2>
+            </div>
+            <p>The new idea: people still design the <em>features</em>, but a learning algorithm draws the <em>decision boundary</em> from labelled examples.</p>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M9 10h.01M15 10h.01M9 15c1 .8 2 .8 3 .8s2 0 3-.8"/></svg>
+            </div>
+            <div>
+              <p class="kicker">2001</p>
+              <h3>Viola-Jones: real-time face detection</h3>
+              <p>Simple rectangular "Haar-like" features, computed in constant time from an <em>integral image</em>, were picked by AdaBoost and arranged in a <em>cascade</em> so easy background regions are rejected in a few operations. It was the first detector fast enough for real-time faces on ordinary hardware, and it went into consumer cameras.</p>
+              <div class="links">
+                <a class="link-btn" href="https://doi.org/10.1109/CVPR.2001.990517" target="_blank" rel="noopener noreferrer"><span>Viola &amp; Jones (CVPR 2001)</span><span class="url">https://doi.org/10.1109/CVPR.2001.990517</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg>
+            </div>
+            <div>
+              <p class="kicker">2004 · 2006</p>
+              <h3>SIFT and SURF: keypoints that survive change</h3>
+              <p>David Lowe's SIFT finds distinctive keypoints across scales and describes each with histograms of local gradient orientation. The descriptors match even when the image is scaled, rotated or lit differently. SURF used box filters and integral images to make the same idea faster. These powered panorama stitching, object recognition and 3-D reconstruction.</p>
+              <div class="links">
+                <a class="link-btn" href="https://doi.org/10.1023/B:VISI.0000029664.99615.94" target="_blank" rel="noopener noreferrer"><span>Lowe, SIFT (IJCV 2004)</span><span class="url">https://doi.org/10.1023/B:VISI.0000029664.99615.94</span></a>
+                <a class="link-btn" href="https://link.springer.com/chapter/10.1007/11744023_32" target="_blank" rel="noopener noreferrer"><span>Bay et al., SURF (ECCV 2006)</span><span class="url">https://link.springer.com/chapter/10.1007/11744023_32</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="7" r="3"/><path d="M6 20c1-3 3.2-4.5 6-4.5S17 17 18 20"/></svg>
+            </div>
+            <div>
+              <p class="kicker">2005</p>
+              <h3>HOG + SVM: pedestrians</h3>
+              <p>Dalal and Triggs described image windows with histograms of oriented gradients (HOG) and classified them with a linear SVM. This became the standard way to detect people.</p>
+              <div class="links">
+                <a class="link-btn" href="https://doi.org/10.1109/CVPR.2005.177" target="_blank" rel="noopener noreferrer"><span>Dalal &amp; Triggs, HOG (CVPR 2005)</span><span class="url">https://doi.org/10.1109/CVPR.2005.177</span></a>
+              </div>
+            </div>
+          </section>
+
+          <div class="callout">
+            <strong>Why this era happened</strong>
+            <p>More compute and the first benchmark datasets made it possible to <em>learn</em> classifiers, but there was still too little data and compute to learn the features too.</p>
+          </div>
+          <div class="callout limit">
+            <strong>Limits</strong>
+            <p>Every new task needed experts to engineer new features. Accuracy hit a ceiling on varied, real-world categories, and the pipelines were brittle.</p>
+          </div>
+        </div>
+
+        <div id="deep" data-section>
+          <section class="block">
+            <div class="block-title">
+              <div class="story-icon iris" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><circle cx="19" cy="12" r="2"/><path d="M7 12h3M14 12h3M12 8v2M12 14v2"/></svg>
+              </div>
+              <h2>3. Deep learning: learn the features too (2012–2019)</h2>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon iris" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><circle cx="19" cy="12" r="2"/><path d="M7 12h3M14 12h3M12 8v2M12 14v2"/></svg>
+            </div>
+            <div>
+              <p class="kicker">1998</p>
+              <h3>LeNet: the idea was early</h3>
+              <p>LeCun and colleagues trained convolutional neural networks (CNNs) end to end with gradient descent for handwritten digit and cheque reading (the 1998 "Gradient-based learning" paper describes LeNet-5). Convolution, pooling and learned filters were all there, but the compute and data to scale them to natural photos were not.</p>
+              <div class="links">
+                <a class="link-btn" href="https://doi.org/10.1109/5.726791" target="_blank" rel="noopener noreferrer"><span>LeCun et al. (1998), Proc. IEEE</span><span class="url">https://doi.org/10.1109/5.726791</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon iris" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9" cy="10" r="1.4"/><path d="M7 16l3.2-3.2L13 15l2-2 2.5 2.5"/></svg>
+            </div>
+            <div>
+              <p class="kicker">2009 · 2012</p>
+              <h3>ImageNet + GPUs → AlexNet</h3>
+              <p>ImageNet (Deng et al., 2009) gave the field millions of labelled images organised by WordNet categories. Its 1,000-class challenge (ILSVRC) became the yardstick. In 2012, AlexNet (Krizhevsky, Sutskever and Hinton) trained a deep CNN on two GPUs with ReLU activations and dropout, and cut the top-5 test error to 15.3% against 26.2% for the next best entry. That gap convinced the field.</p>
+              <div class="callout">
+                <strong>Why now</strong>
+                <p>Three things arrived together. There was <strong>big labelled data</strong> (ImageNet), <strong>cheap parallel compute</strong> (GPUs built for gaming turned out to suit the matrix maths), and <strong>training tricks</strong> (ReLU, dropout, data augmentation).</p>
+              </div>
+              <div class="links">
+                <a class="link-btn" href="https://doi.org/10.1109/CVPR.2009.5206848" target="_blank" rel="noopener noreferrer"><span>ImageNet (CVPR 2009)</span><span class="url">https://doi.org/10.1109/CVPR.2009.5206848</span></a>
+                <a class="link-btn" href="https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html" target="_blank" rel="noopener noreferrer"><span>AlexNet (NeurIPS 2012)</span><span class="url">https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon iris" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l9 4.5-9 4.5L3 7.5 12 3z"/><path d="M3 12l9 4.5 9-4.5"/><path d="M3 16.5L12 21l9-4.5"/></svg>
+            </div>
+            <div>
+              <p class="kicker">2014 · 2015</p>
+              <h3>Deeper and better backbones</h3>
+              <ul>
+                <li><strong>VGG (2014):</strong> stacks of small 3×3 convolutions showed that depth matters.</li>
+                <li><strong>ResNet (2015):</strong> residual ("skip") connections made very deep networks trainable (up to 152 layers on ImageNet) and won ILSVRC 2015 with 3.57% top-5 error.</li>
+              </ul>
+              <div class="links">
+                <a class="link-btn" href="https://arxiv.org/abs/1409.1556" target="_blank" rel="noopener noreferrer"><span>VGG (2014)</span><span class="url">https://arxiv.org/abs/1409.1556</span></a>
+                <a class="link-btn" href="https://arxiv.org/abs/1512.03385" target="_blank" rel="noopener noreferrer"><span>ResNet (2015)</span><span class="url">https://arxiv.org/abs/1512.03385</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon iris" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="6" width="11" height="9" rx="1.5"/><rect x="9" y="10" width="11" height="8" rx="1.5"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Detection</p>
+              <h3>Detection: where, not just what</h3>
+              <ul>
+                <li><strong>R-CNN (2013):</strong> CNN features on region proposals.</li>
+                <li><strong>Fast R-CNN (2015)</strong> shared computation across regions.</li>
+                <li><strong>Faster R-CNN (2015)</strong> learned the proposals with a Region Proposal Network.</li>
+                <li><strong>YOLO (2015):</strong> "You Only Look Once" treats detection as one regression pass, which makes it real-time.</li>
+                <li><strong>SSD (2015):</strong> single-shot detection on multi-scale feature maps.</li>
+              </ul>
+              <div class="links">
+                <a class="link-btn" href="https://arxiv.org/abs/1311.2524" target="_blank" rel="noopener noreferrer"><span>R-CNN (2013)</span><span class="url">https://arxiv.org/abs/1311.2524</span></a>
+                <a class="link-btn" href="https://arxiv.org/abs/1504.08083" target="_blank" rel="noopener noreferrer"><span>Fast R-CNN (2015)</span><span class="url">https://arxiv.org/abs/1504.08083</span></a>
+                <a class="link-btn" href="https://arxiv.org/abs/1506.01497" target="_blank" rel="noopener noreferrer"><span>Faster R-CNN (2015)</span><span class="url">https://arxiv.org/abs/1506.01497</span></a>
+                <a class="link-btn" href="https://arxiv.org/abs/1506.02640" target="_blank" rel="noopener noreferrer"><span>YOLO (2015)</span><span class="url">https://arxiv.org/abs/1506.02640</span></a>
+                <a class="link-btn" href="https://arxiv.org/abs/1512.02325" target="_blank" rel="noopener noreferrer"><span>SSD (2015)</span><span class="url">https://arxiv.org/abs/1512.02325</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon iris" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 7l7-4 7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7z"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Segmentation</p>
+              <h3>Segmentation: every pixel</h3>
+              <ul>
+                <li><strong>U-Net (2015):</strong> an encoder-decoder with skip connections that works with few training images. It started in biomedical imaging and is now everywhere, including inside diffusion models.</li>
+                <li><strong>Mask R-CNN (2017):</strong> adds a mask branch to Faster R-CNN for instance segmentation.</li>
+              </ul>
+              <div class="links">
+                <a class="link-btn" href="https://arxiv.org/abs/1505.04597" target="_blank" rel="noopener noreferrer"><span>U-Net (2015)</span><span class="url">https://arxiv.org/abs/1505.04597</span></a>
+                <a class="link-btn" href="https://arxiv.org/abs/1703.06870" target="_blank" rel="noopener noreferrer"><span>Mask R-CNN (2017)</span><span class="url">https://arxiv.org/abs/1703.06870</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon iris" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l1.6 5.2L19 10l-5.4 1.8L12 17l-1.6-5.2L5 10l5.4-1.8L12 3z"/></svg>
+            </div>
+            <div>
+              <p class="kicker">2014</p>
+              <h3>Generation: GANs</h3>
+              <p>Goodfellow et al. trained a generator against a discriminator in a two-player game, so a network could produce realistic images rather than only label them.</p>
+              <div class="links">
+                <a class="link-btn" href="https://arxiv.org/abs/1406.2661" target="_blank" rel="noopener noreferrer"><span>GANs (2014)</span><span class="url">https://arxiv.org/abs/1406.2661</span></a>
+              </div>
+            </div>
+          </section>
+
+          <div class="callout limit">
+            <strong>Limits</strong>
+            <p>Every task needed its own large labelled dataset and its own model. Models recognised only the fixed classes they were trained on and were weak at long-range context.</p>
+          </div>
+        </div>
+
+        <div id="transformers" data-section>
+          <section class="block">
+            <div class="block-title">
+              <div class="story-icon research" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>
+              </div>
+              <h2>4. Transformers and foundation models (2020–2025)</h2>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon research" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="6" width="11" height="9" rx="1.5"/><rect x="9" y="10" width="11" height="8" rx="1.5"/></svg>
+            </div>
+            <div>
+              <p class="kicker">2020</p>
+              <h3>DETR</h3>
+              <p>Object detection as set prediction with a transformer, with no anchors and no NMS.</p>
+              <div class="links">
+                <a class="link-btn" href="https://arxiv.org/abs/2005.12872" target="_blank" rel="noopener noreferrer"><span>DETR (2020)</span><span class="url">https://arxiv.org/abs/2005.12872</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon research" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>
+            </div>
+            <div>
+              <p class="kicker">2020</p>
+              <h3>ViT</h3>
+              <p>"An Image is Worth 16x16 Words" cuts an image into patches and feeds them to a standard transformer. Pre-trained at scale, it matches or beats CNNs.</p>
+              <div class="links">
+                <a class="link-btn" href="https://arxiv.org/abs/2010.11929" target="_blank" rel="noopener noreferrer"><span>ViT (2020)</span><span class="url">https://arxiv.org/abs/2010.11929</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon research" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10 13a5 5 0 007.1.1l2-2a5 5 0 00-7.1-7.1l-1.1 1.1"/><path d="M14 11a5 5 0 00-7.1-.1l-2 2a5 5 0 007.1 7.1l1.1-1.1"/></svg>
+            </div>
+            <div>
+              <p class="kicker">2021</p>
+              <h3>CLIP</h3>
+              <p>Learns images and text in a shared embedding space from 400 million image-text pairs. It can classify <em>zero-shot</em> with plain-language labels and is the bridge between vision and language.</p>
+              <div class="links">
+                <a class="link-btn" href="https://arxiv.org/abs/2103.00020" target="_blank" rel="noopener noreferrer"><span>CLIP (2021)</span><span class="url">https://arxiv.org/abs/2103.00020</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon research" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l9 4.5-9 4.5L3 7.5 12 3z"/><path d="M3 12l9 4.5 9-4.5"/><path d="M3 16.5L12 21l9-4.5"/></svg>
+            </div>
+            <div>
+              <p class="kicker">2021 · 2023 · 2025</p>
+              <h3>DINO, DINOv2 and DINOv3</h3>
+              <p>Self-supervised learning without labels. DINOv3 scales to a 7B-parameter ViT trained on about 1.7B curated images, adds "Gram anchoring" to keep dense (per-patch) features sharp during long training, and is distilled into smaller ViT and ConvNeXt models. Meta also reports results on aerial and satellite imagery.</p>
+              <div class="links">
+                <a class="link-btn" href="https://arxiv.org/abs/2104.14294" target="_blank" rel="noopener noreferrer"><span>DINO</span><span class="url">https://arxiv.org/abs/2104.14294</span></a>
+                <a class="link-btn" href="https://arxiv.org/abs/2304.07193" target="_blank" rel="noopener noreferrer"><span>DINOv2</span><span class="url">https://arxiv.org/abs/2304.07193</span></a>
+                <a class="link-btn" href="https://arxiv.org/abs/2508.10104" target="_blank" rel="noopener noreferrer"><span>DINOv3</span><span class="url">https://arxiv.org/abs/2508.10104</span></a>
+                <a class="link-btn" href="https://github.com/facebookresearch/dinov3" target="_blank" rel="noopener noreferrer"><span>Repo</span><span class="url">https://github.com/facebookresearch/dinov3</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon research" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4l6 16 2-7 7-2L5 4z"/></svg>
+            </div>
+            <div>
+              <p class="kicker">2023</p>
+              <h3>Segment Anything (SAM)</h3>
+              <p>A promptable segmentation model (click, box or mask in, mask out) trained on SA-1B, a dataset of over 1 billion masks on 11 million images.</p>
+              <div class="links">
+                <a class="link-btn" href="https://arxiv.org/abs/2304.02643" target="_blank" rel="noopener noreferrer"><span>Segment Anything (2023)</span><span class="url">https://arxiv.org/abs/2304.02643</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon research" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-2v8l-5-2"/></svg>
+            </div>
+            <div>
+              <p class="kicker">2024</p>
+              <h3>SAM 2</h3>
+              <p>Extends promptable segmentation to video with a streaming memory.</p>
+              <div class="links">
+                <a class="link-btn" href="https://arxiv.org/abs/2408.00714" target="_blank" rel="noopener noreferrer"><span>SAM 2 (2024)</span><span class="url">https://arxiv.org/abs/2408.00714</span></a>
+                <a class="link-btn" href="https://github.com/facebookresearch/sam2" target="_blank" rel="noopener noreferrer"><span>Repo</span><span class="url">https://github.com/facebookresearch/sam2</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon research" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="8" cy="10" r="2"/><circle cx="16" cy="10" r="2"/><path d="M4 18c1.2-2.4 2.8-3.5 4-3.5S10.8 15.6 12 18c1.2-2.4 2.8-3.5 4-3.5S18.8 15.6 20 18"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Nov 2025 · ICLR 2026</p>
+              <h3>SAM 3</h3>
+              <p><em>Promptable Concept Segmentation.</em> Give it a short noun phrase ("yellow school bus") or an example image and it finds, segments and tracks <strong>every</strong> matching instance in images and video. It was trained with a human-plus-AI data engine covering about 4M unique concepts. Meta reports roughly 2× the accuracy of existing systems on its SA-Co benchmark.</p>
+              <div class="links">
+                <a class="link-btn" href="https://arxiv.org/abs/2511.16719" target="_blank" rel="noopener noreferrer"><span>SAM 3</span><span class="url">https://arxiv.org/abs/2511.16719</span></a>
+                <a class="link-btn" href="https://github.com/facebookresearch/sam3" target="_blank" rel="noopener noreferrer"><span>Repo</span><span class="url">https://github.com/facebookresearch/sam3</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon research" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12h16M12 4v16"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
+            </div>
+            <div>
+              <p class="kicker">27 Mar 2026</p>
+              <h3>SAM 3.1</h3>
+              <p>A drop-in update that uses <em>object multiplexing</em> to track up to 16 objects in one forward pass. Meta reports throughput going from 16 to 32 fps on one H100 for videos with a medium number of objects.</p>
+              <div class="links">
+                <a class="link-btn" href="https://ai.meta.com/blog/segment-anything-model-3/" target="_blank" rel="noopener noreferrer"><span>SAM 3.1</span><span class="url">https://ai.meta.com/blog/segment-anything-model-3/</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon research" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="7" cy="8" r="1.2" fill="currentColor"/><circle cx="12" cy="6" r="1.2" fill="currentColor"/><circle cx="17" cy="9" r="1.2" fill="currentColor"/><circle cx="8" cy="14" r="1.2" fill="currentColor"/><circle cx="13" cy="16" r="1.2" fill="currentColor"/><circle cx="18" cy="15" r="1.2" fill="currentColor"/></svg>
+            </div>
+            <div>
+              <p class="kicker">2020 · 2021</p>
+              <h3>Diffusion models</h3>
+              <p>DDPM (2020) generates images by learning to reverse a gradual noising process. Latent diffusion (2021, the basis of Stable Diffusion) runs that process in a compressed latent space so high-resolution generation becomes affordable.</p>
+              <div class="links">
+                <a class="link-btn" href="https://arxiv.org/abs/2006.11239" target="_blank" rel="noopener noreferrer"><span>DDPM (2020)</span><span class="url">https://arxiv.org/abs/2006.11239</span></a>
+                <a class="link-btn" href="https://arxiv.org/abs/2112.10752" target="_blank" rel="noopener noreferrer"><span>Latent diffusion (2021)</span><span class="url">https://arxiv.org/abs/2112.10752</span></a>
+              </div>
+            </div>
+          </section>
+
+          <div class="callout">
+            <strong>What changed</strong>
+            <p>One big pre-trained model plus a <em>prompt</em> (text, a click, an example) replaces a custom model per task. Labels shift from "required" to "optional".</p>
+          </div>
+        </div>
+
+        <div id="vlm" data-section>
+          <section class="block">
+            <div class="block-title">
+              <div class="story-icon vision" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 12s3.5-5 8-5 8 5 8 5-3.5 5-8 5-8-5-8-5z"/><circle cx="10" cy="12" r="1.6"/><path d="M16 15.5h5.2v3.6H18l-2 1.8v-1.8z"/></svg>
+              </div>
+              <h2>5. Vision + LLMs: models that look, reason and act (2023–2026)</h2>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon vision" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h10a2 2 0 012 2v6H6l-2 2V6z"/><path d="M16 10h4v7h-3l-1 1v-1"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Vision-language models</p>
+              <h3>LLaVA (2023)</h3>
+              <p>"Visual Instruction Tuning" connects a CLIP vision encoder to an LLM and tunes it on GPT-generated multimodal instruction data. It was the open template many VLMs followed.</p>
+              <div class="links">
+                <a class="link-btn" href="https://arxiv.org/abs/2304.08485" target="_blank" rel="noopener noreferrer"><span>LLaVA (2023)</span><span class="url">https://arxiv.org/abs/2304.08485</span></a>
+                <a class="link-btn" href="https://github.com/haotian-liu/LLaVA" target="_blank" rel="noopener noreferrer"><span>Repo</span><span class="url">https://github.com/haotian-liu/LLaVA</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon vision" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="2.5"/></svg>
+            </div>
+            <div>
+              <p class="kicker">2024</p>
+              <h3>GPT-4o</h3>
+              <p>OpenAI's "omni" model, trained end to end across text, vision and audio.</p>
+              <div class="links">
+                <a class="link-btn" href="https://arxiv.org/abs/2410.21276" target="_blank" rel="noopener noreferrer"><span>System card</span><span class="url">https://arxiv.org/abs/2410.21276</span></a>
+                <a class="link-btn" href="https://platform.openai.com/docs/guides/images-vision" target="_blank" rel="noopener noreferrer"><span>Vision guide</span><span class="url">https://platform.openai.com/docs/guides/images-vision</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon vision" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 15l2.5-3 2 2 2.2-2.8L17 15"/></svg>
+            </div>
+            <div>
+              <p class="kicker">APIs</p>
+              <h3>Gemini and Claude vision</h3>
+              <p>Both are natively multimodal through their APIs (charts, screenshots, documents, photos).</p>
+              <div class="links">
+                <a class="link-btn" href="https://ai.google.dev/gemini-api/docs/image-understanding" target="_blank" rel="noopener noreferrer"><span>Gemini</span><span class="url">https://ai.google.dev/gemini-api/docs/image-understanding</span></a>
+                <a class="link-btn" href="https://docs.anthropic.com/en/docs/build-with-claude/vision" target="_blank" rel="noopener noreferrer"><span>Claude</span><span class="url">https://docs.anthropic.com/en/docs/build-with-claude/vision</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon vision" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 7h14M5 12h14M5 17h9"/></svg>
+            </div>
+            <div>
+              <p class="kicker">2023 · Nov 2025</p>
+              <h3>Qwen-VL and Qwen3-VL</h3>
+              <p>Open-weight VLMs. Qwen3-VL comes in dense 2B/4B/8B/32B and MoE 30B-A3B/235B-A22B sizes, has a native 256K-token interleaved context for long documents and video, and adds text-timestamp alignment for temporal grounding in video.</p>
+              <div class="links">
+                <a class="link-btn" href="https://arxiv.org/abs/2308.12966" target="_blank" rel="noopener noreferrer"><span>Qwen-VL (2023)</span><span class="url">https://arxiv.org/abs/2308.12966</span></a>
+                <a class="link-btn" href="https://arxiv.org/abs/2511.21631" target="_blank" rel="noopener noreferrer"><span>Qwen3-VL (Nov 2025)</span><span class="url">https://arxiv.org/abs/2511.21631</span></a>
+                <a class="link-btn" href="https://github.com/QwenLM/Qwen3-VL" target="_blank" rel="noopener noreferrer"><span>Repo</span><span class="url">https://github.com/QwenLM/Qwen3-VL</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon vision" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4M8 12h8M8 16h5"/></svg>
+            </div>
+            <div>
+              <p class="kicker">2023</p>
+              <h3>Florence-2</h3>
+              <p>A compact Microsoft model that does captioning, detection, grounding, segmentation and OCR from text prompts with one architecture. It is a good fit for edge and batch jobs.</p>
+              <div class="links">
+                <a class="link-btn" href="https://arxiv.org/abs/2311.06242" target="_blank" rel="noopener noreferrer"><span>Florence-2 (2023)</span><span class="url">https://arxiv.org/abs/2311.06242</span></a>
+                <a class="link-btn" href="https://huggingface.co/microsoft/Florence-2-large" target="_blank" rel="noopener noreferrer"><span>Florence-2-large</span><span class="url">https://huggingface.co/microsoft/Florence-2-large</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon vision" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.2-3.2"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Open-vocabulary detection</p>
+              <h3>OWL-ViT and OWLv2</h3>
+              <p>CLIP-style detectors that take text queries.</p>
+              <div class="links">
+                <a class="link-btn" href="https://arxiv.org/abs/2205.06230" target="_blank" rel="noopener noreferrer"><span>OWL-ViT (2022)</span><span class="url">https://arxiv.org/abs/2205.06230</span></a>
+                <a class="link-btn" href="https://arxiv.org/abs/2306.09683" target="_blank" rel="noopener noreferrer"><span>OWLv2 (2023)</span><span class="url">https://arxiv.org/abs/2306.09683</span></a>
+                <a class="link-btn" href="https://huggingface.co/docs/transformers/model_doc/owlv2" target="_blank" rel="noopener noreferrer"><span>OWLv2 docs</span><span class="url">https://huggingface.co/docs/transformers/model_doc/owlv2</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon vision" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="6" width="16" height="12" rx="2"/><path d="M8 12h8"/></svg>
+            </div>
+            <div>
+              <p class="kicker">2023 · 2024</p>
+              <h3>Grounding DINO and Grounding DINO 1.5</h3>
+              <p>Grounding DINO (2023) and Grounding DINO 1.5 (2024, incl. an "Edge" variant): text-prompted, open-set detection.</p>
+              <div class="links">
+                <a class="link-btn" href="https://arxiv.org/abs/2303.05499" target="_blank" rel="noopener noreferrer"><span>Grounding DINO (2023)</span><span class="url">https://arxiv.org/abs/2303.05499</span></a>
+                <a class="link-btn" href="https://arxiv.org/abs/2405.10300" target="_blank" rel="noopener noreferrer"><span>Grounding DINO 1.5 (2024)</span><span class="url">https://arxiv.org/abs/2405.10300</span></a>
+                <a class="link-btn" href="https://github.com/IDEA-Research/GroundingDINO" target="_blank" rel="noopener noreferrer"><span>Repo</span><span class="url">https://github.com/IDEA-Research/GroundingDINO</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon vision" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M13 3L5 14h7l-1 7 8-11h-7l1-7z"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Nov 2025 · ICLR 2026</p>
+              <h3>RF-DETR</h3>
+              <p>A real-time detection transformer on a DINOv2 backbone, found with neural architecture search. It exports to ONNX/TensorRT and other runtimes.</p>
+              <div class="links">
+                <a class="link-btn" href="https://arxiv.org/abs/2511.09554" target="_blank" rel="noopener noreferrer"><span>RF-DETR</span><span class="url">https://arxiv.org/abs/2511.09554</span></a>
+                <a class="link-btn" href="https://github.com/roboflow/rf-detr" target="_blank" rel="noopener noreferrer"><span>Repo</span><span class="url">https://github.com/roboflow/rf-detr</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon vision" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Jan 2026</p>
+              <h3>YOLO26</h3>
+              <p>Built for edge and low-power devices. It has native end-to-end NMS-free inference, drops DFL, uses a MuSGD optimiser (SGD combined with Muon), reports up to 43% faster CPU inference for the nano model, and includes YOLOE-26 open-vocabulary variants.</p>
+              <div class="links">
+                <a class="link-btn" href="https://docs.ultralytics.com/models/yolo26/" target="_blank" rel="noopener noreferrer"><span>YOLO26 docs</span><span class="url">https://docs.ultralytics.com/models/yolo26/</span></a>
+                <a class="link-btn" href="https://github.com/ultralytics/ultralytics/releases/tag/v8.4.0" target="_blank" rel="noopener noreferrer"><span>Ultralytics v8.4.0</span><span class="url">https://github.com/ultralytics/ultralytics/releases/tag/v8.4.0</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon vision" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-2v8l-5-2"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Video</p>
+              <h3>Video understanding</h3>
+              <p>Long-context VLMs now read long videos and documents in one pass. Qwen3-VL's 256K context and explicit timestamps are one example. SAM 2, SAM 3 and SAM 3.1 handle pixel-accurate tracking. A common pattern is <strong>VLM for "what is happening and when" + SAM for "exactly which pixels"</strong>.</p>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon vision" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12a8 8 0 0113.7-5.6L20 8"/><path d="M20 4v4h-4"/><path d="M20 12a8 8 0 01-13.7 5.6L4 16"/><path d="M4 20v-4h4"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Vision agents</p>
+              <h3>SAM 3 Agent</h3>
+              <p>Meta shows an MLLM using SAM 3 as a <em>tool</em>. The model proposes noun phrases, checks the masks that come back, and iterates, which handles complex queries SAM 3 alone cannot.</p>
+              <div class="links">
+                <a class="link-btn" href="https://ai.meta.com/blog/segment-anything-model-3/" target="_blank" rel="noopener noreferrer"><span>SAM 3 Agent</span><span class="url">https://ai.meta.com/blog/segment-anything-model-3/</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon vision" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12a8 8 0 0113.7-5.6L20 8"/><path d="M20 4v4h-4"/><circle cx="12" cy="12" r="2"/></svg>
+            </div>
+            <div>
+              <p class="kicker">27 Jan 2026</p>
+              <h3>Gemini 3 Flash "Agentic Vision"</h3>
+              <p>A Think, Act, Observe loop in which the model writes and runs Python to crop, zoom, rotate, annotate and count, then looks at the result before answering. Google reports a consistent 5–10% quality gain across most vision benchmarks when code execution is enabled.</p>
+              <div class="links">
+                <a class="link-btn" href="https://blog.google/innovation-and-ai/technology/developers-tools/agentic-vision-gemini-3-flash/" target="_blank" rel="noopener noreferrer"><span>Agentic Vision, Gemini 3 Flash</span><span class="url">https://blog.google/innovation-and-ai/technology/developers-tools/agentic-vision-gemini-3-flash/</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon vision" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <div>
+              <p class="kicker">24 Jun 2026</p>
+              <h3>Gemini 3.5 Flash computer use</h3>
+              <p>Computer use is now a built-in tool, so agents see screens and act in browser, mobile and desktop apps. Google lists 78.4% on OSWorld-Verified in its model card. It also offers optional safeguards: confirmation before sensitive or irreversible actions, and automatic stop when an indirect prompt injection is detected.</p>
+              <div class="links">
+                <a class="link-btn" href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash/" target="_blank" rel="noopener noreferrer"><span>Introducing computer use</span><span class="url">https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash/</span></a>
+                <a class="link-btn" href="https://deepmind.google/models/model-cards/gemini-3-5-flash/" target="_blank" rel="noopener noreferrer"><span>Gemini 3.5 Flash model card</span><span class="url">https://deepmind.google/models/model-cards/gemini-3-5-flash/</span></a>
+              </div>
+            </div>
+          </section>
+
+          <div class="callout">
+            <strong>What changed</strong>
+            <p>Vision became an <em>input to reasoning</em> and then a <em>loop with tools</em>. The model zooms in, calls a segmenter, checks its answer and takes an action.</p>
+          </div>
+        </div>
+
+        <section id="shifts" class="panel deep" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>6. Why each shift happened</h2>
+          <div class="table-wrap">
+            <table class="compare">
+              <caption class="sr-only">Why each shift in computer vision happened</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Era</th>
+                  <th scope="col">Key idea</th>
+                  <th scope="col">What it fixed</th>
+                  <th scope="col">What it couldn't do</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Rules &amp; geometry (1960s–80s)</td>
+                  <td>Hand-written maths: gradients, edges, Hough voting, Marr's layered model</td>
+                  <td>Worked with almost no compute and no labelled data; precise and explainable</td>
+                  <td>Broke with lighting, clutter and viewpoint; no notion of object categories</td>
+                </tr>
+                <tr>
+                  <td>Hand-crafted features + ML (~1999–2011)</td>
+                  <td>Experts design features (Haar, SIFT, HOG, SURF); SVMs and boosting learn the decision</td>
+                  <td>Real-time face and pedestrian detection; robust matching and stitching</td>
+                  <td>Features had to be re-engineered per task; accuracy ceiling on varied categories</td>
+                </tr>
+                <tr>
+                  <td>Deep learning / CNNs (2012–19)</td>
+                  <td>Learn the features end to end with GPUs on ImageNet-scale data</td>
+                  <td>Big jumps in classification, detection and segmentation; GANs for generation</td>
+                  <td>Needed large labelled datasets per task; fixed class lists; one model per job</td>
+                </tr>
+                <tr>
+                  <td>Transformers &amp; foundation models (2020–25)</td>
+                  <td>Pre-train at scale (ViT, CLIP, DINO); promptable models (SAM); diffusion</td>
+                  <td>Zero-shot and few-shot transfer; labels optional; one backbone for many tasks</td>
+                  <td>Large and costly; weak at multi-step reasoning and explaining <em>why</em></td>
+                </tr>
+                <tr>
+                  <td>Vision + LLMs &amp; agents (2023–26)</td>
+                  <td>VLMs reason over images, documents and video; tools (code, SAM) and actions in a loop</td>
+                  <td>Natural-language questions, document and diagram understanding, open-vocabulary detection, agents that act</td>
+                  <td>Can hallucinate and miss fine pixels; latency and cost; prompt-injection and safety risks when acting</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <div id="industry" data-section>
+          <section class="block">
+            <div class="block-title">
+              <div class="story-icon copper" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 15h16v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2z"/><path d="M6 15V11a6 6 0 0112 0v4"/><path d="M12 5V3"/></svg>
+              </div>
+              <h2>7. For energy and industry: a consultant's playbook</h2>
+            </div>
+          </section>
+          <div class="table-wrap">
+            <table class="compare">
+              <caption class="sr-only">Computer vision uses in energy and industry</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Use case</th>
+                  <th scope="col">Typical stack (2026)</th>
+                  <th scope="col">Watch-outs</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Asset inspection (corrosion, leaks, insulation damage, gauge reading)</td>
+                  <td>YOLO26 or RF-DETR fine-tuned on your defect classes; SAM 3 for fast mask labelling; a VLM to draft the inspection note</td>
+                  <td>Rare defects mean little data, so use few-shot and exemplar prompts. Keep a human sign-off on safety-critical calls.</td>
+                </tr>
+                <tr>
+                  <td>HSE and safety cameras (PPE, exclusion zones, line-of-fire, spills or smoke)</td>
+                  <td>Open-vocabulary detectors (Grounding DINO, YOLOE) for new rules without retraining; tracking for dwell time and zone entry</td>
+                  <td>Privacy and works-council rules (blur faces, as SAM Playground's templates show). Set false-alarm budgets with operators.</td>
+                </tr>
+                <tr>
+                  <td>Document and diagram understanding (P&amp;IDs, datasheets, scanned permits)</td>
+                  <td>Symbol and line detection plus OCR, then graph building. Research: P&amp;ID info extraction (arXiv 1901.11383), Digitize-PID (2109.03794), transformer P&amp;ID-to-graph (2411.13929). Long-context VLMs (Qwen3-VL, Gemini, Claude) for Q&amp;A over drawings</td>
+                  <td>Check line connectivity and tag numbers against the source drawing. Never trust a VLM's reading of a safety-critical tag without checking it.</td>
+                </tr>
+                <tr>
+                  <td>Drone and satellite imagery (pipeline right-of-way, solar or wind farm health, methane-site context, land change)</td>
+                  <td>DINOv3 backbones (Meta reports satellite-imagery use), segment-geospatial (SAM for geospatial), TorchGeo</td>
+                  <td>Different resolution and sensors (RGB, multispectral, thermal). Check licensing of the imagery.</td>
+                </tr>
+                <tr>
+                  <td>Edge deployment (offshore, remote sites, low bandwidth)</td>
+                  <td>YOLO26 NMS-free export to ONNX, TensorRT or OpenVINO; Grounding DINO 1.5 Edge; INT8 quantisation</td>
+                  <td>Plan for model updates over poor links, drift monitoring, and hardware ruggedisation.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="links">
+            <a class="link-btn" href="https://arxiv.org/abs/1901.11383" target="_blank" rel="noopener noreferrer"><span>P&amp;ID info extraction</span><span class="url">https://arxiv.org/abs/1901.11383</span></a>
+            <a class="link-btn" href="https://arxiv.org/abs/2109.03794" target="_blank" rel="noopener noreferrer"><span>Digitize-PID</span><span class="url">https://arxiv.org/abs/2109.03794</span></a>
+            <a class="link-btn" href="https://arxiv.org/abs/2411.13929" target="_blank" rel="noopener noreferrer"><span>Transformer P&amp;ID-to-graph</span><span class="url">https://arxiv.org/abs/2411.13929</span></a>
+            <a class="link-btn" href="https://github.com/opengeos/segment-geospatial" target="_blank" rel="noopener noreferrer"><span>segment-geospatial</span><span class="url">https://github.com/opengeos/segment-geospatial</span></a>
+            <a class="link-btn" href="https://github.com/microsoft/torchgeo" target="_blank" rel="noopener noreferrer"><span>TorchGeo</span><span class="url">https://github.com/microsoft/torchgeo</span></a>
+            <a class="link-btn" href="https://docs.ultralytics.com/modes/export/" target="_blank" rel="noopener noreferrer"><span>Ultralytics export</span><span class="url">https://docs.ultralytics.com/modes/export/</span></a>
+          </div>
+
+          <div class="section-head">
+            <h2>How the AI Engineering pillars apply to vision</h2>
+          </div>
+          <ul class="pillar-pills">
+            <li>
+              <a class="pillar-tag tone-teal" href="ai-engineering/context.html">AI Engineering · Context</a>
+              <p>Send the <em>right</em> pixels. Crop, tile or zoom high-resolution drawings and frames, and attach metadata (asset ID, location, time). Agentic Vision's crop-and-zoom loop is this idea in practice.</p>
+            </li>
+            <li>
+              <a class="pillar-tag tone-copper" href="ai-engineering/cost.html">AI Engineering · Cost</a>
+              <p>Image and video tokens add up. Use a small detector at the edge to filter frames, and call a large VLM only on flagged events. Choose model size per job (for example, the Qwen3-VL 2B to 235B range).</p>
+            </li>
+            <li>
+              <a class="pillar-tag tone-iris" href="ai-engineering/measure.html">AI Engineering · Measure</a>
+              <p>Build a labelled evaluation set from <em>your</em> sites. Track precision and recall per defect class, false alarms per camera per day, and time saved per inspection. Public benchmark scores do not transfer automatically.</p>
+            </li>
+            <li>
+              <a class="pillar-tag tone-chain" href="ai-engineering/guardrails.html">AI Engineering · Guardrails</a>
+              <p>Keep a human in the loop for safety-critical decisions. Blur faces and plates, and log every automated action. For agents that act on screens or systems, require confirmation for irreversible steps and stop on detected prompt injection (as in Gemini 3.5 Flash's optional safeguards).</p>
+            </li>
+            <li>
+              <a class="pillar-tag tone-ink" href="ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+              <p>Treat SAM 3, OCR, detectors and code execution as tools a VLM calls (SAM 3 Agent pattern). Return structured JSON (boxes, tags, confidence) into work-order or CMMS systems.</p>
+            </li>
+          </ul>
+
+          <section class="panel trend">
+            <p class="kicker">FDE angle</p>
+            <p>In a forward-deployed role the work is rarely "train a model". It is mapping the operator's workflow, collecting 200 hard examples, wiring a detector + VLM + human review loop, and proving the ROI on one site before scaling.</p>
+          </section>
+        </div>
+
+        <div id="projects" data-section>
+          <section class="block">
+            <div class="block-title">
+              <div class="story-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14.5 6.5a4 4 0 01-5.6 5.6L4 17l3 3 4.9-4.9a4 4 0 005.6-5.6L15 12l-3-3 2.5-2.5z"/></svg>
+              </div>
+              <h2>8. Try it hands-on</h2>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 16l4-8 4 6 3-4 7 8"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Project 1 · 1 evening</p>
+              <h3>Classic vs. modern edge-and-shape finder</h3>
+              <p>Run OpenCV's Canny and Hough lines on a photo of pipes or a pressure gauge. Then run a text-prompted detector or segmenter on the same image and compare the outputs.</p>
+              <div class="links">
+                <a class="link-btn" href="https://docs.opencv.org/4.x/da/d22/tutorial_py_canny.html" target="_blank" rel="noopener noreferrer"><span>OpenCV Canny</span><span class="url">https://docs.opencv.org/4.x/da/d22/tutorial_py_canny.html</span></a>
+                <a class="link-btn" href="https://docs.opencv.org/4.x/d6/d10/tutorial_py_houghlines.html" target="_blank" rel="noopener noreferrer"><span>OpenCV Hough</span><span class="url">https://docs.opencv.org/4.x/d6/d10/tutorial_py_houghlines.html</span></a>
+                <a class="link-btn" href="https://github.com/facebookresearch/sam3" target="_blank" rel="noopener noreferrer"><span>SAM 3 repo</span><span class="url">https://github.com/facebookresearch/sam3</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon copper" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 15h16v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2z"/><path d="M6 15V11a6 6 0 0112 0v4"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Project 2 · weekend</p>
+              <h3>PPE / safety-zone detector on the edge</h3>
+              <p>Fine-tune YOLO26n on a small hard-hat or vest dataset, export NMS-free to ONNX, and use Roboflow Supervision to draw zones and count entries.</p>
+              <div class="links">
+                <a class="link-btn" href="https://docs.ultralytics.com/models/yolo26/" target="_blank" rel="noopener noreferrer"><span>YOLO26 docs</span><span class="url">https://docs.ultralytics.com/models/yolo26/</span></a>
+                <a class="link-btn" href="https://docs.ultralytics.com/modes/export/" target="_blank" rel="noopener noreferrer"><span>Export guide</span><span class="url">https://docs.ultralytics.com/modes/export/</span></a>
+                <a class="link-btn" href="https://github.com/roboflow/supervision" target="_blank" rel="noopener noreferrer"><span>Supervision</span><span class="url">https://github.com/roboflow/supervision</span></a>
+                <a class="link-btn" href="https://github.com/roboflow/rf-detr" target="_blank" rel="noopener noreferrer"><span>RF-DETR alternative</span><span class="url">https://github.com/roboflow/rf-detr</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="story">
+            <div class="story-icon iris" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4M8 12h8M8 16h5"/></svg>
+            </div>
+            <div>
+              <p class="kicker">Project 3 · 1–2 weekends</p>
+              <h3>"Ask my drawing" P&amp;ID assistant</h3>
+              <p>Tile a public sample P&amp;ID, use Florence-2 for OCR and regions (or Grounding DINO for symbol boxes), then have a VLM (Qwen3-VL locally, or the Gemini or Claude vision APIs) answer "which valves are on line X?" with cited boxes. Score it against a hand-labelled answer key.</p>
+              <div class="links">
+                <a class="link-btn" href="https://huggingface.co/microsoft/Florence-2-large" target="_blank" rel="noopener noreferrer"><span>Florence-2</span><span class="url">https://huggingface.co/microsoft/Florence-2-large</span></a>
+                <a class="link-btn" href="https://github.com/IDEA-Research/GroundingDINO" target="_blank" rel="noopener noreferrer"><span>Grounding DINO</span><span class="url">https://github.com/IDEA-Research/GroundingDINO</span></a>
+                <a class="link-btn" href="https://github.com/QwenLM/Qwen3-VL" target="_blank" rel="noopener noreferrer"><span>Qwen3-VL</span><span class="url">https://github.com/QwenLM/Qwen3-VL</span></a>
+                <a class="link-btn" href="https://docs.anthropic.com/en/docs/build-with-claude/vision" target="_blank" rel="noopener noreferrer"><span>Claude vision</span><span class="url">https://docs.anthropic.com/en/docs/build-with-claude/vision</span></a>
+                <a class="link-btn" href="https://ai.google.dev/gemini-api/docs/image-understanding" target="_blank" rel="noopener noreferrer"><span>Gemini image understanding</span><span class="url">https://ai.google.dev/gemini-api/docs/image-understanding</span></a>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <section id="updates" class="block" data-section>
+          <div class="block-title">
+            <div class="story-icon vision" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+            </div>
+            <h2>Latest updates</h2>
+          </div>
+          <p>Dated entries go here, newest first.</p>
+          <ul class="update-list" id="cv-update-list">
+            <li data-update-date="2026-11-02">
+              <time datetime="2026-11-02">2 Nov 2026</time>
+              <p>Page launched. Newest items covered: SAM 3.1 (Mar 2026), YOLO26 (Jan 2026), Gemini 3 Flash Agentic Vision (Jan 2026), Gemini 3.5 Flash computer use (Jun 2026), DINOv3 (Aug 2025), Qwen3-VL (Nov 2025), RF-DETR (Nov 2025).</p>
+            </li>
+          </ul>
+          <p class="update-note">Future entries: add a dated item here and/or a digests.json entry with <code>"type": "computer-vision"</code>.</p>
+        </section>
+
+        <section class="panel">
+          <p class="kicker">Sources</p>
+          <p>All dates and figures above come from the linked papers, official blogs, model cards or docs (checked 2 Nov 2026). Benchmark numbers are vendor-reported.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var list = document.getElementById('cv-update-list');
+  if (!list) return;
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function formatDate(iso) {
+    var p = String(iso || '').split('-');
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    if (p.length !== 3 || !months[Number(p[1]) - 1]) return iso || '';
+    return String(Number(p[2])) + ' ' + months[Number(p[1]) - 1] + ' ' + p[0];
+  }
+  function insert(d) {
+    var li = document.createElement('li');
+    li.setAttribute('data-update-date', d.date || '');
+    li.innerHTML = '<time datetime="' + esc(d.date) + '">' + esc(formatDate(d.date)) + '</time><div><p><a href="' + esc(d.url) + '">' + esc(d.title) + '</a></p>' +
+      (d.summary ? '<p class="update-summary">' + esc(d.summary) + '</p>' : '') + '</div>';
+    var placed = false;
+    Array.prototype.slice.call(list.children).forEach(function (node) {
+      if (placed) return;
+      if (String(node.getAttribute('data-update-date') || '') <= String(d.date || '')) {
+        list.insertBefore(li, node);
+        placed = true;
+      }
+    });
+    if (!placed) list.appendChild(li);
+  }
+  fetch('digests.json').then(function (r) {
+    if (!r.ok) throw new Error('manifest');
+    return r.json();
+  }).then(function (j) {
+    var items = (Array.isArray(j) ? j : []).filter(function (d) { return d && d.type === 'computer-vision'; });
+    items.sort(function (a, b) { return String(a.date).localeCompare(String(b.date)); });
+    items.forEach(insert);
+  }).catch(function () {});
+})();
+</script>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>

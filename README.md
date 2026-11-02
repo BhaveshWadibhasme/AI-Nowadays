@@ -2,13 +2,13 @@
 
 Bhavesh's AI digest: https://bhaveshwadibhasme.github.io/AI-Nowadays/
 
-Static site in the repository root (`index.html`, `style.css`, `theme.js`, `digests.json`, `digests/`, and `ai-engineering/`). There is no build step. GitHub Pages publishes that root on every push to `main` through `.github/workflows/pages.yml`. The same workflow can be started by hand with `workflow_dispatch`.
+Static site in the repository root (`index.html`, `style.css`, `theme.js`, `digests.json`, `digests/`, `ai-engineering/`, and `computer-vision.html`). There is no build step. GitHub Pages publishes that root on every push to `main` through `.github/workflows/pages.yml`. The same workflow can be started by hand with `workflow_dispatch`.
 
 The home page reads `digests.json` and renders the latest issue, the archive grid, search, category chips, and tag filters. A new digest is one HTML file plus one manifest entry. Leave the digest-rendering script in `index.html` alone. The AI Engineering block above the feed is a separate section; leave it in place.
 
 ## Add a digest
 
-1. Copy an existing digest to `digests/YYYY-MM-DD-{daily|weekly|frameworks|langchain|google-research}.html`. Use `digests/2026-10-13-langchain.html` for a LangChain LinkedIn roundup. Use `digests/2026-10-28-google-research.html` for a Google Research LinkedIn roundup.
+1. Copy an existing digest to `digests/YYYY-MM-DD-{daily|weekly|frameworks|langchain|google-research|computer-vision}.html`. Use `digests/2026-10-13-langchain.html` for a LangChain LinkedIn roundup. Use `digests/2026-10-28-google-research.html` for a Google Research LinkedIn roundup.
 2. Keep the shared header, sticky table of contents, story cards (one icon per section), "Why it matters" callouts, link buttons, the webinar list with date badges, and the highlighted "Worth a deep read" and "Trend watch" panels. Preserve every source link.
 3. Add an entry at the top of `digests.json`:
 
@@ -24,7 +24,7 @@ The home page reads `digests.json` and renders the latest issue, the archive gri
 }
 ```
 
-`type` is `daily`, `weekly`, `frameworks`, `langchain`, or `google-research`. The home page labels those Daily, Weekly deep-dive, Frameworks, LangChain, and Google Research. `langchain` is for updates gathered from LangChain's LinkedIn page. `google-research` is for updates gathered from the Google Research LinkedIn showcase (https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all). The home page category chips include Google Research, and `#google-research` filters the archive the same way `#langchain` does. Cards use the `chip-google-research` colour. Each story card has a "View LinkedIn post" button (Google Research cards say "View on LinkedIn") and, when the source gives one, "Read full story", "Repo", or "Livestream". Keep every URL exactly as published.
+`type` is `daily`, `weekly`, `frameworks`, `langchain`, `google-research`, or `computer-vision`. The home page labels those Daily, Weekly deep-dive, Frameworks, LangChain, Google Research, and Computer Vision. `langchain` is for updates gathered from LangChain's LinkedIn page. `google-research` is for updates gathered from the Google Research LinkedIn showcase (https://www.linkedin.com/showcase/googleresearch/posts/?feedView=all). The home page category chips include Google Research, and `#google-research` filters the archive the same way `#langchain` does. Cards use the `chip-google-research` colour. `computer-vision` is for dated Computer Vision updates. The chip uses `chip-computer-vision`, and `#computer-vision` filters the archive the same way. The standing primer is [`computer-vision.html`](computer-vision.html). Add a `computer-vision` entry only when there is a real dated update. Each story card has a "View LinkedIn post" button (Google Research cards say "View on LinkedIn") and, when the source gives one, "Read full story", "Repo", or "Livestream". Keep every URL exactly as published.
 
 `readingTime` is shown next to the date. Use a short phrase such as `4 min read`.
 
@@ -71,5 +71,9 @@ A daily issue that covers several pillars can instead list `items`. Each item us
 | `tools-agents` | Tools + agents |
 
 The home page does not gain a pillar filter. Each primer has a "Latest from the feed" list that reads `digests.json` and shows entries whose `pillar` matches, and any `items` whose own `pillar` matches. With no matches, the list stays empty. On a digest page, a pillar tag uses the primer's tone (`tone-teal`, `tone-copper`, `tone-iris`, `tone-chain`, `tone-ink`) and links to that primer.
+
+## Computer Vision
+
+`computer-vision.html` is a standing primer, separate from the digest feed: sixty years from edge detectors to vision agents. Dated updates belong in `digests.json` with `"type": "computer-vision"`. They show on the home page under the Computer Vision chip and in the page's Latest updates list.
 
 Licensed under the MIT License. See [LICENSE](LICENSE).
