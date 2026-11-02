@@ -20,6 +20,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="visuals.css">
+<script src="visuals.js" defer></script>
 <script src="theme.js"></script>
 </head>
 <body>
@@ -45,15 +47,43 @@
   </div>
 </header>
 <main>
-  <section class="hero shell">
-    <p class="eyebrow">Bhavesh's AI digest</p>
-    <h1>AI Nowdays</h1>
-    <p class="tagline">Daily AI intelligence for consultants &amp; FDEs</p>
-    <ul class="facts">
-      <li id="latest-date">Latest issue</li>
-      <li>Consultants &amp; FDEs</li>
-      <li>Models, agents, MCP</li>
-    </ul>
+  <section class="hero shell hero-layout">
+    <div class="hero-copy">
+      <p class="eyebrow">Bhavesh's AI digest</p>
+      <h1>AI Nowdays</h1>
+      <p class="tagline">Daily AI intelligence for consultants &amp; FDEs</p>
+      <ul class="facts">
+        <li id="latest-date">Latest issue</li>
+        <li>Consultants &amp; FDEs</li>
+        <li>Models, agents, MCP</li>
+      </ul>
+    </div>
+    <div class="hero-stage">
+      <svg class="hero-orbit" viewBox="0 0 420 420" role="img" aria-label="Colour wheel of the digest categories around the briefing mark.">
+        <defs>
+          <radialGradient id="hero-core" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="var(--teal-soft)"/>
+            <stop offset="100%" stop-color="var(--card-solid)"/>
+          </radialGradient>
+        </defs>
+        <circle cx="210" cy="210" r="168" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+        <circle cx="210" cy="210" r="112" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="4 7"/>
+        <g class="hero-spin">
+          <circle cx="210" cy="42" r="14" fill="var(--teal)"/>
+          <circle cx="378" cy="210" r="12" fill="var(--copper)"/>
+          <circle cx="210" cy="378" r="14" fill="var(--iris)"/>
+          <circle cx="42" cy="210" r="12" fill="var(--chain)"/>
+          <circle cx="328" cy="92" r="10" fill="var(--research)"/>
+          <circle cx="92" cy="328" r="10" fill="var(--vision)"/>
+        </g>
+        <g class="hero-pulse">
+          <circle cx="210" cy="210" r="62" fill="url(#hero-core)" stroke="var(--line)"/>
+          <text x="210" y="204" text-anchor="middle" fill="var(--ink)" font-family="Newsreader, Georgia, serif" font-size="28">An</text>
+          <text x="210" y="228" text-anchor="middle" fill="var(--muted)" font-family="Inter, sans-serif" font-size="11" letter-spacing="1.5">NOWDAYS</text>
+        </g>
+      </svg>
+      <a class="hero-jump" href="computer-vision.html">Computer Vision primer</a>
+    </div>
   </section>
   <section class="ae-home" id="ai-engineering" aria-labelledby="ae-home-title">
     <div class="shell">
@@ -66,18 +96,117 @@
         </div>
         <div class="ae-home-side">
           <ol class="ae-spine">
-            <li class="tone-teal"><a href="ai-engineering/context.html"><span class="swatch" aria-hidden="true"></span><span><strong>Give it context</strong><em>Retrieval, memory, assembly</em></span></a></li>
-            <li class="tone-copper"><a href="ai-engineering/cost.html"><span class="swatch" aria-hidden="true"></span><span><strong>Cut down the cost</strong><em>Routing, caching, smaller models</em></span></a></li>
-            <li class="tone-iris"><a href="ai-engineering/measure.html"><span class="swatch" aria-hidden="true"></span><span><strong>Measure it</strong><em>Evals, traces, groundedness</em></span></a></li>
-            <li class="tone-chain"><a href="ai-engineering/guardrails.html"><span class="swatch" aria-hidden="true"></span><span><strong>Guardrails</strong><em>Validation, injection, PII, review</em></span></a></li>
-            <li class="tone-ink"><a href="ai-engineering/tools-agents.html"><span class="swatch" aria-hidden="true"></span><span><strong>Tools + agents</strong><em>Tool calls, MCP, when not to</em></span></a></li>
+            <li class="tone-teal"><a href="ai-engineering/context.html"><span class="swatch" aria-hidden="true"></span><span class="pillar-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l9 4.5-9 4.5L3 7.5 12 3z"/><path d="M3 12l9 4.5 9-4.5"/><path d="M3 16.5L12 21l9-4.5"/></svg></span><span><strong>Give it context</strong><em>Retrieval, memory, assembly</em></span></a></li>
+            <li class="tone-copper"><a href="ai-engineering/cost.html"><span class="swatch" aria-hidden="true"></span><span class="pillar-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M7 8h7.5a3 3 0 010 6H9"/></svg></span><span><strong>Cut down the cost</strong><em>Routing, caching, smaller models</em></span></a></li>
+            <li class="tone-iris"><a href="ai-engineering/measure.html"><span class="swatch" aria-hidden="true"></span><span class="pillar-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19h16M6 16l4-5 3 3 5-7"/></svg></span><span><strong>Measure it</strong><em>Evals, traces, groundedness</em></span></a></li>
+            <li class="tone-chain"><a href="ai-engineering/guardrails.html"><span class="swatch" aria-hidden="true"></span><span class="pillar-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.8 7.2-7 8.5C7.8 19.2 5 16.2 5 12V6l7-3z"/></svg></span><span><strong>Guardrails</strong><em>Validation, injection, PII, review</em></span></a></li>
+            <li class="tone-ink"><a href="ai-engineering/tools-agents.html"><span class="swatch" aria-hidden="true"></span><span class="pillar-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="7" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="12" cy="17" r="2.2"/><path d="M8 8.2l3 6.2M16 8.2l-3 6.2"/></svg></span><span><strong>Tools + agents</strong><em>Tool calls, MCP, when not to</em></span></a></li>
           </ol>
           <p class="ae-sum"><span>All five</span> combine into <strong>AI in apps</strong></p>
+        </div>
+      </div>
+      <div class="ae-visual-row">
+        <div class="mindmap" data-mindmap>
+          <script type="application/json">
+          {"label":"AI in apps","tone":"ink","children":[
+            {"label":"Context","tone":"teal","href":"ai-engineering/context.html","children":[{"label":"Retrieval","tone":"teal"},{"label":"Memory","tone":"teal"},{"label":"Assembly","tone":"teal"}]},
+            {"label":"Cost","tone":"copper","href":"ai-engineering/cost.html","children":[{"label":"Routing","tone":"copper"},{"label":"Caching","tone":"copper"},{"label":"Smaller models","tone":"copper"}]},
+            {"label":"Measure","tone":"iris","href":"ai-engineering/measure.html","children":[{"label":"Evals","tone":"iris"},{"label":"Traces","tone":"iris"},{"label":"Groundedness","tone":"iris"}]},
+            {"label":"Guardrails","tone":"chain","href":"ai-engineering/guardrails.html","children":[{"label":"Validation","tone":"chain"},{"label":"Injection","tone":"chain"},{"label":"PII and review","tone":"chain"}]},
+            {"label":"Tools + agents","tone":"ink","href":"ai-engineering/tools-agents.html","children":[{"label":"Tool calls","tone":"ink"},{"label":"MCP","tone":"ink"},{"label":"When not to","tone":"ink"}]}
+          ]}
+          </script>
+        </div>
+        <div class="viz-tabs" data-tabs>
+          <div class="viz-tablist" role="tablist" aria-label="How each pillar fits an LLM app">
+            <button type="button" role="tab" id="home-tab-context" aria-controls="home-panel-context" aria-selected="true">Context</button>
+            <button type="button" role="tab" id="home-tab-cost" aria-controls="home-panel-cost" aria-selected="false" tabindex="-1">Cost</button>
+            <button type="button" role="tab" id="home-tab-measure" aria-controls="home-panel-measure" aria-selected="false" tabindex="-1">Measure</button>
+            <button type="button" role="tab" id="home-tab-guard" aria-controls="home-panel-guard" aria-selected="false" tabindex="-1">Guardrails</button>
+            <button type="button" role="tab" id="home-tab-tools" aria-controls="home-panel-tools" aria-selected="false" tabindex="-1">Tools</button>
+          </div>
+          <div role="tabpanel" id="home-panel-context" aria-labelledby="home-tab-context">
+            <pre class="mermaid">flowchart LR
+  Q[Question] --> Search[Search at question time]
+  Search --> Short[Short list]
+  Short --> Order[Budget, then order]
+  Order --> Span[Answer points at a span]</pre>
+            <p class="viz-note">Retrieval, memory, and assembly, before the model writes.</p>
+          </div>
+          <div role="tabpanel" id="home-panel-cost" aria-labelledby="home-tab-cost" hidden>
+            <pre class="mermaid">flowchart LR
+  Call[Call that dominates] --> Route[Sufficient model]
+  Route --> Cache[Stable prefix]
+  Cache --> Budget[Budget per surface]</pre>
+            <p class="viz-note">Routing, caching, and smaller models on the path you can afford.</p>
+          </div>
+          <div role="tabpanel" id="home-panel-measure" aria-labelledby="home-tab-measure" hidden>
+            <pre class="mermaid">flowchart LR
+  Change[System change] --> Gold[Golden set]
+  Change --> Sample[Sample production]
+  Gold --> Read[Read the failures]
+  Sample --> Read</pre>
+            <p class="viz-note">Evals, traces, and whether the answer sticks to its sources.</p>
+          </div>
+          <div role="tabpanel" id="home-panel-guard" aria-labelledby="home-tab-guard" hidden>
+            <pre class="mermaid">flowchart LR
+  Text[Untrusted text] --> Model[Model]
+  Model --> Parse{Parses?}
+  Parse -->|No| Stop[Does not run]
+  Parse -->|Yes| Human[Person approves]</pre>
+            <p class="viz-note">Validation, injection defence, PII, and a person on the step that sends.</p>
+          </div>
+          <div role="tabpanel" id="home-panel-tools" aria-labelledby="home-tab-tools" hidden>
+            <pre class="mermaid">flowchart LR
+  Job[Job] --> Choice{Fixed workflow enough?}
+  Choice -->|Yes| Flow[Fixed workflow]
+  Choice -->|No| Loop[Agent loop]
+  Loop --> Tool[Tool or MCP]
+  Tool --> Harness[Harness commits]</pre>
+            <p class="viz-note">Tool calls and MCP, and the cases where a fixed workflow is the better design.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
   <div class="shell">
+    <nav class="cat-board" aria-label="Digest categories">
+      <a class="cat-card" href="./" data-count-type="all" data-tone="ink">
+        <span class="cat-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></span>
+        <span class="cat-count"><span class="stat-num">–</span></span>
+        <span class="cat-name">All digests</span>
+      </a>
+      <a class="cat-card" href="#daily" data-count-type="daily" data-tone="teal">
+        <span class="cat-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg></span>
+        <span class="cat-count"><span class="stat-num">–</span></span>
+        <span class="cat-name">Daily</span>
+      </a>
+      <a class="cat-card" href="#weekly" data-count-type="weekly" data-tone="copper">
+        <span class="cat-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l9 4.5-9 4.5L3 7.5 12 3z"/><path d="M3 12l9 4.5 9-4.5"/><path d="M3 16.5L12 21l9-4.5"/></svg></span>
+        <span class="cat-count"><span class="stat-num">–</span></span>
+        <span class="cat-name">Weekly deep-dive</span>
+      </a>
+      <a class="cat-card" href="#frameworks" data-count-type="frameworks" data-tone="iris">
+        <span class="cat-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="8" height="8" rx="1.5"/><rect x="13" y="4" width="8" height="8" rx="1.5"/><rect x="8" y="13" width="8" height="8" rx="1.5"/></svg></span>
+        <span class="cat-count"><span class="stat-num">–</span></span>
+        <span class="cat-name">Frameworks</span>
+      </a>
+      <a class="cat-card" href="#langchain" data-count-type="langchain" data-tone="chain">
+        <span class="cat-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10 13a5 5 0 007.1.1l2-2a5 5 0 00-7.1-7.1l-1.1 1.1"/><path d="M14 11a5 5 0 00-7.1-.1l-2 2a5 5 0 007.1 7.1l1.1-1.1"/></svg></span>
+        <span class="cat-count"><span class="stat-num">–</span></span>
+        <span class="cat-name">LangChain</span>
+      </a>
+      <a class="cat-card" href="#google-research" data-count-type="google-research" data-tone="research">
+        <span class="cat-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 3h6l1 4H8l1-4z"/><path d="M8 7h8l2 13H6L8 7z"/><path d="M10 11h4M10 15h4"/></svg></span>
+        <span class="cat-count"><span class="stat-num">–</span></span>
+        <span class="cat-name">Google Research</span>
+      </a>
+      <a class="cat-card" href="#computer-vision" data-count-type="computer-vision" data-tone="vision">
+        <span class="cat-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="2.4"/></svg></span>
+        <span class="cat-count"><span class="stat-num">–</span></span>
+        <span class="cat-name">Computer Vision</span>
+      </a>
+    </nav>
     <div class="section-head digest-feed-head">
       <h2>Digest</h2>
       <p>What changed, filed by day</p>

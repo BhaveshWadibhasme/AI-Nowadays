@@ -16,6 +16,7 @@
       if (label) label.textContent = dark ? 'Dark' : 'Light';
     });
     document.documentElement.classList.add('theme-ready');
+    document.dispatchEvent(new CustomEvent('themechange', { detail: { theme: current() } }));
   }
 
   window.toggleTheme = function () {

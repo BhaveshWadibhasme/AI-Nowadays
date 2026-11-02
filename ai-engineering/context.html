@@ -20,6 +20,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../visuals.css">
+<script src="../visuals.js" defer></script>
 <script src="../theme.js"></script>
 </head>
 <body>
@@ -59,6 +61,7 @@
       <nav class="toc" aria-label="On this page">
         <p class="kicker">On this page</p>
         <a href="#overview">Overview</a>
+        <a href="#flow">In the app</a>
         <a href="#why">Why it matters</a>
         <a href="#techniques">Core techniques</a>
         <a href="#pitfalls">Pitfalls</a>
@@ -84,6 +87,19 @@
 
         <section id="overview" class="lede-card" data-section>
           <p>Context engineering is the work of deciding what the model sees on this request: which sources, in what order, under whose permissions, and with what evidence a person can check. Most production failures that get blamed on “the model” are failures of that assembly. The model answered from the wrong document, from a stale policy, from a chunk that cut a table in half, or from a prompt so crowded that the question was the least visible thing in it.</p>
+        </section>
+
+        <section id="flow" class="panel" data-section>
+          <p class="kicker">In an LLM app</p>
+          <h2>Where context sits</h2>
+          <pre class="mermaid">flowchart LR
+  Q[Question] --> Search[Search at question time]
+  Search --> Wide[Retrieve wide]
+  Wide --> Short[Rerank to a short list]
+  Short --> Order[Budget, then order]
+  Order --> Model[Model]
+  Model --> Span[Answer points at a span]</pre>
+          <p class="viz-note">Search, a short list, an ordered budget, then an answer that points at a span. The techniques below are this path.</p>
         </section>
 
         <section id="why" class="block" data-section>

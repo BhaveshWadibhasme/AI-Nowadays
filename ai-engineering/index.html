@@ -20,6 +20,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../visuals.css">
+<script src="../visuals.js" defer></script>
 <script src="../theme.js"></script>
 </head>
 <body>
@@ -60,6 +62,8 @@
         <p class="kicker">On this page</p>
         <a href="#overview">Overview</a>
         <a href="#pillars">Five pillars</a>
+        <a href="#map">Map</a>
+        <a href="#flows">Flows</a>
         <a href="#in-the-room">In the room</a>
         <a href="#filing">Filing the feed</a>
       </nav>
@@ -133,6 +137,84 @@
                 <li>Tools</li>
                 <li class="ae-eq-sum">AI in apps</li>
               </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="map" data-section>
+          <div class="section-head">
+            <h2>Five pillars, one map</h2>
+          </div>
+          <div class="mindmap" data-mindmap>
+            <script type="application/json">
+            {"label":"AI in apps","tone":"ink","children":[
+              {"label":"Context","tone":"teal","href":"context.html","children":[{"label":"Retrieval","tone":"teal"},{"label":"Memory","tone":"teal"},{"label":"Assembly","tone":"teal"}]},
+              {"label":"Cost","tone":"copper","href":"cost.html","children":[{"label":"Routing","tone":"copper"},{"label":"Caching","tone":"copper"},{"label":"Smaller models","tone":"copper"}]},
+              {"label":"Measure","tone":"iris","href":"measure.html","children":[{"label":"Evals","tone":"iris"},{"label":"Traces","tone":"iris"},{"label":"Groundedness","tone":"iris"}]},
+              {"label":"Guardrails","tone":"chain","href":"guardrails.html","children":[{"label":"Validation","tone":"chain"},{"label":"Injection","tone":"chain"},{"label":"PII and review","tone":"chain"}]},
+              {"label":"Tools + agents","tone":"ink","href":"tools-agents.html","children":[{"label":"Tool calls","tone":"ink"},{"label":"MCP","tone":"ink"},{"label":"When not to","tone":"ink"}]}
+            ]}
+            </script>
+          </div>
+        </section>
+
+        <section id="flows" class="panel" data-section>
+          <p class="kicker">In an LLM app</p>
+          <h2>Where each pillar sits</h2>
+          <div class="viz-tabs" data-tabs>
+            <div class="viz-tablist" role="tablist" aria-label="Pillar flows">
+              <button type="button" role="tab" id="ae-tab-context" aria-controls="ae-panel-context" aria-selected="true">Context</button>
+              <button type="button" role="tab" id="ae-tab-cost" aria-controls="ae-panel-cost" aria-selected="false" tabindex="-1">Cost</button>
+              <button type="button" role="tab" id="ae-tab-measure" aria-controls="ae-panel-measure" aria-selected="false" tabindex="-1">Measure</button>
+              <button type="button" role="tab" id="ae-tab-guard" aria-controls="ae-panel-guard" aria-selected="false" tabindex="-1">Guardrails</button>
+              <button type="button" role="tab" id="ae-tab-tools" aria-controls="ae-panel-tools" aria-selected="false" tabindex="-1">Tools</button>
+            </div>
+            <div role="tabpanel" id="ae-panel-context" aria-labelledby="ae-tab-context">
+              <pre class="mermaid">flowchart LR
+  Q[Question] --> Search[Search at question time]
+  Search --> Wide[Retrieve wide]
+  Wide --> Short[Rerank to a short list]
+  Short --> Order[Budget, then order]
+  Order --> Model[Model]
+  Model --> Span[Answer points at a span]</pre>
+              <p class="viz-note">From the context primer: search, a short list, an ordered budget, then an answer that points at a span.</p>
+            </div>
+            <div role="tabpanel" id="ae-panel-cost" aria-labelledby="ae-tab-cost" hidden>
+              <pre class="mermaid">flowchart LR
+  Call[Name the call that dominates] --> Route[A sufficient model]
+  Route --> Cache[Stable prefix, variable suffix]
+  Cache --> Batch[Interactive path or batch]
+  Batch --> Budget[Budget per surface]</pre>
+              <p class="viz-note">From the cost primer: name the expensive call, route it, cache the stable prefix, and write a budget.</p>
+            </div>
+            <div role="tabpanel" id="ae-panel-measure" aria-labelledby="ae-tab-measure" hidden>
+              <pre class="mermaid">flowchart LR
+  Change[Prompt, model, or corpus change] --> Gold[Golden set with an owner]
+  Change --> Sample[Sample production]
+  Gold --> Open[Score that opens]
+  Sample --> Open
+  Open --> Read[Read the failures]</pre>
+              <p class="viz-note">From the measure primer: a golden set, a production sample, a score you can open, and a look at the failures.</p>
+            </div>
+            <div role="tabpanel" id="ae-panel-guard" aria-labelledby="ae-tab-guard" hidden>
+              <pre class="mermaid">flowchart LR
+  Text[Untrusted text] --> Redact[Redact before the log]
+  Redact --> Model[Model]
+  Model --> Parse{Does it parse?}
+  Parse -->|No| Stop[It does not run]
+  Parse -->|Yes| Human[Person approves side effects]</pre>
+              <p class="viz-note">From the guardrails primer: untrusted text stays data, output has to parse, and side effects wait for a person.</p>
+            </div>
+            <div role="tabpanel" id="ae-panel-tools" aria-labelledby="ae-tab-tools" hidden>
+              <pre class="mermaid">flowchart LR
+  Job[Job] --> Choice{Fixed workflow enough?}
+  Choice -->|Yes| Flow[Fixed workflow]
+  Choice -->|No| Loop[Agent loop]
+  Loop --> Schema[Schema and description]
+  Schema --> Tool[Tool or MCP]
+  Tool --> Propose[Loop proposes]
+  Propose --> Harness[Harness commits]</pre>
+              <p class="viz-note">From the tools primer: use a fixed workflow when you can draw it. When you do loop, the harness commits.</p>
             </div>
           </div>
         </section>

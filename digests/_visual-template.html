@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Visual digest template · AI Nowdays</title>
+<meta name="description" content="Template for a future AI Nowdays digest. Copy this file. Do not publish it as an issue.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../visuals.css">
+<script src="../visuals.js" defer></script>
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a class="active" href="../">Digests</a>
+      <a href="../ai-engineering/">AI Engineering</a>
+      <a href="../computer-vision.html">Computer Vision</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../">← Home</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="kicker">On this page</p>
+        <a href="#overview">Overview</a>
+        <a href="#map">Map</a>
+        <a href="#story-one">Story</a>
+        <a href="#deep-read">Worth a deep read</a>
+        <a href="#trend-watch">Trend watch</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <!-- Swap chip-daily for chip-weekly, chip-frameworks, chip-langchain, chip-google-research, or chip-computer-vision. -->
+          <span class="chip chip-daily">Daily</span>
+          <time datetime="YYYY-MM-DD">Date</time>
+          <span>4 min read</span>
+        </div>
+        <h1>Visual digest template: replace this title</h1>
+        <p>Copy this file to <code>digests/YYYY-MM-DD-daily.html</code> (or weekly, frameworks, langchain, google-research, computer-vision). Replace every placeholder with facts from that issue. Do not add this template to <code>digests.json</code>.</p>
+        <div class="tag-row">
+          <span class="tag">Replace</span>
+          <span class="tag">These</span>
+          <span class="tag">Tags</span>
+        </div>
+
+        <!-- 1. Stat strip. Numbers must come from the issue. data-count animates; the text inside .stat-num is the no-JS value. -->
+        <div class="viz-stats" aria-label="Highlights">
+          <p class="viz-stat" data-count="3">
+            <span class="stat-num">3</span>
+            <span class="stat-label">Replace with a real count</span>
+          </p>
+          <p class="viz-stat" data-count="1" data-suffix=" source">
+            <span class="stat-num">1 source</span>
+            <span class="stat-label">Replace with a real label</span>
+          </p>
+        </div>
+
+        <section id="overview" class="lede-card" data-section>
+          <p>One or two sentences on what this issue covers. Keep every source link you add.</p>
+        </section>
+
+        <!-- 2. A Mermaid flow OR a mind map that summarises this period's themes. One is enough. Delete the one you do not use. Mermaid loads only because this page contains pre.mermaid. -->
+        <section id="map" class="panel" data-section>
+          <p class="kicker">This period</p>
+          <h2>Themes</h2>
+          <pre class="mermaid">flowchart LR
+  A[Theme one] --> B[What changed]
+  B --> C[What to do on a delivery]</pre>
+          <div class="mindmap" data-mindmap>
+            <script type="application/json">
+            {"label":"This issue","tone":"teal","children":[
+              {"label":"Theme one","tone":"copper","children":[{"label":"Source","tone":"copper"}]},
+              {"label":"Theme two","tone":"iris","children":[{"label":"Source","tone":"iris"}]}
+            ]}
+            </script>
+          </div>
+        </section>
+
+        <!-- 3. Colour-coded story cards. Use story-icon, or add copper, iris, research, or vision. -->
+        <section id="story-one" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="M8 15l3.2-4.2 2.6 2.4L19 7"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Section</p>
+            <h3>Story title from the source</h3>
+            <p>First paragraph stays visible when the page collapses the rest. Put the lead fact here.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>The practical consequence for a consultant or FDE.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://example.com"><span>Source label</span><span class="url">https://example.com</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="deep-read" class="panel deep" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Worth a deep read</h2>
+          <p>One piece worth the extra time, with the real title and link.</p>
+        </section>
+
+        <section id="trend-watch" class="panel trend" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Trend watch</h2>
+          <p>The pattern across the stories above.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>

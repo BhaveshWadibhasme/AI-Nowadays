@@ -20,6 +20,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="visuals.css">
+<script src="visuals.js" defer></script>
 <script src="theme.js"></script>
 </head>
 <body>
@@ -51,6 +53,8 @@
       <nav class="toc" aria-label="On this page">
         <p class="kicker">On this page</p>
         <a href="#timeline">Timeline</a>
+        <a href="#landscape">Landscape</a>
+        <a href="#pipelines">Pipelines</a>
         <a href="#origins">Origins</a>
         <a href="#classical">Classical ML</a>
         <a href="#deep">Deep learning</a>
@@ -78,54 +82,145 @@
           <span class="tag">Industry</span>
         </div>
 
+        <div class="viz-stats" aria-label="Marks from this page">
+          <p class="viz-stat" data-count="1966">
+            <span class="stat-num">1966</span>
+            <span class="stat-label">Summer Vision Project memo</span>
+          </p>
+          <p class="viz-stat" data-count="2012">
+            <span class="stat-num">2012</span>
+            <span class="stat-label">AlexNet, the year the gap convinced the field</span>
+          </p>
+          <p class="viz-stat" data-count="15.3" data-decimals="1" data-suffix="%">
+            <span class="stat-num">15.3%</span>
+            <span class="stat-label">AlexNet top-5 test error</span>
+          </p>
+          <p class="viz-stat" data-count="2026">
+            <span class="stat-num">2026</span>
+            <span class="stat-label">Newest vision-agent items covered here</span>
+          </p>
+        </div>
+
         <section id="timeline" class="panel" data-section>
           <p class="kicker">Visual timeline</p>
           <h2>1960s to 2026</h2>
-          <ol class="era-timeline">
-            <li>
-              <span class="era-node" aria-hidden="true"></span>
-              <div class="era-card">
-                <p class="era-years">1960s–1980s</p>
-                <h3>Rules &amp; geometry</h3>
-                <p>MIT Summer Vision Project (1966), Hough transform (1962 patent), Canny edge detector (1986), Marr's <em>Vision</em> (1982)</p>
-              </div>
-            </li>
-            <li>
-              <span class="era-node" aria-hidden="true"></span>
-              <div class="era-card">
-                <p class="era-years">~1999–2011</p>
-                <h3>Hand-crafted features + ML</h3>
-                <p>Viola-Jones face detector (2001), SIFT (2004), HOG (2005), SURF (2006), SVMs &amp; boosting</p>
-              </div>
-            </li>
-            <li>
-              <span class="era-node" aria-hidden="true"></span>
-              <div class="era-card">
-                <p class="era-years">2012–2019</p>
-                <h3>Deep learning (CNNs)</h3>
-                <p>ImageNet (2009) → AlexNet (2012), VGG &amp; GANs (2014), ResNet, YOLO, U-Net (2015), Mask R-CNN (2017)</p>
-              </div>
-            </li>
-            <li>
-              <span class="era-node" aria-hidden="true"></span>
-              <div class="era-card">
-                <p class="era-years">2020–2023</p>
-                <h3>Transformers &amp; foundation models</h3>
-                <p>DETR, ViT, DDPM (2020), CLIP, DINO, latent diffusion (2021), SAM &amp; DINOv2 (2023)</p>
-              </div>
-            </li>
-            <li>
-              <span class="era-node" aria-hidden="true"></span>
-              <div class="era-card">
-                <p class="era-years">2023–2026</p>
-                <h3>Vision + LLMs &amp; vision agents</h3>
-                <p>LLaVA, GPT-4o (2024), SAM 2 (2024), DINOv3 &amp; Qwen3-VL (2025), SAM 3 / SAM 3.1, YOLO26, Gemini 3 Agentic Vision, Gemini 3.5 Flash computer use (2026)</p>
-              </div>
-            </li>
-          </ol>
+          <div class="h-timeline" data-timeline>
+            <div class="h-timeline-track" aria-hidden="true"><span class="h-timeline-fill"></span></div>
+            <ol>
+              <li data-target="origins" data-tone="copper">
+                <button type="button" aria-pressed="false">
+                  <span class="h-years">1960s–1980s</span>
+                  <span class="h-name">Rules &amp; geometry</span>
+                </button>
+              </li>
+              <li data-target="classical" data-tone="teal">
+                <button type="button" aria-pressed="false">
+                  <span class="h-years">~1999–2011</span>
+                  <span class="h-name">Hand-crafted features + ML</span>
+                </button>
+              </li>
+              <li data-target="deep" data-tone="iris">
+                <button type="button" aria-pressed="false">
+                  <span class="h-years">2012–2019</span>
+                  <span class="h-name">Deep learning (CNNs)</span>
+                </button>
+              </li>
+              <li data-target="transformers" data-tone="research">
+                <button type="button" aria-pressed="false">
+                  <span class="h-years">2020–2023</span>
+                  <span class="h-name">Transformers &amp; foundation models</span>
+                </button>
+              </li>
+              <li data-target="vlm" data-tone="vision">
+                <button type="button" aria-pressed="false">
+                  <span class="h-years">2023–2026</span>
+                  <span class="h-name">Vision + LLMs &amp; vision agents</span>
+                </button>
+              </li>
+            </ol>
+            <div class="h-timeline-panels">
+              <p data-panel="origins" data-tone="copper">MIT Summer Vision Project (1966), Hough transform (1962 patent), Canny edge detector (1986), Marr's <em>Vision</em> (1982)</p>
+              <p data-panel="classical" data-tone="teal" hidden>Viola-Jones face detector (2001), SIFT (2004), HOG (2005), SURF (2006), SVMs &amp; boosting</p>
+              <p data-panel="deep" data-tone="iris" hidden>ImageNet (2009) → AlexNet (2012), VGG &amp; GANs (2014), ResNet, YOLO, U-Net (2015), Mask R-CNN (2017)</p>
+              <p data-panel="transformers" data-tone="research" hidden>DETR, ViT, DDPM (2020), CLIP, DINO, latent diffusion (2021), SAM &amp; DINOv2 (2023)</p>
+              <p data-panel="vlm" data-tone="vision" hidden>LLaVA, GPT-4o (2024), SAM 2 (2024), DINOv3 &amp; Qwen3-VL (2025), SAM 3 / SAM 3.1, YOLO26, Gemini 3 Agentic Vision, Gemini 3.5 Flash computer use (2026)</p>
+            </div>
+          </div>
         </section>
 
-        <div id="origins" data-section>
+        <section id="landscape" class="panel" data-section>
+          <p class="kicker">Landscape</p>
+          <h2>The map of the field</h2>
+          <p>Six branches, using only the families already on this page. Click a branch to collapse it. Drag to pan, and use the zoom controls.</p>
+          <div class="mindmap" data-mindmap>
+            <script type="application/json">
+            {"label":"Computer vision","tone":"vision","children":[
+              {"label":"Classical","tone":"copper","children":[{"label":"Edges: Sobel, Canny","tone":"copper"},{"label":"Shapes: Hough","tone":"copper"},{"label":"Marr's layered model","tone":"copper"}]},
+              {"label":"Classical ML","tone":"teal","children":[{"label":"Haar, cascade","tone":"teal"},{"label":"SIFT and SURF","tone":"teal"},{"label":"HOG + SVM","tone":"teal"}]},
+              {"label":"Deep learning","tone":"iris","children":[{"label":"CNNs: LeNet to ResNet","tone":"iris"},{"label":"Detection: R-CNN, YOLO, SSD","tone":"iris"},{"label":"Segmentation: U-Net, Mask R-CNN","tone":"iris"},{"label":"GANs","tone":"iris"}]},
+              {"label":"Transformers and foundation models","tone":"research","children":[{"label":"DETR and ViT","tone":"research"},{"label":"CLIP","tone":"research"},{"label":"DINO family","tone":"research"},{"label":"SAM","tone":"research"},{"label":"Diffusion","tone":"research"}]},
+              {"label":"Vision + LLMs","tone":"vision","children":[{"label":"VLMs","tone":"vision"},{"label":"Open-vocabulary detection","tone":"vision"},{"label":"Vision agents","tone":"vision"}]},
+              {"label":"Applications","tone":"copper","children":[{"label":"Asset inspection","tone":"copper"},{"label":"HSE cameras","tone":"copper"},{"label":"P&IDs and documents","tone":"copper"},{"label":"Drone and satellite","tone":"copper"},{"label":"Edge deployment","tone":"copper"}]}
+            ]}
+            </script>
+          </div>
+        </section>
+
+        <section id="pipelines" class="panel" data-section>
+          <p class="kicker">Pipelines</p>
+          <h2>How a picture moves through each era</h2>
+          <div class="viz-tabs" data-tabs>
+            <div class="viz-tablist" role="tablist" aria-label="Computer vision pipelines">
+              <button type="button" role="tab" id="cv-tab-classical" aria-controls="cv-panel-classical" aria-selected="true">Classical</button>
+              <button type="button" role="tab" id="cv-tab-cnn" aria-controls="cv-panel-cnn" aria-selected="false" tabindex="-1">CNN</button>
+              <button type="button" role="tab" id="cv-tab-vit" aria-controls="cv-panel-vit" aria-selected="false" tabindex="-1">ViT and CLIP</button>
+              <button type="button" role="tab" id="cv-tab-agent" aria-controls="cv-panel-agent" aria-selected="false" tabindex="-1">Vision agent</button>
+              <button type="button" role="tab" id="cv-tab-plant" aria-controls="cv-panel-plant" aria-selected="false" tabindex="-1">Inspection</button>
+            </div>
+            <div role="tabpanel" id="cv-panel-classical" aria-labelledby="cv-tab-classical">
+              <pre class="mermaid">flowchart LR
+  A[Image] --> B[Edges and features]
+  B --> C[Classifier]</pre>
+              <p class="viz-note">The classical path on this page: edges and hand-made features, then a classifier such as an SVM or boosting.</p>
+            </div>
+            <div role="tabpanel" id="cv-panel-cnn" aria-labelledby="cv-tab-cnn" hidden>
+              <pre class="mermaid">flowchart LR
+  A[Image] --> B[Learned convolutions]
+  B --> C[Pooling]
+  C --> D[Deeper layers]
+  D --> E[Class, box, or mask]</pre>
+              <p class="viz-note">LeNet through ResNet, YOLO, SSD, U-Net and Mask R-CNN: the features are learned, and the head answers what, where, or which pixels.</p>
+            </div>
+            <div role="tabpanel" id="cv-panel-vit" aria-labelledby="cv-tab-vit" hidden>
+              <pre class="mermaid">flowchart LR
+  I[Image] --> P[16x16 patches]
+  P --> T[Transformer]
+  TI[Image encoder] --> S[Shared embedding]
+  TT[Text encoder] --> S
+  S --> Z[Zero-shot labels]</pre>
+              <p class="viz-note">ViT cuts the image into patches. CLIP trains an image encoder and a text encoder into one embedding space, then classifies with plain-language labels.</p>
+            </div>
+            <div role="tabpanel" id="cv-panel-agent" aria-labelledby="cv-tab-agent" hidden>
+              <pre class="mermaid">flowchart LR
+  In[Image, document, or video] --> VLM[Vision-language model]
+  VLM --> Loop[Think, act, observe]
+  Loop --> Tools[Tools: crop, zoom, SAM, code]
+  Tools --> Loop
+  Loop --> Out[Answer or action]</pre>
+              <p class="viz-note">The loop described for SAM 3 Agent and Gemini's Agentic Vision: look, call a tool, check the result, then answer or act.</p>
+            </div>
+            <div role="tabpanel" id="cv-panel-plant" aria-labelledby="cv-tab-plant" hidden>
+              <pre class="mermaid">flowchart LR
+  Frame[Camera or drone frame] --> Det[YOLO26 or RF-DETR]
+  Det --> Mask[SAM 3 masks]
+  Mask --> Note[VLM drafts the note]
+  Note --> Human[Human sign-off]</pre>
+              <p class="viz-note">The asset-inspection stack in the industry table: a detector, SAM 3 for masks, a VLM for the note, and a person on the safety-critical call.</p>
+            </div>
+          </div>
+        </section>
+
+        <div id="origins" data-section data-tone="copper">
           <section class="block">
             <div class="block-title">
               <div class="story-icon copper" aria-hidden="true">
@@ -157,6 +252,13 @@
               <p class="kicker">Edges</p>
               <h3>Edges first: Sobel and Canny</h3>
               <p>The first useful step was finding <em>where brightness changes sharply</em>, because edges outline objects. Sobel-style operators slide a small 3×3 kernel over the image to estimate the brightness gradient. John Canny's 1986 paper turned edge detection into an optimisation problem (good detection, good localisation, one response per edge) and gave the pipeline still taught today: smooth with a Gaussian, compute gradients, thin edges with non-maximum suppression, then link them with two thresholds (hysteresis).</p>
+              <figure class="figure-card">
+                <img src="assets/cv/canny-hysteresis.png" width="800" height="565" alt="Edge map of a lizard after the hysteresis step of the Canny detector." loading="lazy" decoding="async">
+                <figcaption>
+                  Hysteresis, the last step in the Canny pipeline described above.
+                  <span class="credit">Image: Babujayan, <a href="https://commons.wikimedia.org/wiki/File:Canny_Walkthrough_5_Hysteresis.png">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>. The file credits the source photograph as Large Scaled Forest Lizard.</span>
+                </figcaption>
+              </figure>
               <div class="links">
                 <a class="link-btn" href="https://doi.org/10.1109/TPAMI.1986.4767851" target="_blank" rel="noopener noreferrer"><span>Canny (1986), IEEE TPAMI</span><span class="url">https://doi.org/10.1109/TPAMI.1986.4767851</span></a>
                 <a class="link-btn" href="https://docs.opencv.org/4.x/da/d22/tutorial_py_canny.html" target="_blank" rel="noopener noreferrer"><span>OpenCV Canny tutorial</span><span class="url">https://docs.opencv.org/4.x/da/d22/tutorial_py_canny.html</span></a>
@@ -172,6 +274,13 @@
               <p class="kicker">Shapes</p>
               <h3>Shapes by voting: the Hough transform</h3>
               <p>Paul Hough patented a method in 1962 for finding particle tracks in bubble-chamber photos. Duda and Hart (1972) reformulated it with the angle-distance line form used today. Every edge pixel "votes" for all the lines (or circles) that could pass through it, and peaks in the vote space are the shapes. It still finds lane lines, pipes and gauge needles.</p>
+              <figure class="figure-card">
+                <img src="assets/cv/hough-transform.png" width="580" height="315" alt="Diagram of the Hough transform: three points vote for lines across six angle groups." loading="lazy" decoding="async">
+                <figcaption>
+                  The voting step: each point supports every line that could pass through it, which is the Hough idea Duda and Hart put in the angle-distance form.
+                  <span class="credit">Diagram: Mike1024, <a href="https://commons.wikimedia.org/wiki/File:Hough_transform_diagram.png">Wikimedia Commons</a>, public domain.</span>
+                </figcaption>
+              </figure>
               <div class="links">
                 <a class="link-btn" href="https://patents.google.com/patent/US3069654A/en" target="_blank" rel="noopener noreferrer"><span>Hough patent US3069654</span><span class="url">https://patents.google.com/patent/US3069654A/en</span></a>
                 <a class="link-btn" href="https://doi.org/10.1145/361237.361242" target="_blank" rel="noopener noreferrer"><span>Duda &amp; Hart (1972), CACM</span><span class="url">https://doi.org/10.1145/361237.361242</span></a>
@@ -204,7 +313,7 @@
           </div>
         </div>
 
-        <div id="classical" data-section>
+        <div id="classical" data-section data-tone="teal">
           <section class="block">
             <div class="block-title">
               <div class="story-icon" aria-hidden="true">
@@ -268,7 +377,7 @@
           </div>
         </div>
 
-        <div id="deep" data-section>
+        <div id="deep" data-section data-tone="iris">
           <section class="block">
             <div class="block-title">
               <div class="story-icon iris" aria-hidden="true">
@@ -304,6 +413,13 @@
                 <strong>Why now</strong>
                 <p>Three things arrived together. There was <strong>big labelled data</strong> (ImageNet), <strong>cheap parallel compute</strong> (GPUs built for gaming turned out to suit the matrix maths), and <strong>training tricks</strong> (ReLU, dropout, data augmentation).</p>
               </div>
+              <figure class="figure-card">
+                <img src="assets/cv/cnn-convolution.png" width="1280" height="898" alt="Worked example of a convolution: a small kernel sliding over an input grid to fill an output grid." loading="lazy" decoding="async">
+                <figcaption>
+                  Convolution, the operation LeNet, AlexNet, VGG and ResNet train end to end. This figure is a worked example of that step, not a diagram from the AlexNet paper.
+                  <span class="credit">Illustration: Daniel Voigt Godoy, <a href="https://commons.wikimedia.org/wiki/File:Convolutional_neural_network,_convolution_worked_example.png">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, from the <a href="https://github.com/dvgodoy/dl-visuals/">dl-visuals</a> collection.</span>
+                </figcaption>
+              </figure>
               <div class="links">
                 <a class="link-btn" href="https://doi.org/10.1109/CVPR.2009.5206848" target="_blank" rel="noopener noreferrer"><span>ImageNet (CVPR 2009)</span><span class="url">https://doi.org/10.1109/CVPR.2009.5206848</span></a>
                 <a class="link-btn" href="https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html" target="_blank" rel="noopener noreferrer"><span>AlexNet (NeurIPS 2012)</span><span class="url">https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html</span></a>
@@ -391,7 +507,7 @@
           </div>
         </div>
 
-        <div id="transformers" data-section>
+        <div id="transformers" data-section data-tone="research">
           <section class="block">
             <div class="block-title">
               <div class="story-icon research" aria-hidden="true">
@@ -539,7 +655,7 @@
           </div>
         </div>
 
-        <div id="vlm" data-section>
+        <div id="vlm" data-section data-tone="vision">
           <section class="block">
             <div class="block-title">
               <div class="story-icon vision" aria-hidden="true">
@@ -750,7 +866,7 @@
         <section id="shifts" class="panel deep" data-section>
           <p class="kicker">Highlighted</p>
           <h2>6. Why each shift happened</h2>
-          <div class="table-wrap">
+          <div class="table-wrap" data-viz="flips">
             <table class="compare">
               <caption class="sr-only">Why each shift in computer vision happened</caption>
               <thead>
@@ -806,7 +922,37 @@
               <h2>7. For energy and industry: a consultant's playbook</h2>
             </div>
           </section>
-          <div class="table-wrap">
+          <div class="figure-grid">
+            <figure class="figure-card">
+              <img src="assets/cv/pressure-gauge.jpg" width="900" height="994" alt="A round industrial pressure gauge mounted on piping." loading="lazy" decoding="async">
+              <figcaption>
+                Gauge reading is one of the asset-inspection jobs in the table below.
+                <span class="credit">Photo: Palagiri, <a href="https://commons.wikimedia.org/wiki/File:Industrial_instruments_pressure_gauge.jpg">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.</span>
+              </figcaption>
+            </figure>
+            <figure class="figure-card">
+              <img src="assets/cv/refinery.jpg" width="1100" height="816" alt="Anacortes oil refinery on March Point, with Mount Baker behind the stacks." loading="lazy" decoding="async">
+              <figcaption>
+                A refinery, the kind of energy site the inspection, HSE, and edge rows are written for.
+                <span class="credit">Photo: Walter Siegmund, <a href="https://commons.wikimedia.org/wiki/File:Anacortes_Refinery_31911.JPG">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/2.5/">CC BY 2.5</a>.</span>
+              </figcaption>
+            </figure>
+            <figure class="figure-card">
+              <img src="assets/cv/solar-farm.jpg" width="1100" height="619" alt="Aerial view of a solar farm beside a water works." loading="lazy" decoding="async">
+              <figcaption>
+                Aerial context for the drone and satellite row, which includes solar farm health.
+                <span class="credit">Photo: Saiphani02, <a href="https://commons.wikimedia.org/wiki/File:Solar_farm_at_Krishnapuram_Tatipudi_Water_Works_aerial_view_01.jpg">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</span>
+              </figcaption>
+            </figure>
+            <figure class="figure-card">
+              <img src="assets/cv/pipeline-robot.jpg" width="1100" height="825" alt="A small wheeled electric robot designed to inspect the inside of a pipeline." loading="lazy" decoding="async">
+              <figcaption>
+                An inspection robot, in the same family of jobs as pipeline right-of-way and edge deployment.
+                <span class="credit">Photo: Fumikas Sagisavas, <a href="https://commons.wikimedia.org/wiki/File:Bominwell_electric_pipeline_inspection_robot.jpg">Wikimedia Commons</a>, <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.</span>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="table-wrap" data-viz="cards">
             <table class="compare">
               <caption class="sr-only">Computer vision uses in energy and industry</caption>
               <thead>
