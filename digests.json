@@ -1,5 +1,62 @@
 [
   {
+    "date": "2026-11-06",
+    "type": "weekly",
+    "title": "Weekly AI Case-Study Deep-Dive: 6 Nov 2026",
+    "summary": "Five pieces: an oil-and-gas Root Cause Agent that saved $750K by proving a bearing-temperature alert was instrumentation not mechanical failure (UptimeAI, 5 Nov), GenAI agents across well-construction tender-to-TD used by 250+ engineers (SPE 236279, ADIPEC 2 Nov), a nine-skill petrophysical agentic assistant that cut log-to-evaluation from ~90 minutes to under four (SPE 235583), McKinsey's asset-heavy maintenance playbook with a US O&G gen-AI FMEA workflow that cut site effort ~80%, and KDDI's production RAG app that cut latency 38% and raised groundedness 25% with ADK Skills.",
+    "url": "digests/2026-11-06-weekly.html",
+    "readingTime": "9 min read",
+    "tags": [
+      "oil-and-gas",
+      "agentic-ai",
+      "root-cause",
+      "well-construction",
+      "petrophysics",
+      "maintenance",
+      "rag",
+      "adk",
+      "mckinsey",
+      "production"
+    ],
+    "items": [
+      {
+        "title": "Root Cause Agent Saves Oil & Gas Supermajor $750K by Challenging Bearing Failure Diagnosis (UptimeAI, 5 Nov 2026)",
+        "summary": "On a reinjection compressor bearing-temperature alert, the agent ranked causal hypotheses and asked what else should be true if the bearing were genuinely heating. No matching pressure or vibration rise pointed to instrumentation, not mechanics, avoiding a shutdown that would have cost over $750K. Vendor case study.",
+        "url": "digests/2026-11-06-weekly.html#uptimeai-rca",
+        "pillar": "tools-agents",
+        "tags": ["oil-and-gas", "root-cause", "agentic-ai"]
+      },
+      {
+        "title": "From Tender to Total Depth: Generative AI Agents Across Well Construction (SPE 236279, ADIPEC 2 Nov 2026)",
+        "summary": "A platform with 13+ AI/ML engines serves 250+ engineers on tenders valued at $10–17B a year. Well classification fell from 8 hours to 20 minutes; risk assessment is 26× faster; end-of-well reports fell from four days to two; automated technology identification is estimated at ~$34.7M value per year.",
+        "url": "digests/2026-11-06-weekly.html#well-construction",
+        "pillar": "tools-agents",
+        "tags": ["oil-and-gas", "well-construction", "agentic-ai"]
+      },
+      {
+        "title": "End-to-End Petrophysical Operations with Agentic AI (SPE 235583, ADIPEC 2 Nov 2026)",
+        "summary": "Nine configuration-driven skills on a horizontal carbonate well cut planning from a half-day to about five minutes, and raw real-time log email to evaluation deck from ~90 minutes to under four on a cached run (5–10 minutes cold). Deterministic petrophysics under the LLM; checked against commercial software.",
+        "url": "digests/2026-11-06-weekly.html#petrophysics",
+        "pillar": "tools-agents",
+        "tags": ["oil-and-gas", "petrophysics", "agentic-ai"]
+      },
+      {
+        "title": "Maintenance Meets AI: A Proven Approach for Asset-Heavy Industries (McKinsey, 23 Sep 2026)",
+        "summary": "End-to-end maintenance rewiring can capture ~2–5 points of incremental margin. A US oil and gas company cut gen-AI-assisted FMEA and PM-plan work for one site from about six months to six weeks (~80%). A reliability agent cut total maintenance work volume ~8%; an airline cut AOG 14% and inventory 12%.",
+        "url": "digests/2026-11-06-weekly.html#mckinsey-maintenance",
+        "pillar": "measure",
+        "tags": ["maintenance", "mckinsey", "oil-and-gas"]
+      },
+      {
+        "title": "How KDDI Optimized RAG Performance with Agent Development Kit (Google Cloud, 8 Sep 2026)",
+        "summary": "Buffmee, a consumer RAG app over 100+ sources, cut total response latency 38%, improved TTFT nearly 18%, and raised groundedness 25% via LLM-as-a-Judge evals and ADK Skills that split 800-line prompts into dynamically loaded skills.",
+        "url": "digests/2026-11-06-weekly.html#kddi-rag",
+        "pillar": "context",
+        "tags": ["rag", "adk", "production"]
+      }
+    ]
+  },
+  {
     "date": "2026-10-31",
     "type": "frameworks",
     "title": "Agent frameworks weekly roundup: Oct 24–31, 2026",

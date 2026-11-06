@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weekly AI Case-Study Deep-Dive: 6 Nov 2026 · AI Nowdays</title>
+<meta name="description" content="Five pieces: an oil-and-gas Root Cause Agent that saved $750K by proving a bearing-temperature alert was instrumentation not mechanical failure (UptimeAI, 5 Nov), GenAI agents across well-construction tender-to-TD used by 250+ engineers (SPE 236279, ADIPEC 2 Nov), a nine-skill petrophysical agentic assistant that cut log-to-evaluation from ~90 minutes to under four (SPE 235583), McKinsey's asset-heavy maintenance playbook with a US O&amp;G gen-AI FMEA workflow that cut site effort ~80%, and KDDI's production RAG app that cut latency 38% and raised groundedness 25% with ADK Skills.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-11-06-weekly.html">
+<meta property="og:title" content="Weekly AI Case-Study Deep-Dive: 6 Nov 2026">
+<meta property="og:description" content="Five pieces: an oil-and-gas Root Cause Agent that saved $750K by proving a bearing-temperature alert was instrumentation not mechanical failure (UptimeAI, 5 Nov), GenAI agents across well-construction tender-to-TD used by 250+ engineers (SPE 236279, ADIPEC 2 Nov), a nine-skill petrophysical agentic assistant that cut log-to-evaluation from ~90 minutes to under four (SPE 235583), McKinsey's asset-heavy maintenance playbook with a US O&amp;G gen-AI FMEA workflow that cut site effort ~80%, and KDDI's production RAG app that cut latency 38% and raised groundedness 25% with ADK Skills.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-11-06-weekly.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Weekly AI Case-Study Deep-Dive: 6 Nov 2026">
+<meta name="twitter:description" content="Five pieces: an oil-and-gas Root Cause Agent that saved $750K by proving a bearing-temperature alert was instrumentation not mechanical failure (UptimeAI, 5 Nov), GenAI agents across well-construction tender-to-TD used by 250+ engineers (SPE 236279, ADIPEC 2 Nov), a nine-skill petrophysical agentic assistant that cut log-to-evaluation from ~90 minutes to under four (SPE 235583), McKinsey's asset-heavy maintenance playbook with a US O&amp;G gen-AI FMEA workflow that cut site effort ~80%, and KDDI's production RAG app that cut latency 38% and raised groundedness 25% with ADK Skills.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../visuals.css">
+<script src="../visuals.js" defer></script>
+<style>
+.lede-card p.kicker,
+.facet p.kicker { color: var(--teal); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.lede-card .deck { margin-top: 10px; color: var(--muted); font-size: 1rem; }
+.stat-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 2px; }
+.stat {
+  flex: 1 1 108px;
+  min-width: 108px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--card-solid);
+}
+.stat b {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.28rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+.stat span { display: block; margin-top: 3px; color: var(--muted); font-size: 0.75rem; line-height: 1.3; }
+.facets { display: grid; gap: 10px; margin-top: 14px; }
+.facet {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--card-solid) 88%, transparent);
+}
+.facet .kicker { margin: 0 0 6px; }
+.facet p { margin: 0; color: var(--ink); }
+@media (min-width: 720px) {
+  .facets.pair { grid-template-columns: 1fr 1fr; }
+}
+</style>
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a class="active" href="../">Digests</a>
+      <a href="../ai-engineering/">AI Engineering</a>
+      <a href="../computer-vision.html">Computer Vision</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#weekly">← All weekly deep-dives</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="kicker">On this page</p>
+        <a href="#theme">Theme</a>
+        <a href="#uptimeai-rca">UptimeAI RCA</a>
+        <a href="#well-construction">Well construction</a>
+        <a href="#petrophysics">Petrophysics</a>
+        <a href="#mckinsey-maintenance">Maintenance</a>
+        <a href="#kddi-rag">KDDI RAG</a>
+        <a href="#playbook">Playbook</a>
+        <a href="#framework-trend">Framework trend</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-weekly">Weekly deep-dive</span>
+          <time datetime="2026-11-06">6 Nov 2026</time>
+          <span>9 min read</span>
+        </div>
+        <h1>Weekly AI Case-Study Deep-Dive: 6 Nov 2026</h1>
+        <div class="tag-row">
+          <span class="tag">oil-and-gas</span>
+          <span class="tag">agentic-ai</span>
+          <span class="tag">root-cause</span>
+          <span class="tag">well-construction</span>
+          <span class="tag">petrophysics</span>
+          <span class="tag">maintenance</span>
+          <span class="tag">rag</span>
+          <span class="tag">adk</span>
+          <span class="tag">mckinsey</span>
+          <span class="tag">production</span>
+        </div>
+
+        <section id="theme" class="lede-card" data-section>
+          <p class="kicker">This week</p>
+          <p>Agents that diagnose under uncertainty — counterfactual root-cause agents that challenge alerts, GenAI across well construction and petrophysics, end-to-end maintenance rewiring, and production RAG that measures groundedness and latency.</p>
+          <p class="deck">Five pieces: an oil-and-gas Root Cause Agent that saved $750K by proving a bearing-temperature alert was instrumentation not mechanical failure (UptimeAI, 5 Nov), GenAI agents across well-construction tender-to-TD used by 250+ engineers (SPE 236279, ADIPEC 2 Nov), a nine-skill petrophysical agentic assistant that cut log-to-evaluation from ~90 minutes to under four (SPE 235583), McKinsey's asset-heavy maintenance playbook with a US O&amp;G gen-AI FMEA workflow that cut site effort ~80%, and KDDI's production RAG app that cut latency 38% and raised groundedness 25% with ADK Skills.</p>
+        </section>
+
+        <section id="uptimeai-rca" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/><path d="M11 8.2V11l2 1.4"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 01 · UptimeAI, 5 Nov 2026</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>Root Cause Agent Saves Oil &amp; Gas Supermajor $750K by Challenging Bearing Failure Diagnosis on Reinjection Compressor</h3>
+            <div class="stat-row">
+              <div class="stat"><b>$750K+</b><span>avoided shutdown cost</span></div>
+              <div class="stat"><b>3</b><span>independent instrumentation issues</span></div>
+              <div class="stat"><b>Counterfactual</b><span>if bearing heating, what else?</span></div>
+              <div class="stat"><b>Offshore</b><span>reinjection compressor</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>Reinjection compressors keep reservoir pressure and production rates. A bearing-temperature alert historically forced a binary choice: shut down proactively, or keep running and risk the high-temperature interlock. Either path meant an outage worth $750K+ in lost efficiency and maintenance. History mixed true bearing damage with false positives that only became clear after teardown.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>UptimeAI Root Cause Agent ranked causal hypotheses and cross-checked the temperature signal against correlated process variables, asking: if this bearing were genuinely heating, what else should we see? No rise in system pressures or vibration pointed to instrumentation, not mechanics. The agent also flagged two further instrument anomalies and, from site P&amp;IDs, a missing heat-tracing practice on transmitter sensing lines. With tighter vibration/pressure alarm limits, the temperature sensor was bypassed under Control of Defeat, and repairs scheduled for the next planned window.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>Avoided a compressor shutdown that would have cost over $750K. Evidence-ranked diagnosis at the point of decision instead of scarce-SME gut feel. Vendor case study; client unnamed.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>The valuable agent move is challenging the alert with counterfactuals, not amplifying it. Pair predictive alerts with process-variable consistency checks and MOC/Control-of-Defeat workflows so &ldquo;bypass and fix later&rdquo; is auditable.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch for bp</strong>
+              <p>Reliability and rotating equipment already live this trade-off. Propose a pilot Root Cause Agent on one compressor or pump class: when a multivariate alert fires, require ranked hypotheses plus &ldquo;what else should be true&rdquo; checks against PI/vibration before approving an unplanned shutdown. KPI: avoided false-positive outages and time-to-confident decision vs SME-only baseline.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.uptimeai.com/resources/root-cause-agent-oil-gas-compressor-case-study/" target="_blank" rel="noopener noreferrer"><span>UptimeAI case study</span><span class="url">https://www.uptimeai.com/resources/root-cause-agent-oil-gas-compressor-case-study/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="well-construction" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18"/><path d="M8 7h8M9 12h6M10 17h4"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 02 · SPE 236279, ADIPEC, 2 Nov 2026</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>From Tender to Total Depth: Artificial Intelligence and Generative AI Agents Deployed Across Well Construction Planning and Execution</h3>
+            <div class="stat-row">
+              <div class="stat"><b>250+</b><span>engineers</span></div>
+              <div class="stat"><b>38%</b><span>annual user growth</span></div>
+              <div class="stat"><b>$10–17B</b><span>tender value supported</span></div>
+              <div class="stat"><b>8h→20min</b><span>well classification</span></div>
+              <div class="stat"><b>26×</b><span>faster risk assessment</span></div>
+              <div class="stat"><b>4→2 days</b><span>end-of-well reports</span></div>
+              <div class="stat"><b>~$34.7M/yr</b><span>estimated tech-ID value</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>Pre-well planning and tender prep are biased by the 10–20 offset wells an engineer can manually review. During execution, NPT events (stuck pipe, losses) need fast, data-backed remediation.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>Platform with 13+ AI/ML engines on Daily Drilling Reports. Planning: transformer activity classification (EN/ES), Monte Carlo time forecasting, genetic-algorithm sequence prediction, Well Risk Index, hierarchical AFE/P&amp;L aggregation. Execution: generative AI agents that mine offsets, rank hypotheses and recommend remediation; location-specific Optimum Fishing Time; GenAI end-of-well report drafting.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>Actively used by 250+ engineers (38% YoY growth) supporting $10–17B annual tenders. Classification 8h→20min; offset coverage = full dataset; data prep −56%; risk assessment 26× faster; a MENA tender with 56 architectures / 158 sections done in ≥½ prior time; EOWR 4 days→2 days; ~$34.7M/yr estimated value from automated technology identification. P10 time targets now consistently actionable.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>Multi-engine architecture tied to real DDR text beats a single chat UI. Keep planning (estimate/risk) and execution (NPT agents) in one ecosystem so tender assumptions feed live decisions.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch for bp</strong>
+              <p>Wells/drilling organisations already drown in DDRs and offset reviews. Pitch a tender+execution pilot: activity classification + probabilistic AFE on one campaign, then NPT remediation agents on active wells. KPIs: hours per well classified, offset coverage, time-to-first remediation recommendation, EOWR cycle time.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://doi.org/10.2118/236279-ms" target="_blank" rel="noopener noreferrer"><span>SPE 236279</span><span class="url">https://doi.org/10.2118/236279-ms</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="petrophysics" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7c2.2-2 4.4-2 6.6 0s4.4 2 6.6 0 4.4-2 6.6 0"/><path d="M4 12c2.2-2 4.4-2 6.6 0s4.4 2 6.6 0 4.4-2 6.6 0"/><path d="M4 17c2.2-2 4.4-2 6.6 0s4.4 2 6.6 0 4.4-2 6.6 0"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 03 · SPE 235583, ADIPEC, 2 Nov 2026</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>End-To-End Petrophysical Operations with Agentic AI: Horizontal Carbonate Reservoir Well, Abu Dhabi</h3>
+            <div class="stat-row">
+              <div class="stat"><b>9</b><span>configuration-driven skills</span></div>
+              <div class="stat"><b>~½ day → ~5 min</b><span>planning</span></div>
+              <div class="stat"><b>~90 min → &lt;4 min</b><span>log email to deck, cached</span></div>
+              <div class="stat"><b>5–10 min</b><span>cold start</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>Petrophysics handoffs across specialists, vendor software and email from planning through drilling to completion. Slow cycles hurt geosteering decisions on heterogeneous carbonate wells.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>In-house agentic assistant with nine skills in two suites. Planning: well-data registry, document compilation, logging-program generation, cement-bond evaluation, logging-activity dashboard. Operations: vendor-aware quick-look interpretation, production-log checklist, drilling-correspondence router, inbox triage. Skills chain deterministically (geosteering tops seed per-zone Archie parameters). Porosity via density-neutron with sonic fallback across two contractors&rsquo; runs.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>On Well A (confidential): planning package ~5 minutes vs typical half-day. Cached log→deck &lt;4 minutes; cold start 5–10 minutes. Automated subzone tagging tracked lithology change within the same shift. Cement-bond and PL prep completed the shift source data arrived. Output checked against independent commercial-software interpretation.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>Reliability came from deterministic engineering under the language model, not free-form LLM petrophysics. Configuration-driven skills beat one mega-prompt. Keep vendor-awareness and dual-contractor assembly explicit.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch for bp</strong>
+              <p>Subsurface and petrophysics teams live the email-and-vendor-software loop. Propose a nine-skill style assistant for one development well campaign: auto-parse daily geosteering → zone parameters → quick-look deck, with commercial-software parity as the acceptance gate. KPI: minutes from log arrival to steering-ready deck; SME override rate.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://doi.org/10.2118/235583-ms" target="_blank" rel="noopener noreferrer"><span>SPE 235583</span><span class="url">https://doi.org/10.2118/235583-ms</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="mckinsey-maintenance" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="M8 15l3.2-3.4 2.4 2.1L19 7"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 04 · McKinsey, 23 Sep 2026</p>
+              <a class="pillar-tag tone-iris" href="../ai-engineering/measure.html">AI Engineering · Measure</a>
+            </div>
+            <h3>Maintenance Meets AI: A Proven Approach for Asset-Heavy Industries</h3>
+            <div class="stat-row">
+              <div class="stat"><b>~2–5 pts</b><span>incremental margin, indicative</span></div>
+              <div class="stat"><b>~10–15%</b><span>maintenance conversion-cost opportunity</span></div>
+              <div class="stat"><b>~6 mo → 6 wk</b><span>US O&amp;G FMEA/PM site effort, ~80%</span></div>
+              <div class="stat"><b>~8%</b><span>less maintenance work volume</span></div>
+              <div class="stat"><b>AOG −14%</b><span>airline inventory −12%; 2.5× case</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>Maintenance is one of the largest controllable cost buckets in energy, mining, airlines and rail, yet is often treated as a cost centre sitting on underused work-order and reliability data.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>End-to-end rewiring across reliability, planning/execution, turnarounds, spares and contractors — not algorithm shopping. Examples: gen-AI workflows that update asset hierarchies, draft FMEAs from work history and PM plans from P&amp;IDs; reliability agents that synthesise bad actors; agentic scheduling; risk-ranked turnaround scope.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>US oil and gas company: ~80% less time to complete FMEA/PM work for one site (six months → six weeks). Reliability agent: ~8% reduction in total maintenance work volume. Airline transformation: AOG −14%, inventory −12%, ~10% of maintenance P&amp;L unlocked, impact 2.5× initial case. Packaging manufacturer: +85% technician productivity via agentic scheduling. Mine: 3× mean time between failures with frontline troubleshooting agents.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>Value comes from embedding AI in reliability/planner/technician routines and rewiring end-to-end so bottlenecks do not just move. Six rewiring principles: ambitious goals, accountable teams, incremental data products, API platform, agile operating model, adoption-first change.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch for bp</strong>
+              <p>Pair this with the UptimeAI pattern. Pitch a reliability-engineer productivity pilot: gen-AI FMEA/PM drafting on one equipment class + a bad-actor agent, measured on weeks-to-complete-site and maintenance work volume. Frame McKinsey&rsquo;s 2–5 pt margin range as the executive narrative, the 80% site-time cut as the local proof.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.mckinsey.com/capabilities/operations/our-insights/maintenance-meets-ai-a-proven-approach-for-asset-heavy-industries" target="_blank" rel="noopener noreferrer"><span>McKinsey article</span><span class="url">https://www.mckinsey.com/capabilities/operations/our-insights/maintenance-meets-ai-a-proven-approach-for-asset-heavy-industries</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="kddi-rag" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l9 4.5-9 4.5L3 7.5 12 3z"/><path d="M3 12l9 4.5 9-4.5"/><path d="M3 16.5L12 21l9-4.5"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 05 · Google Cloud / KDDI, 8 Sep 2026</p>
+              <a class="pillar-tag tone-teal" href="../ai-engineering/context.html">AI Engineering · Context</a>
+            </div>
+            <h3>How KDDI Optimized RAG Performance with Agent Development Kit</h3>
+            <div class="stat-row">
+              <div class="stat"><b>−38%</b><span>total response latency</span></div>
+              <div class="stat"><b>~−18%</b><span>TTFT</span></div>
+              <div class="stat"><b>+25%</b><span>groundedness</span></div>
+              <div class="stat"><b>75%</b><span>less eval workload via sampling</span></div>
+              <div class="stat"><b>&gt;800 lines</b><span>system prompt split into ADK Skills</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>Buffmee, KDDI&rsquo;s consumer RAG app grounded in 100+ books/magazines/web sources, missed latency targets and needed hallucination-free answers across diverse media types.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>Gemini Enterprise Agent Platform Evaluation Service with LLM-as-a-Judge and &ldquo;Rule of Hundreds&rdquo;; binary pass/fail for critical metrics; content sampling on a format × media-composition grid (75% eval cut); product-owner-calibrated thresholds; BigQuery Agent Analytics + ADK log-analysis agent to find skill-division and prompt-bloat bottlenecks; modular ADK Skills loaded dynamically instead of one massive prompt.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>−38% total latency (hit target), ~−18% TTFT, +25% groundedness. Shipped a trustworthy personalised Q&amp;A experience for content providers.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>Measure groundedness and latency as first-class product metrics. Giant system prompts cause attention drift and TTFT pain — split into skills. Binary evals + human-calibrated thresholds beat noisy 1–5 scores for ship/no-ship.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch for bp</strong>
+              <p>Any internal knowledge assistant (procedures, MOCs, engineering standards) needs the same loop. Propose an ADK-style (or LangGraph/Crew skill) refactor of an existing copilot: split the mega-prompt, add LLM-as-judge groundedness on a held-out set, and report latency + groundedness before/after. Bonus talking point from Elastic&rsquo;s 1M-message production study: partial/tangential retrieval scored worse (8.15/10) than retrieving nothing (9.18/10) — set a relevance floor and prefer &ldquo;I don&rsquo;t know&rdquo;.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://cloud.google.com/blog/topics/customers/how-kddi-optimized-rag-performance-with-agent-development-kit" target="_blank" rel="noopener noreferrer"><span>Google Cloud blog</span><span class="url">https://cloud.google.com/blog/topics/customers/how-kddi-optimized-rag-performance-with-agent-development-kit</span></a>
+              <a class="link-btn" href="https://www.elastic.co/blog/building-ai-agents-elasticsearch-platform" target="_blank" rel="noopener noreferrer"><span>Elastic production study</span><span class="url">https://www.elastic.co/blog/building-ai-agents-elasticsearch-platform</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="playbook" class="panel deep" data-section>
+          <p class="kicker">For the week</p>
+          <h2>Consulting playbook</h2>
+          <p>Challenge the alert before you act on it. The strongest energy pattern this week is counterfactual diagnosis (UptimeAI) plus deterministic domain logic under the LLM (petrophysics skills, well-construction engines), not chat-on-top-of-documents. When you pitch inside bp: (1) pick one asset class or workflow, (2) define the decision the agent must improve (shutdown vs continue, log-to-deck minutes, hours per well classified), (3) put consistency checks / operating envelopes / commercial-software parity in front of autonomy, (4) report a before/after metric executives already care about ($ avoided, hours, uplift). McKinsey&rsquo;s maintenance article is your board-level narrative; the SPE and UptimeAI pieces are your proof packs.</p>
+        </section>
+
+        <section id="framework-trend" class="panel trend" data-section>
+          <p class="kicker">Hands-on</p>
+          <h2>Framework trend worth learning hands-on</h2>
+          <p><strong>ADK-style Skills + retrieval confidence floors.</strong> Rebuild a small internal RAG agent so tools/prompts are modular Skills (dynamically loaded) rather than one 800-line system prompt, and retrieval returns nothing below a relevance threshold. Benchmark: TTFT, end-to-end latency, groundedness (LLM-as-judge, binary), and a &ldquo;trick set&rdquo; of partial-context queries where the wrong-but-similar doc should be refused. Use Google ADK if convenient, or mirror the pattern in LangGraph / Pydantic AI / CrewAI skills. Elastic&rsquo;s production finding is the acceptance test: partial context must not beat &ldquo;I don&rsquo;t know&rdquo;.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>
