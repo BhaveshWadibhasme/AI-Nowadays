@@ -1,5 +1,25 @@
 [
   {
+    "date": "2026-11-07",
+    "type": "frameworks",
+    "title": "Agent frameworks weekly roundup: Oct 31–Nov 7, 2026",
+    "summary": "Security first: Pydantic AI patches two high-severity web-fetch and redaction bugs. Google ADK 2.14 graduates sandboxes, A2A and eval from experimental. LangGraph adds strict interrupt resume; Mastra ships Knowledge v2 with breaking Temporal and knowledge API changes.",
+    "url": "digests/2026-11-07-frameworks.html",
+    "readingTime": "3 min read",
+    "tags": [
+      "Pydantic AI",
+      "Google ADK",
+      "LangGraph",
+      "Mastra",
+      "CrewAI",
+      "Security",
+      "Breaking changes",
+      "LangChain",
+      "Microsoft Agent Framework",
+      "Claude Agent SDK"
+    ]
+  },
+  {
     "date": "2026-11-06",
     "type": "weekly",
     "title": "Weekly AI Case-Study Deep-Dive: 6 Nov 2026",
