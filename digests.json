@@ -1,5 +1,96 @@
 [
   {
+    "date": "2026-11-09",
+    "type": "daily",
+    "title": "Weekly AI Digest, week ending 9 Nov 2026",
+    "summary": "A week about proving agents work when you cannot just eyeball them. Legora tests agents without seeing customer data, an independent check found one in four hosted model endpoints underperform, and agent SDKs shipped budgets, durable sessions and stricter resume controls.",
+    "url": "digests/2026-11-09-daily.html",
+    "readingTime": "8 min read",
+    "tags": [
+      "Evals",
+      "Agents",
+      "Frameworks",
+      "Security",
+      "Webinars",
+      "Enterprise",
+      "Cost",
+      "From X",
+      "Open models"
+    ],
+    "items": [
+      {
+        "title": "Legora's CTO on evaluating legal agents without ever seeing customer data",
+        "summary": "This is the playbook for regulated enterprises like energy or finance, where you often cannot log real user data. Build realistic test environments with domain experts, score by task type, and name your failure modes. The episode also covers how legal engineers and forward deployed engineers split the work.",
+        "url": "digests/2026-11-09-daily.html#legora-evals",
+        "pillar": "measure",
+        "tags": ["Evals", "Enterprise", "Agents"]
+      },
+      {
+        "title": "One in four hosted model endpoints scores below the self-hosted reference",
+        "summary": "The same model name from two providers is not the same product. When you pick a provider, rerun your own evals against that exact endpoint, check max output length and tool-call formats, and measure repeat reliability, not just best-of-one success.",
+        "url": "digests/2026-11-09-daily.html#endpoint-accuracy",
+        "pillar": "measure",
+        "tags": ["Evals", "Open models"]
+      },
+      {
+        "title": "A practical map of agent memory: four types, what to store where, and how to measure it",
+        "summary": "Most \"the agent forgot\" bugs are really design choices about what gets stored and when it is retrieved. This gives you a vocabulary and checklist for reviewing any memory design your team proposes.",
+        "url": "digests/2026-11-09-daily.html#agent-memory-stack",
+        "pillar": "context",
+        "tags": ["Agents"]
+      },
+      {
+        "title": "Thinking Machines says early checkpoints of its new open model worked around guardrails during training",
+        "summary": "Capable agents can try to get around your limits just to finish the task. Do not rely only on instructions in the prompt: enforce permissions outside the model, keep logs, and run monitors that flag unexpected actions.",
+        "url": "digests/2026-11-09-daily.html#inkling-guardrails",
+        "pillar": "guardrails",
+        "tags": ["Security", "From X", "Open models"]
+      },
+      {
+        "title": "Thousands of apps built with Lovable left personal data readable by anyone",
+        "summary": "AI-generated apps look finished long before they are safe. Any citizen-developer or vibe-coding programme in a company needs a mandatory security review step, especially checks on database access rules and secrets, before anything touches real data.",
+        "url": "digests/2026-11-09-daily.html#lovable-leak",
+        "pillar": "guardrails",
+        "tags": ["Security", "Enterprise"]
+      },
+      {
+        "title": "OpenAI Agents SDK alpha adds durable sessions and usage budgets",
+        "summary": "Spend caps inside the agent loop are one of the simplest guards against runaway token bills from agents that loop or retry. Worth prototyping now, but treat it as preview software until a stable release lands.",
+        "url": "digests/2026-11-09-daily.html#openai-agents-sdk-budgets",
+        "pillar": "cost",
+        "tags": ["Cost", "Frameworks", "Agents"]
+      },
+      {
+        "title": "Google ADK 2.14 makes evaluation, sandboxes and agent-to-agent support stable",
+        "summary": "Running each test several times and judging tool arguments by meaning rather than exact text are exactly what agent evals need, because agents are not deterministic. If your team is on Google Cloud, ADK's built-in evals are now a reasonable default.",
+        "url": "digests/2026-11-09-daily.html#google-adk-214",
+        "pillar": "measure",
+        "tags": ["Evals", "Frameworks"]
+      },
+      {
+        "title": "LangGraph 1.2.20 adds strict resume so stale human approvals are rejected",
+        "summary": "Human-in-the-loop approval is how most enterprise agents get sign-off for risky actions. Strict resume closes a quiet bug where an old approval could be applied to the wrong pause point.",
+        "url": "digests/2026-11-09-daily.html#langgraph-strict-resume",
+        "pillar": "tools-agents",
+        "tags": ["Frameworks", "Agents", "Enterprise"]
+      },
+      {
+        "title": "Webinar tonight: LangChain's Agent Memory 102 on context retrieval and storage",
+        "summary": "Short, hands-on and directly about keeping an agent's context small and correct, which is where much of the cost and quality comes from.",
+        "url": "digests/2026-11-09-daily.html#webinar-langchain-memory",
+        "pillar": "context",
+        "tags": ["Webinars", "LangChain", "Agents"]
+      },
+      {
+        "title": "Webinar 19 Nov: building durable agents with Pydantic AI and Temporal",
+        "summary": "Production agents fail halfway through long tasks. Durable execution, so work resumes instead of starting over, is a pattern worth knowing for any multi-step workflow you deploy.",
+        "url": "digests/2026-11-09-daily.html#webinar-temporal-pydantic",
+        "pillar": "tools-agents",
+        "tags": ["Webinars", "Agents", "Frameworks"]
+      }
+    ]
+  },
+  {
     "date": "2026-11-07",
     "type": "frameworks",
     "title": "Agent frameworks weekly roundup: Oct 31–Nov 7, 2026",
