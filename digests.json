@@ -100,6 +100,22 @@
     ]
   },
   {
+    "date": "2026-11-09",
+    "type": "google-research",
+    "title": "Google Research: research roundup, 9 Nov 2026",
+    "summary": "From Google Research's LinkedIn showcase, roughly 30 Oct to 9 Nov 2026: a podcast on shifting health from episodic treatment to proactive, personalized care, a new Singapore hub with NUS, NTU and Healthier SG, and a Nature paper on detecting high blood pressure from consumer smartwatch sensors. Agile Deliberation turns vision-language models into partners for gray-area categories. Yossi Matias and Sinéad Bovell discuss the scientist of 2030 and ambient intelligence, and AI Quests Quest 3, Polar Peaks, is live.",
+    "url": "digests/2026-11-09-google-research.html",
+    "readingTime": "6 min read",
+    "tags": [
+      "Google Research",
+      "Research",
+      "Health",
+      "Agents",
+      "Events"
+    ],
+    "pillar": "tools-agents"
+  },
+  {
     "date": "2026-11-07",
     "type": "frameworks",
     "title": "Agent frameworks weekly roundup: Oct 31–Nov 7, 2026",
