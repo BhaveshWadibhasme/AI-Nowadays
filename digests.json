@@ -1,6 +1,15 @@
 [
   {
     "date": "2026-11-09",
+    "type": "langchain",
+    "title": "LangChain updates, 9 Nov 2026",
+    "summary": "From LangChain's LinkedIn: Managed Deep Agents can now be steered mid-turn, async subagents land in Deep Agents, the weekly recap on proactive agents, browser use demos, and a context engineering post on retrieval.",
+    "url": "digests/2026-11-09-langchain.html",
+    "readingTime": "4 min read",
+    "tags": ["Managed Deep Agents", "async subagents", "browser use", "context engineering"]
+  },
+  {
+    "date": "2026-11-09",
     "type": "daily",
     "title": "Weekly AI Digest, week ending 9 Nov 2026",
     "summary": "A week about proving agents work when you cannot just eyeball them. Legora tests agents without seeing customer data, an independent check found one in four hosted model endpoints underperform, and agent SDKs shipped budgets, durable sessions and stricter resume controls.",

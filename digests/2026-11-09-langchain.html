@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LangChain updates: 9 Nov 2026 · AI Nowdays</title>
+<meta name="description" content="From LangChain&#x27;s LinkedIn: Managed Deep Agents can now be steered mid-turn, async subagents land in Deep Agents, the weekly recap on proactive agents, browser use demos, and a context engineering post on retrieval.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-11-09-langchain.html">
+<meta property="og:title" content="LangChain updates: 9 Nov 2026">
+<meta property="og:description" content="From LangChain&#x27;s LinkedIn: Managed Deep Agents can now be steered mid-turn, async subagents land in Deep Agents, the weekly recap on proactive agents, browser use demos, and a context engineering post on retrieval.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-11-09-langchain.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LangChain updates: 9 Nov 2026">
+<meta name="twitter:description" content="From LangChain&#x27;s LinkedIn: Managed Deep Agents can now be steered mid-turn, async subagents land in Deep Agents, the weekly recap on proactive agents, browser use demos, and a context engineering post on retrieval.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../visuals.css">
+<script src="../visuals.js" defer></script>
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a class="active" href="../">Digests</a>
+      <a href="../ai-engineering/">AI Engineering</a>
+      <a href="../computer-vision.html">Computer Vision</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#langchain">← All LangChain updates</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+          <p class="kicker">On this page</p>
+          <a href="#overview">Overview</a>
+          <a href="#steer">Mid-turn steering</a>
+          <a href="#async">Async subagents</a>
+          <a href="#recap">Deep Agents recap</a>
+          <a href="#browser">Browser use demos</a>
+          <a href="#retrieval">Retrieval and memory</a>
+          <a href="#more">Explainer and repost</a>
+          <a href="#trend-watch">Trend watch</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-langchain">LangChain</span>
+          <time datetime="2026-11-09">9 Nov 2026</time>
+          <span>4 min read</span>
+        </div>
+        <h1>LangChain updates: 9 Nov 2026</h1>
+        <div class="tag-row">
+          <span class="tag">LangChain</span><span class="tag">Agents</span><span class="tag">Deep Agents</span><span class="tag">Browser use</span><span class="tag">Context engineering</span>
+        </div>
+        <section id="overview" class="lede-card" data-section>
+          <p>From LangChain&#x27;s LinkedIn since the 30 October page: Managed Deep Agents can now be steered mid-turn, async subagents are available in Deep Agents and Managed Deep Agents, and the weekly recap focuses on autonomous, proactive agents with browser use and background work. Plus browser-use demos, a context engineering post on retrieval, and the Agent Memory 102 workshop. Capture was partial: some posts and permalinks were not captured, so a few &ldquo;View LinkedIn post&rdquo; buttons point to LangChain&#x27;s company posts page.</p>
+          <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/company/langchain/posts/?feedView=all"><span>LangChain on LinkedIn</span><span class="url">https://www.linkedin.com/company/langchain/posts/?feedView=all</span></a>
+          </div>
+        </section>
+
+        <section id="steer" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 15c-1 2-1 4-1 4s2 0 4-1M9 15l-3-3c1-4 5-9 12-9 0 7-5 11-9 12z"/><circle cx="15" cy="9" r="1.5"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Release · Managed Deep Agents</p>
+            <h3>Managed Deep Agents can now be steered mid-turn</h3>
+            <p>Ask an agent why signups dropped yesterday, and halfway through its investigation you find the answer yourself. Before, your message sat in a queue until the agent finished, wasting time and tokens. Now the agent reads your message at its next model call and changes course immediately.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Being able to correct an agent while it is still working saves the tokens and minutes that a queued message would have wasted.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/company/langchain/posts/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/company/langchain/posts/</span></a>
+            <a class="link-btn" href="http://langch.in/mda"><span>Read full story</span><span class="url">http://langch.in/mda</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="async" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M8 21l2-4M16 21l-2-4"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Release · Async subagents</p>
+            <h3>Async subagents arrive in (Managed) Deep Agents</h3>
+            <p>Async subagents are available in Deep Agents and Managed Deep Agents. They keep the orchestrator responsive while work happens in the background. LangChain&#x27;s blog post is titled &ldquo;Agents Are Going Async&rdquo;.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>An orchestrator that stays available during long jobs fits naturally with the mid-turn steering shipped the same week.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:share:7524202595700199424/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:share:7524202595700199424/</span></a>
+            <a class="link-btn" href="https://lnkd.in/g5mGBjG2"><span>Read full story</span><span class="url">https://lnkd.in/g5mGBjG2</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="recap" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Weekly recap · Deep Agents</p>
+            <h3>Deep Agents weekly recap: autonomous, proactive agents</h3>
+            <p>This week&#x27;s recap focuses on autonomous, proactive agents. First, browser use with Stagehand by Browserbase. Second, async subagents, so the main agent stays available while background tasks run.</p><p>Further reading on proactive agents: &ldquo;New context engineering challenges&rdquo; by Harrison Chase, &ldquo;Why aren&#x27;t you building proactive agents yet?&rdquo; by Nathan Drezner, and &ldquo;Building org harnesses&rdquo; by Caspar Broekhuizen.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>The recap ties the week&#x27;s releases together under one theme: agents that act without waiting to be asked.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:share:7524533296974958592/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:share:7524533296974958592/</span></a>
+            <a class="link-btn" href="https://lnkd.in/gsWZjGTD"><span>Browser use blog</span><span class="url">https://lnkd.in/gsWZjGTD</span></a>
+            <a class="link-btn" href="https://lnkd.in/gGrJ6tbQ"><span>Browser use deep dive</span><span class="url">https://lnkd.in/gGrJ6tbQ</span></a>
+            <a class="link-btn" href="https://lnkd.in/gEx-TUTE"><span>Browser use docs</span><span class="url">https://lnkd.in/gEx-TUTE</span></a>
+            <a class="link-btn" href="https://lnkd.in/gKt4vUBw"><span>Demo video</span><span class="url">https://lnkd.in/gKt4vUBw</span></a>
+            <a class="link-btn" href="https://lnkd.in/gvWgw7Yd"><span>Async subagents blog</span><span class="url">https://lnkd.in/gvWgw7Yd</span></a>
+            <a class="link-btn" href="https://lnkd.in/gYWRCN7H"><span>Async subagents docs</span><span class="url">https://lnkd.in/gYWRCN7H</span></a>
+            <a class="link-btn" href="https://lnkd.in/gCh568mn"><span>New context engineering challenges</span><span class="url">https://lnkd.in/gCh568mn</span></a>
+            <a class="link-btn" href="https://lnkd.in/gf4nEeei"><span>Why aren't you building proactive agents yet?</span><span class="url">https://lnkd.in/gf4nEeei</span></a>
+            <a class="link-btn" href="https://lnkd.in/gRzwPjsA"><span>Building org harnesses</span><span class="url">https://lnkd.in/gRzwPjsA</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="browser" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 15c-1 2-1 4-1 4s2 0 4-1M9 15l-3-3c1-4 5-9 12-9 0 7-5 11-9 12z"/><circle cx="15" cy="9" r="1.5"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Demo · Browser use</p>
+            <h3>Booking dinner with an agent, and daily use of browser agents</h3>
+            <p>Sydney Runkle books dinner reservations with an agent using browser use in Managed Deep Agents; the demo video is linked. In a separate post, she talks about using agents built on LangChain&#x27;s open source stack every day, including for browser use.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A mundane task like a restaurant booking is a clear, relatable test of whether a browser agent is useful.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/feed/update/urn:li:share:7523803595931308033/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/feed/update/urn:li:share:7523803595931308033/</span></a>
+            <a class="link-btn" href="https://lnkd.in/gKt4vUBw"><span>Demo video</span><span class="url">https://lnkd.in/gKt4vUBw</span></a>
+            <a class="link-btn" href="https://lnkd.in/gF886Seg"><span>Sydney Runkle on daily agent use</span><span class="url">https://lnkd.in/gF886Seg</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="retrieval" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M8 21l2-4M16 21l-2-4"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Context engineering · Memory</p>
+            <h3>Context engineering starts with retrieval, plus an Agent Memory 102 workshop</h3>
+            <p>LangChain shared a blog post on context engineering and agent memory retrieval, titled &ldquo;Context engineering starts with retrieval&rdquo;.</p><p>Education Engineer Jess Weng also hosts Agent Memory 102, a live workshop on agent memory retrieval, on Monday 9 November.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Retrieval is framed as the starting point for context engineering, so memory design is worth reading up on before building.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/company/langchain/posts/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/company/langchain/posts/</span></a>
+            <a class="link-btn" href="https://www.langchain.com/blog/context-engineering-starts-with-retrieval"><span>Read full story</span><span class="url">https://www.langchain.com/blog/context-engineering-starts-with-retrieval</span></a>
+            <a class="link-btn" href="https://lnkd.in/gVPBWckX"><span>Short link</span><span class="url">https://lnkd.in/gVPBWckX</span></a>
+            <a class="link-btn" href="https://lnkd.in/p/dmbYkWd8"><span>Workshop post</span><span class="url">https://lnkd.in/p/dmbYkWd8</span></a>
+            <a class="link-btn" href="https://events.langchain.com/register/agent-memory-102-context-retrieval-storage"><span>Register for the workshop</span><span class="url">https://events.langchain.com/register/agent-memory-102-context-retrieval-storage</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="more" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Explainer · Reposts</p>
+            <h3>Ecosystem explainer and a repost on human insight</h3>
+            <p>Seán Roche of LangChain Academy explains in three minutes the difference between LangChain, LangGraph and Deep Agents. No link was captured for that post.</p><p>LangChain also reposted the article &ldquo;Why human insight is a strategic advantage for building better agents&rdquo;.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A short explainer is a quick way to place the three LangChain products relative to each other.</p>
+            </div>
+            <div class="links">
+            <a class="link-btn" href="https://www.linkedin.com/company/langchain/posts/"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/company/langchain/posts/</span></a>
+            <a class="link-btn" href="https://lnkd.in/gKK_8Axj"><span>Read the article</span><span class="url">https://lnkd.in/gKK_8Axj</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="trend-watch" class="panel trend" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Trend watch</h2>
+          <p>This week&#x27;s thread is agents that keep working without blocking on a human, while the human can still step in. Async subagents keep the orchestrator free during background jobs, mid-turn steering lets you redirect an agent without waiting for it to finish, and the recap frames the direction as autonomous, proactive agents with browser use. The context engineering and memory retrieval material suggests the supporting work is in what the agent can retrieve and remember.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>
