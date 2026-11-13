@@ -1,5 +1,57 @@
 [
   {
+    "date": "2026-11-13",
+    "type": "weekly",
+    "title": "Weekly Deep-Dive: Agents leave the pilot stage in energy and ops",
+    "summary": "Agents are leaving the pilot stage in energy and operations. ADNOC's AiPSO reports a sustained 1–2% production uplift with no incremental CAPEX across 8 fields; well-construction agents serve 250+ engineers; a vendor Root Cause Agent avoided a $750K+ shutdown; Qualcomm lifted task pass rate from under 23% to 98% by context engineering; and BCG, Gartner and Deloitte find governance lagging adoption.",
+    "url": "digests/2026-11-13-weekly.html",
+    "readingTime": "7 min read",
+    "tags": [
+      "oil-and-gas",
+      "agents",
+      "context-engineering",
+      "governance",
+      "digital-twin"
+    ],
+    "items": [
+      {
+        "title": "ADNOC AI-enabled Production System Optimization (AiPSO) across 8 fields (SPE 236237, Nov 2026)",
+        "summary": "An integrated production-system digital twin, with GenAI moving from copilot to advisor to bounded AiPSO Agents inside operating envelopes, has 25+ workflows in production and a sustained 1–2% production uplift with no incremental CAPEX.",
+        "url": "digests/2026-11-13-weekly.html#adnoc-aipso",
+        "pillar": "tools-agents",
+        "tags": ["oil-and-gas", "digital-twin", "agents"]
+      },
+      {
+        "title": "AI and GenAI agents across well construction planning and execution (SPE 236279, ADIPEC, 2 Nov 2026)",
+        "summary": "13+ AI/ML engines over Daily Drilling Reports serve 250+ engineers (38% annual growth) and support $10–17B/yr of tenders. Well classification fell from 8 hours to 20 minutes; risk assessment is 26× faster; end-of-well reports fell from 4 days to 2.",
+        "url": "digests/2026-11-13-weekly.html#well-construction",
+        "pillar": "tools-agents",
+        "tags": ["oil-and-gas", "drilling", "agents"]
+      },
+      {
+        "title": "UptimeAI Root Cause Agent: $750K compressor shutdown avoided at a supermajor (5 Nov 2026)",
+        "summary": "On a reinjection-compressor bearing-temperature alert, a reasoning agent found no matching pressure or vibration rise and three faulty instruments. The sensor was bypassed under Control of Defeat and a $750K+ shutdown was avoided. Vendor-reported single case.",
+        "url": "digests/2026-11-13-weekly.html#uptimeai-rca",
+        "pillar": "tools-agents",
+        "tags": ["oil-and-gas", "root-cause", "agents"]
+      },
+      {
+        "title": "Qualcomm and Context: task pass rate from under 23% to 98% via context engineering, then distillation",
+        "summary": "Context engineering on the same foundation model, with a held-out eval suite and no fine-tuning, scaled from 1 team to 85 (2,500+ engineers) and from 5 to 1,600 workflows. Distilled tiers cut inference cost per resolved task about 45×. Vendor case study.",
+        "url": "digests/2026-11-13-weekly.html#qualcomm-context",
+        "pillar": "context",
+        "tags": ["context-engineering", "evals", "cost"]
+      },
+      {
+        "title": "Governance is now the bottleneck (BCG, Gartner, Deloitte, Nov 2026)",
+        "summary": "BCG finds 73% of banks allow agents for select uses but only 8% have comprehensive controls. Gartner finds 71% expect agentic AI within 12 months but only 21% have agent governance. Deloitte finds only 9% of multi-agent workflows are fully governed.",
+        "url": "digests/2026-11-13-weekly.html#governance",
+        "pillar": "guardrails",
+        "tags": ["governance", "agents"]
+      }
+    ]
+  },
+  {
     "date": "2026-11-09",
     "type": "langchain",
     "title": "LangChain updates, 9 Nov 2026",

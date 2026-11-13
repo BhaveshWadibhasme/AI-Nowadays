@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weekly Deep-Dive: Agents leave the pilot stage in energy and ops · AI Nowdays</title>
+<meta name="description" content="Five pieces: ADNOC's AiPSO digital twin across 8 fields, with 25+ workflows and a sustained 1–2% production uplift and no incremental CAPEX (SPE 236237); GenAI agents across well construction used by 250+ engineers (SPE 236279, ADIPEC 2 Nov); UptimeAI's Root Cause Agent that avoided a $750K+ compressor shutdown (5 Nov, vendor story); Qualcomm's context-engineering programme that moved task pass rate from under 23% to 98%; and BCG, Gartner and Deloitte on agent governance as the scaling bottleneck.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-11-13-weekly.html">
+<meta property="og:title" content="Weekly Deep-Dive: Agents leave the pilot stage in energy and ops">
+<meta property="og:description" content="Five pieces: ADNOC's AiPSO digital twin across 8 fields, with 25+ workflows and a sustained 1–2% production uplift and no incremental CAPEX (SPE 236237); GenAI agents across well construction used by 250+ engineers (SPE 236279, ADIPEC 2 Nov); UptimeAI's Root Cause Agent that avoided a $750K+ compressor shutdown (5 Nov, vendor story); Qualcomm's context-engineering programme that moved task pass rate from under 23% to 98%; and BCG, Gartner and Deloitte on agent governance as the scaling bottleneck.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-11-13-weekly.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Weekly Deep-Dive: Agents leave the pilot stage in energy and ops">
+<meta name="twitter:description" content="Five pieces: ADNOC's AiPSO digital twin across 8 fields, with 25+ workflows and a sustained 1–2% production uplift and no incremental CAPEX (SPE 236237); GenAI agents across well construction used by 250+ engineers (SPE 236279, ADIPEC 2 Nov); UptimeAI's Root Cause Agent that avoided a $750K+ compressor shutdown (5 Nov, vendor story); Qualcomm's context-engineering programme that moved task pass rate from under 23% to 98%; and BCG, Gartner and Deloitte on agent governance as the scaling bottleneck.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../visuals.css">
+<script src="../visuals.js" defer></script>
+<style>
+.lede-card p.kicker,
+.facet p.kicker { color: var(--teal); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.lede-card .deck { margin-top: 10px; color: var(--muted); font-size: 1rem; }
+.stat-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 2px; }
+.stat {
+  flex: 1 1 108px;
+  min-width: 108px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--card-solid);
+}
+.stat b {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.28rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+.stat span { display: block; margin-top: 3px; color: var(--muted); font-size: 0.75rem; line-height: 1.3; }
+.facets { display: grid; gap: 10px; margin-top: 14px; }
+.facet {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--card-solid) 88%, transparent);
+}
+.facet .kicker { margin: 0 0 6px; }
+.facet p { margin: 0; color: var(--ink); }
+@media (min-width: 720px) {
+  .facets.pair { grid-template-columns: 1fr 1fr; }
+}
+</style>
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a class="active" href="../">Digests</a>
+      <a href="../ai-engineering/">AI Engineering</a>
+      <a href="../computer-vision.html">Computer Vision</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#weekly">← All weekly deep-dives</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="kicker">On this page</p>
+        <a href="#theme">Theme</a>
+        <a href="#adnoc-aipso">ADNOC AiPSO</a>
+        <a href="#well-construction">Well construction</a>
+        <a href="#uptimeai-rca">UptimeAI RCA</a>
+        <a href="#qualcomm-context">Qualcomm context</a>
+        <a href="#governance">Governance</a>
+        <a href="#playbook">Playbook</a>
+        <a href="#framework-trend">Framework trend</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-weekly">Weekly deep-dive</span>
+          <time datetime="2026-11-13">13 Nov 2026</time>
+          <span>7 min read</span>
+        </div>
+        <h1>Weekly Deep-Dive: Agents leave the pilot stage in energy and ops</h1>
+        <div class="tag-row">
+          <span class="tag">oil-and-gas</span>
+          <span class="tag">agents</span>
+          <span class="tag">context-engineering</span>
+          <span class="tag">governance</span>
+          <span class="tag">digital-twin</span>
+        </div>
+
+        <section id="theme" class="lede-card" data-section>
+          <p class="kicker">This week</p>
+          <p>Agents are leaving the pilot stage in energy and operations, and the winners pair LLMs with deterministic engineering, evals, and governance.</p>
+          <p class="deck">Five pieces: ADNOC&rsquo;s AiPSO digital twin across 8 fields, with 25+ workflows and a sustained 1–2% production uplift and no incremental CAPEX (SPE 236237); GenAI agents across well construction used by 250+ engineers (SPE 236279, ADIPEC 2 Nov); UptimeAI&rsquo;s Root Cause Agent that avoided a $750K+ compressor shutdown (5 Nov, vendor story); Qualcomm&rsquo;s context-engineering programme that moved task pass rate from under 23% to 98%; and BCG, Gartner and Deloitte on agent governance as the scaling bottleneck.</p>
+        </section>
+
+        <section id="adnoc-aipso" class="story" data-section data-tone="copper">
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 01 · SPE 236237, ADIPEC, Nov 2026</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>ADNOC — AI-enabled Production System Optimization (AiPSO) across 8 fields</h3>
+            <div class="stat-row">
+              <div class="stat"><b>8</b><span>fields</span></div>
+              <div class="stat"><b>25+</b><span>digital workflows in production</span></div>
+              <div class="stat"><b>1–2%</b><span>sustained production uplift</span></div>
+              <div class="stat"><b>No CAPEX</b><span>no incremental capital</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>Production variability and supply uncertainty, with reactive issue resolution across reservoirs, wells and surface facilities.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>An integrated production-system digital twin combines physics-based models with AI analytics, on a central DataOps pipeline for ingestion, validation, contextualisation and model orchestration. Workflows cover exception-based surveillance, artificial-lift diagnostics, multiphase flowmeter validation and scenario-aware optimisation. GenAI evolves from engineering copilot to domain advisory services to &ldquo;AiPSO Agents&rdquo;, acting inside real-time engineering operating envelopes for safe, constraint-aware closed-loop changes.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>25+ digital workflows in production. Sustained 1–2% production uplift with no incremental CAPEX. Faster time-to-intervention and better data confidence.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>The data foundation and operating envelopes come before the agents. Autonomy is staged: copilot, then advisor, then bounded agent.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch for bp</strong>
+              <p>Frame a &ldquo;copilot to bounded agent&rdquo; roadmap on top of existing surveillance and digital-twin assets. Lead with a no-CAPEX uplift KPI and exception-based surveillance as the first workflow.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://doi.org/10.2118/236237-ms" target="_blank" rel="noopener noreferrer"><span>SPE 236237</span><span class="url">https://doi.org/10.2118/236237-ms</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="well-construction" class="story" data-section data-tone="iris">
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18"/><path d="M8 7h8M9 12h6M10 17h4"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 02 · SPE 236279, ADIPEC, 2 Nov 2026</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>AI and GenAI agents across well construction planning and execution</h3>
+            <div class="stat-row">
+              <div class="stat"><b>250+</b><span>engineers</span></div>
+              <div class="stat"><b>38%</b><span>annual growth</span></div>
+              <div class="stat"><b>8h → 20 min</b><span>well classification</span></div>
+              <div class="stat"><b>−56%</b><span>data prep effort</span></div>
+              <div class="stat"><b>26×</b><span>faster risk assessment</span></div>
+              <div class="stat"><b>4 → 2 days</b><span>end-of-well reports</span></div>
+              <div class="stat"><b>~$34.7M/yr</b><span>estimated tech-ID value</span></div>
+              <div class="stat"><b>$10–17B/yr</b><span>tenders supported</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>Manual offset-well analysis limits coverage and adds bias in tenders. Non-productive time — stuck pipe, losses — needs fast, evidence-backed decisions.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>13+ AI/ML engines over Daily Drilling Reports: a transformer classifier for drilling activities in English and Spanish, Monte Carlo time forecasting, a genetic algorithm for operation sequences, and a Well Risk Index. GenAI agents mine offset cases, rank hypotheses and recommend NPT remediation. A further agent drafts end-of-well reports.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>250+ engineers, with 38% annual growth. Well classification from 8 hours to 20 minutes. Data prep effort down 56%. Risk assessment 26× faster. End-of-well reports from 4 days to 2. About $34.7M/yr estimated value from automated technology identification. Supports $10–17B/yr of tenders.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>Classic ML does the numbers. Agents do retrieval, hypothesis ranking and reporting. Unstructured daily reports are a goldmine.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch for bp</strong>
+              <p>Run a discovery on unstructured operational text — daily reports, shift logs — as a RAG plus classifier corpus. Start with report generation, where value is easy to measure.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://doi.org/10.2118/236279-ms" target="_blank" rel="noopener noreferrer"><span>SPE 236279</span><span class="url">https://doi.org/10.2118/236279-ms</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="uptimeai-rca" class="story" data-section data-tone="teal">
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/><path d="M11 8.2V11l2 1.4"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 03 · UptimeAI, 5 Nov 2026 · vendor story</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>UptimeAI Root Cause Agent — $750K compressor shutdown avoided at a supermajor</h3>
+            <div class="stat-row">
+              <div class="stat"><b>$750K+</b><span>shutdown cost avoided</span></div>
+              <div class="stat"><b>3</b><span>faulty instruments</span></div>
+              <div class="stat"><b>No rise</b><span>in pressure or vibration</span></div>
+              <div class="stat"><b>Control of Defeat</b><span>sensor bypassed, alarms tightened</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>A reinjection compressor alerted on high bearing temperature. Historically the only options were a proactive shutdown or risking an interlock trip, both costing $750K+.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>A reasoning agent built ranked causal hypotheses, cross-checking the temperature signal against correlated process variables — if the bearing were really heating, what else would we see? — and reading site P&amp;IDs.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>No matching pressure or vibration rise, so the cause was instrumentation, not mechanical. The agent found three faulty instruments plus missing heat tracing on sensing lines. The sensor was bypassed under Control of Defeat policy with tightened alarm limits. Repairs moved to the planned window. The shutdown, and $750K+, was avoided.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>The value is in challenging a prediction rather than just raising alerts. Human safety procedures stayed in the loop. This is a vendor-reported single case, so treat the number as anecdotal.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch for bp</strong>
+              <p>Propose a &ldquo;second-opinion&rdquo; agent for predictive-maintenance alerts that writes an evidence-ranked hypothesis note for reliability engineers. Measure avoided false-positive shutdowns.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.uptimeai.com/resources/root-cause-agent-oil-gas-compressor-case-study/" target="_blank" rel="noopener noreferrer"><span>UptimeAI case study</span><span class="url">https://www.uptimeai.com/resources/root-cause-agent-oil-gas-compressor-case-study/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="qualcomm-context" class="story" data-section data-tone="research">
+          <div class="story-icon research" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l9 4.5-9 4.5L3 7.5 12 3z"/><path d="M3 12l9 4.5 9-4.5"/><path d="M3 16.5L12 21l9-4.5"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 04 · Qualcomm × Context · vendor case study</p>
+              <a class="pillar-tag tone-teal" href="../ai-engineering/context.html">AI Engineering · Context</a>
+            </div>
+            <h3>Qualcomm × Context — 23% to 98% task accuracy via context engineering, then distillation</h3>
+            <div class="stat-row">
+              <div class="stat"><b>&lt;23% → 98%</b><span>task pass rate</span></div>
+              <div class="stat"><b>1 → 85</b><span>teams</span></div>
+              <div class="stat"><b>2,500+</b><span>engineers</span></div>
+              <div class="stat"><b>5 → 1,600</b><span>production workflows</span></div>
+              <div class="stat"><b>40%</b><span>productivity increase in 4 months</span></div>
+              <div class="stat"><b>~45×</b><span>lower inference cost per resolved task</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>AI-assisted support and engineering workflows for a global customer-engineering organisation were failing most tasks.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>Context engineering on the same foundation model: no fine-tuning, no model change. A held-out eval suite, then scale-out to many teams. Production workflows were then used as a training corpus to distil into small open-weight models, with a router that escalates hard tasks.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>Task pass rate from under 23% to 98%. From 1 team to 85 teams (2,500+ engineers). From 5 to 1,600 production workflows. A 40% productivity increase in 4 months. About 45× lower inference cost per resolved task on the distilled tiers.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>Context and evals beat model swaps. Production traces become the distillation dataset and the cost lever.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch for bp</strong>
+              <p>Before asking for a bigger model or budget, build a held-out eval set for one workflow and show the accuracy jump from context work, then a cost-down plan via routing and distillation.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.context.ai/customers/qualcomm" target="_blank" rel="noopener noreferrer"><span>Context case study</span><span class="url">https://www.context.ai/customers/qualcomm</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="governance" class="story" data-section data-tone="chain">
+          <div class="story-icon chain" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 05 · BCG 13 Nov · Gartner 9 Nov · Deloitte 2026</p>
+              <a class="pillar-tag tone-chain" href="../ai-engineering/guardrails.html">AI Engineering · Guardrails</a>
+            </div>
+            <h3>Analyst lens — governance is now the bottleneck</h3>
+            <div class="stat-row">
+              <div class="stat"><b>73%</b><span>of banks allow agents for select uses</span></div>
+              <div class="stat"><b>8%</b><span>have comprehensive agent controls</span></div>
+              <div class="stat"><b>Nearly half</b><span>had an AI incident in 12 months</span></div>
+              <div class="stat"><b>2.5×</b><span>mature-risk banks more likely advanced adopters</span></div>
+              <div class="stat"><b>71%</b><span>expect agentic AI within 12 months</span></div>
+              <div class="stat"><b>21%</b><span>have agent governance</span></div>
+              <div class="stat"><b>40%</b><span>let AI act without human approval, at least moderately</span></div>
+              <div class="stat"><b>9%</b><span>of multi-agent workflows fully governed</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>Agent adoption is outpacing controls.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>BCG benchmarked 26 systemically important banks (13 Nov). Gartner ran a Q2 2026 survey of 2,000+ CIOs (9 Nov). Deloitte&rsquo;s State of AI in the Enterprise 2026 covers 3,500 leaders, energy and industrials included.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>BCG: 73% of banks allow agents in production for select uses, but only 8% have comprehensive agent controls. Nearly half had an AI incident in 12 months. Mature-risk banks are 2.5× more likely to be advanced adopters. Gartner: 71% expect to deploy agentic AI within 12 months, but only 21% have agent governance. Deloitte: 40% let AI act without human approval to at least a moderate degree, and only 9% of multi-agent workflows are fully governed.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>Governance is a scaling accelerator, not a brake. Gartner&rsquo;s 12 Nov brief advises treating agents as untrusted actors, not human proxies.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch for bp</strong>
+              <p>Bundle every agent proposal with a one-page control plan covering identity and permissions, operating envelope, evals, monitoring and human-approval points. That is what gets sign-off.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.bcg.com/press/13november2026-operationalizing-ai-governance-advantage-scaling-ai" target="_blank" rel="noopener noreferrer"><span>BCG press</span><span class="url">https://www.bcg.com/press/13november2026-operationalizing-ai-governance-advantage-scaling-ai</span></a>
+              <a class="link-btn" href="https://www.gartner.com/en/newsroom/press-releases/2026-11-09-gartner-says-aligning-artificial-intelligence-value-risk-and-safety-is-now-the-top-challenge-for-chief-information-officers" target="_blank" rel="noopener noreferrer"><span>Gartner press release</span><span class="url">https://www.gartner.com/en/newsroom/press-releases/2026-11-09-gartner-says-aligning-artificial-intelligence-value-risk-and-safety-is-now-the-top-challenge-for-chief-information-officers</span></a>
+              <a class="link-btn" href="https://www.deloitte.com/content/dam/assets-zone3/us/en/docs/services/consulting/2026/the-state-of-ai-in-the-enterprise-2026.pdf" target="_blank" rel="noopener noreferrer"><span>Deloitte State of AI 2026</span><span class="url">https://www.deloitte.com/content/dam/assets-zone3/us/en/docs/services/consulting/2026/the-state-of-ai-in-the-enterprise-2026.pdf</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="playbook" class="panel deep" data-section>
+          <p class="kicker">For the week</p>
+          <h2>Consulting playbook</h2>
+          <p>Lead with one painful, measurable operational decision — a shutdown call, a tender estimate, a report cycle — not &ldquo;an agent platform&rdquo;. Stage autonomy from copilot to advisor to bounded agent, put deterministic engineering and operating envelopes under the LLM, prove it with a held-out eval set, and ship a governance one-pager with the pitch. Quote the KPI in hours saved, shutdowns avoided or uplift with no CAPEX.</p>
+        </section>
+
+        <section id="framework-trend" class="panel trend" data-section>
+          <p class="kicker">Hands-on</p>
+          <h2>Framework trend to learn hands-on</h2>
+          <p><strong>Context engineering plus evals-driven development.</strong> Build a small held-out eval suite for one workflow, iterate on retrieval, tools and memory without changing the model, then add a cheap-model router. Try it with LangGraph and LangSmith evals, or with a managed agent runtime such as Amazon Bedrock AgentCore. U Mobile used AgentCore to cut trouble tickets by up to 84.5%.</p>
+          <div class="links">
+            <a class="link-btn" href="https://aws.amazon.com/blogs/machine-learning/how-u-mobile-built-agentic-telco-operations-with-amazon-bedrock-agentcore/" target="_blank" rel="noopener noreferrer"><span>U Mobile on AgentCore</span><span class="url">https://aws.amazon.com/blogs/machine-learning/how-u-mobile-built-agentic-telco-operations-with-amazon-bedrock-agentcore/</span></a>
+          </div>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>
