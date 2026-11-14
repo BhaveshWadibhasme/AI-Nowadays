@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-11-14",
+    "type": "frameworks",
+    "title": "Agent frameworks weekly roundup: 7–14 Nov 2026",
+    "summary": "Python 3.10 dropped across LangChain, MAF and LlamaIndex; Agno moves to A2A v1.0; DSPy 3.5 changes defaults; plus security fixes in langchain-core and LangGraph.",
+    "url": "digests/2026-11-14-frameworks.html",
+    "readingTime": "3 min read",
+    "tags": [
+      "LangChain",
+      "LangGraph",
+      "DSPy",
+      "Agno",
+      "A2A",
+      "MCP",
+      "Microsoft Agent Framework",
+      "Pydantic AI",
+      "Mastra",
+      "LlamaIndex",
+      "CrewAI",
+      "Google ADK",
+      "OpenAI Agents SDK",
+      "Breaking changes",
+      "Security"
+    ]
+  },
+  {
     "date": "2026-11-13",
     "type": "weekly",
     "title": "Weekly Deep-Dive: Agents leave the pilot stage in energy and ops",
