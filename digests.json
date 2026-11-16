@@ -1,5 +1,110 @@
 [
   {
+    "date": "2026-11-16",
+    "type": "daily",
+    "title": "Weekly AI Digest: week ending 16 Nov 2026",
+    "summary": "The theme of the week: route work to the right-sized model. Google's Gemini Decision 1 and Cloudflare's hybrid agent pattern, Claude Fable 5.2's cheaper tokens but pricier tasks, a Claude Code credential leak and a zero-trust playbook for agents, LangChain's Series C, LlamaParse in your own cloud, llama.cpp 1.0, and NVIDIA's CEO transition.",
+    "url": "digests/2026-11-16-daily.html",
+    "readingTime": "6 min read",
+    "tags": [
+      "decision-models",
+      "cost",
+      "evals",
+      "agent-security",
+      "LangChain",
+      "LlamaIndex",
+      "Gemini",
+      "Claude",
+      "local-inference",
+      "enterprise-adoption"
+    ],
+    "items": [
+      {
+        "title": "Google launches Gemini Decision 1, a model built only for picking answers",
+        "summary": "Classification, routing, triage and LLM-as-judge scoring are a big slice of enterprise workloads. A purpose-built decision model can cut cost and latency sharply versus asking a chat model to \"answer with one word\", and the confidence score helps with thresholds and human review.",
+        "url": "digests/2026-11-16-daily.html#gemini-decision-1",
+        "pillar": "cost",
+        "tags": ["decision-models", "cost", "Gemini", "LangChain"]
+      },
+      {
+        "title": "Cloudflare's hybrid agent pattern: fast models choose tools, one big model diagnoses",
+        "summary": "A concrete, copyable architecture for cutting agent cost: put cheap models on the \"which tool / which field\" steps and save the expensive model for the one step that needs real reasoning.",
+        "url": "digests/2026-11-16-daily.html#cloudflare-hybrid-agent",
+        "pillar": "cost",
+        "tags": ["cost"]
+      },
+      {
+        "title": "Claude Fable 5.2 tops the leaderboards: cheaper per token, pricier per task",
+        "summary": "Token price is not task price. Measure cost per successful task on your own evals before switching models, and test lower effort settings first. The data-retention default is a real procurement question for regulated firms.",
+        "url": "digests/2026-11-16-daily.html#fable-52-cost",
+        "pillar": "measure",
+        "tags": ["Claude", "cost", "evals"]
+      },
+      {
+        "title": "Anthropic's official guide to choosing between Fable, Opus, Sonnet and Haiku",
+        "summary": "A short, vendor-backed reference for model-selection policy, useful when setting team defaults or explaining cost choices to stakeholders.",
+        "url": "digests/2026-11-16-daily.html#claude-model-guide",
+        "pillar": "cost",
+        "tags": ["Claude", "cost"]
+      },
+      {
+        "title": "\"Don't ask again\" in Claude Code wrote 2,539 real secrets into public GitHub repos",
+        "summary": "Approval fatigue is a real security risk with coding agents. If your team uses Claude Code or similar tools, this is a five-minute audit worth doing this week.",
+        "url": "digests/2026-11-16-daily.html#claude-code-secrets-leak",
+        "pillar": "guardrails",
+        "tags": ["agent-security", "Claude"]
+      },
+      {
+        "title": "Zero-trust agent systems that pass audits and still ship (InfoQ talk)",
+        "summary": "A clear checklist for getting agent pilots past security and compliance review in an enterprise like bp.",
+        "url": "digests/2026-11-16-daily.html#zero-trust-agents",
+        "pillar": "guardrails",
+        "tags": ["agent-security", "enterprise-adoption"]
+      },
+      {
+        "title": "Coding agents: a 30x spread in cost per task among the top performers",
+        "summary": "When recommending a coding agent, cost per task can vary 30x for similar quality. Benchmark on your own repos and report cost alongside pass rate.",
+        "url": "digests/2026-11-16-daily.html#coding-agent-index",
+        "pillar": "measure",
+        "tags": ["evals", "cost", "Claude"]
+      },
+      {
+        "title": "Gemini 4 Carbon and Hydrogen: Google pairs a planner model with a fast doer",
+        "summary": "Planner/executor splits are becoming a built-in product feature, not just a DIY pattern. Same lesson as Cloudflare: mix models by role.",
+        "url": "digests/2026-11-16-daily.html#gemini-carbon-hydrogen",
+        "pillar": "tools-agents",
+        "tags": ["Gemini"]
+      },
+      {
+        "title": "LangChain raises a Series C led by CapitalG; new LangSmith features due 20 Nov",
+        "summary": "Investors are betting on observability and evals as the durable layer of the agent stack. Watch the 20 Nov launch if your team traces agents in LangSmith.",
+        "url": "digests/2026-11-16-daily.html#langchain-series-c",
+        "pillar": "measure",
+        "tags": ["LangChain", "evals"]
+      },
+      {
+        "title": "LlamaParse drops usage caps and documents running in your own cloud",
+        "summary": "Document parsing is the first step of most enterprise retrieval systems. Running the parser inside your own cloud makes data-residency conversations much easier.",
+        "url": "digests/2026-11-16-daily.html#llamaparse-byoc",
+        "pillar": "context",
+        "tags": ["LlamaIndex", "enterprise-adoption"]
+      },
+      {
+        "title": "llama.cpp, ggml and SGLang reach 1.0",
+        "summary": "Stable local and self-hosted inference engines make private, on-prem deployments of open models a safer bet for enterprise teams.",
+        "url": "digests/2026-11-16-daily.html#llamacpp-1",
+        "pillar": "cost",
+        "tags": ["local-inference", "cost"]
+      },
+      {
+        "title": "Jensen Huang resigns as NVIDIA CEO; CFO Colette Kress is interim CEO",
+        "summary": "NVIDIA is the backbone of AI compute. Expect market noise, but no immediate change to GPU availability or roadmaps that teams depend on.",
+        "url": "digests/2026-11-16-daily.html#nvidia-ceo",
+        "tags": []
+      }
+    ]
+  },
+  {
     "date": "2026-11-14",
     "type": "frameworks",
     "title": "Agent frameworks weekly roundup: 7–14 Nov 2026",

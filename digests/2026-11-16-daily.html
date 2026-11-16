@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weekly AI Digest: week ending 16 Nov 2026 · AI Nowdays</title>
+<meta name="description" content="The theme of the week: route work to the right-sized model. Google's Gemini Decision 1 and Cloudflare's hybrid agent pattern, Claude Fable 5.2's cheaper tokens but pricier tasks, a Claude Code credential leak and a zero-trust playbook for agents, LangChain's Series C, LlamaParse in your own cloud, llama.cpp 1.0, and NVIDIA's CEO transition.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-11-16-daily.html">
+<meta property="og:title" content="Weekly AI Digest: week ending 16 Nov 2026">
+<meta property="og:description" content="The theme of the week: route work to the right-sized model. Google's Gemini Decision 1 and Cloudflare's hybrid agent pattern, Claude Fable 5.2's cheaper tokens but pricier tasks, a Claude Code credential leak and a zero-trust playbook for agents, LangChain's Series C, LlamaParse in your own cloud, llama.cpp 1.0, and NVIDIA's CEO transition.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-11-16-daily.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Weekly AI Digest: week ending 16 Nov 2026">
+<meta name="twitter:description" content="The theme of the week: route work to the right-sized model. Google's Gemini Decision 1 and Cloudflare's hybrid agent pattern, Claude Fable 5.2's cheaper tokens but pricier tasks, a Claude Code credential leak and a zero-trust playbook for agents, LangChain's Series C, LlamaParse in your own cloud, llama.cpp 1.0, and NVIDIA's CEO transition.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../visuals.css">
+<script src="../visuals.js" defer></script>
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a class="active" href="../">Digests</a>
+      <a href="../ai-engineering/">AI Engineering</a>
+      <a href="../computer-vision.html">Computer Vision</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#daily">← All daily digests</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="kicker">On this page</p>
+        <a href="#overview">Overview</a>
+        <a href="#frameworks">Frameworks &amp; models</a>
+        <a href="#gemini-decision-1">Gemini Decision 1</a>
+        <a href="#from-x">From X</a>
+        <a href="#cloudflare-hybrid-agent">Hybrid agent pattern</a>
+        <a href="#news">News</a>
+        <a href="#fable-52-cost">Fable 5.2 cost</a>
+        <a href="#from-x-2">From X</a>
+        <a href="#claude-model-guide">Model guide</a>
+        <a href="#inbox">Inbox</a>
+        <a href="#claude-code-secrets-leak">Claude Code secrets</a>
+        <a href="#zero-trust-agents">Zero-trust agents</a>
+        <a href="#from-x-3">From X</a>
+        <a href="#coding-agent-index">Coding Agent Index</a>
+        <a href="#frameworks-2">Frameworks &amp; models</a>
+        <a href="#gemini-carbon-hydrogen">Gemini 4 Carbon</a>
+        <a href="#langchain-series-c">LangChain Series C</a>
+        <a href="#inbox-2">Inbox</a>
+        <a href="#llamaparse-byoc">LlamaParse</a>
+        <a href="#frameworks-3">Frameworks &amp; models</a>
+        <a href="#llamacpp-1">llama.cpp 1.0</a>
+        <a href="#news-2">News</a>
+        <a href="#nvidia-ceo">NVIDIA CEO</a>
+        <a href="#webinars">Webinars</a>
+        <a href="#webinar-llamaindex">LlamaIndex live build</a>
+        <a href="#webinar-langsmith">LangSmith announcements</a>
+        <a href="#deep-read">Worth a deep read</a>
+        <a href="#trend-watch">Trend watch</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-daily">Daily</span>
+          <time datetime="2026-11-16">16 Nov 2026</time>
+          <span>6 min read</span>
+        </div>
+        <h1>Weekly AI Digest: week ending 16 Nov 2026</h1>
+        <div class="tag-row">
+          <span class="tag">decision-models</span>
+          <span class="tag">cost</span>
+          <span class="tag">evals</span>
+          <span class="tag">agent-security</span>
+          <span class="tag">LangChain</span>
+          <span class="tag">LlamaIndex</span>
+          <span class="tag">Gemini</span>
+          <span class="tag">Claude</span>
+          <span class="tag">local-inference</span>
+          <span class="tag">enterprise-adoption</span>
+        </div>
+
+        <section id="overview" class="lede-card" data-section>
+          <p>Covers 9–16 Nov 2026.</p>
+          <p>This week was about routing: small, fast models for decisions and tool picks, big reasoning models only where they earn their keep, and harder questions about what each task really costs once agents start checking their own work.</p>
+        </section>
+
+        <div class="section-head" id="frameworks" data-section>
+          <h2>Frameworks &amp; models</h2>
+        </div>
+
+        <section id="gemini-decision-1" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M7 8h7.5a3 3 0 010 6H9.5a3 3 0 000 6H17"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Frameworks &amp; models</p>
+              <a class="pillar-tag tone-copper" href="../ai-engineering/cost.html">AI Engineering · Cost</a>
+            </div>
+            <h3>Google launches Gemini Decision 1, a model built only for picking answers</h3>
+            <p>A new Decisions API scores yes/no, multiple-choice (up to 255 options) and rubric questions in a single pass instead of generating text. Up to 1,000 questions per request, 256K context, answers in about 150–250 ms with a confidence score, at $0.10 per million input tokens and nothing for output. LangChain shipped day-zero support. Independent tests from Artificial Analysis were more mixed: tied with rivals on their Decision Index and slower than TypeSafe's Jev.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Classification, routing, triage and LLM-as-judge scoring are a big slice of enterprise workloads. A purpose-built decision model can cut cost and latency sharply versus asking a chat model to &ldquo;answer with one word&rdquo;, and the confidence score helps with thresholds and human review.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/" target="_blank" rel="noopener noreferrer"><span>Google blog</span><span class="url">https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-head" id="from-x" data-section>
+          <h2>From X</h2>
+        </div>
+
+        <section id="cloudflare-hybrid-agent" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M7 8h7.5a3 3 0 010 6H9.5a3 3 0 000 6H17"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">From X</p>
+              <a class="pillar-tag tone-copper" href="../ai-engineering/cost.html">AI Engineering · Cost</a>
+            </div>
+            <h3>Cloudflare's hybrid agent pattern: fast models choose tools, one big model diagnoses</h3>
+            <p>At the AI Engineer CODE summit, Cloudflare showed an agent where fast decision models handle tool selection and log extraction, and a large reasoning model is called only for the final diagnosis. In their demo this cut six LLM calls to one and about 40K tokens to 1.8K.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A concrete, copyable architecture for cutting agent cost: put cheap models on the &ldquo;which tool / which field&rdquo; steps and save the expensive model for the one step that needs real reasoning.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://x.com/TheTuringPost/status/2120581560781144293" target="_blank" rel="noopener noreferrer"><span>Post on X</span><span class="url">https://x.com/TheTuringPost/status/2120581560781144293</span></a>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-head" id="news" data-section>
+          <h2>News</h2>
+        </div>
+
+        <section id="fable-52-cost" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="M8 15l3.2-4.2 2.6 2.4L19 7"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">News</p>
+              <a class="pillar-tag tone-iris" href="../ai-engineering/measure.html">AI Engineering · Measure</a>
+            </div>
+            <h3>Claude Fable 5.2 tops the leaderboards: cheaper per token, pricier per task</h3>
+            <p>Anthropic released Claude Fable 5.2 and Mythos 5.2, now #1 on most independent leaderboards. Price fell 20% to $8/$40 per million input/output tokens, but SemiAnalysis paid $88.15 per task on its professional-task benchmark versus $67.16 before, because the model wrote hundreds of tests and spun up subagents to check itself. Anthropic and Vals both found the &ldquo;high&rdquo; effort setting often matches or beats &ldquo;max&rdquo; at about half the cost. Fable 5.2 also requires data retention by default; zero retention is only for eligible enterprise customers.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Token price is not task price. Measure cost per successful task on your own evals before switching models, and test lower effort settings first. The data-retention default is a real procurement question for regulated firms.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://x.com/claudeai/status/2119867114450268322" target="_blank" rel="noopener noreferrer"><span>Post on X</span><span class="url">https://x.com/claudeai/status/2119867114450268322</span></a>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-head" id="from-x-2" data-section>
+          <h2>From X</h2>
+        </div>
+
+        <section id="claude-model-guide" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M7 8h7.5a3 3 0 010 6H9.5a3 3 0 000 6H17"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">From X</p>
+              <a class="pillar-tag tone-copper" href="../ai-engineering/cost.html">AI Engineering · Cost</a>
+            </div>
+            <h3>Anthropic's official guide to choosing between Fable, Opus, Sonnet and Haiku</h3>
+            <p>Anthropic's developer account published guidance on when to raise effort versus switch model tier, and when to push subagent work to smaller models. Artificial Analysis separately found that moving up a tier often beats maxing out effort on a lower tier, at lower cost.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A short, vendor-backed reference for model-selection policy, useful when setting team defaults or explaining cost choices to stakeholders.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://x.com/ClaudeDevs/status/2119898687803621427" target="_blank" rel="noopener noreferrer"><span>Post on X</span><span class="url">https://x.com/ClaudeDevs/status/2119898687803621427</span></a>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-head" id="inbox" data-section>
+          <h2>Inbox</h2>
+        </div>
+
+        <section id="claude-code-secrets-leak" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.8 7.2-7 8.5C7.8 19.2 5 16.2 5 12V6l7-3z"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Inbox</p>
+              <a class="pillar-tag tone-chain" href="../ai-engineering/guardrails.html">AI Engineering · Guardrails</a>
+            </div>
+            <h3>&ldquo;Don't ask again&rdquo; in Claude Code wrote 2,539 real secrets into public GitHub repos</h3>
+            <p>Apiiro found that approving a command with &ldquo;Yes, and don't ask again&rdquo; saves the exact command, secret included, to .claude/settings.local.json. Across public repos it counted 2,539 secrets in 1,994 repositories, including 379 database passwords and 23 AWS keys; many were missed by common secret scanners. Advice: search for that file across your org, check git history, rotate first, use environment variables like $DB_URL, and approve command patterns rather than literal commands.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Approval fatigue is a real security risk with coding agents. If your team uses Claude Code or similar tools, this is a five-minute audit worth doing this week.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.linkedin.com/pulse/claude-code-leaked-2539-passwords-genai-works-o5nqf" target="_blank" rel="noopener noreferrer"><span>LinkedIn article</span><span class="url">https://www.linkedin.com/pulse/claude-code-leaked-2539-passwords-genai-works-o5nqf</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="zero-trust-agents" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.8 7.2-7 8.5C7.8 19.2 5 16.2 5 12V6l7-3z"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Inbox</p>
+              <a class="pillar-tag tone-chain" href="../ai-engineering/guardrails.html">AI Engineering · Guardrails</a>
+            </div>
+            <h3>Zero-trust agent systems that pass audits and still ship (InfoQ talk)</h3>
+            <p>Advait Patel's playbook moves security from the prompt to the tool layer: give each agent a workload identity, use short-lived scoped tokens per tool, treat tool outputs as untrusted (the main prompt-injection path), enforce access controls in retrieval, keep identity-linked traces as audit evidence, and pre-build kill switches.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A clear checklist for getting agent pilots past security and compliance review in an enterprise like bp.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.infoq.com/presentations/zero-trust-ai-agents-production-security/" target="_blank" rel="noopener noreferrer"><span>InfoQ talk</span><span class="url">https://www.infoq.com/presentations/zero-trust-ai-agents-production-security/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-head" id="from-x-3" data-section>
+          <h2>From X</h2>
+        </div>
+
+        <section id="coding-agent-index" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="M8 15l3.2-4.2 2.6 2.4L19 7"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">From X</p>
+              <a class="pillar-tag tone-iris" href="../ai-engineering/measure.html">AI Engineering · Measure</a>
+            </div>
+            <h3>Coding agents: a 30x spread in cost per task among the top performers</h3>
+            <p>Artificial Analysis updated its Coding Agent Index to harder benchmarks; Fable 5.2 and Opus 5.5 tie at the top. Among setups scoring 48 or more, cost per task ranges from $1.51 (Codex with GPT-6.1 Sol) to $44.22 (Fable 5.2 at max), and Fable at medium, high and extra-high all sit on the best value curve.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>When recommending a coding agent, cost per task can vary 30x for similar quality. Benchmark on your own repos and report cost alongside pass rate.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://x.com/ArtificialAnlys/status/2121393834336882914" target="_blank" rel="noopener noreferrer"><span>Post on X</span><span class="url">https://x.com/ArtificialAnlys/status/2121393834336882914</span></a>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-head" id="frameworks-2" data-section>
+          <h2>Frameworks &amp; models</h2>
+        </div>
+
+        <section id="gemini-carbon-hydrogen" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="7" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="12" cy="17" r="2.2"/><path d="M8 8.2l3 6.2M16 8.2l-3 6.2"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Frameworks &amp; models</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>Gemini 4 Carbon and Hydrogen: Google pairs a planner model with a fast doer</h3>
+            <p>Google released Gemini 4 Carbon (its strongest model for long agentic work) and Gemini 4 Hydrogen (a speed-first tier at $1.50/$7.50 per million tokens with a low hallucination rate in independent tests). In Antigravity's new orchestrator mode, Carbon plans while Hydrogen writes and tests code, reaching near-Carbon results with 24% less quota and 19% faster completion. Testers flagged slow first-token times for Carbon.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Planner/executor splits are becoming a built-in product feature, not just a DIY pattern. Same lesson as Cloudflare: mix models by role.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://x.com/Google/status/2120982566891356279" target="_blank" rel="noopener noreferrer"><span>Post on X</span><span class="url">https://x.com/Google/status/2120982566891356279</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="langchain-series-c" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="M8 15l3.2-4.2 2.6 2.4L19 7"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Frameworks &amp; models</p>
+              <a class="pillar-tag tone-iris" href="../ai-engineering/measure.html">AI Engineering · Measure</a>
+            </div>
+            <h3>LangChain raises a Series C led by CapitalG; new LangSmith features due 20 Nov</h3>
+            <p>LangChain announced a Series C led by CapitalG, with LangSmith positioned as the place to trace and evaluate production agents across frameworks. New LangSmith features are due on 20 November.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Investors are betting on observability and evals as the durable layer of the agent stack. Watch the 20 Nov launch if your team traces agents in LangSmith.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.langchain.com/blog/series-c" target="_blank" rel="noopener noreferrer"><span>LangChain blog</span><span class="url">https://www.langchain.com/blog/series-c</span></a>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-head" id="inbox-2" data-section>
+          <h2>Inbox</h2>
+        </div>
+
+        <section id="llamaparse-byoc" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 7h8M8 12h8M8 17h5"/><path d="M5 4h14v16H5z"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Inbox</p>
+              <a class="pillar-tag tone-teal" href="../ai-engineering/context.html">AI Engineering · Context</a>
+            </div>
+            <h3>LlamaParse drops usage caps and documents running in your own cloud</h3>
+            <p>LlamaIndex removed usage caps on LlamaParse plans (pay-as-you-go $1.50 and Pro $1.25 per 1,000 credits) and published a guide to running it as a managed API, in your own AWS/Azure/Google Cloud account, or on-prem, with a recommended hybrid where you keep the platform and documents and they run the models.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Document parsing is the first step of most enterprise retrieval systems. Running the parser inside your own cloud makes data-residency conversations much easier.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.llamaindex.ai/blog/how-to-flexibly-deploy-llamaparse-wherever-your-data-lives" target="_blank" rel="noopener noreferrer"><span>LlamaIndex blog</span><span class="url">https://www.llamaindex.ai/blog/how-to-flexibly-deploy-llamaparse-wherever-your-data-lives</span></a>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-head" id="frameworks-3" data-section>
+          <h2>Frameworks &amp; models</h2>
+        </div>
+
+        <section id="llamacpp-1" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M7 8h7.5a3 3 0 010 6H9.5a3 3 0 000 6H17"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Frameworks &amp; models</p>
+              <a class="pillar-tag tone-copper" href="../ai-engineering/cost.html">AI Engineering · Cost</a>
+            </div>
+            <h3>llama.cpp, ggml and SGLang reach 1.0</h3>
+            <p>llama.cpp and ggml declared 1.0 stability, removing deprecated functions and adding a cache for frequently used experts so mixture-of-experts models larger than GPU memory run better. SGLang also announced 1.0.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Stable local and self-hosted inference engines make private, on-prem deployments of open models a safer bet for enterprise teams.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://huggingface.co/blog/ggml-org/llama-cpp-v1" target="_blank" rel="noopener noreferrer"><span>Hugging Face blog</span><span class="url">https://huggingface.co/blog/ggml-org/llama-cpp-v1</span></a>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-head" id="news-2" data-section>
+          <h2>News</h2>
+        </div>
+
+        <section id="nvidia-ceo" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6.5h11a3 3 0 013 3V20H7a3 3 0 01-3-3V6.5z"/><path d="M8 6.5V4h9a3 3 0 013 3v11"/></svg>
+          </div>
+          <div>
+            <p class="kicker">News</p>
+            <h3>Jensen Huang resigns as NVIDIA CEO; CFO Colette Kress is interim CEO</h3>
+            <p>After 33 years, Jensen Huang stepped down as CEO, president and board member following press reports; CFO Colette Kress is interim CEO ahead of next week's earnings call.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>NVIDIA is the backbone of AI compute. Expect market noise, but no immediate change to GPU availability or roadmaps that teams depend on.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition/" target="_blank" rel="noopener noreferrer"><span>NVIDIA news</span><span class="url">https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-head" id="webinars" data-section>
+          <h2>Webinars</h2>
+        </div>
+
+        <section id="webinar-llamaindex" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Webinars</p>
+            <h3>LlamaIndex live build: turning medical records into underwriting-ready data</h3>
+            <p>Wed 18 Nov, 9:00 AM PT (10:30 PM IST), free, 45 min.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A good real-world document-extraction pattern.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.llamaindex.ai/" target="_blank" rel="noopener noreferrer"><span>LlamaIndex</span><span class="url">https://www.llamaindex.ai/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="webinar-langsmith" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Webinars</p>
+            <h3>LangSmith feature announcements</h3>
+            <p>20 Nov.</p>
+            <div class="links">
+              <a class="link-btn" href="https://www.langchain.com/blog/series-c" target="_blank" rel="noopener noreferrer"><span>LangChain blog</span><span class="url">https://www.langchain.com/blog/series-c</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="deep-read" class="panel deep" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Worth a deep read</h2>
+          <p>The InfoQ talk <a href="https://www.infoq.com/presentations/zero-trust-ai-agents-production-security/" target="_blank" rel="noopener noreferrer">&ldquo;Zero Trust Agent Systems that Pass Audits and Still Ship&rdquo;</a> — a practical blueprint (identity per agent, scoped tool tokens, untrusted tool outputs, audit traces, kill switches) you can turn into a checklist for any agent pilot.</p>
+          <div class="links">
+            <a class="link-btn" href="https://www.infoq.com/presentations/zero-trust-ai-agents-production-security/" target="_blank" rel="noopener noreferrer"><span>InfoQ talk</span><span class="url">https://www.infoq.com/presentations/zero-trust-ai-agents-production-security/</span></a>
+          </div>
+        </section>
+
+        <section id="trend-watch" class="panel trend" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Trend watch</h2>
+          <p>Right-sizing is the new default: decision models for routing and scoring, planner/doer model pairs, and effort settings tuned per task. Cost per successful task, not price per token, is becoming the number that matters.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>
