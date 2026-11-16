@@ -120,6 +120,22 @@
     ]
   },
   {
+    "date": "2026-11-16",
+    "type": "google-research",
+    "title": "Google Research: research roundup, 16 Nov 2026",
+    "summary": "From Google Research's LinkedIn showcase, about 9 to 14 Nov 2026. Antigravity's /teamwork multi-agent systems, in collaboration with academic partners, continue to solve open problems across mathematics, chemistry, systems software, and ML engineering, and those collaboration tools are now being made available externally. The same posts cover 148 new PhD fellows supported by $13 million from Google.org, open-source genomics with CSIRO for Australian giant kelp, clinician collaboration and a multi-method whitepaper on health AI, an investigational wearable health-age framework, Language Explorer, and the launch of Google Research Singapore.",
+    "url": "digests/2026-11-16-google-research.html",
+    "readingTime": "7 min read",
+    "tags": [
+      "Google Research",
+      "Research",
+      "Agents",
+      "Health",
+      "Education"
+    ],
+    "pillar": "tools-agents"
+  },
+  {
     "date": "2026-11-14",
     "type": "frameworks",
     "title": "Agent frameworks weekly roundup: 7–14 Nov 2026",
