@@ -1,6 +1,21 @@
 [
   {
     "date": "2026-11-16",
+    "type": "langchain",
+    "title": "LangChain updates, 16 Nov 2026",
+    "summary": "From LangChain's LinkedIn: a $300M Series C and the new LangSmith platform, Managed Agents course and workshop, Gemini Decisions API day 0 support, Workday and Campfire case studies, and the State of Agent Engineering survey.",
+    "url": "digests/2026-11-16-langchain.html",
+    "readingTime": "4 min read",
+    "tags": [
+      "LangChain",
+      "funding",
+      "LangSmith",
+      "Managed Deep Agents",
+      "evals"
+    ]
+  },
+  {
+    "date": "2026-11-16",
     "type": "daily",
     "title": "Weekly AI Digest: week ending 16 Nov 2026",
     "summary": "The theme of the week: route work to the right-sized model. Google's Gemini Decision 1 and Cloudflare's hybrid agent pattern, Claude Fable 5.2's cheaper tokens but pricier tasks, a Claude Code credential leak and a zero-trust playbook for agents, LangChain's Series C, LlamaParse in your own cloud, llama.cpp 1.0, and NVIDIA's CEO transition.",
