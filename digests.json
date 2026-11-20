@@ -1,5 +1,58 @@
 [
   {
+    "date": "2026-11-20",
+    "type": "weekly",
+    "title": "Weekly Deep-Dive: Energy agents stand on data foundations",
+    "summary": "Energy agents stand on data foundations. The wins this week came from semantic layers, permission-aware retrieval and runtime controls more than from bigger models.",
+    "url": "digests/2026-11-20-weekly.html",
+    "readingTime": "9 min read",
+    "tags": [
+      "Energy",
+      "Oil & Gas",
+      "Agentic RAG",
+      "Multi-agent",
+      "Governance",
+      "Text-to-SQL"
+    ],
+    "items": [
+      {
+        "title": "bp turns weeks of maintenance analysis into 30-second answers with Genie Agents",
+        "summary": "Maintenance data across ~60 source systems (47 SAP instances plus Maximo) was modelled in Unity Catalog, and only data scoring 4-5 on a readiness score goes to the Genie Agent. Questions that took weeks now take ~30 seconds; an MVP went to 400 users and is ready to expand to 9,000.",
+        "url": "digests/2026-11-20-weekly.html#bp-genie",
+        "pillar": "tools-agents",
+        "tags": ["Energy", "Oil & Gas", "Maintenance", "Text-to-SQL agents", "Data readiness"]
+      },
+      {
+        "title": "PETRONAS PetroVisor: a supervisor plus domain agents over 1.8M engineering documents",
+        "summary": "A supervisor routes each query to Subsurface, Surface or Sensor agents over data that was about 90% unstructured, including 1.8M engineering documents. Data discovery went from 3-5 days to 30-45 seconds, with over 90% query accuracy (as reported by the vendor and customer).",
+        "url": "digests/2026-11-20-weekly.html#petronas",
+        "pillar": "tools-agents",
+        "tags": ["Oil & Gas", "Multi-agent", "Agentic RAG", "LLM-as-judge", "MLflow"]
+      },
+      {
+        "title": "TGS Scout: from knowledge search to an agent that acts, with 99% citation grounding",
+        "summary": "Across 35,000 responses over 8 months, 99% were grounded in citations and 70% were rated accurate by users. Time to find a solution fell from 2-3 hours to under 3 minutes (40-60x), and voluntary adoption reached 322 users.",
+        "url": "digests/2026-11-20-weekly.html#tgs-scout",
+        "pillar": "tools-agents",
+        "tags": ["Energy", "Seismic", "Agentic RAG in production", "Permission-aware retrieval", "Staged autonomy"]
+      },
+      {
+        "title": "Agentic petrophysics in Abu Dhabi, and bpx energy's Xpert",
+        "summary": "Planning packages went from about half a day to about 5 minutes, and Xpert saves bpx about 15,000 engineer-hours a year. AWS separately cites 20-30% less unplanned downtime from predictive monitoring and an 8-12% output lift from production optimisation (vendor figures).",
+        "url": "digests/2026-11-20-weekly.html#petrophysics-xpert",
+        "pillar": "tools-agents",
+        "tags": ["Oil & Gas", "Subsurface", "Engineering agents", "Text-to-query"]
+      },
+      {
+        "title": "Governance gap: 95% had an agent incident and only 15% have circuit breakers",
+        "summary": "95% of organisations had at least one agent-related incident in the past 12 months, and only 15% have automatic circuit breakers, yet 70% believe their agents operate within safe boundaries. Gartner predicts 40% will suffer a business-critical disruption by 2028.",
+        "url": "digests/2026-11-20-weekly.html#governance",
+        "pillar": "guardrails",
+        "tags": ["Governance", "Guardrails", "Industrial agents", "Research"]
+      }
+    ]
+  },
+  {
     "date": "2026-11-16",
     "type": "langchain",
     "title": "LangChain updates, 16 Nov 2026",
