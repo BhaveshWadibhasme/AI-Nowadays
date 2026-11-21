@@ -1,5 +1,27 @@
 [
   {
+    "date": "2026-11-21",
+    "type": "frameworks",
+    "title": "Agent frameworks roundup — 21 Nov 2026",
+    "summary": "Two high-severity Pydantic AI Harness fixes, breaking changes in ADK 2.15, OpenAI Agents SDK 0.25 and Claude Agent SDK TS, plus LangGraph speed-ups and Mastra storage v2.",
+    "url": "digests/2026-11-21-frameworks.html",
+    "readingTime": "3 min read",
+    "tags": [
+      "Pydantic AI",
+      "Google ADK",
+      "OpenAI Agents SDK",
+      "Claude Agent SDK",
+      "CrewAI",
+      "LangGraph",
+      "Mastra",
+      "LangChain",
+      "Agno",
+      "A2A",
+      "Security",
+      "Breaking changes"
+    ]
+  },
+  {
     "date": "2026-11-20",
     "type": "weekly",
     "title": "Weekly Deep-Dive: Energy agents stand on data foundations",

@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agent frameworks roundup — 21 Nov 2026 · AI Nowdays</title>
+<meta name="description" content="Two high-severity Pydantic AI Harness fixes, breaking changes in ADK 2.15, OpenAI Agents SDK 0.25 and Claude Agent SDK TS, plus LangGraph speed-ups and Mastra storage v2.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-11-21-frameworks.html">
+<meta property="og:title" content="Agent frameworks roundup — 21 Nov 2026">
+<meta property="og:description" content="Two high-severity Pydantic AI Harness fixes, breaking changes in ADK 2.15, OpenAI Agents SDK 0.25 and Claude Agent SDK TS, plus LangGraph speed-ups and Mastra storage v2.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-11-21-frameworks.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Agent frameworks roundup — 21 Nov 2026">
+<meta name="twitter:description" content="Two high-severity Pydantic AI Harness fixes, breaking changes in ADK 2.15, OpenAI Agents SDK 0.25 and Claude Agent SDK TS, plus LangGraph speed-ups and Mastra storage v2.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../visuals.css">
+<script src="../visuals.js" defer></script>
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a class="active" href="../">Digests</a>
+      <a href="../ai-engineering/">AI Engineering</a>
+      <a href="../computer-vision.html">Computer Vision</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#frameworks">← All Frameworks issues</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="kicker">On this page</p>
+        <a href="#overview">Overview</a>
+        <a href="#breaking">Breaking changes</a>
+        <a href="#pydantic-harness">Pydantic AI</a>
+        <a href="#adk">Google ADK</a>
+        <a href="#openai-agents">OpenAI Agents SDK</a>
+        <a href="#claude-agent-sdk">Claude Agent SDK</a>
+        <a href="#crewai">CrewAI</a>
+        <a href="#langchain">LangChain</a>
+        <a href="#worth-knowing">Worth knowing</a>
+        <a href="#langgraph">LangGraph</a>
+        <a href="#openai-agents-alpha">Agents SDK alpha</a>
+        <a href="#mastra">Mastra</a>
+        <a href="#crewai-knowledge">CrewAI</a>
+        <a href="#agno">Agno</a>
+        <a href="#a2a">A2A</a>
+        <a href="#worth-trying">Worth trying</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-frameworks">Frameworks</span>
+          <time datetime="2026-11-21">21 Nov 2026</time>
+          <span>3 min read</span>
+          <span>14–21 Nov 2026</span>
+        </div>
+        <h1>Agent frameworks roundup — 21 Nov 2026</h1>
+        <div class="tag-row">
+          <span class="tag">Pydantic AI</span>
+          <span class="tag">Google ADK</span>
+          <span class="tag">OpenAI Agents SDK</span>
+          <span class="tag">Claude Agent SDK</span>
+          <span class="tag">CrewAI</span>
+          <span class="tag">LangGraph</span>
+          <span class="tag">Mastra</span>
+          <span class="tag">LangChain</span>
+          <span class="tag">Agno</span>
+          <span class="tag">A2A</span>
+          <span class="tag">Security</span>
+          <span class="tag">Breaking changes</span>
+        </div>
+
+        <section id="overview" class="lede-card" data-section>
+          <p>A busy week: two security fixes and four releases with breaking changes. Here's what matters in practice.</p>
+        </section>
+
+        <section id="breaking" class="block warn" data-section>
+          <div class="block-title">
+            <div class="story-icon copper" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3.5l8.5 15h-17L12 3.5z"/><path d="M12 9.5v4.5M12 16.5h.01"/></svg>
+            </div>
+            <h2>Breaking changes and security</h2>
+          </div>
+        </section>
+
+        <section id="pydantic-harness" class="story warn" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.8 7.2-7 8.5C7.8 19.2 5 16.2 5 12V6l7-3z"/><path d="M12 8v5M12 16h.01"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Security · Pydantic AI</p>
+              <a class="pillar-tag tone-chain" href="../ai-engineering/guardrails.html">AI Engineering · Guardrails</a>
+            </div>
+            <h3>Pydantic AI Harness — 2 high-severity fixes</h3>
+            <p>Two regex patterns could freeze the event loop for minutes on crafted input: <code>strip_ansi=True</code> in <code>ToolOutputLimits</code>, and the default <code>jwt</code> pattern in <code>redact_secrets</code>. If tools handle text from outside users, upgrade to <code>pydantic-ai-harness</code> 0.70.0.</p>
+            <div class="links">
+              <a class="link-btn" href="https://github.com/pydantic/pydantic-ai/releases/tag/v2.70.0" target="_blank" rel="noopener noreferrer"><span>v2.70.0 notes</span><span class="url">https://github.com/pydantic/pydantic-ai/releases/tag/v2.70.0</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="adk" class="story warn" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3.5l8.5 15h-17L12 3.5z"/><path d="M12 9.5v4.5M12 16.5h.01"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Breaking · Google ADK</p>
+              <a class="pillar-tag tone-chain" href="../ai-engineering/guardrails.html">AI Engineering · Guardrails</a>
+            </div>
+            <h3>Google ADK Python 2.15.0</h3>
+            <p>The Visual Agent Builder is gone from ADK Web (agents you built with it are still standard YAML). <code>McpInstructionProvider</code> no longer passes <code>session.state</code> to MCP servers automatically, a security hardening change, so pass <code>arguments=</code> yourself.</p>
+            <div class="links">
+              <a class="link-btn" href="https://github.com/google/adk-python/releases/tag/v2.15.0" target="_blank" rel="noopener noreferrer"><span>Release</span><span class="url">https://github.com/google/adk-python/releases/tag/v2.15.0</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="openai-agents" class="story warn" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.8 7.2-7 8.5C7.8 19.2 5 16.2 5 12V6l7-3z"/><path d="M12 8v5M12 16h.01"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Breaking · OpenAI Agents SDK</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>OpenAI Agents SDK 0.25.0</h3>
+            <p>The beta Runloop sandbox is removed, and the checkpoint format changed. If workers share checkpoints, upgrade the readers first. Compaction now defaults to <code>gpt-6-luna</code>.</p>
+            <div class="links">
+              <a class="link-btn" href="https://github.com/openai/openai-agents-python/releases/tag/v0.25.0" target="_blank" rel="noopener noreferrer"><span>Release</span><span class="url">https://github.com/openai/openai-agents-python/releases/tag/v0.25.0</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="claude-agent-sdk" class="story warn" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13 6l-2 12"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Breaking · Claude Agent SDK</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>Claude Agent SDK (TypeScript) 0.3.327</h3>
+            <p>Hook options must now be arrays, and <code>query()</code> rejects options it can't serialise.</p>
+            <div class="links">
+              <a class="link-btn" href="https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.327" target="_blank" rel="noopener noreferrer"><span>Release</span><span class="url">https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.327</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="crewai" class="story warn" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.8 7.2-7 8.5C7.8 19.2 5 16.2 5 12V6l7-3z"/><path d="M12 8v5M12 16h.01"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Security · CrewAI</p>
+              <a class="pillar-tag tone-chain" href="../ai-engineering/guardrails.html">AI Engineering · Guardrails</a>
+            </div>
+            <h3>CrewAI 1.15.42–1.15.44</h3>
+            <p>Raises the soupsieve floor for CVE-2026-126190 and enforces working-directory containment on all <code>FilePath</code> paths.</p>
+            <div class="links">
+              <a class="link-btn" href="https://github.com/crewAIInc/crewAI/releases/tag/1.15.42" target="_blank" rel="noopener noreferrer"><span>1.15.42</span><span class="url">https://github.com/crewAIInc/crewAI/releases/tag/1.15.42</span></a>
+              <a class="link-btn" href="https://github.com/crewAIInc/crewAI/releases/tag/1.15.44" target="_blank" rel="noopener noreferrer"><span>1.15.44</span><span class="url">https://github.com/crewAIInc/crewAI/releases/tag/1.15.44</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="langchain" class="story warn" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3.5l8.5 15h-17L12 3.5z"/><path d="M12 9.5v4.5M12 16.5h.01"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Breaking · LangChain</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>LangChain partner packages</h3>
+            <p>LangChain partner packages (OpenAI, Anthropic, Groq, xAI and others) no longer support Python 3.10.</p>
+            <div class="links">
+              <a class="link-btn" href="https://github.com/langchain-ai/langchain/releases/tag/langchain-anthropic%3D%3D1.7.11" target="_blank" rel="noopener noreferrer"><span>langchain-anthropic 1.7.11</span><span class="url">https://github.com/langchain-ai/langchain/releases/tag/langchain-anthropic%3D%3D1.7.11</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="worth-knowing" class="block" data-section>
+          <div class="block-title">
+            <div class="story-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.5 2"/></svg>
+            </div>
+            <h2>Worth knowing</h2>
+          </div>
+        </section>
+
+        <section id="langgraph" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="7" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="12" cy="17" r="2.2"/><path d="M8 8.2l3 6.2M16 8.2l-3 6.2"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">LangGraph</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>LangGraph 1.2.22–1.2.24</h3>
+            <p>Speed-ups for wide states and message handling, plus fixes for subgraph streaming and <code>Send</code>-dispatched tool calls.</p>
+            <div class="links">
+              <a class="link-btn" href="https://github.com/langchain-ai/langgraph/releases/tag/1.2.24" target="_blank" rel="noopener noreferrer"><span>1.2.24</span><span class="url">https://github.com/langchain-ai/langgraph/releases/tag/1.2.24</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="openai-agents-alpha" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13 6l-2 12"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">OpenAI Agents SDK</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>OpenAI Agents SDK 1.0.0-alpha.1</h3>
+            <p>Codex is now an opt-in model provider (<code>CodexProvider</code>) that runs Codex Core inside Python. It's an early preview.</p>
+            <div class="links">
+              <a class="link-btn" href="https://github.com/openai/openai-agents-python/releases/tag/v1.0.0-alpha.1" target="_blank" rel="noopener noreferrer"><span>Release</span><span class="url">https://github.com/openai/openai-agents-python/releases/tag/v1.0.0-alpha.1</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="mastra" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="M8 15l3.2-3.4 2.4 2.1L19 7"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Mastra</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>Mastra core 1.84.0</h3>
+            <p>Experimental storage v2 cuts long-run writes a lot (75 MB → 3.1 MB in their example). It also adds automatic workflow crash recovery and a re-embed API for knowledge bases.</p>
+            <div class="links">
+              <a class="link-btn" href="https://github.com/mastra-ai/mastra/releases" target="_blank" rel="noopener noreferrer"><span>Releases</span><span class="url">https://github.com/mastra-ai/mastra/releases</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="crewai-knowledge" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 7h12M6 12h12M6 17h7"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">CrewAI</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>CrewAI</h3>
+            <p>ChromaDB is now optional, and Knowledge defaults to local Qdrant.</p>
+          </div>
+        </section>
+
+        <section id="agno" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.5 2"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Agno</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>Agno 3.2.1</h3>
+            <p>Session compaction stats over the API, plus request timeouts on several tools.</p>
+            <div class="links">
+              <a class="link-btn" href="https://github.com/agno-agi/agno/releases/tag/v3.2.1" target="_blank" rel="noopener noreferrer"><span>Release</span><span class="url">https://github.com/agno-agi/agno/releases/tag/v3.2.1</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="a2a" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="8" r="2.2"/><circle cx="18" cy="8" r="2.2"/><circle cx="12" cy="16" r="2.2"/><path d="M8 9.2l2.6 4.6M16 9.2l-2.6 4.6"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">A2A</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>A2A Python 1.3.1</h3>
+            <p>Fixes for SSE parsing and REST path encoding.</p>
+            <div class="links">
+              <a class="link-btn" href="https://github.com/a2aproject/a2a-python/releases/tag/v1.3.1" target="_blank" rel="noopener noreferrer"><span>Release</span><span class="url">https://github.com/a2aproject/a2a-python/releases/tag/v1.3.1</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="worth-trying" class="panel trend" data-section>
+          <p class="kicker">Hands-on</p>
+          <h2>Worth trying</h2>
+          <p><strong>ADK 2.15's <code>BigQueryToolset</code> <code>ask_data_insights</code> with <code>search_scope</code>.</strong> Point an agent at whole projects or datasets and let it find the right tables for open-ended analytics questions. It's a quick demo for data-heavy teams like refinery ops, and a good consulting showcase.</p>
+          <div class="links">
+            <a class="link-btn" href="https://github.com/google/adk-python/releases/tag/v2.15.0" target="_blank" rel="noopener noreferrer"><span>Release notes</span><span class="url">https://github.com/google/adk-python/releases/tag/v2.15.0</span></a>
+          </div>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>
