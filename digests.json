@@ -155,6 +155,23 @@
     ]
   },
   {
+    "date": "2026-11-23",
+    "type": "google-research",
+    "title": "Google Research: research roundup, 23 Nov 2026",
+    "summary": "From Google Research's LinkedIn showcase, about 17 to 21 Nov 2026. Google Duplex now brings natural voice conversations and local business calls, built up over the past decade, directly to Tasks in Gemini. The same posts cover quantum contextuality measured, benchmarked, and demonstrated in tasks spanning up to 105 qubits and published in Science, proactive interfaces for preventative health, StreetReaderAI released open source under Apache 2.0 for non-visual exploration of street-level imagery, and a brief note on AIVA Demo Day in Gurugram.",
+    "url": "digests/2026-11-23-google-research.html",
+    "readingTime": "5 min read",
+    "tags": [
+      "Google Research",
+      "Research",
+      "Agents",
+      "Health",
+      "Quantum",
+      "Accessibility"
+    ],
+    "pillar": "tools-agents"
+  },
+  {
     "date": "2026-11-21",
     "type": "frameworks",
     "title": "Agent frameworks roundup — 21 Nov 2026",
