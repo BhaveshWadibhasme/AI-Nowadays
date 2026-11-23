@@ -1,6 +1,146 @@
 [
   {
     "date": "2026-11-23",
+    "type": "daily",
+    "title": "Weekly AI digest: week ending 23 Nov 2026",
+    "summary": "It was a price war week: OpenAI and Google both shipped cheaper frontier tiers with effort dials, so the lever that matters most now is how much thinking you pay for. New evals and a US government test showed agents and chatbots are still much less reliable than the headline numbers suggest.",
+    "url": "digests/2026-11-23-daily.html",
+    "readingTime": "5 min read",
+    "tags": [
+      "GPT-6.2",
+      "Gemini 4",
+      "evals",
+      "guardrails",
+      "agents",
+      "cost",
+      "LangChain",
+      "Anthropic"
+    ],
+    "items": [
+      {
+        "title": "OpenAI ships GPT-6.2 Astra and Sol",
+        "summary": "For most workloads, Sol is probably the new default \"workhorse\" tier. Re-run your own evals before switching, and don't rely on influencer reviews.",
+        "url": "digests/2026-11-23-daily.html#gpt-6-2",
+        "pillar": "cost",
+        "tags": [
+          "GPT-6.2",
+          "cost"
+        ]
+      },
+      {
+        "title": "Google DeepMind's Gemini 4 Neon, and what the thinking dial really costs",
+        "summary": "The effort setting is now a big cost knob, roughly 6x in that example. Set it per task type, and use caching where you can.",
+        "url": "digests/2026-11-23-daily.html#gemini-4-neon",
+        "pillar": "cost",
+        "tags": [
+          "Gemini 4",
+          "cost"
+        ]
+      },
+      {
+        "title": "Cloudflare starts making its own small models",
+        "summary": "Sending routing and extraction steps to small, cheap models at the edge is a practical way to cut latency and cost in agent pipelines.",
+        "url": "digests/2026-11-23-daily.html#cloudflare-models",
+        "pillar": "cost",
+        "tags": [
+          "cost",
+          "agents"
+        ]
+      },
+      {
+        "title": "Stripe publishes realistic coding-agent evals",
+        "summary": "This is a template for evaluating agents on your own APIs. Report the strict pass rate, not just the average.",
+        "url": "digests/2026-11-23-daily.html#stripe-evals",
+        "pillar": "measure",
+        "tags": [
+          "evals",
+          "agents"
+        ]
+      },
+      {
+        "title": "US government investigators jailbroke four major chatbots",
+        "summary": "The model's built-in safety rules aren't enough on their own. Enterprise apps need their own input and output checks, sandboxing and human approval before risky actions.",
+        "url": "digests/2026-11-23-daily.html#gao-jailbreaks",
+        "pillar": "guardrails",
+        "tags": [
+          "guardrails"
+        ]
+      },
+      {
+        "title": "Using formal verification against AI \"slop\"",
+        "summary": "As more code is AI-written, checking it automatically against a spec is becoming a practical quality gate, not just a research idea.",
+        "url": "digests/2026-11-23-daily.html#formal-verification",
+        "pillar": "guardrails",
+        "tags": [
+          "guardrails"
+        ]
+      },
+      {
+        "title": "LangChain's \"knowledge factory\" pattern",
+        "summary": "It's a concrete design for company memory that a consultant can reuse. Buying Copilot doesn't change how a team works without this layer.",
+        "url": "digests/2026-11-23-daily.html#knowledge-factory",
+        "pillar": "context",
+        "tags": [
+          "LangChain",
+          "agents"
+        ]
+      },
+      {
+        "title": "Gemini 4 Neon leads LlamaIndex's document-parsing benchmark",
+        "summary": "Parsing quality limits how good RAG can be over PDFs and reports, such as engineering and operations documents. Benchmark parsers before you tune retrieval.",
+        "url": "digests/2026-11-23-daily.html#parsebench",
+        "pillar": "context",
+        "tags": [
+          "Gemini 4"
+        ]
+      },
+      {
+        "title": "Agent SDK updates: OpenAI Agents SDK 0.25 and Google ADK 2.15",
+        "summary": "The main frameworks are converging on what production agents need: durable state, human approval, isolation and built-in evals.",
+        "url": "digests/2026-11-23-daily.html#agent-sdks",
+        "pillar": "tools-agents",
+        "tags": [
+          "agents"
+        ]
+      },
+      {
+        "title": "Anthropic completes the largest IPO in history",
+        "summary": "A key enterprise AI vendor is now publicly listed, which means more disclosure and more pressure on pricing and roadmap. That's useful context for vendor-risk discussions.",
+        "url": "digests/2026-11-23-daily.html#anthropic-ipo",
+        "tags": [
+          "Anthropic"
+        ]
+      },
+      {
+        "title": "Build Highly Available Agentic Memory",
+        "summary": "\"Build Highly Available Agentic Memory\" by Mem0 and ScyllaDB, 1 Dec at 6:30 PM IST.",
+        "url": "digests/2026-11-23-daily.html#webinar-agentic-memory",
+        "pillar": "context",
+        "tags": [
+          "agents"
+        ]
+      },
+      {
+        "title": "Agent Runtime 101, Agent Improvement 101 and Agent Governance 101",
+        "summary": "LangChain's Agent Runtime 101, Agent Improvement 101 and Agent Governance 101 run 8 to 10 Dec.",
+        "url": "digests/2026-11-23-daily.html#webinar-langchain",
+        "tags": [
+          "LangChain",
+          "agents"
+        ]
+      },
+      {
+        "title": "Building Durable AI Agents with Pydantic AI and Temporal",
+        "summary": "The recording of \"Building Durable AI Agents with Pydantic AI and Temporal\" is on Temporal's resources page.",
+        "url": "digests/2026-11-23-daily.html#webinar-temporal",
+        "tags": [
+          "agents"
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-23",
     "type": "langchain",
     "title": "LangChain updates, 23 Nov 2026",
     "summary": "From LangChain's LinkedIn since the 16 November page: the new LangSmith Agent Platform with Tool Gateway and trace controls, LangSmith Signal model usage data, 50M Deep Agents downloads, GTM Agent results and Interrupt NYC sessions.",

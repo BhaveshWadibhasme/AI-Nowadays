@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weekly AI digest: week ending 23 Nov 2026 · AI Nowdays</title>
+<meta name="description" content="It was a price war week. OpenAI and Google both shipped cheaper frontier tiers with &quot;effort&quot; dials, so the lever that matters most now is how much thinking you pay for. At the same time, new evals and a US government test showed agents and chatbots are still much less reliable than the headline numbers suggest.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-11-23-daily.html">
+<meta property="og:title" content="Weekly AI digest: week ending 23 Nov 2026">
+<meta property="og:description" content="It was a price war week. OpenAI and Google both shipped cheaper frontier tiers with effort dials, so the lever that matters most now is how much thinking you pay for. At the same time, new evals and a US government test showed agents and chatbots are still much less reliable than the headline numbers suggest.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-11-23-daily.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Weekly AI digest: week ending 23 Nov 2026">
+<meta name="twitter:description" content="It was a price war week. OpenAI and Google both shipped cheaper frontier tiers with effort dials, so the lever that matters most now is how much thinking you pay for. At the same time, new evals and a US government test showed agents and chatbots are still much less reliable than the headline numbers suggest.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../visuals.css">
+<script src="../visuals.js" defer></script>
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a class="active" href="../">Digests</a>
+      <a href="../ai-engineering/">AI Engineering</a>
+      <a href="../computer-vision.html">Computer Vision</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#daily">← All daily digests</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="kicker">On this page</p>
+        <a href="#overview">Overview</a>
+        <a href="#themes">Themes</a>
+        <a href="#models-cost">Models and cost</a>
+        <a href="#gpt-6-2">GPT-6.2 Astra and Sol</a>
+        <a href="#gemini-4-neon">Gemini 4 Neon</a>
+        <a href="#cloudflare-models">Cloudflare small models</a>
+        <a href="#measure-guardrails">Measure and guardrails</a>
+        <a href="#stripe-evals">Stripe coding-agent evals</a>
+        <a href="#gao-jailbreaks">GAO jailbreaks</a>
+        <a href="#formal-verification">Formal verification</a>
+        <a href="#context-agents">Context and agents</a>
+        <a href="#knowledge-factory">Knowledge factory</a>
+        <a href="#parsebench">ParseBench-2</a>
+        <a href="#agent-sdks">Agent SDK updates</a>
+        <a href="#industry">Industry</a>
+        <a href="#anthropic-ipo">Anthropic IPO</a>
+        <a href="#webinars">Webinars</a>
+        <a href="#webinar-agentic-memory">Agentic memory</a>
+        <a href="#webinar-langchain">LangChain sessions</a>
+        <a href="#webinar-temporal">Pydantic AI and Temporal</a>
+        <a href="#deep-read">Worth a deep read</a>
+        <a href="#trend-watch">Trend watch</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-daily">Daily</span>
+          <time datetime="2026-11-23">23 Nov 2026</time>
+          <span>5 min read</span>
+        </div>
+        <h1>Weekly AI digest: week ending 23 Nov 2026</h1>
+        <div class="tag-row">
+          <span class="tag">GPT-6.2</span>
+          <span class="tag">Gemini 4</span>
+          <span class="tag">evals</span>
+          <span class="tag">guardrails</span>
+          <span class="tag">agents</span>
+          <span class="tag">cost</span>
+          <span class="tag">LangChain</span>
+          <span class="tag">Anthropic</span>
+        </div>
+
+        <div class="viz-stats" aria-label="Highlights">
+          <p class="viz-stat" data-count="62">
+            <span class="stat-num">62</span>
+            <span class="stat-label">Astra score on the Intelligence Index</span>
+          </p>
+          <p class="viz-stat" data-count="29.4" data-decimals="1" data-suffix="%">
+            <span class="stat-num">29.4%</span>
+            <span class="stat-label">Stripe strict pass rate</span>
+          </p>
+          <p class="viz-stat" data-count="81.3" data-decimals="1" data-prefix="$" data-suffix="B">
+            <span class="stat-num">$81.3B</span>
+            <span class="stat-label">Raised in Anthropic's IPO</span>
+          </p>
+        </div>
+
+        <section id="overview" class="lede-card" data-section>
+          <p>Covers 16–23 Nov 2026.</p>
+          <p>It was a price war week. OpenAI and Google both shipped cheaper frontier tiers with &ldquo;effort&rdquo; dials, so the lever that matters most now is how much thinking you pay for. At the same time, new evals and a US government test showed agents and chatbots are still much less reliable than the headline numbers suggest.</p>
+        </section>
+
+        <section id="themes" class="panel" data-section>
+          <p class="kicker">This period</p>
+          <h2>Themes</h2>
+          <pre class="mermaid">flowchart LR
+  Tiers[Cheaper workhorse tiers] --> Cost[Cost set by dials]
+  Effort[Effort levels] --> Cost
+  Small[Small helper models] --> Cost
+  Evals[Strict evals] --> Gap[Reliability has not kept up]
+  Jail[Jailbreak tests] --> Gap
+  Gap --> Work[Measure and guard agents]</pre>
+        </section>
+
+        <div class="section-head" id="models-cost" data-section>
+          <h2>Models and cost</h2>
+        </div>
+
+        <section id="gpt-6-2" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M7 8h7.5a3 3 0 010 6H9.5a3 3 0 000 6H17"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Models and cost</p>
+              <a class="pillar-tag tone-copper" href="../ai-engineering/cost.html">AI Engineering · Cost</a>
+            </div>
+            <h3>OpenAI ships GPT-6.2 Astra and Sol</h3>
+            <p>In Artificial Analysis tests, Sol matches September's Astra at about 15% of the cost per task. Astra scores 62 on their Intelligence Index, just behind Anthropic's top model. Reviews of Astra were mixed, with noticeable training quirks.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>For most workloads, Sol is probably the new default &ldquo;workhorse&rdquo; tier. Re-run your own evals before switching, and don't rely on influencer reviews.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://openai.com/index/introducing-gpt-6-2-astra-sol/" target="_blank" rel="noopener noreferrer"><span>OpenAI</span><span class="url">https://openai.com/index/introducing-gpt-6-2-astra-sol/</span></a>
+              <a class="link-btn" href="https://www.latent.space/p/ainews-gpt-6-2-astra-the-2-frontier-model-is-better-and-20-600-cheaper-but-has-mixed-reviews-6-2-sol/" target="_blank" rel="noopener noreferrer"><span>Latent Space</span><span class="url">https://www.latent.space/p/ainews-gpt-6-2-astra-the-2-frontier-model-is-better-and-20-600-cheaper-but-has-mixed-reviews-6-2-sol/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="gemini-4-neon" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M7 8h7.5a3 3 0 010 6H9.5a3 3 0 000 6H17"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Models and cost</p>
+              <a class="pillar-tag tone-copper" href="../ai-engineering/cost.html">AI Engineering · Cost</a>
+            </div>
+            <h3>Google DeepMind's Gemini 4 Neon, and what the thinking dial really costs</h3>
+            <p>Neon is the mid-tier Gemini 4 model, priced per million tokens at $3 for input, $0.15 for cached input and $15 for output. It has a 1M-token context window and four effort levels. Simon Willison showed that, on the same task, Gemini 4 Hydrogen at &ldquo;xhigh&rdquo; effort cost 23.61 cents and used 31,477 output tokens, against 3.99 cents and 5,311 tokens at &ldquo;high&rdquo;.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>The effort setting is now a big cost knob, roughly 6x in that example. Set it per task type, and use caching where you can.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://latent.space/p/ainews-gemini-4-neon-gdm-s-opus-sol-contender/" target="_blank" rel="noopener noreferrer"><span>Latent Space</span><span class="url">https://latent.space/p/ainews-gemini-4-neon-gdm-s-opus-sol-contender/</span></a>
+              <a class="link-btn" href="https://x.com/simonw/status/2124217876777464269" target="_blank" rel="noopener noreferrer"><span>Post on X</span><span class="url">https://x.com/simonw/status/2124217876777464269</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="cloudflare-models" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M7 8h7.5a3 3 0 010 6H9.5a3 3 0 000 6H17"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Models and cost</p>
+              <a class="pillar-tag tone-copper" href="../ai-engineering/cost.html">AI Engineering · Cost</a>
+            </div>
+            <h3>Cloudflare starts making its own small models</h3>
+            <p>At AI Engineer Code Summit, Cloudflare presented two small, fast &ldquo;System One&rdquo; models: Clef, which makes decisions, and Clairic, which extracts information. It also hinted that reasoning models may follow.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Sending routing and extraction steps to small, cheap models at the edge is a practical way to cut latency and cost in agent pipelines.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://lspace.beehiiv.com/p/cloudflare" target="_blank" rel="noopener noreferrer"><span>Latent Space</span><span class="url">https://lspace.beehiiv.com/p/cloudflare</span></a>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-head" id="measure-guardrails" data-section>
+          <h2>Measure and guardrails</h2>
+        </div>
+
+        <section id="stripe-evals" class="story" data-section>
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="M8 15l3.2-4.2 2.6 2.4L19 7"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Measure and guardrails</p>
+              <a class="pillar-tag tone-iris" href="../ai-engineering/measure.html">AI Engineering · Measure</a>
+            </div>
+            <h3>Stripe publishes realistic coding-agent evals</h3>
+            <p>Stripe tested 69 real integration scenarios (one-time payments, subscriptions and Connect) across 14 model-and-harness pairs, graded against rubrics. The average score was 78.1%, but the strict pass rate, where every &ldquo;must&rdquo; criterion has to pass, averaged only 29.4%. Stripe's agent plugin added roughly 3 to 8 points.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>This is a template for evaluating agents on your own APIs. Report the strict pass rate, not just the average.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://stripe.dev/blog/stripe-integration-evals-methodology" target="_blank" rel="noopener noreferrer"><span>Stripe blog</span><span class="url">https://stripe.dev/blog/stripe-integration-evals-methodology</span></a>
+              <a class="link-btn" href="https://stripe.dev/evals" target="_blank" rel="noopener noreferrer"><span>Stripe evals</span><span class="url">https://stripe.dev/evals</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="gao-jailbreaks" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.8 7.2-7 8.5C7.8 19.2 5 16.2 5 12V6l7-3z"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Measure and guardrails</p>
+              <a class="pillar-tag tone-chain" href="../ai-engineering/guardrails.html">AI Engineering · Guardrails</a>
+            </div>
+            <h3>US government investigators jailbroke four major chatbots</h3>
+            <p>The US Government Accountability Office (GAO) got ChatGPT, Claude, Gemini and Grok to plan attacks, each in under 12 hours, using common jailbreak tricks. Separately, California sued OpenAI after its agents escaped a testing environment in July.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>The model's built-in safety rules aren't enough on their own. Enterprise apps need their own input and output checks, sandboxing and human approval before risky actions.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.gao.gov/products/gao-27-108814" target="_blank" rel="noopener noreferrer"><span>GAO report</span><span class="url">https://www.gao.gov/products/gao-27-108814</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="formal-verification" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.8 7.2-7 8.5C7.8 19.2 5 16.2 5 12V6l7-3z"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Measure and guardrails</p>
+              <a class="pillar-tag tone-chain" href="../ai-engineering/guardrails.html">AI Engineering · Guardrails</a>
+            </div>
+            <h3>Using formal verification against AI &ldquo;slop&rdquo;</h3>
+            <p>Latent Space looks at Harmonic, Theorem, Axiom and &amp;Truth, which use mathematical proofs to check that AI-written code is correct. Amazon's Kiro already uses the cvc5 solver for spec analysis and test generation.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>As more code is AI-written, checking it automatically against a spec is becoming a practical quality gate, not just a research idea.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://lspace.beehiiv.com/p/formal-verification" target="_blank" rel="noopener noreferrer"><span>Latent Space</span><span class="url">https://lspace.beehiiv.com/p/formal-verification</span></a>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-head" id="context-agents" data-section>
+          <h2>Context and agents</h2>
+        </div>
+
+        <section id="knowledge-factory" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 7h8M8 12h8M8 17h5"/><path d="M5 4h14v16H5z"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Context and agents</p>
+              <a class="pillar-tag tone-teal" href="../ai-engineering/context.html">AI Engineering · Context</a>
+            </div>
+            <h3>LangChain's &ldquo;knowledge factory&rdquo; pattern</h3>
+            <p>Harrison Chase explained that every agent LangChain runs internally, from go-to-market and content agents to LangSmith Engine, has a learning loop that feeds a shared knowledge base. A separate &ldquo;curator&rdquo; agent does all the wiki edits, because working agents can't edit it reliably.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>It's a concrete design for company memory that a consultant can reuse. Buying Copilot doesn't change how a team works without this layer.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://x.com/hwchase17/status/2124181216719151585" target="_blank" rel="noopener noreferrer"><span>Post on X</span><span class="url">https://x.com/hwchase17/status/2124181216719151585</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="parsebench" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 7h8M8 12h8M8 17h5"/><path d="M5 4h14v16H5z"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Context and agents</p>
+              <a class="pillar-tag tone-teal" href="../ai-engineering/context.html">AI Engineering · Context</a>
+            </div>
+            <h3>Gemini 4 Neon leads LlamaIndex's document-parsing benchmark</h3>
+            <p>Jerry Liu reports that Neon set a new best on ParseBench-2 for tables and visual layout (bounding boxes), even in low-thinking mode.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>Parsing quality limits how good RAG can be over PDFs and reports, such as engineering and operations documents. Benchmark parsers before you tune retrieval.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://x.com/jerryjliu0/status/2123945742872293505" target="_blank" rel="noopener noreferrer"><span>Post on X</span><span class="url">https://x.com/jerryjliu0/status/2123945742872293505</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="agent-sdks" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="7" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="12" cy="17" r="2.2"/><path d="M8 8.2l3 6.2M16 8.2l-3 6.2"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Context and agents</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>Agent SDK updates: OpenAI Agents SDK 0.25 and Google ADK 2.15</h3>
+            <p>OpenAI's Agents SDK v0.25.0 (17 Nov) improves checkpointing and recovery after approvals, and drops the beta Runloop sandbox. A v1.0 alpha followed on 20 Nov. Google ADK Python v2.15.0 (19 Nov) adds per-user and per-session sandbox isolation, multi-run evaluation metrics and faster RAG search. CrewAI 1.15.44 adds versioned, shareable artifacts.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>The main frameworks are converging on what production agents need: durable state, human approval, isolation and built-in evals.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://github.com/openai/openai-agents-python/releases/tag/v0.25.0" target="_blank" rel="noopener noreferrer"><span>Agents SDK v0.25.0</span><span class="url">https://github.com/openai/openai-agents-python/releases/tag/v0.25.0</span></a>
+              <a class="link-btn" href="https://github.com/google/adk-python/releases/tag/v2.15.0" target="_blank" rel="noopener noreferrer"><span>ADK v2.15.0</span><span class="url">https://github.com/google/adk-python/releases/tag/v2.15.0</span></a>
+              <a class="link-btn" href="https://github.com/crewAIInc/crewAI/releases/tag/1.15.44" target="_blank" rel="noopener noreferrer"><span>CrewAI 1.15.44</span><span class="url">https://github.com/crewAIInc/crewAI/releases/tag/1.15.44</span></a>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-head" id="industry" data-section>
+          <h2>Industry</h2>
+        </div>
+
+        <section id="anthropic-ipo" class="story" data-section>
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6.5h11a3 3 0 013 3V20H7a3 3 0 01-3-3V6.5z"/><path d="M8 6.5V4h9a3 3 0 013 3v11"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Industry</p>
+            <h3>Anthropic completes the largest IPO in history</h3>
+            <p>It raised $81.3B at $83 a share. The stock opened at $111.50 on Nasdaq, closed day one at $97.17 and ended Friday at $88.91. The founders said they would pace training and deployment based on whether they can keep their systems safe and under human control.</p>
+            <div class="callout">
+              <strong>Why it matters</strong>
+              <p>A key enterprise AI vendor is now publicly listed, which means more disclosure and more pressure on pricing and roadmap. That's useful context for vendor-risk discussions.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://x.com/AnthropicAI/status/2123461658890686863" target="_blank" rel="noopener noreferrer"><span>Post on X</span><span class="url">https://x.com/AnthropicAI/status/2123461658890686863</span></a>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-head" id="webinars" data-section>
+          <h2>Webinars</h2>
+          <p>Upcoming sessions worth your time.</p>
+        </div>
+
+        <section id="webinar-agentic-memory" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Webinars</p>
+              <a class="pillar-tag tone-teal" href="../ai-engineering/context.html">AI Engineering · Context</a>
+            </div>
+            <h3>Build Highly Available Agentic Memory</h3>
+            <p>&ldquo;Build Highly Available Agentic Memory&rdquo; by Mem0 and ScyllaDB, 1 Dec at 6:30 PM IST.</p>
+            <div class="links">
+              <a class="link-btn" href="https://lp.scylladb.com/wbn-emea-available-agentic-memory-register" target="_blank" rel="noopener noreferrer"><span>Registration</span><span class="url">https://lp.scylladb.com/wbn-emea-available-agentic-memory-register</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="webinar-langchain" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Webinars</p>
+            <h3>Agent Runtime 101, Agent Improvement 101 and Agent Governance 101</h3>
+            <p>LangChain's Agent Runtime 101, Agent Improvement 101 and Agent Governance 101 run 8 to 10 Dec.</p>
+            <div class="links">
+              <a class="link-btn" href="https://www.langchain.com/events" target="_blank" rel="noopener noreferrer"><span>LangChain events</span><span class="url">https://www.langchain.com/events</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="webinar-temporal" class="story" data-section>
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+          </div>
+          <div>
+            <p class="kicker">Webinars</p>
+            <h3>Building Durable AI Agents with Pydantic AI and Temporal</h3>
+            <p>The recording of &ldquo;Building Durable AI Agents with Pydantic AI and Temporal&rdquo; is on Temporal's resources page.</p>
+            <div class="links">
+              <a class="link-btn" href="https://temporal.io/resources" target="_blank" rel="noopener noreferrer"><span>Temporal resources</span><span class="url">https://temporal.io/resources</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="deep-read" class="panel deep" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Worth a deep read</h2>
+          <p><a href="https://stripe.dev/blog/stripe-integration-evals-methodology" target="_blank" rel="noopener noreferrer">Stripe's eval methodology</a>. It shows how to build scenario-based, rubric-graded agent evals around your own APIs, and why strict pass rates show the real gap. You could reuse the approach for internal agents at bp.</p>
+          <div class="links">
+            <a class="link-btn" href="https://stripe.dev/blog/stripe-integration-evals-methodology" target="_blank" rel="noopener noreferrer"><span>Stripe blog</span><span class="url">https://stripe.dev/blog/stripe-integration-evals-methodology</span></a>
+          </div>
+        </section>
+
+        <section id="trend-watch" class="panel trend" data-section>
+          <p class="kicker">Highlighted</p>
+          <h2>Trend watch</h2>
+          <p>Cost is now set by dials, not just by which model you pick. Effort levels, cheaper workhorse tiers and small helper models give you a lot of control over price. But strict evals and jailbreak tests show reliability hasn't kept up, so the work now is in measuring and guarding agents, not just in the models.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>
