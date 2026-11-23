@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LangChain updates: 23 Nov 2026 · AI Nowdays</title>
+<meta name="description" content="From LangChain&#x27;s LinkedIn since the 16 November page: the new LangSmith Agent Platform with Tool Gateway and trace controls, LangSmith Signal model usage data, 50M Deep Agents downloads, GTM Agent results and Interrupt NYC sessions.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-11-23-langchain.html">
+<meta property="og:title" content="LangChain updates: 23 Nov 2026">
+<meta property="og:description" content="From LangChain&#x27;s LinkedIn since the 16 November page: the new LangSmith Agent Platform with Tool Gateway and trace controls, LangSmith Signal model usage data, 50M Deep Agents downloads, GTM Agent results and Interrupt NYC sessions.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-11-23-langchain.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LangChain updates: 23 Nov 2026">
+<meta name="twitter:description" content="From LangChain&#x27;s LinkedIn since the 16 November page: the new LangSmith Agent Platform with Tool Gateway and trace controls, LangSmith Signal model usage data, 50M Deep Agents downloads, GTM Agent results and Interrupt NYC sessions.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../visuals.css">
+<script src="../visuals.js" defer></script>
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a class="active" href="../">Digests</a>
+      <a href="../ai-engineering/">AI Engineering</a>
+      <a href="../computer-vision.html">Computer Vision</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#langchain">← All LangChain updates</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+<p class="kicker">On this page</p><a href="#overview">Overview</a><a href="#platform">Product · LangSmith</a><a href="#signal">Data · LangSmith Signal</a><a href="#deepagents">Open source · Deep Agents</a><a href="#gtm">Case study · GTM agent</a><a href="#community">Community · Talks and survey</a><a href="#trend-watch">Trend watch</a>
+</nav>
+<article class="digest-main">
+<div class="meta-row"><span class="chip chip-langchain">LangChain</span><time datetime="2026-11-23">23 Nov 2026</time><span>3 min read</span></div>
+<h1>LangChain updates: 23 Nov 2026</h1>
+<div class="tag-row"><span class="tag">LangChain</span><span class="tag">LangSmith</span><span class="tag">Deep Agents</span><span class="tag">Observability</span><span class="tag">Governance</span></div>
+<section id="overview" class="lede-card" data-section>
+<p>From LangChain&#x27;s LinkedIn since the 16 November page: the new LangSmith Agent Platform with Tool Gateway and trace controls, LangSmith Signal model usage data, 50M Deep Agents downloads, GTM Agent results and Interrupt NYC sessions. Pure event and booth promos (parties, re:Invent meetups) and items already on the 16 November page are skipped.</p>
+<div class="links"><a class="link-btn" href="https://www.linkedin.com/company/langchain/posts/?feedView=all"><span>LangChain on LinkedIn</span><span class="url">https://www.linkedin.com/company/langchain/posts/?feedView=all</span></a></div>
+</section>
+<section id="platform" class="story" data-section>
+<div class="story-icon " aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M8 21l2-4M16 21l-2-4"/></svg></div>
+<div>
+<p class="kicker">Product · LangSmith</p>
+<h3>LangSmith Agent Platform, Tool Gateway, trace controls and AI Search</h3>
+<p>LangChain introduced the new LangSmith Agent Platform, described in &quot;Why we rebuilt LangSmith around the agent&quot;. Jess Weng recapped the week: the platform, new trace controls for sensitive data, LangSmith for Coding Agents (which ties agent spend to pull requests) and the LangSmith Tool Gateway.</p><p>LangSmith Tool Gateway is a managed tool layer for credentials, identity and access on every agent tool call, in Public Beta. Trace controls in LangSmith Enterprise let teams restrict trace inputs and outputs, manage access by team groups and set ABAC policies from metadata. LangSmith AI Search can now parse plain-language queries into structured filters and asks follow-up questions when a query is vague. A new coding-agent dashboard shows cost by model, GitHub user and PR status, plus the 20 most expensive PRs.</p>
+<div class="callout"><strong>Why it matters</strong><p>Governance of tool access, trace data and agent spend is moving into the observability platform itself, which is what enterprise rollouts ask for.</p></div>
+<div class="links">
+<a class="link-btn" href="https://www.linkedin.com/company/langchain/posts/?feedView=all"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/company/langchain/posts/?feedView=all</span></a><a class="link-btn" href="https://lnkd.in/gfaENcGc"><span>Read: new LangSmith Agent Platform</span><span class="url">https://lnkd.in/gfaENcGc</span></a><a class="link-btn" href="https://lnkd.in/g9qdcpKU"><span>Read: Tool Gateway (Public Beta)</span><span class="url">https://lnkd.in/g9qdcpKU</span></a><a class="link-btn" href="https://lnkd.in/gHRqgCgV"><span>Read: trace controls</span><span class="url">https://lnkd.in/gHRqgCgV</span></a><a class="link-btn" href="https://lnkd.in/gCyhss3D"><span>Read: AI Search</span><span class="url">https://lnkd.in/gCyhss3D</span></a><a class="link-btn" href="https://lnkd.in/gCzuxRRK"><span>Read: coding agent ROI dashboard</span><span class="url">https://lnkd.in/gCzuxRRK</span></a>
+</div></div></section>
+<section id="signal" class="story" data-section>
+<div class="story-icon copper" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M8 21l2-4M16 21l-2-4"/></svg></div>
+<div>
+<p class="kicker">Data · LangSmith Signal</p>
+<h3>LangSmith Signal: which models production agent teams use</h3>
+<p>LangChain published LangSmith Signal, a data post built from billions of agent runs. It reports gpt-6-luna (launched 22 Sept) now at #1, used by 27% of production teams; claude-sonnet-5-5 and gpt-6.1-sol entering at #5 and #6, each used by 22% of teams; and gpt-5.6-luna still handling the most LLM calls, at 13%.</p>
+<div class="callout"><strong>Why it matters</strong><p>Real usage data across production agents is a more grounded signal for model choice than benchmark leaderboards.</p></div>
+<div class="links">
+<a class="link-btn" href="https://www.linkedin.com/company/langchain/posts/?feedView=all"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/company/langchain/posts/?feedView=all</span></a>
+</div></div></section>
+<section id="deepagents" class="story" data-section>
+<div class="story-icon iris" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M8 21l2-4M16 21l-2-4"/></svg></div>
+<div>
+<p class="kicker">Open source · Deep Agents</p>
+<h3>Deep Agents pass 50M downloads, plus proactive agents and goal engineering</h3>
+<p>LangChain marked 50 million Deep Agents downloads. Sydney Runkle also published &quot;What We Have Learned Building Proactive Agents&quot;, covering memory and UX, and reposted a goal engineering writeup by Harrison Chase, Mihir Garimella and Anshul Gupta that uses Actively as the example.</p><p>In videos, Ishaan Lal of LangChain Academy covered &quot;Agent vs Deep Agent vs Managed Deep Agent&quot; and &quot;Can a Better Model Fix a Broken Agent?&quot; (no links in the posts).</p>
+<div class="callout"><strong>Why it matters</strong><p>Adoption of the Deep Agents harness is growing, and the guidance is shifting from prompts to memory, UX and clearly specified goals.</p></div>
+<div class="links">
+<a class="link-btn" href="https://www.linkedin.com/company/langchain/posts/?feedView=all"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/company/langchain/posts/?feedView=all</span></a><a class="link-btn" href="https://lnkd.in/gQ3UnqUy"><span>Read: 50M downloads</span><span class="url">https://lnkd.in/gQ3UnqUy</span></a><a class="link-btn" href="https://lnkd.in/grMd2H8R"><span>Read: proactive agents blog</span><span class="url">https://lnkd.in/grMd2H8R</span></a><a class="link-btn" href="https://lnkd.in/gGiGXute"><span>Read: goal engineering</span><span class="url">https://lnkd.in/gGiGXute</span></a>
+</div></div></section>
+<section id="gtm" class="story" data-section>
+<div class="story-icon " aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M8 21l2-4M16 21l-2-4"/></svg></div>
+<div>
+<p class="kicker">Case study · GTM agent</p>
+<h3>GTM Agent results and the Clay rebuild on the Max Agency podcast</h3>
+<p>LangChain shared results from its own GTM Agent: deals with a GTM Agent artifact moved to a later stage 47% of the time, against 16% without one, across 1,540 artifacts in 12 weeks and 337 rep-hours saved.</p><p>Season 2 of the Max Agency podcast is back, with Harrison Chase talking to Clay Head of AI Jeff Barg about rebuilding their GTM agent.</p>
+<div class="callout"><strong>Why it matters</strong><p>Rare quantified outcomes for a sales agent, useful as a template for how to measure agent impact.</p></div>
+<div class="links">
+<a class="link-btn" href="https://www.linkedin.com/company/langchain/posts/?feedView=all"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/company/langchain/posts/?feedView=all</span></a><a class="link-btn" href="https://lnkd.in/g97Vu5bE"><span>Read: GTM Agent results</span><span class="url">https://lnkd.in/g97Vu5bE</span></a><a class="link-btn" href="https://lnkd.in/gJ_92_2s"><span>Podcast on YouTube</span><span class="url">https://lnkd.in/gJ_92_2s</span></a><a class="link-btn" href="https://lnkd.in/g4fyBiwD"><span>Podcast on Spotify</span><span class="url">https://lnkd.in/g4fyBiwD</span></a><a class="link-btn" href="https://lnkd.in/gdmqeuqQ"><span>Podcast on Apple Podcasts</span><span class="url">https://lnkd.in/gdmqeuqQ</span></a>
+</div></div></section>
+<section id="community" class="story" data-section>
+<div class="story-icon copper" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M8 21l2-4M16 21l-2-4"/></svg></div>
+<div>
+<p class="kicker">Community · Talks and survey</p>
+<h3>Interrupt sessions, the AI 100 ranking, a claims-agent webinar and the survey</h3>
+<p>From Interrupt NYC, LangChain shared the JPMorganChase team on Jarvis, their agent assembly line, and a fireside chat with Harrison Chase and OpenRouter CEO Alex Atallah. LangChain ranked #79 on the Bessemer/Newcomer AI 100 list.</p><p>A webinar on 3 Dec with Eugene Liu covers an insurance-claims agent connected to a knowledge layer. The State of Agent Engineering survey is still open and asks whether your team would notice if an agent got worse in production tomorrow.</p>
+<div class="callout"><strong>Why it matters</strong><p>Enterprise agent patterns (assembly lines, claims workflows) and the survey benchmark are good material for consulting conversations.</p></div>
+<div class="links">
+<a class="link-btn" href="https://www.linkedin.com/company/langchain/posts/?feedView=all"><span>View LinkedIn post</span><span class="url">https://www.linkedin.com/company/langchain/posts/?feedView=all</span></a><a class="link-btn" href="https://lnkd.in/g_eiQjdU"><span>JPMorganChase Jarvis session</span><span class="url">https://lnkd.in/g_eiQjdU</span></a><a class="link-btn" href="https://lnkd.in/g3ee6srp"><span>OpenRouter fireside chat</span><span class="url">https://lnkd.in/g3ee6srp</span></a><a class="link-btn" href="https://lnkd.in/gwBnyuEK"><span>Interrupt on-demand</span><span class="url">https://lnkd.in/gwBnyuEK</span></a><a class="link-btn" href="https://ai100.newcomer.co/"><span>AI 100 list</span><span class="url">https://ai100.newcomer.co/</span></a><a class="link-btn" href="https://lnkd.in/gDvXuWfG"><span>Insurance claims webinar, 3 Dec</span><span class="url">https://lnkd.in/gDvXuWfG</span></a><a class="link-btn" href="https://lnkd.in/gunchtrY"><span>Take the survey</span><span class="url">https://lnkd.in/gunchtrY</span></a>
+</div></div></section>
+<section id="trend-watch" class="panel trend" data-section>
+<p class="kicker">Highlighted</p>
+<h2>Trend watch</h2>
+<p>This week LangChain pushed governance into the platform: managed tool access, trace-level access policies and spend-per-PR tracking sit alongside real usage data on which models production teams run. Deep Agents adoption and proactive-agent guidance point the same way, towards operated agents with memory and clear goals, while the GTM Agent numbers show teams starting to publish measured outcomes.</p>
+</section>
+</article>
+</div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>

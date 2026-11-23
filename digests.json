@@ -1,5 +1,20 @@
 [
   {
+    "date": "2026-11-23",
+    "type": "langchain",
+    "title": "LangChain updates, 23 Nov 2026",
+    "summary": "From LangChain's LinkedIn since the 16 November page: the new LangSmith Agent Platform with Tool Gateway and trace controls, LangSmith Signal model usage data, 50M Deep Agents downloads, GTM Agent results and Interrupt NYC sessions.",
+    "url": "digests/2026-11-23-langchain.html",
+    "readingTime": "3 min read",
+    "tags": [
+      "LangChain",
+      "LangSmith",
+      "Deep Agents",
+      "Observability",
+      "Governance"
+    ]
+  },
+  {
     "date": "2026-11-21",
     "type": "frameworks",
     "title": "Agent frameworks roundup — 21 Nov 2026",
