@@ -1,5 +1,59 @@
 [
   {
+    "date": "2026-11-27",
+    "type": "weekly",
+    "title": "Weekly Deep-Dive: Agents that run operations — Skills, MCP, specs and tracing",
+    "summary": "The production agents this week had a few things in common. Expert knowledge was written down as Skills or specs, systems were wired in through MCP, a person approved anything high-impact, and every step was traced. The big refinery result also came from operators trusting the tool, not from a bigger model.",
+    "url": "digests/2026-11-27-weekly.html",
+    "readingTime": "8 min read",
+    "tags": [
+      "Agentic Ops",
+      "MCP",
+      "Skills",
+      "Refinery",
+      "Knowledge-Graph RAG",
+      "Observability",
+      "Governance"
+    ],
+    "items": [
+      {
+        "title": "Banco BMG: an always-on DevOps agent resolves 62% of incidents with no human",
+        "summary": "AWS DevOps Agent, connected to Dynatrace, Elasticsearch, Freshservice and Kubernetes audit logs, investigates 350+ events a day and analyses more than 1 TB of logs a day. MTTR fell 85%, from about 2 h to 18 min, and in a sample of 300+ investigations it resolved 62% with no human.",
+        "url": "digests/2026-11-27-weekly.html#banco-bmg",
+        "pillar": "tools-agents",
+        "tags": ["Agentic Ops", "Skills", "MCP", "Observability"]
+      },
+      {
+        "title": "U Mobile AiDaH: an agentic helpdesk on Bedrock AgentCore cuts tickets by up to 84.5%",
+        "summary": "A spec-first six-layer agent on Amazon Bedrock AgentCore grew from a 2-use-case PoC to 150+ documented scenarios across six divisions within a year. From January to September 2026, provisioning and network tickets fell 84.5%, general inquiries 81.6% and billing tickets 48.7% (internal measurement).",
+        "url": "digests/2026-11-27-weekly.html#u-mobile",
+        "pillar": "tools-agents",
+        "tags": ["Agentic Ops", "MCP", "Skills", "Observability"]
+      },
+      {
+        "title": "TotalEnergies Port Arthur: AI operations assistant on a delayed coker unit",
+        "summary": "Honeywell Experion Operations Assistant predicts steam pressure dips 10 to 18 minutes earlier, about 18 minutes on average, and TotalEnergies reports that accuracy rose by 85%. Drum-cycle prediction reached 75% but was dropped because drum switching depends on factors outside the model.",
+        "url": "digests/2026-11-27-weekly.html#port-arthur",
+        "pillar": "tools-agents",
+        "tags": ["Refinery", "Delayed coker", "Operations assistant"]
+      },
+      {
+        "title": "Mitsubishi Heavy Industries: hybrid knowledge-graph RAG for industrial documents",
+        "summary": "Hybrid retrieval plus a knowledge graph of structural and conceptual links improved retrieval and answer accuracy on internal test sets. The report's PDF lists retrieval rising from about 59% to 89% on the high-pressure-gas rules and from about 28% to 69% on the export-control rules.",
+        "url": "digests/2026-11-27-weekly.html#mhi-kg-rag",
+        "pillar": "context",
+        "tags": ["Knowledge-Graph RAG", "Industrial documents", "Retrieval"]
+      },
+      {
+        "title": "Analyst and research view: architecture is the bottleneck, and agents are software to engineer",
+        "summary": "Gartner's public abstract says enterprise agentic AI is held back by architecture, not agent intelligence, and recommends four steps from portfolio readiness to human oversight. A lifecycle survey of 355 papers argues agents need regression testing, because prompt, model or interface changes can break behaviour that was already accepted.",
+        "url": "digests/2026-11-27-weekly.html#architecture",
+        "pillar": "tools-agents",
+        "tags": ["Governance", "Architecture", "Software engineering"]
+      }
+    ]
+  },
+  {
     "date": "2026-11-23",
     "type": "daily",
     "title": "Weekly AI digest: week ending 23 Nov 2026",

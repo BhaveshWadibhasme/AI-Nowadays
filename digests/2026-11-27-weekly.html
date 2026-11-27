@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weekly Deep-Dive: Agents that run operations — Skills, MCP, specs and tracing · AI Nowdays</title>
+<meta name="description" content="The production agents this week had a few things in common. Expert knowledge was written down as Skills or specs, systems were wired in through MCP, a person approved anything high-impact, and every step was traced. The big refinery result also came from operators trusting the tool, not from a bigger model.">
+<link rel="canonical" href="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-11-27-weekly.html">
+<meta property="og:title" content="Weekly Deep-Dive: Agents that run operations — Skills, MCP, specs and tracing">
+<meta property="og:description" content="The production agents this week had a few things in common. Expert knowledge was written down as Skills or specs, systems were wired in through MCP, a person approved anything high-impact, and every step was traced. The big refinery result also came from operators trusting the tool, not from a bigger model.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bhaveshwadibhasme.github.io/AI-Nowadays/digests/2026-11-27-weekly.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Weekly Deep-Dive: Agents that run operations — Skills, MCP, specs and tracing">
+<meta name="twitter:description" content="The production agents this week had a few things in common. Expert knowledge was written down as Skills or specs, systems were wired in through MCP, a person approved anything high-impact, and every step was traced. The big refinery result also came from operators trusting the tool, not from a bigger model.">
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../visuals.css">
+<script src="../visuals.js" defer></script>
+<style>
+.lede-card p.kicker,
+.facet p.kicker { color: var(--teal); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.lede-card .deck { margin-top: 10px; color: var(--muted); font-size: 1rem; }
+.thin-note { margin: 0 0 18px; }
+.thin-note p { margin: 0; }
+.thin-note a { color: inherit; }
+.stat-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 2px; }
+.stat {
+  flex: 1 1 108px;
+  min-width: 108px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--card-solid);
+}
+.stat b {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.28rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+.stat span { display: block; margin-top: 3px; color: var(--muted); font-size: 0.75rem; line-height: 1.3; }
+.facets { display: grid; gap: 10px; margin-top: 14px; }
+.facet {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--card-solid) 88%, transparent);
+}
+.facet .kicker { margin: 0 0 6px; }
+.facet p { margin: 0; color: var(--ink); }
+.aside-note { margin: 12px 0 0; color: var(--muted); font-size: 0.95rem; }
+.panel ol { margin: 12px 0 0; padding-left: 1.2rem; }
+.panel ol li { margin: 0 0 8px; }
+.panel ol li:last-child { margin-bottom: 0; }
+.story .tag-row { margin: 0 0 12px; }
+@media (min-width: 720px) {
+  .facets.pair { grid-template-columns: 1fr 1fr; }
+}
+</style>
+<script src="../theme.js"></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true">An</span>
+      <span>
+        <span class="brand-name">AI Nowdays</span>
+        <span class="brand-sub">Bhavesh's briefing</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a class="active" href="../">Digests</a>
+      <a href="../ai-engineering/">AI Engineering</a>
+      <a href="../computer-vision.html">Computer Vision</a>
+    </nav>
+    <button type="button" class="theme-btn" data-theme-toggle onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
+</header>
+<main class="page">
+  <div class="shell">
+    <p class="back"><a href="../#weekly">← All weekly deep-dives</a></p>
+    <div class="digest-layout">
+      <nav class="toc" aria-label="On this page">
+        <p class="kicker">On this page</p>
+        <a href="#theme">Theme</a>
+        <a href="#banco-bmg">Banco BMG</a>
+        <a href="#u-mobile">U Mobile</a>
+        <a href="#port-arthur">Port Arthur</a>
+        <a href="#mhi-kg-rag">MHI graph RAG</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#playbook">Playbook</a>
+        <a href="#framework-trend">Framework trend</a>
+      </nav>
+      <article class="digest-main">
+        <div class="meta-row">
+          <span class="chip chip-weekly">Weekly deep-dive</span>
+          <time datetime="2026-11-27">27 Nov 2026</time>
+          <span>8 min read</span>
+        </div>
+        <h1>Weekly Deep-Dive: Agents that run operations — Skills, MCP, specs and tracing</h1>
+        <div class="tag-row">
+          <span class="tag">Agentic Ops</span>
+          <span class="tag">MCP</span>
+          <span class="tag">Skills</span>
+          <span class="tag">Refinery</span>
+          <span class="tag">Knowledge-Graph RAG</span>
+          <span class="tag">Observability</span>
+          <span class="tag">Governance</span>
+        </div>
+
+        <div class="callout limit thin-note">
+          <strong>Thin week</strong>
+          <p>This was a thin week for new energy case studies. bp Genie, PETRONAS PetroVisor, TGS Scout and UptimeAI were already covered in the <a href="2026-11-13-weekly.html">13 Nov</a> and <a href="2026-11-20-weekly.html">20 Nov</a> issues. So this issue covers the strongest new production agent stories (13 Nov to 26 Nov) plus one refinery story from June 2026 that maps directly onto delayed-coker work.</p>
+        </div>
+
+        <section id="theme" class="lede-card" data-section>
+          <p class="kicker">This week</p>
+          <p>The production agents this week had a few things in common. Expert knowledge was written down as Skills or specs, systems were wired in through MCP, a person approved anything high-impact, and every step was traced. The big refinery result also came from operators trusting the tool, not from a bigger model.</p>
+          <p class="deck">Five pieces: Banco BMG&rsquo;s always-on DevOps agent resolves 62% of incidents with no human; U Mobile AiDaH, an agentic helpdesk on Bedrock AgentCore, cuts tickets by up to 84.5%; TotalEnergies Port Arthur&rsquo;s AI operations assistant on a delayed coker; Mitsubishi Heavy Industries&rsquo; hybrid knowledge-graph RAG for industrial documents; and an analyst view that architecture is the bottleneck, and agents are software to engineer.</p>
+        </section>
+
+        <section id="banco-bmg" class="story" data-section data-tone="copper">
+          <div class="story-icon copper" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 15.5V8.2l8-4.2 8 4.2v7.3"/><path d="M4 15.5l8 4.3 8-4.3"/><path d="M12 11.2V19.8"/><circle cx="12" cy="8.6" r="1.2" fill="currentColor" stroke="none"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 01 · AWS, 16 Nov 2026</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>Banco BMG: an always-on DevOps agent resolves 62% of incidents with no human</h3>
+            <div class="tag-row">
+              <span class="tag">Agentic Ops</span>
+              <span class="tag">Skills</span>
+              <span class="tag">MCP</span>
+              <span class="tag">Observability</span>
+            </div>
+            <div class="stat-row">
+              <div class="stat"><b>62%</b><span>resolved with no human, 300+ sample</span></div>
+              <div class="stat"><b>85%</b><span>MTTR fall, about 2 h to 18 min</span></div>
+              <div class="stat"><b>350+</b><span>events investigated a day</span></div>
+              <div class="stat"><b>&gt;1 TB</b><span>of logs analysed a day</span></div>
+              <div class="stat"><b>6 h</b><span>earlier detection, up to</span></div>
+              <div class="stat"><b>1,150+</b><span>services on the platform</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>The bank runs a hybrid, multicloud platform with 1,150+ services, 9.1M+ customers and 2B+ requests a month. A symptom would show up in one service while the root cause sat several hops away, so threshold alerts fired only after customers were already hit. The worst case was the payroll-loan product, which brings in the most revenue.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>AWS DevOps Agent was connected to the existing observability stack (Dynatrace, Elasticsearch, Freshservice, Kubernetes audit logs). Engineers&rsquo; tribal knowledge (architecture, dependencies, change-impact patterns) was written into custom Skills, starting with the product that had the scarcest knowledge. Custom MCP servers reached systems with no ready-made integration. It was rolled out in phases.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>It has run in production for months. It investigates 350+ events a day and analyses more than 1 TB of logs a day. MTTR fell 85%, from about 2 h to 18 min. In a sample of 300+ investigations it resolved 62% with no human. It detects issues up to 6 h earlier.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>(1) Encode the scarcest, highest-impact knowledge first. (2) The agent is only as good as the signals it can see, so treat custom MCP servers as first-class. (3) Autonomy changes the operating model: engineers move to building Skills and resilience. If you plan for it as a drop-in runbook replacement, you lose the value. Automatic fixing comes next, with a person kept in charge.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch</strong>
+              <p>Propose a &ldquo;Root-Cause Skill&rdquo; pilot for one critical unit&rsquo;s alarms or maintenance work orders. Encode the senior engineer&rsquo;s diagnostic playbook as a Skill, connect PI, SAP PM/Maximo and SharePoint through MCP, and measure time-to-diagnosis and the share of cases resolved without escalation.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://aws.amazon.com/blogs/mt/how-banco-bmg-moved-from-reactive-to-autonomous-operations-with-aws-devops-agent/" target="_blank" rel="noopener noreferrer"><span>AWS blog</span><span class="url">https://aws.amazon.com/blogs/mt/how-banco-bmg-moved-from-reactive-to-autonomous-operations-with-aws-devops-agent/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="u-mobile" class="story" data-section data-tone="iris">
+          <div class="story-icon iris" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="7" height="7" rx="1.5"/><rect x="14" y="4" width="7" height="7" rx="1.5"/><rect x="8.5" y="13" width="7" height="7" rx="1.5"/><path d="M6.5 11v2.5h11V11"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 02 · AWS, 4 Nov 2026</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>U Mobile AiDaH: an agentic helpdesk on Bedrock AgentCore cuts tickets by up to 84.5%</h3>
+            <div class="tag-row">
+              <span class="tag">Agentic Ops</span>
+              <span class="tag">MCP</span>
+              <span class="tag">Skills</span>
+              <span class="tag">Observability</span>
+            </div>
+            <div class="stat-row">
+              <div class="stat"><b>84.5%</b><span>fewer provisioning and network tickets</span></div>
+              <div class="stat"><b>81.6%</b><span>fewer general inquiries</span></div>
+              <div class="stat"><b>48.7%</b><span>fewer billing tickets</span></div>
+              <div class="stat"><b>150+</b><span>documented scenarios</span></div>
+              <div class="stat"><b>6</b><span>divisions within a year</span></div>
+              <div class="stat"><b>12 wk</b><span>sprint length</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>Every routine diagnosis needed someone to pull interface logs, query billing-system eligibility APIs and check policy knowledge bases across separate portals. Tickets then escalated to back-end IT.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>A six-layer architecture on Amazon Bedrock AgentCore, with a managed agent runtime, built-in memory, gateways that expose MCP tool definitions per domain, and role-based access control. It was built spec-first with Kiro: requirements, design and tasks were written and reviewed before any code was generated. That made each new domain a repeatable unit of work (new gateway, MCP tools, RBAC entries). The team shipped on 12-week sprints.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>It grew from a 2-use-case PoC to 150+ documented scenarios across six divisions within a year. From January to September 2026, provisioning and network tickets fell 84.5%, general inquiries 81.6% and billing tickets 48.7% (internal measurement).</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>The agent-to-tool boundary is where designs fail. Write that contract and its permissions down before generating code. A managed runtime and memory remove infrastructure you would otherwise have to run.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch</strong>
+              <p>Present &ldquo;one domain = gateway + MCP tools + RBAC + spec&rdquo; as the repeatable template for scaling from one maintenance assistant to many (reliability, turnaround planning, HSE lookups) without redesigning each time.</p>
+            </div>
+            <div class="aside-note">Related: NTT DATA used Datadog Agent Observability on AgentCore to trace prompts, reasoning, tool calls and agent handoffs. It cut inference cost by 50% through evaluation-driven model choice and MTTR by 70%, and stood up its evaluation framework in under a week.</div>
+            <div class="links">
+              <a class="link-btn" href="https://aws.amazon.com/blogs/machine-learning/how-u-mobile-built-agentic-telco-operations-with-amazon-bedrock-agentcore/" target="_blank" rel="noopener noreferrer"><span>AWS blog</span><span class="url">https://aws.amazon.com/blogs/machine-learning/how-u-mobile-built-agentic-telco-operations-with-amazon-bedrock-agentcore/</span></a>
+              <a class="link-btn" href="https://www.datadoghq.com/case-studies/ntt-data/" target="_blank" rel="noopener noreferrer"><span>NTT DATA on Datadog</span><span class="url">https://www.datadoghq.com/case-studies/ntt-data/</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="port-arthur" class="story" data-section data-tone="teal">
+          <div class="story-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20h16"/><path d="M6 20V10h4v10"/><path d="M14 20V6h4v14"/><path d="M8 10V7M16 6V3"/><path d="M7 4.5c.6.8 1.4.8 2 0M15 2.2c.6.7 1.4.7 2 0"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 03 · Honeywell UGM, Control Global, 11 Jun 2026</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>TotalEnergies Port Arthur: AI operations assistant on a delayed coker unit</h3>
+            <div class="tag-row">
+              <span class="tag">Refinery</span>
+              <span class="tag">Delayed coker</span>
+              <span class="tag">Operations assistant</span>
+            </div>
+            <div class="aside-note">Older than this week. It is included because it is the closest public match to delayed-coker and coke-prediction work.</div>
+            <div class="stat-row">
+              <div class="stat"><b>238k</b><span>bpd refinery</span></div>
+              <div class="stat"><b>10–18 min</b><span>earlier steam-dip prediction</span></div>
+              <div class="stat"><b>~18 min</b><span>average lead time</span></div>
+              <div class="stat"><b>+85%</b><span>accuracy, TotalEnergies reports</span></div>
+              <div class="stat"><b>~75%</b><span>heater spalling accuracy</span></div>
+              <div class="stat"><b>75%</b><span>drum-cycle accuracy, then dropped</span></div>
+              <div class="stat"><b>300+</b><span>coker tags in EADS</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>On the DCU console at a 238k bpd refinery, steam disturbances cause pressure dips, compressor trips and flaring. Operators had little time to decide which non-critical equipment to shed steam from. High alarm volumes overwhelmed less experienced operators.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>Honeywell Experion Operations Assistant, using its Experion Python Module, integrated with the HALO Lookahead Runway. The four use cases were steam-disturbance prediction, drum-cycling prediction, heater-spalling prediction and Enhanced Alarm Decision Support (EADS). EADS uses historical alarms, past responses and P&amp;IDs, and SMEs validated its guidance. The pilot started in October 2024.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>Steam pressure dips are now predicted 10 to 18 minutes earlier, about 18 minutes on average, after feature engineering on volatility, rate, threshold distance and acceleration. TotalEnergies reports that accuracy rose by 85%. Operators have acted on at least two AI alerts. Heater spalling prediction reached about 75% accuracy, updated every 2 h over a 28 to 30 day cycle. Drum-cycle prediction reached 75%, but it was dropped because drum switching depends on factors outside the model. EADS covers 300+ coker tags and is in extended evaluation.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>Feature engineering, not model choice, moved lead time. Drop a use case when it can&rsquo;t drive the decision, even if its accuracy is good. &ldquo;Not plug-and-play, needs support.&rdquo; Involve operators from day one.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch</strong>
+              <p>This is a public benchmark for coke-prediction work. Position your coke model as one predictive use case inside a console &ldquo;operations assistant&rdquo; with alarm decision support grounded in P&amp;IDs and past events. Borrow the go/no-go discipline: keep a use case only if operators act on it.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.controlglobal.com/show-coverage/honeywell-users-group/article/55383668/honeywell-ai-pilot-aids-coker-unit-operations-at-totalenergies-refinery" target="_blank" rel="noopener noreferrer"><span>Control Global</span><span class="url">https://www.controlglobal.com/show-coverage/honeywell-users-group/article/55383668/honeywell-ai-pilot-aids-coker-unit-operations-at-totalenergies-refinery</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="mhi-kg-rag" class="story" data-section data-tone="research">
+          <div class="story-icon research" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="7" r="2.2"/><circle cx="17.5" cy="6.5" r="2.2"/><circle cx="12" cy="17.5" r="2.2"/><path d="M8 8.2l2.6 7M15.6 8.2l-2.2 7M8.2 7h7"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 04 · MHI Technical Review Vol. 63 No. 3, 2026</p>
+              <a class="pillar-tag tone-teal" href="../ai-engineering/context.html">AI Engineering · Context</a>
+            </div>
+            <h3>Mitsubishi Heavy Industries: hybrid knowledge-graph RAG for industrial documents</h3>
+            <div class="tag-row">
+              <span class="tag">Knowledge-Graph RAG</span>
+              <span class="tag">Industrial documents</span>
+              <span class="tag">Retrieval</span>
+            </div>
+            <div class="stat-row">
+              <div class="stat"><b>~59% → 89%</b><span>retrieval, high-pressure-gas rules</span></div>
+              <div class="stat"><b>~28% → 69%</b><span>retrieval, export-control rules</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>Regulations, standards, design specs and manufacturing instructions cross-reference each other through hierarchy, citations and defined terms. Plain chunk-based RAG misses the supporting evidence.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>Start with hybrid retrieval (multilingual vector search plus BM25, fused with RRF, then reranked). Then expand the candidates through a knowledge graph with structural links (hierarchy, citations, references) and conceptual links (terms, synonyms, related concepts). LLMs propose node and relationship types, and people review the ontology.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>Retrieval of relevant documents and answer accuracy both improved on internal test sets: high-pressure-gas laws, foreign-exchange and foreign-trade (export-control) laws, and the EU AI Act. The report&rsquo;s PDF lists retrieval rising from about 59% to 89% on the high-pressure-gas rules and from about 28% to 69% on the export-control rules.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>Many failures in industrial RAG are really about following references, not about embeddings. Use the LLM to bootstrap the ontology, then keep a person reviewing it.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch</strong>
+              <p>Use it for engineering standards, Management of Change (MOC) and HSE procedure lookups that cite other documents. Run a small A/B test of a graph-expansion layer on top of your existing retrieval, on a gold set of 50 to 100 real engineer questions.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.mhi.com/technology/review/abstract-63-3-120" target="_blank" rel="noopener noreferrer"><span>MHI Technical Review</span><span class="url">https://www.mhi.com/technology/review/abstract-63-3-120</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="architecture" class="story" data-section data-tone="chain">
+          <div class="story-icon chain" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <div>
+            <div class="kicker-row">
+              <p class="kicker">Case study 05 · Gartner, 20 Nov 2026 · arXiv 2611.23260</p>
+              <a class="pillar-tag tone-ink" href="../ai-engineering/tools-agents.html">AI Engineering · Tools + agents</a>
+            </div>
+            <h3>Analyst and research view: architecture is the bottleneck, and agents are software to engineer</h3>
+            <div class="tag-row">
+              <span class="tag">Governance</span>
+              <span class="tag">Architecture</span>
+              <span class="tag">Software engineering</span>
+            </div>
+            <div class="stat-row">
+              <div class="stat"><b>4</b><span>steps in the Gartner abstract</span></div>
+              <div class="stat"><b>355</b><span>papers in the lifecycle survey</span></div>
+            </div>
+            <div class="facets pair">
+              <div class="facet">
+                <p class="kicker">Problem</p>
+                <p>Gartner&rsquo;s public abstract of &ldquo;Scale Agentic AI With Agent-Native Architecture&rdquo; (20 Nov 2026) says enterprise agentic AI is held back by architecture, not agent intelligence. The lifecycle survey&rsquo;s point is that prompt, model or interface changes can break behaviour that was already accepted.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Approach</p>
+                <p>Gartner recommends four steps: assess the readiness of the application portfolio, put dynamic domains first, deploy a reference architecture, and engineer agent operability with human oversight. arXiv 2611.23260, &ldquo;Software Engineering for LLM-Based Agents: A Lifecycle-Oriented Survey&rdquo; (Nanjing University, NTU, Tsinghua, PKU), reviews 355 papers across requirements, architecture and design, implementation and integration, testing and assurance, and maintenance and evolution.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Results</p>
+                <p>The survey&rsquo;s finding is that agents need regression testing like any other software, because prompt, model or interface changes can break behaviour that was already accepted.</p>
+              </div>
+              <div class="facet">
+                <p class="kicker">Lessons</p>
+                <p>Architecture is the bottleneck. Treat agents as software to engineer, and retest when the prompt, the model or the interface changes.</p>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>Pitch</strong>
+              <p>Use these two to frame a department &ldquo;agent readiness&rdquo; review. Score target systems on API/MCP exposure, data semantics and permission models before choosing use cases. Then set up regression evaluations for every prompt or model change.</p>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="https://www.gartner.com/en/documents/8657597" target="_blank" rel="noopener noreferrer"><span>Gartner</span><span class="url">https://www.gartner.com/en/documents/8657597</span></a>
+              <a class="link-btn" href="https://arxiv.org/abs/2611.23260" target="_blank" rel="noopener noreferrer"><span>arXiv</span><span class="url">https://arxiv.org/abs/2611.23260</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="playbook" class="panel deep" data-section>
+          <p class="kicker">For the week</p>
+          <h2>Consulting playbook</h2>
+          <ol>
+            <li>Encode first, automate second: turn your scarcest expert&rsquo;s diagnostic playbook into a Skill or spec before you build an agent (BMG, U Mobile).</li>
+            <li>Make &ldquo;one domain = tools + permissions + spec&rdquo; the unit you scale.</li>
+            <li>Gate high-impact actions behind a person, and trace everything (prompt, tool call, cost) from day one (NTT DATA).</li>
+            <li>Keep a use case only if operators act on it. Accuracy alone is not the bar (TotalEnergies&rsquo; drum-cycle model was dropped at 75%).</li>
+            <li>Fix retrieval structure before swapping models (MHI&rsquo;s graph expansion).</li>
+          </ol>
+        </section>
+
+        <section id="framework-trend" class="panel trend" data-section>
+          <p class="kicker">Hands-on</p>
+          <h2>Framework trend</h2>
+          <p><strong>Agent Skills plus MCP servers.</strong> Banco BMG and U Mobile both scaled by packaging know-how as Skills and connecting systems through custom MCP servers. Hands-on: build a small MCP server over a CSV or SQLite of historian-style tags and work orders, write a &ldquo;root-cause&rdquo; Skill (SKILL.md plus scripts) that uses it, and add OpenTelemetry tracing (for example LangSmith or Langfuse) so every tool call and its cost is visible.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <strong>AI Nowdays</strong>
+      <p>Daily AI intelligence for consultants &amp; FDEs.</p>
+    </div>
+    <p>Curated AI agent news · Bhavesh Wadibhasme</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+  sections.forEach(function (section) { obs.observe(section); });
+})();
+</script>
+</body>
+</html>
