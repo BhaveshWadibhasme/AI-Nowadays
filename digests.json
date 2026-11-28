@@ -1,5 +1,25 @@
 [
   {
+    "date": "2026-11-28",
+    "type": "frameworks",
+    "title": "Agent frameworks roundup — week to 28 Nov 2026",
+    "summary": "A patch-heavy week with a few real upgrade gotchas, mostly around sandboxes and browser tools.",
+    "url": "digests/2026-11-28-frameworks.html",
+    "readingTime": "2 min read",
+    "tags": [
+      "Pydantic AI",
+      "OpenAI Agents SDK",
+      "Mastra",
+      "CrewAI",
+      "LangChain",
+      "Google ADK",
+      "LangGraph",
+      "Claude Agent SDK",
+      "Security",
+      "Breaking changes"
+    ]
+  },
+  {
     "date": "2026-11-27",
     "type": "weekly",
     "title": "Weekly Deep-Dive: Agents that run operations — Skills, MCP, specs and tracing",
